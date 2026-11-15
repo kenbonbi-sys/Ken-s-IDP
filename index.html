@@ -48,18 +48,20 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 [data-tri=tech]{--c:var(--tech);--cd:var(--tech-d);--ct:var(--tech-t)}
 [data-tri=ux]{--c:var(--ux);--cd:var(--ux-d);--ct:var(--ux-t)}
 [data-tri=biz]{--c:var(--biz);--cd:var(--biz-d);--ct:var(--biz-t)}
-.gcode{display:inline-grid;place-items:center;min-width:32px;height:24px;flex:0 0 auto;padding:0 7px;border-radius:7px;background:var(--cd);color:#fff;font-size:12.5px;font-weight:800;line-height:1;letter-spacing:.02em}
-.gcode[data-tri=biz]{color:var(--ink)}
 
 /* ================= Nút ================= */
 /* Nút "con tem" kiểu M16: hồng – trắng – hồng, đế kẻ sọc, nhấn thì lún xuống */
-.stamp{position:relative;display:inline-flex;padding:0 9px 9px 0;border:0;background:none;font-size:24px;text-decoration:none;cursor:pointer}
-.stamp-o{position:relative;z-index:2;display:block;padding:.12em;border-radius:.25em .17em .17em .25em;background:var(--pink-btn);transition:transform .2s ease-out}
-.stamp-w{display:block;padding:.1em;border-radius:.17em;background:#fff}
-.stamp-i{display:block;padding:.24em .5em .16em;border-radius:.09em;background:var(--pink-btn);color:#fff;line-height:1.2;white-space:nowrap}
-.stamp-base{position:absolute;left:9px;top:9px;right:0;bottom:0;z-index:1;border:2px solid var(--pink-btn);border-radius:.25em;background:repeating-linear-gradient(-45deg,var(--pink-btn) 0 2px,#fff 2px 6px)}
-.stamp:hover .stamp-o{transform:translate(3px,3px)}
-.stamp:active .stamp-o{transform:translate(8px,8px)}
+/* Dựng lại theo số đo nút CTA của M16 (mặt hồng #F95396 – viền trắng – lõi hồng, khối sọc #FF9DBE đổ xuống phải).
+   Khối sọc là một hình lục giác (clip-path) bao mặt nút: mặt lún vào t, khối dày e → các đỉnh tính theo t và e. */
+.stamp{position:relative;display:inline-flex;padding:0 .24em .24em 0;border:0;background:none;font-size:26px;text-decoration:none;cursor:pointer}
+.stamp-o{position:relative;z-index:2;display:block;padding:.125em;border-radius:.25em .167em .167em .25em;background:var(--pink);transition:translate .2s cubic-bezier(0,0,.2,1)}
+.stamp-w{display:block;padding:.104em;border-radius:.167em;background:#fff}
+.stamp-i{display:block;padding:.208em .32em .125em;border-radius:.083em;background:var(--pink);color:#fff;line-height:1.25;white-space:nowrap}
+.stamp-base{position:absolute;inset:0;z-index:1;border-radius:.25em;background:repeating-linear-gradient(45deg,#FF9DBE 0 .077em,var(--pink) .077em .272em);clip-path:polygon(0 0,calc(100% - .24em) 0,100% .24em,100% 100%,.24em 100%,0 calc(100% - .24em));transition:clip-path .2s cubic-bezier(0,0,.2,1)}
+.stamp:hover .stamp-o{translate:.04em .04em}
+.stamp:hover .stamp-base{clip-path:polygon(.04em .04em,calc(100% - .2em) .04em,calc(100% - .04em) .2em,calc(100% - .04em) calc(100% - .04em),.2em calc(100% - .04em),.04em calc(100% - .2em))}
+.stamp:active .stamp-o{translate:.12em .12em}
+.stamp:active .stamp-base{clip-path:polygon(.12em .12em,calc(100% - .12em) .12em,calc(100% - .04em) .2em,calc(100% - .04em) calc(100% - .04em),.2em calc(100% - .04em),.12em calc(100% - .12em))}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:10px;font-size:15px;font-weight:700;line-height:1.2;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .3s var(--out),background-color .25s ease,color .25s ease,box-shadow .25s ease}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0) scale(.98)}
@@ -166,33 +168,33 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* Bậc thang 6 khối = 6 tháng */
 .stair{position:relative;justify-self:center;width:min(100%,540px);aspect-ratio:1/.95}
-.step{position:absolute;left:calc(1% + var(--i) * 18.5%);bottom:calc(2% + var(--i) * 14.25%);z-index:calc(10 - var(--i));width:21%;padding:0;border:0;background:none;cursor:pointer;animation:drop 1.1s var(--spring) both;animation-delay:calc(.5s + var(--i) * .1s)}
+/* 11 khối = 11 mục tiêu: 5 Tech → 4 UX → 2 Biz */
+.step{position:absolute;left:calc(1% + var(--i) * 8%);bottom:calc(2% + var(--i) * 6.2%);z-index:calc(20 - var(--i));width:12%;padding:0;border:0;background:none;cursor:pointer;animation:drop 1.1s var(--spring) both;animation-delay:calc(.5s + var(--i) * .07s)}
 .step:focus-visible{outline:none}
 .step:focus-visible .cube{outline:2.5px solid var(--pink-btn);outline-offset:4px}
 .step-b{display:block;animation:bob 5s ease-in-out infinite;animation-delay:calc(var(--i) * -.8s)}
 .step .cube{transition:transform .4s var(--spring)}
-.step:hover .cube,.step:focus-visible .cube{transform:translateY(-12px)}
-.step-n{position:absolute;left:50%;top:25%;z-index:2;display:grid;place-items:center;font-size:clamp(15px,1.8vw,24px);line-height:1;color:var(--ct);transform:translate(-50%,-55%)}
+.step:hover .cube,.step:focus-visible .cube{transform:translateY(-10px)}
 .step-tip{position:absolute;left:50%;bottom:calc(100% - 4px);z-index:20;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:#fff;box-shadow:var(--sh-m);font-size:13px;font-weight:500;line-height:1.3;white-space:nowrap;pointer-events:none;opacity:0;transform:translate(-50%,8px);transition:opacity .25s ease,transform .45s var(--out)}
 .step-tip b{font-weight:800}
-.step:nth-child(n+4) .step-tip{left:auto;right:-10%;transform:translate(0,8px)}
+.step:nth-child(n+7) .step-tip{left:auto;right:-10%;transform:translate(0,8px)}
 .step:hover .step-tip,.step:focus-visible .step-tip{opacity:1;transform:translate(-50%,0)}
-.step:nth-child(n+4):hover .step-tip,.step:nth-child(n+4):focus-visible .step-tip{transform:translate(0,0)}
-.step:nth-child(-n+2) .step-tip{left:0;transform:translate(0,8px)}
-.step:nth-child(-n+2):hover .step-tip,.step:nth-child(-n+2):focus-visible .step-tip{transform:translate(0,0)}
+.step:nth-child(n+7):hover .step-tip,.step:nth-child(n+7):focus-visible .step-tip{transform:translate(0,0)}
+.step:nth-child(-n+3) .step-tip{left:0;transform:translate(0,8px)}
+.step:nth-child(-n+3):hover .step-tip,.step:nth-child(-n+3):focus-visible .step-tip{transform:translate(0,0)}
 .step:hover{z-index:30}
-.step:nth-child(5) .step-tip{bottom:auto;top:calc(100% - 8px)}
+.step:nth-child(n+10) .step-tip{bottom:auto;top:calc(100% - 4px)}
 
 /* Cúp sáng: đích của mùa */
-.trophy{position:absolute;left:85.5%;top:-7%;z-index:16;width:17%;padding:0;border:0;background:none;cursor:pointer;transform:translateX(-50%);animation:trophyin 1s 1.3s var(--spring) both}
+.trophy{position:absolute;left:87%;top:1%;z-index:16;width:20%;padding:0;border:0;background:none;cursor:pointer;transform:translateX(-50%);animation:trophyin 1s 1.3s var(--spring) both}
 .trophy:focus-visible{outline:none}
 .trophy:focus-visible .tr-cup{outline:2.5px solid var(--pink-btn);outline-offset:6px;border-radius:12px}
 .trophy-b{position:relative;display:block;animation:bob 5s ease-in-out infinite;animation-delay:-4s}
 .tr-cup{position:relative;z-index:2;display:block;transition:transform .45s var(--spring)}
-.tr-cup svg{display:block;width:100%;height:auto;filter:drop-shadow(0 0 10px rgba(255,196,60,.85)) drop-shadow(0 10px 12px rgba(190,30,100,.3));animation:trglow 2.4s ease-in-out infinite}
+.tr-cup img{display:block;width:100%;height:auto;filter:drop-shadow(0 0 10px rgba(255,140,190,.8)) drop-shadow(0 10px 12px rgba(190,30,100,.3));animation:trglow 2.4s ease-in-out infinite}
 .trophy:hover .tr-cup{transform:scale(1.1) rotate(-6deg)}
 .trophy.jig .tr-cup{animation:jig .7s ease}
-.tr-rays{position:absolute;left:50%;top:40%;z-index:1;width:240%;aspect-ratio:1;margin:-120% 0 0 -120%;border-radius:50%;background:repeating-conic-gradient(rgba(255,210,80,.6) 0 9deg,transparent 9deg 26deg);-webkit-mask-image:radial-gradient(circle,#000 20%,transparent 66%);mask-image:radial-gradient(circle,#000 20%,transparent 66%);animation:spin 16s linear infinite;pointer-events:none}
+.tr-rays{position:absolute;left:50%;top:40%;z-index:1;width:240%;aspect-ratio:1;margin:-120% 0 0 -120%;border-radius:50%;background:repeating-conic-gradient(rgba(255,150,200,.55) 0 9deg,transparent 9deg 26deg);-webkit-mask-image:radial-gradient(circle,#000 20%,transparent 66%);mask-image:radial-gradient(circle,#000 20%,transparent 66%);animation:spin 16s linear infinite;pointer-events:none}
 .tr-sp{position:absolute;z-index:3;width:16%;aspect-ratio:1;background:#fff;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:twinkle 1.8s ease-in-out infinite;pointer-events:none}
 .tr-sp.a{left:-14%;top:6%}
 .tr-sp.b{right:-12%;top:28%;width:12%;animation-delay:-.6s}
@@ -232,8 +234,10 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* ================= Đối chiếu JD theo Product Triad ================= */
 .sec-pink{background:linear-gradient(180deg,#FDE4EE 0%,#fff 560px)}
-.tri{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:40px;align-items:center}
-.venn{display:block;width:100%;max-width:540px;height:auto;margin:0 auto;overflow:visible}
+.tri{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:40px}
+.tri-vw{min-width:0}
+/* Venn đứng yên khi cuộn qua các hàng JD (cột phải dài hơn) */
+.venn{position:sticky;top:80px;display:block;width:100%;max-width:520px;height:auto;margin:0 auto;overflow:visible}
 .tri-c{cursor:pointer;outline:none}
 .tri-c circle{mix-blend-mode:multiply;transform-box:fill-box;transform-origin:center;transition:opacity .35s ease,transform .5s var(--spring)}
 .c-tech circle{fill:var(--tech);fill-opacity:.66}
@@ -244,28 +248,26 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .tri-n{font-family:"Momo Trust Sans",system-ui,sans-serif;font-size:19px;font-weight:800;fill:var(--ink)}
 .tri-p{font-family:"Momo Trust Display","Momo Trust Sans",sans-serif;font-size:40px;fill:var(--ink)}
 .tri-pe{font-family:"Momo Signature","Momo Trust Display",cursive;font-size:26px;fill:var(--ink)}
-.tri-ar{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.tri-mid{fill:#fff;stroke:var(--ink);stroke-width:2.5}
 .js .rv .tri-c circle{opacity:0}
 .js .rv.in .tri-c circle{opacity:1;animation:popc .9s var(--spring) backwards}
 .js .rv.in .c-ux circle{animation-delay:.12s}
-.js .rv.in .c-tech circle{animation-delay:.24s}
-.js .rv .tri-draw{stroke-dasharray:1;stroke-dashoffset:1}
-.js .rv.in .tri-draw{animation:draw 1.1s .7s var(--out) forwards}
+.js .rv.in .c-biz circle{animation-delay:.24s}
 .js .rv .tri-late{opacity:0}
-.js .rv.in .tri-late{opacity:1;transition:opacity .5s ease 1.4s}
+.js .rv.in .tri-late{opacity:1;transition:opacity .6s ease .9s}
 .js .tri.in[data-hl] .tri-c circle{opacity:.3}
 .js .tri.in[data-hl=tech] .c-tech circle,.js .tri.in[data-hl=ux] .c-ux circle,.js .tri.in[data-hl=biz] .c-biz circle{opacity:1}
 .tri-rows{display:flex;flex-direction:column;gap:14px;min-width:0}
-.tri-row{display:grid;grid-template-columns:118px minmax(0,1fr) minmax(0,1fr);gap:18px;padding:20px 20px 20px 18px;border-left:6px solid var(--c);border-radius:8px 20px 20px 8px;background:#fff;box-shadow:var(--sh-s);transition:opacity .3s ease,transform .4s var(--out)}
+.tri-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 20px;padding:18px 20px 20px 18px;border-left:6px solid var(--c);border-radius:8px 20px 20px 8px;background:#fff;box-shadow:var(--sh-s);transition:opacity .3s ease,transform .4s var(--out)}
 .tri[data-hl] .tri-row{opacity:.5}
 .tri[data-hl=tech] .tri-row[data-tri=tech],.tri[data-hl=ux] .tri-row[data-tri=ux],.tri[data-hl=biz] .tri-row[data-tri=biz]{opacity:1;transform:translateX(-6px)}
 .tri-row.flash{animation:flash 1.1s ease 2}
-.tri-h{display:flex;flex-direction:column;gap:2px}
-.tri-h b{font-size:19px;line-height:1.2}
-.tri-pct{font-size:40px;line-height:1;color:var(--ct)}
+.tri-h{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.tri-h b{font-size:20px;line-height:1.2}
+.tri-pct{font-size:32px;line-height:1;color:var(--ct)}
 .tri-sub{font-size:13px;color:var(--ink-3)}
 .jd{display:flex;flex-direction:column;gap:8px;min-width:0}
+.jd-h{font-size:13.5px;font-weight:800;line-height:1.35;color:var(--ink-3)}
+.jd-h.p{color:var(--pink-text)}
 .jd>ul{display:flex;flex-direction:column;gap:8px}
 .jd-ok li{display:flex;align-items:flex-start;gap:8px;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
 .jd-ok .ic{width:16px;height:16px;margin-top:2px;color:var(--ok);stroke-width:3}
@@ -283,12 +285,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .bn-conf{position:absolute;inset:0;pointer-events:none}
 .bn-conf i{position:absolute;width:10px;height:5px;border-radius:2px;animation:confloat 6s ease-in-out infinite}
 .bn-l{position:relative;z-index:2;display:flex;flex-direction:column;gap:16px}
-.bn-t{font-size:clamp(34px,4.4vw,60px);line-height:1.04}
-.bn-t .ink{color:var(--ink)}
+.bn-t{font-size:clamp(26px,2.9vw,40px);line-height:1.15}
+.bn-t .ink{display:block;margin-bottom:6px;font-size:1.35em;line-height:1.05;color:var(--ink)}
+.bn-s{font-size:18px;font-weight:700;line-height:1.4;color:rgba(255,255,255,.92)}
 .gtags{display:flex;flex-wrap:wrap;gap:10px}
 .gtag{position:relative;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:0;border-top:1px solid rgba(255,255,255,.55);border-bottom:1px solid rgba(255,255,255,.25);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.22) 18%,rgba(255,255,255,.22) 82%,rgba(255,255,255,0));color:#fff;font-size:14px;font-weight:700;text-align:left;cursor:pointer;transition:transform .35s var(--out),background-color .25s ease}
 .gtag:hover{transform:translateY(-3px)}
-.gtag .gcode{background:#fff;color:var(--ct)}
+.gdot{width:11px;height:11px;flex:0 0 auto;border:2px solid #fff;border-radius:50%;background:var(--c)}
 .bn-ph{position:relative;z-index:2;padding:10px;border-radius:18px;background:#fff;box-shadow:0 30px 60px -20px rgba(80,0,40,.55);transform:rotate(3deg);transition:transform .5s var(--out)}
 .bn-ph:hover{transform:rotate(0) scale(1.02)}
 .bn-ph .slot{aspect-ratio:16/10;border-radius:12px}
@@ -297,7 +300,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .bn-w.in .bn-c{opacity:1;transform:none;transition-delay:calc(.3s + var(--k) * .12s)}
 .bn-c .cube{animation:spinbob 8s ease-in-out infinite;animation-delay:calc(var(--k) * -1.3s)}
 
-/* Mô hình học 70-20-10 */
+/* Mô hình học 50-30-20 */
 .lm{position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;margin-bottom:36px}
 .lm h3{font-size:clamp(24px,2.4vw,32px);line-height:1.2}
 .lm-bar{display:flex;gap:4px;height:46px}
@@ -311,21 +314,31 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .lm-k b{display:block;font-size:15.5px;line-height:1.35}
 .lm-k small{display:block;font-size:13.5px;line-height:1.4;color:var(--ink-2)}
 .lv{display:inline-grid;place-items:center;width:32px;height:24px;flex:0 0 auto;border-radius:7px;font-size:12.5px;font-weight:800;line-height:1;color:#fff}
-.l70{background:#A70D5B;color:#fff}
-.l20{background:#E2338A;color:#fff}
-.l10{background:#FFC8DC;color:var(--ink)}
+.l50{background:#A70D5B;color:#fff}
+.l30{background:#E2338A;color:#fff}
+.l20{background:#FFC8DC;color:var(--ink)}
 
-/* Thẻ mục tiêu */
-.goals{position:relative;z-index:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
-.goal{grid-column:span 2;display:flex;flex-direction:column;gap:16px;min-width:0;padding:22px 22px 18px;border-top:6px solid var(--c);border-radius:10px 10px 24px 24px;background:#fff;box-shadow:var(--sh-m);scroll-margin-top:90px}
-.goal[data-tri=tech]{grid-column:span 3}
+/* 3 nhóm Tech · UX · Biz, mỗi nhóm một carousel thẻ mục tiêu */
+.cats{position:relative;z-index:2;display:flex;flex-direction:column;gap:44px}
+.cat{scroll-margin-top:30px}
+.cat-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:10px}
+.cat-dot{width:14px;height:14px;flex:0 0 auto;border-radius:50%;background:var(--c)}
+.cat-h h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1}
+.cat-pct{font-size:clamp(26px,2.6vw,34px);line-height:1.1;color:var(--ct)}
+.cat-n{font-size:14px;font-weight:700;color:var(--ink-3)}
+.cat-nav{display:flex;gap:8px;margin-left:auto}
+.cat-nav .nb{width:44px;padding:0;justify-content:center}
+.cat.fits .cat-nav{display:none}
+.cr{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px) / 3);gap:18px;margin:0 -6px;padding:10px 6px 26px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:0 6px;scrollbar-width:none}
+.cr::-webkit-scrollbar{display:none}
+.cr:focus-visible{outline:2.5px solid var(--pink-btn);outline-offset:2px;border-radius:12px}
+.goal{display:flex;flex-direction:column;gap:16px;min-width:0;padding:22px 22px 18px;border-top:6px solid var(--c);border-radius:10px 10px 24px 24px;background:#fff;box-shadow:var(--sh-m);scroll-snap-align:start}
 .goal.flash{animation:flash 1.1s ease 2}
 .goal-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .gtri{font-size:13px;font-weight:800;color:var(--ct)}
 .gkind{padding:2px 10px;border-radius:999px;background:#F5F0F3;font-size:12.5px;font-weight:700;color:var(--ink-2)}
-.goal-t{font-size:26px;line-height:1.15}
+.goal-t{font-size:24px;line-height:1.18}
 .goal-b{display:flex;flex-direction:column;gap:16px}
-.goal[data-tri=tech] .goal-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
 .gft{display:flex;flex-direction:column;border-radius:16px;background:var(--pink-50)}
 .gft>div{display:flex;flex-direction:column;gap:4px;padding:12px 14px}
 .gft>div+div{border-top:1.5px dashed #F7C6DA}
@@ -373,7 +386,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .side-l{display:flex;flex-direction:column;gap:8px}
 .side-b{display:flex;align-items:flex-start;gap:10px;width:100%;padding:10px 12px;border:0;border-radius:12px;background:#FAF6F8;font-size:15px;line-height:1.45;color:var(--ink-2);text-align:left;cursor:pointer;transition:background-color .2s ease,transform .3s var(--out)}
 .side-b:hover{background:var(--pink-50);transform:translateX(4px)}
-.side-b .gcode{margin-top:1px}
+.side-b .gdot{margin-top:6px;border-color:#FAF6F8}
 .check-card{display:flex;flex-direction:column;gap:12px;padding:18px 20px 20px;border:1.5px dashed #F5B3CE;border-radius:18px;background:var(--pink-50)}
 .check-h{display:flex;align-items:center;gap:12px}
 .check-h .lbl{flex:0 0 auto}
@@ -538,12 +551,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 @keyframes wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-12deg)}90%{transform:rotate(10deg)}95%{transform:rotate(-5deg)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes trophyin{from{opacity:0;transform:translate(-50%,-60px) scale(.3)}to{opacity:1;transform:translateX(-50%)}}
-@keyframes trglow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,196,60,.85)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}50%{filter:drop-shadow(0 0 22px rgba(255,214,90,1)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}}
+@keyframes trglow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,140,190,.8)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}50%{filter:drop-shadow(0 0 22px rgba(255,170,210,1)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 @keyframes jig{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg) scale(1.08)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
 @keyframes navin{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
 @keyframes popc{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
-@keyframes draw{to{stroke-dashoffset:0}}
 @keyframes plus{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-34px)}}
 @keyframes fall{to{transform:translate(var(--x),110vh) rotate(var(--r))}}
 
@@ -553,7 +565,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .js .rv,.js .rv-t,.js .rv .stg{opacity:1;filter:none;transform:none}
   .bn-c{opacity:1;transform:none}
   .js .rv .tri-c circle,.js .rv .tri-late{opacity:1}
-  .js .rv .tri-draw{stroke-dashoffset:0}
   .js .rv .lm-bar i{flex-grow:var(--w)}
 }
 
@@ -572,12 +583,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .stair{width:min(100%,460px)}
   .banner{grid-template-columns:minmax(0,1fr);padding:40px 32px}
   .tri,.trk,.card-grid{grid-template-columns:minmax(0,1fr)}
-  .venn{max-width:480px}
-  .goals{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .goal,.goal[data-tri=tech]{grid-column:span 1}
-  .goal:last-child{grid-column:1/-1}
-  .goal[data-tri] .goal-b{display:flex}
-  .goal:last-child .goal-b{display:grid}
+  .venn{position:static;max-width:460px}
+  .cr{grid-auto-columns:calc((100% - 18px) / 2)}
   .collage{max-width:520px}
   .tl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px 32px;padding:4px 24px 12px}
   .tl-i{flex:0 0 150px;scroll-snap-align:start}
@@ -601,16 +608,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .as-r{bottom:10%}
   .banner{padding:32px 20px}
   .tri-row{grid-template-columns:minmax(0,1fr);gap:14px;padding:18px 16px 18px 14px}
-  .tri-h{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:4px 10px}
-  .tri-pct{font-size:30px}
+  .tri-pct{font-size:28px}
   .lm-bar{height:40px}
   .lm-bar i{padding:0 10px;font-size:14px}
-  .lm-bar i:nth-child(3){font-size:0;padding:0}
   .lm-k{grid-template-columns:minmax(0,1fr)}
-  .goals{grid-template-columns:minmax(0,1fr)}
-  .goal:last-child .goal-b{display:flex}
+  .cr{grid-auto-columns:86%;gap:14px}
   .goal{padding:20px 18px 16px}
-  .goal-t{font-size:23px}
+  .goal-t{font-size:21px}
   .card{padding:26px 18px;border-radius:22px}
   .card-nav .nb span,.dlg-foot .nb span{display:none}
   .card-nav .nb,.dlg-foot .nb{padding:0 14px}
@@ -666,7 +670,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         <a class="stamp" href="#lo-trinh"><span class="stamp-o"><span class="stamp-w"><span class="stamp-i dsp">XEM LỘ TRÌNH 6 THÁNG</span></span></span><span class="stamp-base"></span></a>
       </div>
     </div>
-    <div class="stair" id="stair" aria-label="5 mục tiêu theo Product Triad, bấm vào một khối để xem mục tiêu"></div>
+    <div class="stair" id="stair" aria-label="11 mục tiêu theo Product Triad, bấm vào một khối để xem mục tiêu"></div>
   </div>
 </section>
 
@@ -684,20 +688,20 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   <div class="wrap">
     <header class="sh rv-t"><h2 class="dsp h2-one">Kế Hoạch Phát Triển Bản Thân theo <span class="pkh">Product Triad</span></h2></header>
     <div class="tri rv" id="tri">
-      <svg class="venn" viewBox="0 0 560 350" aria-label="Product Triad: Tech 70%, UX 20%, Biz 10%">
-        <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD"><circle cx="190" cy="118" r="108"/></g>
-        <g class="tri-c c-ux" data-tk="ux" tabindex="0" role="button" aria-label="UX 20%, xem đối chiếu JD"><circle cx="128" cy="226" r="108"/></g>
-        <g class="tri-c c-tech" data-tk="tech" tabindex="0" role="button" aria-label="Tech 70%, xem đối chiếu JD"><circle cx="252" cy="226" r="108"/></g>
+      <div class="tri-vw">
+      <!-- Diện tích vòng tròn theo tỉ trọng 70 : 20 : 10 (bán kính 140 : 75 : 53); đọc trái sang phải: Tech → UX → Biz -->
+      <svg class="venn" viewBox="0 0 500 375" aria-label="Product Triad: Tech 70%, UX 20%, Biz 10%">
+        <g class="tri-c c-tech" data-tk="tech" tabindex="0" role="button" aria-label="Tech 70%, xem đối chiếu JD"><circle cx="200" cy="200" r="140"/></g>
+        <g class="tri-c c-ux" data-tk="ux" tabindex="0" role="button" aria-label="UX 20%, xem đối chiếu JD"><circle cx="330" cy="245" r="75"/></g>
+        <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD"><circle cx="345" cy="310" r="53"/></g>
         <g aria-hidden="true" pointer-events="none">
-          <text class="tri-n" x="190" y="56" text-anchor="middle">Biz</text><text class="tri-p" x="190" y="96" text-anchor="middle">10%</text>
-          <text class="tri-n" x="92" y="262" text-anchor="middle">UX</text><text class="tri-p" x="92" y="302" text-anchor="middle">20%</text>
-          <text class="tri-n" x="288" y="262" text-anchor="middle">Tech</text><text class="tri-p" x="288" y="302" text-anchor="middle">70%</text>
-          <path class="tri-ar tri-draw" pathLength="1" d="M418 84C420 152 330 196 209 191"/>
-          <path class="tri-ar tri-late" d="M221 183L208 191L221 199"/>
-          <circle class="tri-mid tri-late" cx="190" cy="190" r="6"/>
-          <text class="tri-pe tri-late" x="418" y="62" text-anchor="middle">Product Engineer</text>
+          <text class="tri-n" x="140" y="195" text-anchor="middle">Tech</text><text class="tri-p" x="140" y="238" text-anchor="middle">70%</text>
+          <text class="tri-n" x="415" y="222">UX</text><text class="tri-p" x="415" y="260">20%</text>
+          <text class="tri-n" x="408" y="325">Biz</text><text class="tri-p" x="408" y="362">10%</text>
+          <text class="tri-pe tri-late" x="0" y="32">Product Engineer</text>
         </g>
       </svg>
+      </div>
       <div class="tri-rows" id="tri-rows"></div>
     </div>
   </div>
@@ -712,7 +716,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       <div class="banner">
         <div class="bn-conf" id="bn-conf"></div>
         <div class="bn-l">
-          <h3 class="dsp bn-t"><span class="ink">Sau 6 tháng</span><br>lấp 5 khoảng trống so với JD</h3>
+          <h3 class="dsp bn-t"><span class="ink">Sau 6 tháng</span>em sẽ hướng tới một Product Engineer có nền tảng kiến thức vững và rộng</h3>
+          <p class="bn-s">Từ Product management đến Product Growth</p>
           <div class="gtags" id="miles"></div>
         </div>
         <figure class="bn-ph"><span class="slot" data-img="so-do-he-thong" id="feat-slot"></span></figure>
@@ -721,16 +726,16 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     </div>
 
     <div class="lm rv">
-      <h3 class="dsp">Mỗi mục tiêu học theo <span class="pkh">70-20-10</span></h3>
-      <div class="lm-bar" aria-hidden="true"><i class="l70" style="--w:70">70%</i><i class="l20" style="--w:20">20%</i><i class="l10" style="--w:10">10%</i></div>
+      <h3 class="dsp">Mỗi mục tiêu học theo <span class="pkh">50-30-20</span></h3>
+      <div class="lm-bar" aria-hidden="true"><i class="l50" style="--w:50">50%</i><i class="l30" style="--w:30">30%</i><i class="l20" style="--w:20">20%</i></div>
       <div class="lm-k">
-        <div><span class="lv l70">70</span><span><b>Việc thật</b><small>Học ngay trên product đang làm</small></span></div>
+        <div><span class="lv l50">50</span><span><b>Việc thật</b><small>Học ngay trên product đang làm</small></span></div>
+        <div><span class="lv l30">30</span><span><b>Tự học từ course trả phí</b><small>Course trên LMS</small></span></div>
         <div><span class="lv l20">20</span><span><b>Mentor và coach</b><small>Quản lý, designer, PM/PO</small></span></div>
-        <div><span class="lv l10">10</span><span><b>Học chính thức</b><small>Khoá trả phí, sách, workshop</small></span></div>
       </div>
     </div>
 
-    <div class="goals" id="goals"></div>
+    <div class="cats" id="cats"></div>
   </div>
 </section>
 
@@ -751,7 +756,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       <h2 class="dsp h2s">Check-in với quản lý</h2>
       <ol class="steps">
         <li class="st-card stg" style="--k:0"><span class="st-n dsp">1</span><p><b>Cuối mỗi tháng, 30 phút:</b> tick mục “Coi là hiểu khi”, giảng lại tầng vừa học, đem đề xuất kiến trúc của tháng ra phản biện. Mục nào chưa đạt thì dời sang tháng sau, không bỏ qua.</p></li>
-        <li class="st-card stg" style="--k:1"><span class="st-n dsp">2</span><p><b>Tháng 3, review giữa kỳ:</b> xem lại tiến độ 5 mục tiêu, chỉnh lại nếu cần.</p></li>
+        <li class="st-card stg" style="--k:1"><span class="st-n dsp">2</span><p><b>Tháng 3, review giữa kỳ:</b> xem lại tiến độ 11 mục tiêu, chỉnh lại nếu cần.</p></li>
         <li class="st-card stg" style="--k:2"><span class="st-n dsp">3</span><p><b>Tháng 6, tổng kết:</b> trình bày cả hệ thống trong 30 phút, chấm từng mục tiêu đạt hay chưa, chọn mục tiêu cho mùa sau.</p></li>
       </ol>
     </div>
@@ -791,44 +796,44 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
   /* ================= DỮ LIỆU ================= */
   // learn = "Cần hiểu", practice = "Tự dựng lại", done = "Coi là hiểu khi", result = bằng chứng của tháng
-  // side = "Song song trong tháng": [mã mục tiêu, việc] cho các mục tiêu ngoài T1 (xem GOALS)
+  // side = "Song song trong tháng": [id mục tiêu, việc] (xem GOALS)
   var MONTHS = [
     { n: 1, icon: "web", title: "Web & trình duyệt", result: "HTTP server tự viết",
       desc: "Hiểu chuyện gì xảy ra từ lúc gõ URL đến lúc trang hiện ra.",
       learn: ["Đường đi của một request: DNS, TCP, TLS, HTTP", "Header, cookie và cache của HTTP", "Trình duyệt vẽ trang thế nào: DOM, CSSOM, layout, paint", "Event loop: call stack, microtask, macrotask"],
       practice: ["Viết một HTTP server bằng node:http, không dùng framework", "Tự đọc request thô và trả response có header, cookie, cache"],
       done: ["Vẽ lại đường đi của một request mà không cần tra", "Đoán đúng thứ tự chạy của một đoạn code async"],
-      side: [["T2", "Đề xuất kiến trúc đầu tiên, theo mẫu: bối cảnh, phương án, đánh đổi, chọn gì"], ["U1", "Phác flow và wireframe cho tính năng đầu tiên, gửi designer trước khi code"], ["B1", "Mở sổ cơ hội, ghi từ feedback và dashboard đọc mỗi sáng"]] },
+      side: [["t2", "Đề xuất đầu tiên: kiến trúc hệ thống và information architecture, kèm phương án và đánh đổi"], ["u3", "Phỏng vấn lại người dùng theo khung Jobs to Be Done"], ["u1", "Phác flow và wireframe cho tính năng đầu tiên, gửi designer trước khi code"], ["b2", "Học course Introduction to Product Management, viết 1 PRD"]] },
     { n: 2, icon: "react", title: "React & Next.js bên dưới", result: "Mini React tự viết",
       desc: "Hiểu React và Next.js làm gì bên dưới những dòng code mình viết hằng ngày.",
       learn: ["Khi nào component render lại: reconciliation và key", "Hook chạy thế nào, vì sao không được đặt trong if", "Server Component và Client Component khác nhau ra sao", "SSR, streaming, hydration và các lớp cache của Next.js"],
       practice: ["Viết một mini React khoảng 100 dòng: createElement, render, useState", "Mở Network tab, đọc dữ liệu RSC mà app đang làm trả về"],
       done: ["Giải thích được vì sao một component cụ thể render lại", "Giải thích được một lỗi hydration cụ thể và cách sửa"],
-      side: [["T2", "Đề xuất kiến trúc thứ 2"], ["U1", "Designer góp ý các bản phác, 2 tuần một lần"], ["B1", "Đem cơ hội thứ nhất đi bàn với PM/PO"]] },
-    { n: 3, icon: "db", title: "Database", result: "SQL viết tay + EXPLAIN",
-      desc: "Hiểu database thật sự làm gì khi Prisma gửi một câu lệnh xuống.",
-      learn: ["SQL thật sự: JOIN, GROUP BY, subquery", "Index và query plan", "Transaction và race condition", "Lỗi N+1 và câu SQL mà Prisma sinh ra"],
-      practice: ["Viết tay SQL cho 3 query Prisma đang dùng trong app", "Soi các query đó bằng EXPLAIN ANALYZE"],
-      done: ["Chỉ ra được vì sao một query chậm", "Thêm index và giải thích được vì sao nó nhanh hơn"],
-      side: [["T2", "Đề xuất kiến trúc thứ 3"], ["U2", "Soạn kịch bản usability test cùng designer, chọn tính năng để test"]] },
-    { n: 4, icon: "shield", title: "Đăng nhập & bảo mật", result: "Đăng nhập tự viết",
-      desc: "Hiểu đăng nhập và các lỗ hổng web phổ biến hoạt động ra sao.",
-      learn: ["Cookie, session và JWT khác nhau thế nào", "OAuth và OpenID Connect, từng bước một", "CSRF, XSS và cách phòng", "CORS: vì sao trình duyệt chặn và cấu hình thế nào cho đúng"],
-      practice: ["Tự viết đăng nhập bằng session-cookie, không dùng thư viện", "Theo dõi từng request của luồng đăng nhập Google trong app"],
-      done: ["Vẽ được luồng đăng nhập Google của app, từng request một", "Giải thích được một lỗi CORS và cách sửa"],
-      side: [["T2", "Đề xuất kiến trúc thứ 4"], ["U2", "Cho 5 người dùng thử bản phác, ghi lại chỗ vướng rồi sửa"], ["B1", "Đem cơ hội thứ 2 đi bàn với PM/PO"]] },
-    { n: 5, icon: "ai", title: "AI/LLM bên dưới", result: "RAG tối giản tự viết",
-      desc: "Hiểu LLM xử lý văn bản thế nào và vì sao nó trả lời sai.",
-      learn: ["Token và context window", "Embedding và độ giống nhau giữa các vector", "RAG chạy thế nào: tìm đoạn liên quan rồi ghép vào prompt", "Structured output và vì sao model trả sai định dạng"],
-      practice: ["Viết RAG tối giản không dùng framework: nhúng câu, tìm đoạn gần nhất, ghép vào prompt"],
-      done: ["Giải thích được vì sao model trả sai hoặc trả rỗng trong một trường hợp thật", "Sửa được trường hợp đó"],
-      side: [["T2", "Đề xuất kiến trúc thứ 5"], ["U1", "Phác flow cho tính năng AI, designer duyệt trước khi code"]] },
-    { n: 6, icon: "trophy", final: true, title: "Ghép lại cả hệ thống", result: "Bài trình bày cả hệ thống",
-      desc: "Nối các tầng lại với nhau và kể lại được cả hệ thống.",
-      learn: ["Hiệu năng: Core Web Vitals và profiling", "Test: test cái gì, ở tầng nào", "Cách debug một lỗi đi xuyên nhiều tầng"],
-      practice: ["Đo và cải thiện một trang chậm trong app", "Soạn bài trình bày: trình duyệt → server → database → AI"],
+      side: [["t2", "Đề xuất kiến trúc thứ 2"], ["u3", "Vẽ bản đồ hành trình khách hàng và bản đồ nỗi đau – cơ hội"], ["b1", "Market research cho mảng product đang làm"]] },
+    { n: 3, icon: "db", title: "Database & đăng nhập", result: "SQL viết tay + đăng nhập tự viết",
+      desc: "Hiểu database và luồng đăng nhập thật sự chạy thế nào bên dưới source code.",
+      learn: ["SQL thật sự, index và query plan", "Transaction, race condition và lỗi N+1 của ORM", "Cookie, session và JWT khác nhau thế nào", "OAuth, CORS, CSRF và XSS"],
+      practice: ["Viết tay SQL cho 3 query đang dùng, soi bằng EXPLAIN ANALYZE", "Tự viết đăng nhập bằng session-cookie, không dùng thư viện"],
+      done: ["Chỉ ra được vì sao một query chậm và sửa bằng index", "Vẽ được luồng đăng nhập Google của app, từng request một"],
+      side: [["t2", "Đề xuất kiến trúc thứ 3"], ["u2", "Soạn kịch bản usability test cùng designer, chọn tính năng để test"]] },
+    { n: 4, icon: "server", title: "System Design: các level", result: "Bản vẽ hệ thống 2 level",
+      desc: "Hiểu hệ thống phải đổi thế nào khi số người dùng tăng dần.",
+      learn: ["Từ một server đến tách riêng app, database, file", "Cache, queue và xử lý bất đồng bộ", "Scale ngang, load balancer, CDN", "Hệ thống phân tán: sao chép dữ liệu, nhất quán và đánh đổi"],
+      practice: ["Vẽ kiến trúc product đang làm ở level hiện tại", "Vẽ lại khi người dùng tăng 10 lần, chỉ ra chỗ phải đổi"],
+      done: ["Chỉ ra được nút thắt của hệ thống ở từng level", "Chọn được level phù hợp cho một tính năng và giải thích vì sao"],
+      side: [["t2", "Đề xuất kiến trúc thứ 4"], ["u2", "Cho 5 người dùng thử bản phác, ghi lại chỗ vướng rồi sửa"]] },
+    { n: 5, icon: "ai", title: "LLM Engineering: RAG, QLoRA", result: "RAG + QLoRA tự làm",
+      desc: "Hiểu LLM xử lý văn bản thế nào, khi nào nên RAG và khi nào nên fine-tune.",
+      learn: ["Token, context window và embedding", "RAG: chia đoạn, tìm đoạn liên quan, ghép vào prompt", "Fine-tune, LoRA và QLoRA: tiết kiệm bộ nhớ thế nào", "Đánh giá kết quả: bộ câu hỏi kiểm tra, so trước và sau"],
+      practice: ["Viết RAG tối giản không dùng framework trên dữ liệu thật của product", "Fine-tune một model mở nhỏ bằng QLoRA"],
+      done: ["Giải thích được khi nào dùng RAG, khi nào fine-tune", "So được kết quả trước và sau trên cùng bộ câu hỏi"],
+      side: [["t2", "Đề xuất kiến trúc thứ 5"], ["u4", "Gom feedback và số liệu tracking, viết bản phân tích growth đầu tiên"]] },
+    { n: 6, icon: "trophy", final: true, title: "Harness Design + ghép lại cả hệ thống", result: "Bài trình bày cả hệ thống",
+      desc: "Thiết kế phần khung bao quanh model cho sản phẩm AI, rồi nối mọi tầng lại với nhau.",
+      learn: ["Harness là gì: prompt, tool, quản lý context, vòng lặp agent", "Guardrail và bộ eval cho tính năng AI", "Hiệu năng: Core Web Vitals và profiling", "Cách debug một lỗi đi xuyên nhiều tầng"],
+      practice: ["Thiết kế harness và bộ eval cho một tính năng AI của product", "Soạn bài trình bày: trình duyệt → server → database → AI"],
       done: ["Trình bày lại cả hệ thống cho sếp trong 30 phút", "Trả lời được câu hỏi ở bất kỳ tầng nào mà không cần tra"],
-      side: [["T2", "Đề xuất kiến trúc thứ 6"], ["U1", "Gom các bản phác của mùa, so với bản đã ship"], ["B1", "Cơ hội thứ 3; ít nhất 1 cơ hội đã được duyệt làm"]] }
+      side: [["t2", "Đề xuất kiến trúc thứ 6"], ["u4", "Bản phân tích growth lần 2, chỉ ra 1 cơ hội tăng trưởng"], ["u1", "Gom các bản phác của mùa, so với bản đã ship"]] }
   ];
 
   // Product Triad: tỉ trọng 6 tháng này
@@ -838,55 +843,116 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     { k: "biz", name: "Biz", sub: "Product", pct: 10 }
   ];
 
-  // Đối chiếu JD: ok = đã làm được; gap = [mã mục tiêu, cần phát triển, kiến thức hay kỹ năng]
+  // Đối chiếu JD: ok = đã làm được trong thời gian thực tập; gap = [id mục tiêu, cần phát triển, kiến thức hay kỹ năng]
   var JD = {
-    tech: { ok: ["Dùng AI dựng khung, tự viết logic quan trọng", "Tự ship lên staging và production", "Gắn tracking để đo tính năng"],
-            gap: [["T1", "Hiểu nền tảng bên dưới", "Kiến thức"], ["T2", "Ra quyết định kiến trúc có cơ sở", "Kỹ năng"]] },
+    tech: { ok: ["Dùng AI để dựng các khung có tính reusable, tự define được các logic quan trọng trong hệ thống", "Gắn tracking để đo các metric cơ bản cho Growth, truy vấn data ad-hoc sử dụng SQL", "Deploy lên staging, UAT và Production với tỉ lệ fail là 0%"],
+            gap: [["t1", "Hiểu và nắm rõ được nền tảng bên dưới toàn bộ source code", "Kiến thức"],
+                  ["t2", "Ra quyết định kiến trúc hệ thống và information architecture có cơ sở", "Kỹ năng"],
+                  ["t3", "Hiểu và ứng dụng được các level của System Design", "Kiến thức"],
+                  ["t4", "Hiểu và vận dụng được Harness Design cho các sản phẩm có ứng dụng AI", "Kiến thức"],
+                  ["t5", "Hiểu và vận dụng được LLM Engineering, QLoRA, RAG", "Kiến thức + kỹ năng"]] },
     ux: { ok: ["Validate với designer, stakeholder", "Phỏng vấn người dùng", "Trực support"],
-          gap: [["U1", "Phác giải pháp trước khi code", "Kỹ năng"], ["U2", "Kiểm thử khả dụng trước khi ship", "Kiến thức + kỹ năng"]] },
+          gap: [["u1", "Phác giải pháp trước khi code", "Kỹ năng"],
+                ["u2", "Kiểm thử khả dụng trước khi ship", "Kiến thức + kỹ năng"],
+                ["u3", "Nghiên cứu khách hàng bằng Jobs to Be Done, bản đồ hành trình khách hàng (customer journey map) và bản đồ nỗi đau – cơ hội (pain–opportunity map)", "Kiến thức + kỹ năng"],
+                ["u4", "Phân tích dữ liệu sản phẩm từ feedback của người dùng (Product growth)", "Kỹ năng"]] },
     biz: { ok: ["Đọc feedback, ticket và dashboard", "Viết product note", "Theo dõi metric sau khi ship, iterate"],
-           gap: [["B1", "Tự tìm ra vấn đề, cơ hội", "Kỹ năng"]] }
+           gap: [["b1", "Market research", "Kiến thức"],
+                 ["b2", "Introduction to Product Management", "Kiến thức"]] }
   };
 
-  // 5 mục tiêu phát triển. a70 / a20 / a10 = hoạt động theo mô hình học 70-20-10
+  // 11 mục tiêu phát triển. a50 / a30 / a20 = việc thật / course trả phí trên LMS / mentor và coach (mô hình 50-30-20)
   var GOALS = [
-    { id: "T1", tri: "tech", kind: "Kiến thức", title: "Hiểu nền tảng hệ thống",
+    { id: "t1", tri: "tech", kind: "Kiến thức", title: "Nền tảng bên dưới toàn bộ source code",
       now: "Dựng được sản phẩm nhưng chưa giải thích được tầng bên dưới",
-      target: "Tự dựng lại bản tối giản của 5 tầng, trình bày cả hệ thống cho quản lý trong 30 phút",
-      a70: "Gắn mỗi tầng vào product đang làm, ví dụ tháng Database thì đọc EXPLAIN các query của chính product",
+      target: "Giải thích được web, React/Next.js, database và đăng nhập trong source code đang làm; tự dựng lại bản tối giản của từng tầng",
+      a50: "Soi từng tầng trên chính source code đang làm, ví dụ đọc EXPLAIN các query của product",
+      a30: "Course trên LMS về web, React/Next.js và database",
       a20: "Cuối tháng giảng lại tầng vừa học cho quản lý",
-      a10: "Sách Designing Data-Intensive Applications; 1 khoá trả phí cho tầng khó nhất",
-      due: "Tháng 6", proof: "Bài trình bày cả hệ thống", month: 6 },
-    { id: "T2", tri: "tech", kind: "Kỹ năng", title: "Quyết định kiến trúc có cơ sở",
+      due: "Tháng 1–3", proof: "3 bản tự dựng", month: 1 },
+    { id: "t2", tri: "tech", kind: "Kỹ năng", title: "Quyết định kiến trúc hệ thống và information architecture",
       now: "Tự quyết hết nhưng chưa so phương án, chưa ghi lại lý do",
-      target: "Mỗi tính năng lớn có 1 đề xuất kiến trúc: bối cảnh, 2–3 phương án, đánh đổi, chọn gì",
-      a70: "Viết đề xuất trước khi làm tính năng mới",
+      target: "Mỗi tính năng lớn có 1 đề xuất gồm kiến trúc hệ thống (database, API, module) và information architecture (nội dung, điều hướng, màn hình), kèm 2–3 phương án và đánh đổi",
+      a50: "Viết đề xuất trước khi làm tính năng mới",
+      a30: "Course về software architecture và information architecture trên LMS",
       a20: "Quản lý đọc và phản biện trong buổi check-in",
-      a10: "Sách Fundamentals of Software Architecture; 1 workshop kiến trúc",
-      due: "Mỗi tháng", proof: "Ít nhất 6 đề xuất kiến trúc" },
-    { id: "U1", tri: "ux", kind: "Kỹ năng", title: "Phác giải pháp trước khi code",
+      due: "Mỗi tháng", proof: "Ít nhất 6 đề xuất" },
+    { id: "t3", tri: "tech", kind: "Kiến thức", title: "Các level của System Design",
+      now: "Mới dựng hệ thống ở quy mô một app, chưa thiết kế cho tải lớn",
+      target: "Vẽ và giải thích được hệ thống ở từng level: một server, tách tầng, cache và queue, scale ngang, phân tán",
+      a50: "Vẽ kiến trúc product đang làm ở level hiện tại và khi người dùng tăng 10 lần",
+      a30: "Course System Design trên LMS",
+      a20: "Quản lý phản biện bản vẽ",
+      due: "Tháng 4", proof: "Bản vẽ hệ thống 2 level", month: 4 },
+    { id: "t4", tri: "tech", kind: "Kiến thức", title: "Harness Design cho sản phẩm có AI",
+      now: "Đã gọi LLM trong sản phẩm, chưa thiết kế phần khung bao quanh model",
+      target: "Thiết kế được harness cho một tính năng AI: prompt, tool, quản lý context, guardrail và bộ eval",
+      a50: "Áp dụng cho một tính năng AI của product đang làm",
+      a30: "Course thiết kế ứng dụng LLM trên LMS",
+      a20: "Quản lý xem bản thiết kế và kết quả eval",
+      due: "Tháng 6", proof: "Bản thiết kế harness + kết quả eval", month: 6 },
+    { id: "t5", tri: "tech", kind: "Kiến thức + kỹ năng", title: "LLM Engineering, QLoRA, RAG",
+      now: "Đã dùng LLM qua API, chưa tự dựng RAG hay fine-tune model",
+      target: "Tự dựng RAG tối giản và fine-tune một model nhỏ bằng QLoRA, so được kết quả với bản gốc",
+      a50: "Dựng RAG trên dữ liệu thật của product, thử QLoRA trên một model mở nhỏ",
+      a30: "Course LLM Engineering trên LMS",
+      a20: "Quản lý xem kết quả so sánh",
+      due: "Tháng 5", proof: "RAG tự viết + 1 bản fine-tune QLoRA", month: 5 },
+    { id: "u1", tri: "ux", kind: "Kỹ năng", title: "Phác giải pháp trước khi code",
       now: "Chưa có thói quen phác trước khi code",
       target: "Mọi tính năng mới có flow và wireframe nháp, designer xem trước khi bắt tay làm",
-      a70: "Áp dụng cho từng tính năng trong 6 tháng",
+      a50: "Áp dụng cho từng tính năng trong 6 tháng",
+      a30: "Course về wireframe và flow trên LMS",
       a20: "Designer góp ý bản phác 2 tuần một lần",
-      a10: "1 workshop hoặc khoá ngắn về wireframe và flow",
       due: "Cả mùa", proof: "Bản phác của từng tính năng" },
-    { id: "U2", tri: "ux", kind: "Kiến thức + kỹ năng", title: "Kiểm thử khả dụng trước khi ship",
+    { id: "u2", tri: "ux", kind: "Kiến thức + kỹ năng", title: "Kiểm thử khả dụng trước khi ship",
       now: "Đã phỏng vấn người dùng, nhưng chưa cho họ thử bản phác để xem có làm được việc không",
       target: "Ít nhất 1 tính năng lớn được 5 người dùng thử trên bản phác trước khi ship, ghi lại chỗ vướng và sửa",
-      a70: "Cho 5 người dùng thử bản phác của một tính năng lớn, ghi lại chỗ họ vướng",
+      a50: "Cho 5 người dùng thử bản phác của một tính năng lớn, ghi lại chỗ họ vướng",
+      a30: "Course usability testing trên LMS",
       a20: "Designer cùng soạn kịch bản test và xem lại kết quả",
-      a10: "Sách Rocket Surgery Made Easy",
       due: "Tháng 3–4", proof: "1 buổi test 5 người có ghi chép", month: 4 },
-    { id: "B1", tri: "biz", kind: "Kỹ năng", title: "Tự tìm ra vấn đề, cơ hội",
-      now: "Đọc số và iterate tốt, nhưng vấn đề phần lớn do người khác giao",
-      target: "Tự đề xuất ít nhất 3 cơ hội có số liệu hoặc feedback làm bằng chứng, ít nhất 1 được duyệt làm",
-      a70: "Ghi sổ cơ hội từ feedback và dashboard đọc mỗi sáng",
-      a20: "PM/PO cùng lọc và chấm điểm cơ hội mỗi tháng",
-      a10: "Sách Continuous Discovery Habits",
-      due: "Tháng 2 · 4 · 6", proof: "Sổ cơ hội và 3 đề xuất" }
+    { id: "u3", tri: "ux", kind: "Kiến thức + kỹ năng", title: "Nghiên cứu khách hàng: JTBD, hành trình, nỗi đau – cơ hội",
+      now: "Đã phỏng vấn người dùng nhưng chưa có khung để rút ra job, hành trình và cơ hội",
+      target: "Có 1 bản Jobs to Be Done, 1 bản đồ hành trình khách hàng và 1 bản đồ nỗi đau – cơ hội cho người dùng product đang làm",
+      a50: "Phỏng vấn lại theo khung JTBD, dùng thêm ticket support để vẽ hai bản đồ",
+      a30: "Course Jobs to Be Done và customer research trên LMS",
+      a20: "Designer và PM/PO góp ý các bản đồ",
+      due: "Tháng 1–2", proof: "1 bản JTBD + 2 bản đồ", month: 2 },
+    { id: "u4", tri: "ux", kind: "Kỹ năng", title: "Phân tích dữ liệu sản phẩm từ feedback (Product growth)",
+      now: "Đọc feedback và dashboard mỗi sáng, chưa gom lại thành phân tích có kết luận",
+      target: "Có bản phân tích feedback kèm số liệu tracking, chỉ ra được ít nhất 1 cơ hội tăng trưởng",
+      a50: "Gom feedback, ticket và số liệu tracking của product đang làm",
+      a30: "Course Product Growth trên LMS",
+      a20: "PM/PO cùng đọc bản phân tích",
+      due: "Tháng 5–6", proof: "2 bản phân tích growth", month: 5 },
+    { id: "b1", tri: "biz", kind: "Kiến thức", title: "Market research",
+      now: "Chưa làm nghiên cứu thị trường cho product",
+      target: "Có 1 bản nghiên cứu thị trường ngắn cho mảng product đang làm: quy mô, đối thủ, xu hướng",
+      a50: "Nghiên cứu thị trường cho chính mảng product đang làm",
+      a30: "Course Market research trên LMS",
+      a20: "PM/PO góp ý bản nghiên cứu",
+      due: "Tháng 2", proof: "Bản nghiên cứu thị trường", month: 2 },
+    { id: "b2", tri: "biz", kind: "Kiến thức", title: "Introduction to Product Management",
+      now: "Làm product theo việc được giao, chưa học bài bản về quản lý sản phẩm",
+      target: "Nắm được vòng đời sản phẩm, cách ưu tiên, roadmap và chỉ số; viết được 1 PRD ngắn",
+      a50: "Viết PRD cho một tính năng sắp làm",
+      a30: "Course Introduction to Product Management trên LMS",
+      a20: "PM/PO đọc và góp ý PRD",
+      due: "Tháng 1", proof: "1 PRD", month: 1 }
   ];
   function goalOf(id) { return GOALS.filter(function (g) { return g.id === id; })[0]; }
+  var TRI_NAME = { tech: "Tech", ux: "UX", biz: "Biz" };
+  function goalHTML(g) {
+    var t = TRI.filter(function (x) { return x.k === g.tri; })[0];
+    return '<article class="goal" id="goal-' + g.id + '" data-tri="' + g.tri + '">' +
+      '<div class="goal-h"><span class="gtri">' + t.name + " · " + t.pct + '%</span><span class="gkind">' + g.kind + "</span></div>" +
+      '<h3 class="dsp goal-t">' + esc(g.title) + "</h3>" +
+      '<div class="goal-b"><div class="gft"><div><span class="lbl">Hiện tại</span><p>' + esc(g.now) + '</p></div><div class="to"><span class="lbl lbl-p">Đích</span><p>' + esc(g.target) + "</p></div></div>" +
+      '<ul class="acts"><li><span class="lv l50">50</span><span>' + esc(g.a50) + '</span></li><li><span class="lv l30">30</span><span>' + esc(g.a30) + '</span></li><li><span class="lv l20">20</span><span>' + esc(g.a20) + "</span></li></ul></div>" +
+      '<div class="goal-f"><span>' + svg("calendar") + esc(g.due) + "</span><span>" + svg("check") + esc(g.proof) + "</span>" +
+      (g.month ? '<button type="button" class="link" data-goto="' + g.month + '">Xem Tháng ' + g.month + "</button>" : "") + "</div></article>";
+  }
 
   var SLOTS = [];
   MONTHS.forEach(function (m) {
@@ -933,21 +999,10 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     return '<svg class="ic' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[name] + "</svg>";
   }
   function cube(kind, inner) { return '<span class="cube ' + (kind || "") + '"><i class="cf-t"></i><i class="cf-l"></i><i class="cf-r"></i>' + (inner || "") + "</span>"; }
-  // Cúp vàng phát sáng (id dùng để gradient không trùng nhau khi có 2 cúp trên trang)
-  function trophyHTML(id) {
+  // Cúp MoMo (ảnh momo-trophy.png, nền trong suốt) kèm quầng sáng xoay và sao lấp lánh
+  function trophyHTML() {
     return '<span class="trophy-b"><span class="tr-rays"></span><span class="tr-sp a"></span><span class="tr-sp b"></span><span class="tr-sp c"></span><span class="tr-cup">' +
-      '<svg viewBox="0 0 64 72" aria-hidden="true"><defs>' +
-        '<linearGradient id="g' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFF1A8"/><stop offset=".45" stop-color="#FFC93C"/><stop offset="1" stop-color="#E89A00"/></linearGradient>' +
-        '<linearGradient id="p' + id + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2468E"/><stop offset="1" stop-color="#C2216A"/></linearGradient></defs>' +
-        '<path d="M15 14H8a2 2 0 0 0-2 2c0 9 5 15 13 16" fill="none" stroke="#F0B020" stroke-width="4.5" stroke-linecap="round"/>' +
-        '<path d="M49 14h7a2 2 0 0 1 2 2c0 9-5 15-13 16" fill="none" stroke="#F0B020" stroke-width="4.5" stroke-linecap="round"/>' +
-        '<path d="M14 6h36v16c0 11-8 20-18 20S14 33 14 22z" fill="url(#g' + id + ')"/>' +
-        '<rect x="27" y="41" width="10" height="9" fill="#E8A400"/>' +
-        '<rect x="19" y="49" width="26" height="8" rx="2.5" fill="url(#p' + id + ')"/>' +
-        '<rect x="14" y="56" width="36" height="9" rx="3" fill="#B01C62"/>' +
-        '<path d="M21 11v10c0 5 2 9 6 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".75"/>' +
-        '<polygon points="32,15 33.53,18.9 37.71,19.15 34.47,21.8 35.53,25.85 32,23.6 28.47,25.85 29.53,21.8 26.29,19.15 30.47,18.9" fill="#fff"/>' +
-      "</svg></span></span>";
+      '<img src="momo-trophy.png" alt="" width="320" height="320" decoding="async"></span></span>';
   }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
   function lerp(a, b, t) { return a + (b - a) * t; }
@@ -1028,16 +1083,16 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     }).join("");
     floaters = $$(".fl", fl).map(function (el, i) { return { el: el, depth: FLOAT[i][4] }; });
 
-    // Bậc thang = 5 mục tiêu, tô màu theo góc Product Triad (Tech hồng · UX xanh · Biz vàng)
+    // Bậc thang = 11 mục tiêu, tô màu theo góc Product Triad (Tech hồng → UX xanh → Biz vàng), không ghi chữ trên khối
     $("#stair").innerHTML = GOALS.map(function (g, i) {
-      return '<button type="button" class="step" data-goal="' + g.id + '" style="--i:' + i + '" aria-label="Mục tiêu ' + g.id + ": " + esc(g.title) + '">' +
-        '<span class="step-b">' + cube(g.tri === "tech" ? "pink" : g.tri, '<span class="step-n dsp" data-tri="' + g.tri + '">' + g.id + "</span>") + "</span>" +
-        '<span class="step-tip"><span class="gcode" data-tri="' + g.tri + '">' + g.id + "</span>" + esc(g.title) + "</span></button>";
-    }).join("") + '<button type="button" class="trophy" id="trophy" aria-label="Đích của mùa: hiểu cả hệ thống">' + trophyHTML("hero") + "</button>";
+      return '<button type="button" class="step" data-goal="' + g.id + '" style="--i:' + i + '" aria-label="Mục tiêu ' + esc(TRI_NAME[g.tri]) + ": " + esc(g.title) + '">' +
+        '<span class="step-b">' + cube(g.tri === "tech" ? "pink" : g.tri) + "</span>" +
+        '<span class="step-tip"><span class="gdot" data-tri="' + g.tri + '"></span>' + esc(g.title) + "</span></button>";
+    }).join("") + '<button type="button" class="trophy" id="trophy" aria-label="Đích của mùa: hiểu cả hệ thống">' + trophyHTML() + "</button>";
 
     $("#as-stage").innerHTML = GRID.map(function (g, i) {
       return '<span class="as-c" data-tier="' + (i + 1) + '">' + cube("") + "</span>";
-    }).join("") + '<span class="as-goal" id="as-goal" aria-hidden="true">' + trophyHTML("as") + "</span>";
+    }).join("") + '<span class="as-goal" id="as-goal" aria-hidden="true">' + trophyHTML() + "</span>";
     asCubes = $$(".as-c", $("#as-stage"));
 
     $("#feat-slot").innerHTML = '<img alt="Sơ đồ cả hệ thống" decoding="async">' + phHTML("Sơ đồ cả hệ thống", "Tự vẽ: trình duyệt → server → database → AI") + '<span class="slot-tag">' + tagHTML("so-do-he-thong") + "</span>";
@@ -1050,8 +1105,10 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     $("#bn-cubes").innerHTML = BC.map(function (b, k) {
       return '<span class="bn-c" style="left:' + b[0] + "%;top:" + b[1] + "%;--s:" + b[2] + "px;--fx:" + b[4] + ";--fy:" + b[5] + ";--fr:" + b[6] + ";--k:" + k + '">' + cube(b[3]) + "</span>";
     }).join("");
-    $("#miles").innerHTML = GOALS.map(function (g) {
-      return '<button type="button" class="gtag" data-goal="' + g.id + '" data-tri="' + g.tri + '"><span class="gcode" data-tri="' + g.tri + '">' + g.id + "</span><span>" + esc(g.title) + "</span></button>";
+    // Banner: 3 nhóm mục tiêu, bấm để tới nhóm đó
+    $("#miles").innerHTML = TRI.map(function (t) {
+      var n = GOALS.filter(function (g) { return g.tri === t.k; }).length;
+      return '<button type="button" class="gtag" data-goto-sec="cat-' + t.k + '"><span class="gdot" data-tri="' + t.k + '"></span><span>' + t.name + " · " + n + " mục tiêu</span></button>";
     }).join("");
 
     // Đối chiếu JD: mỗi góc của Product Triad một hàng
@@ -1059,22 +1116,19 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       var jd = JD[t.k];
       return '<div class="tri-row" data-tri="' + t.k + '" data-tk="' + t.k + '">' +
         '<div class="tri-h"><b>' + t.name + '</b><span class="tri-pct dsp">' + t.pct + '%</span><span class="tri-sub">' + t.sub + "</span></div>" +
-        '<div class="jd"><span class="lbl">Đã làm được</span><ul class="jd-ok">' + jd.ok.map(function (x) { return "<li>" + svg("check") + "<span>" + esc(x) + "</span></li>"; }).join("") + "</ul></div>" +
-        '<div class="jd"><span class="lbl lbl-p">Cần phát triển</span><ul>' + jd.gap.map(function (g) {
-          return '<li><button type="button" class="gapb" data-goal="' + g[0] + '"><span class="gcode" data-tri="' + t.k + '">' + g[0] + '</span><span class="gapb-t"><b>' + esc(g[1]) + "</b><small>" + esc(g[2]) + "</small></span>" + svg("right") + "</button></li>";
+        '<div class="jd"><span class="jd-h">Những gì đã làm được trong khoảng thời gian thực tập</span><ul class="jd-ok">' + jd.ok.map(function (x) { return "<li>" + svg("check") + "<span>" + esc(x) + "</span></li>"; }).join("") + "</ul></div>" +
+        '<div class="jd"><span class="jd-h p">Cần phát triển</span><ul>' + jd.gap.map(function (g) {
+          return '<li><button type="button" class="gapb" data-goal="' + g[0] + '"><span class="gapb-t"><b>' + esc(g[1]) + "</b><small>" + esc(g[2]) + "</small></span>" + svg("right") + "</button></li>";
         }).join("") + "</ul></div></div>";
     }).join("");
 
-    // 5 thẻ mục tiêu
-    $("#goals").innerHTML = GOALS.map(function (g, i) {
-      var t = TRI.filter(function (x) { return x.k === g.tri; })[0];
-      return '<article class="goal rv" id="goal-' + g.id + '" data-tri="' + g.tri + '" style="transition-delay:' + (i % 3) * 90 + 'ms">' +
-        '<div class="goal-h"><span class="gcode" data-tri="' + g.tri + '">' + g.id + '</span><span class="gtri">' + t.name + " · " + t.pct + '%</span><span class="gkind">' + g.kind + "</span></div>" +
-        '<h3 class="dsp goal-t">' + esc(g.title) + "</h3>" +
-        '<div class="goal-b"><div class="gft"><div><span class="lbl">Hiện tại</span><p>' + esc(g.now) + '</p></div><div class="to"><span class="lbl lbl-p">Đích</span><p>' + esc(g.target) + "</p></div></div>" +
-        '<ul class="acts"><li><span class="lv l70">70</span><span>' + esc(g.a70) + '</span></li><li><span class="lv l20">20</span><span>' + esc(g.a20) + '</span></li><li><span class="lv l10">10</span><span>' + esc(g.a10) + "</span></li></ul></div>" +
-        '<div class="goal-f"><span>' + svg("calendar") + esc(g.due) + "</span><span>" + svg("check") + esc(g.proof) + "</span>" +
-        (g.month ? '<button type="button" class="link" data-goto="' + g.month + '">Xem Tháng ' + g.month + "</button>" : "") + "</div></article>";
+    // 3 nhóm Tech · UX · Biz, mỗi nhóm một carousel thẻ mục tiêu
+    $("#cats").innerHTML = TRI.map(function (t) {
+      var gs = GOALS.filter(function (g) { return g.tri === t.k; });
+      return '<div class="cat rv" id="cat-' + t.k + '" data-tri="' + t.k + '">' +
+        '<div class="cat-h"><span class="cat-dot"></span><h3 class="dsp">' + t.name + '</h3><span class="cat-pct dsp">' + t.pct + '%</span><span class="cat-n">' + gs.length + " mục tiêu</span>" +
+        '<div class="cat-nav"><button type="button" class="nb" data-cr="-1" aria-label="Thẻ trước">' + svg("left") + '</button><button type="button" class="nb" data-cr="1" aria-label="Thẻ sau">' + svg("right") + "</button></div></div>" +
+        '<div class="cr" tabindex="0" aria-label="Các mục tiêu ' + t.name + '">' + gs.map(goalHTML).join("") + "</div></div>";
     }).join("");
 
     $("#tl").innerHTML = '<div class="tl-line"><i id="tl-fill"></i></div>' + MONTHS.map(function (m) {
@@ -1092,7 +1146,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       '<div class="col col-p"><span class="lbl lbl-p">Tự dựng lại</span><ul>' + m.practice.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div></div>" +
       '<div class="side"><span class="lbl lbl-p">Song song trong tháng</span><ul class="side-l">' + m.side.map(function (s) {
         var g = goalOf(s[0]);
-        return '<li><button type="button" class="side-b" data-goal="' + g.id + '" aria-label="' + esc(s[1]) + ", mục tiêu " + g.id + ": " + esc(g.title) + '"><span class="gcode" data-tri="' + g.tri + '">' + g.id + "</span><span>" + esc(s[1]) + "</span></button></li>";
+        return '<li><button type="button" class="side-b" data-goal="' + g.id + '" aria-label="' + esc(s[1]) + ", mục tiêu " + TRI_NAME[g.tri] + ": " + esc(g.title) + '"><span class="gdot" data-tri="' + g.tri + '"></span><span>' + esc(s[1]) + "</span></button></li>";
       }).join("") + "</ul></div>" +
       '<div class="check-card" data-cm="' + m.n + '"><div class="check-h"><span class="lbl lbl-p">Coi là hiểu khi</span><span class="pbar"><i data-mprog="' + m.n + '"></i></span><span class="check-c" data-mcount="' + m.n + '"></span></div>' +
       '<div class="cks">' + m.done.map(function (x, i) {
@@ -1282,9 +1336,21 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     var el = $("#goal-" + id);
     if (!el) return;
     closeAll();
-    el.classList.add("in");
-    el.scrollIntoView({ behavior: behavior(), block: "center" });
+    var rv = el.closest(".rv"); if (rv) rv.classList.add("in");
+    // inline "nearest": cuộn ngang carousel vừa đủ để thẻ hiện ra
+    el.scrollIntoView({ behavior: behavior(), block: "center", inline: "nearest" });
     setTimeout(function () { restart(el, "flash"); }, reduce ? 0 : 500);
+  }
+  // Carousel thẻ mục tiêu: nút ‹ › cuộn đúng 1 thẻ; ẩn nút khi nhóm đủ chỗ hiện hết thẻ
+  function crStep(cr) {
+    var c = $(".goal", cr);
+    return c ? c.getBoundingClientRect().width + (parseFloat(getComputedStyle(cr).columnGap) || 18) : cr.clientWidth;
+  }
+  function crSync(cr) {
+    var cat = cr.closest(".cat"), max = cr.scrollWidth - cr.clientWidth, b = $$("[data-cr]", cat);
+    cat.classList.toggle("fits", max <= 2);
+    b[0].disabled = cr.scrollLeft <= 2;
+    b[1].disabled = cr.scrollLeft >= max - 2;
   }
   // Product Triad: rê chuột vào vòng tròn hay hàng JD thì làm nổi góc đó
   function hl(k) { var t = $("#tri"); if (k) t.setAttribute("data-hl", k); else t.removeAttribute("data-hl"); }
@@ -1403,6 +1469,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       return;
     }
     if ((el = t.closest("[data-goal]"))) { goGoal(el.getAttribute("data-goal")); return; }
+    if ((el = t.closest("[data-cr]"))) { var cr = $(".cr", el.closest(".cat")); cr.scrollBy({ left: +el.getAttribute("data-cr") * crStep(cr), behavior: behavior() }); return; }
     if ((el = t.closest(".tri-c"))) { triClick(el.getAttribute("data-tk")); return; }
     if ((el = t.closest("[data-locate]"))) { locate(el.getAttribute("data-locate")); return; }
     if (t.closest("#imgbtn")) { openImgList(); return; }
@@ -1498,7 +1565,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
   function bindMotion() {
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", function () { layoutAssemble(); onScroll(); });
+    window.addEventListener("resize", function () { layoutAssemble(); onScroll(); $$(".cr").forEach(crSync); });
+    $$(".cr").forEach(function (cr) { cr.addEventListener("scroll", function () { crSync(cr); }, { passive: true }); crSync(cr); });
     var tri = $("#tri");
     tri.addEventListener("mouseover", function (e) { var el = e.target.closest("[data-tk]"); hl(el ? el.getAttribute("data-tk") : null); });
     tri.addEventListener("mouseleave", function () { hl(null); });
