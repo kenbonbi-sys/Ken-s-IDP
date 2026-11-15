@@ -115,7 +115,20 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .sbar i{display:block;height:100%;background:linear-gradient(90deg,#FF9CC6,var(--pink));transform:scaleX(0);transform-origin:0 50%}
 
 /* ================= Hero (bầu trời) ================= */
-.hero{position:relative;padding:80px 24px 90px;overflow:hidden;background:linear-gradient(180deg,#9FD0F7 0%,#C4E3FA 45%,#E6F2FC 78%,#F5EEF6 100%)}
+/* ================= Nav (kiểu M16) ================= */
+.nav{position:fixed;left:0;right:0;top:0;z-index:40;padding:12px 16px 0;pointer-events:none}
+.nav-in{position:relative;display:flex;align-items:center;gap:20px;max-width:1232px;min-height:72px;margin:0 auto;padding:0 14px 0 28px;border-radius:20px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 30px -16px rgba(120,20,70,.35);pointer-events:auto;animation:navin .9s var(--out) both}
+.nav-brand{font-size:22px;line-height:1.1;color:var(--pink-btn);text-decoration:none;white-space:nowrap}
+.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
+.nav-links a{position:relative;padding:10px 14px;border-radius:10px;font-size:17px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;transition:color .2s ease}
+.nav-links a::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;border-radius:1px;background:var(--pink);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--out)}
+.nav-links a:hover,.nav-links a[aria-current=true]{color:var(--pink-text)}
+.nav-links a:hover::after,.nav-links a[aria-current=true]::after{transform:scaleX(1)}
+.nav-av{display:grid;place-items:center;width:48px;height:48px;flex:0 0 auto;margin-left:8px;border-radius:50%;background:var(--pink);color:#fff;font-size:16px;font-weight:800;letter-spacing:.02em}
+.nav-mb{display:none;place-items:center;width:44px;height:44px;flex:0 0 auto;padding:0;border:0;border-radius:12px;background:var(--pink-50);color:var(--ink);cursor:pointer}
+.nav-mb .ic{width:22px;height:22px}
+
+.hero{position:relative;padding:140px 24px 90px;overflow:hidden;background:linear-gradient(180deg,#9FD0F7 0%,#C4E3FA 45%,#E6F2FC 78%,#F5EEF6 100%)}
 .cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,rgba(255,255,255,0));pointer-events:none;animation:cloud 38s ease-in-out infinite alternate}
 .cl-a{width:760px;height:280px;left:-180px;top:110px}
 .cl-b{width:620px;height:240px;right:-160px;top:-40px;animation-duration:46s;animation-direction:alternate-reverse}
@@ -138,6 +151,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .fact-t{display:flex;flex-direction:column;line-height:1.25}
 .fact-v{font-size:18px}
 .fact-k{font-size:13px;color:var(--ink-2)}
+.story{display:flex;flex-direction:column;gap:10px;max-width:640px;font-size:17px;line-height:1.6;color:var(--ink-2);animation:up .9s .55s var(--out) both}
+.story-end{font-weight:700;color:var(--ink)}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:6px;animation:up .9s .75s var(--out) both}
 
 /* Bậc thang 6 khối = 6 tháng */
@@ -203,7 +218,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .as-goal{position:absolute;left:0;z-index:40;display:block;width:calc(var(--S,80px) * .9);opacity:0;transform:translate(-50%,10px);pointer-events:none}
 
 /* ================= Section chung ================= */
-.sec{position:relative;padding:110px 24px;scroll-margin-top:12px;overflow-x:clip}
+.sec{position:relative;padding:110px 24px;scroll-margin-top:30px;overflow-x:clip}
 .sh{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:48px;text-align:center}
 .sh h2{font-size:clamp(32px,4vw,54px);line-height:1.1;color:var(--ink)}
 .sh p{max-width:680px;font-size:18px;line-height:1.55;color:var(--ink-2)}
@@ -296,14 +311,14 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 /* Thẻ mục tiêu */
 .goals{position:relative;z-index:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px}
 .goal{grid-column:span 2;display:flex;flex-direction:column;gap:16px;min-width:0;padding:22px 22px 18px;border-top:6px solid var(--c);border-radius:10px 10px 24px 24px;background:#fff;box-shadow:var(--sh-m);scroll-margin-top:90px}
-.goal[data-tri=ux],.goal[data-tri=biz]{grid-column:span 3}
+.goal[data-tri=tech]{grid-column:span 3}
 .goal.flash{animation:flash 1.1s ease 2}
 .goal-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .gtri{font-size:13px;font-weight:800;color:var(--ct)}
 .gkind{padding:2px 10px;border-radius:999px;background:#F5F0F3;font-size:12.5px;font-weight:700;color:var(--ink-2)}
 .goal-t{font-size:26px;line-height:1.15}
 .goal-b{display:flex;flex-direction:column;gap:16px}
-.goal[data-tri=ux] .goal-b,.goal[data-tri=biz] .goal-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.goal[data-tri=tech] .goal-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
 .gft{display:flex;flex-direction:column;border-radius:16px;background:var(--pink-50)}
 .gft>div{display:flex;flex-direction:column;gap:4px;padding:12px 14px}
 .gft>div+div{border-top:1.5px dashed #F7C6DA}
@@ -526,6 +541,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 @keyframes trglow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,196,60,.85)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}50%{filter:drop-shadow(0 0 22px rgba(255,214,90,1)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}}
 @keyframes twinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
 @keyframes jig{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg) scale(1.08)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
+@keyframes navin{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
 @keyframes popc{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes plus{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-34px)}}
@@ -543,7 +559,14 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* ================= Responsive ================= */
 @media (max-width:1020px){
-  .hero{padding-top:64px}
+  .hero{padding-top:124px}
+  .nav-links{position:absolute;left:0;right:0;top:calc(100% + 8px);flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:8px;border-radius:18px;background:#fff;box-shadow:var(--sh-m);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s ease,transform .35s var(--out),visibility 0s linear .35s}
+  .nav.open .nav-links{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .35s var(--out)}
+  .nav-links a{padding:13px 14px}
+  .nav-links a::after{display:none}
+  .nav-links a[aria-current=true]{background:var(--pink-50)}
+  .nav-av{margin-left:auto}
+  .nav-mb{display:grid}
   .hero-in{grid-template-columns:minmax(0,1fr);gap:24px}
   .h1{font-size:clamp(34px,6.4vw,64px)}
   .stair{width:min(100%,460px)}
@@ -551,7 +574,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .tri,.trk,.card-grid{grid-template-columns:minmax(0,1fr)}
   .venn{max-width:480px}
   .goals{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .goal,.goal[data-tri=ux],.goal[data-tri=biz]{grid-column:span 1}
+  .goal,.goal[data-tri=tech]{grid-column:span 1}
   .goal:last-child{grid-column:1/-1}
   .goal[data-tri] .goal-b{display:flex}
   .goal:last-child .goal-b{display:grid}
@@ -561,7 +584,12 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .tl-line{left:99px;right:auto;width:calc(150px * 5 + 8px * 5)}
 }
 @media (max-width:640px){
-  .hero{padding:48px 16px 64px}
+  .hero{padding:104px 16px 64px}
+  .nav{padding:8px 8px 0}
+  .nav-in{min-height:60px;gap:10px;padding:0 8px 0 18px;border-radius:16px}
+  .nav-brand{font-size:19px}
+  .nav-av{width:40px;height:40px;font-size:14px}
+  .story{font-size:16px}
   /* Màn điện thoại quá hẹp cho 2 dòng ở cỡ đọc được: cho dòng đầu tự xuống dòng */
   .h1{font-size:clamp(32px,10vw,42px)}
   .h1 .ln{white-space:normal}
@@ -605,6 +633,21 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 <div class="sbar" aria-hidden="true"><i id="sbar"></i></div>
 
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="nav-brand dsp" href="#top">Phạm Minh Khang</a>
+    <nav class="nav-links" id="nav-links" aria-label="Các mục trên trang">
+      <a href="#doi-chieu">Kế hoạch phát triển</a>
+      <a href="#muc-tieu">Mục tiêu</a>
+      <a href="#lo-trinh">Lộ trình 6 tháng</a>
+      <a href="#theo-doi">Check-in</a>
+    </nav>
+    <span class="nav-av" aria-hidden="true">KP</span>
+    <button type="button" class="nav-mb" id="nav-mb" aria-expanded="false" aria-controls="nav-links" aria-label="Mở menu"></button>
+  </div>
+</header>
+
 <main>
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
@@ -613,11 +656,14 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   <div class="wrap hero-in">
     <div class="hero-l">
       <h1 class="dsp h1"><span class="ln"><span style="--d:0">Lộ trình <span class="pkh">6 tháng</span> hướng tới</span></span><span class="ln"><span style="--d:1" class="pkh">Product Engineer</span></span></h1>
-      <p class="dsp h1-sub">Hiểu. Dựng lại. Giải thích được.</p>
+      <p class="dsp h1-sub">Sự cam kết và Máu lửa</p>
+      <div class="story">
+        <p>Khang (Ken) trước đây sống và làm việc theo phong cách “Go with the flow: sông đưa thuyền ta đến cảng nào ta cập cảng đấy”, chưa từng đề cao việc thiết lập một mục tiêu cụ thể. Tuy nhiên, sau một khoảnh khắc chiêm nghiệm, a canon event, Ken nhận ra rằng việc có một lộ trình và mục tiêu cụ thể sẽ giúp cho chính bản thân bạn trẻ này có một nguồn năng lượng để làm những điều mà bạn từng mơ ước.</p>
+        <p class="story-end">Hãy cùng theo dõi bạn nhỏ này tiến bộ hằng ngày nhé!</p>
+      </div>
       <div class="facts" id="facts"></div>
       <div class="cta-row">
-        <button type="button" class="stamp" data-open-cur><span class="stamp-o"><span class="stamp-w"><span class="stamp-i dsp">Xem tháng này</span></span></span><span class="stamp-base"></span></button>
-        <a class="link" href="#lo-trinh">Xem cả lộ trình</a>
+        <a class="stamp" href="#lo-trinh"><span class="stamp-o"><span class="stamp-w"><span class="stamp-i dsp">XEM LỘ TRÌNH 6 THÁNG</span></span></span><span class="stamp-base"></span></a>
       </div>
     </div>
     <div class="stair" id="stair" aria-label="6 tháng, bấm vào một khối để xem chi tiết"></div>
@@ -625,18 +671,18 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 </section>
 
 <!-- ============ GHÉP KHỐI KHI CUỘN ============ -->
-<section class="assemble" id="assemble" aria-label="Mỗi tháng hiểu thêm một tầng, sau 6 tháng hiểu cả hệ thống">
+<section class="assemble" id="assemble" aria-label="Ta sẽ đi nhanh hơn nếu ta có định hướng rõ ràng">
   <div class="as-sticky">
-    <p class="dsp as-txt as-l" id="as-l"><span class="pkh">Mỗi tháng</span><br>hiểu thêm một tầng</p>
+    <p class="dsp as-txt as-l" id="as-l">Ta sẽ đi<br><span class="pkh">nhanh hơn</span></p>
     <div class="as-stage" id="as-stage"></div>
-    <p class="dsp as-txt as-r" id="as-r">Sau 6 tháng<br><span class="pkh">hiểu cả hệ thống</span></p>
+    <p class="dsp as-txt as-r" id="as-r">Nếu ta có<br><span class="pkh">định hướng rõ ràng</span></p>
   </div>
 </section>
 
 <!-- ============ ĐỐI CHIẾU JD THEO PRODUCT TRIAD ============ -->
 <section id="doi-chieu" class="sec sec-pink">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Đối chiếu JD theo <span class="pkh">Product Triad</span></h2><p>6 tháng này dồn 70% cho Tech, 20% cho UX và 10% cho Biz. Bấm vào một mục cần phát triển để xem mục tiêu tương ứng.</p></header>
+    <header class="sh rv-t"><h2 class="dsp">Kế Hoạch Phát Triển Bản Thân theo <span class="pkh">Product Triad</span></h2></header>
     <div class="tri rv" id="tri">
       <svg class="venn" viewBox="0 0 560 350" aria-label="Product Triad: Tech 70%, UX 20%, Biz 10%">
         <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD"><circle cx="190" cy="118" r="108"/></g>
@@ -691,7 +737,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- ============ TỪNG THÁNG ============ -->
 <section id="lo-trinh" class="sec sec-tl">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Từng tháng <span class="pkh">hiểu gì</span></h2><p>Chọn một tháng để xem cần hiểu gì, tự dựng lại cái gì và khi nào thì coi là đã hiểu. Đánh dấu đủ các mục “Coi là hiểu khi” để mở khoá tháng tiếp theo.</p></header>
+    <header class="sh rv-t"><h2 class="dsp">Từng tháng <span class="pkh">hiểu gì</span></h2></header>
     <div class="tl" role="tablist" aria-label="Chọn tháng" id="tl"></div>
     <div class="card rv" id="card" role="tabpanel"></div>
   </div>
@@ -705,7 +751,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       <h2 class="dsp h2s">Check-in với quản lý</h2>
       <ol class="steps">
         <li class="st-card stg" style="--k:0"><span class="st-n dsp">1</span><p><b>Cuối mỗi tháng, 30 phút:</b> tick mục “Coi là hiểu khi”, giảng lại tầng vừa học, đem đề xuất kiến trúc của tháng ra phản biện. Mục nào chưa đạt thì dời sang tháng sau, không bỏ qua.</p></li>
-        <li class="st-card stg" style="--k:1"><span class="st-n dsp">2</span><p><b>Tháng 3, review giữa kỳ:</b> xem kết quả A/B test, chỉnh lại 5 mục tiêu nếu cần.</p></li>
+        <li class="st-card stg" style="--k:1"><span class="st-n dsp">2</span><p><b>Tháng 3, review giữa kỳ:</b> xem lại tiến độ 5 mục tiêu, chỉnh lại nếu cần.</p></li>
         <li class="st-card stg" style="--k:2"><span class="st-n dsp">3</span><p><b>Tháng 6, tổng kết:</b> trình bày cả hệ thống trong 30 phút, chấm từng mục tiêu đạt hay chưa, chọn mục tiêu cho mùa sau.</p></li>
       </ol>
     </div>
@@ -764,13 +810,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       learn: ["SQL thật sự: JOIN, GROUP BY, subquery", "Index và query plan", "Transaction và race condition", "Lỗi N+1 và câu SQL mà Prisma sinh ra"],
       practice: ["Viết tay SQL cho 3 query Prisma đang dùng trong app", "Soi các query đó bằng EXPLAIN ANALYZE"],
       done: ["Chỉ ra được vì sao một query chậm", "Thêm index và giải thích được vì sao nó nhanh hơn"],
-      side: [["T3", "Dựng feature flag trên product, quản lý duyệt rồi chạy thử nghiệm đầu tiên"], ["T3", "Chọn chỉ số đo cho thử nghiệm cùng PM/PO"], ["T2", "Đề xuất kiến trúc thứ 3"]] },
+      side: [["T2", "Đề xuất kiến trúc thứ 3"], ["U2", "Soạn kịch bản usability test cùng designer, chọn tính năng để test"]] },
     { n: 4, icon: "shield", title: "Đăng nhập & bảo mật", result: "Đăng nhập tự viết",
       desc: "Hiểu đăng nhập và các lỗ hổng web phổ biến hoạt động ra sao.",
       learn: ["Cookie, session và JWT khác nhau thế nào", "OAuth và OpenID Connect, từng bước một", "CSRF, XSS và cách phòng", "CORS: vì sao trình duyệt chặn và cấu hình thế nào cho đúng"],
       practice: ["Tự viết đăng nhập bằng session-cookie, không dùng thư viện", "Theo dõi từng request của luồng đăng nhập Google trong app"],
       done: ["Vẽ được luồng đăng nhập Google của app, từng request một", "Giải thích được một lỗi CORS và cách sửa"],
-      side: [["T3", "Đọc kết quả thử nghiệm cùng PM/PO, viết kết luận"], ["T2", "Đề xuất kiến trúc thứ 4"], ["B1", "Đem cơ hội thứ 2 đi bàn với PM/PO"]] },
+      side: [["T2", "Đề xuất kiến trúc thứ 4"], ["U2", "Cho 5 người dùng thử bản phác, ghi lại chỗ vướng rồi sửa"], ["B1", "Đem cơ hội thứ 2 đi bàn với PM/PO"]] },
     { n: 5, icon: "ai", title: "AI/LLM bên dưới", result: "RAG tối giản tự viết",
       desc: "Hiểu LLM xử lý văn bản thế nào và vì sao nó trả lời sai.",
       learn: ["Token và context window", "Embedding và độ giống nhau giữa các vector", "RAG chạy thế nào: tìm đoạn liên quan rồi ghép vào prompt", "Structured output và vì sao model trả sai định dạng"],
@@ -795,9 +841,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   // Đối chiếu JD: ok = đã làm được; gap = [mã mục tiêu, cần phát triển, kiến thức hay kỹ năng]
   var JD = {
     tech: { ok: ["Dùng AI dựng khung, tự viết logic quan trọng", "Tự ship lên staging và production", "Gắn tracking để đo tính năng"],
-            gap: [["T1", "Hiểu nền tảng bên dưới", "Kiến thức"], ["T2", "Ra quyết định kiến trúc có cơ sở", "Kỹ năng"], ["T3", "Dựng A/B test flag", "Kiến thức + kỹ năng"]] },
+            gap: [["T1", "Hiểu nền tảng bên dưới", "Kiến thức"], ["T2", "Ra quyết định kiến trúc có cơ sở", "Kỹ năng"]] },
     ux: { ok: ["Validate với designer, stakeholder", "Phỏng vấn người dùng", "Trực support"],
-          gap: [["U1", "Phác giải pháp trước khi code", "Kỹ năng"]] },
+          gap: [["U1", "Phác giải pháp trước khi code", "Kỹ năng"], ["U2", "Kiểm thử khả dụng trước khi ship", "Kiến thức + kỹ năng"]] },
     biz: { ok: ["Đọc feedback, ticket và dashboard", "Viết product note", "Theo dõi metric sau khi ship, iterate"],
            gap: [["B1", "Tự tìm ra vấn đề, cơ hội", "Kỹ năng"]] }
   };
@@ -818,13 +864,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       a20: "Quản lý đọc và phản biện trong buổi check-in",
       a10: "Sách Fundamentals of Software Architecture; 1 workshop kiến trúc",
       due: "Mỗi tháng", proof: "Ít nhất 6 đề xuất kiến trúc" },
-    { id: "T3", tri: "tech", kind: "Kiến thức + kỹ năng", title: "A/B test",
-      now: "Đã có tracking, chưa có feature flag",
-      target: "Dựng feature flag trên product, chạy xong 1 thử nghiệm và đọc được kết quả có ý nghĩa thống kê",
-      a70: "Chạy thử nghiệm với người dùng thật, quản lý duyệt trước",
-      a20: "PM/PO cùng chọn chỉ số và đọc kết quả",
-      a10: "Sách Trustworthy Online Controlled Experiments",
-      due: "Tháng 3–4", proof: "1 thử nghiệm có kết luận", month: 3 },
     { id: "U1", tri: "ux", kind: "Kỹ năng", title: "Phác giải pháp trước khi code",
       now: "Chưa có thói quen phác trước khi code",
       target: "Mọi tính năng mới có flow và wireframe nháp, designer xem trước khi bắt tay làm",
@@ -832,6 +871,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       a20: "Designer góp ý bản phác 2 tuần một lần",
       a10: "1 workshop hoặc khoá ngắn về wireframe và flow",
       due: "Cả mùa", proof: "Bản phác của từng tính năng" },
+    { id: "U2", tri: "ux", kind: "Kiến thức + kỹ năng", title: "Kiểm thử khả dụng trước khi ship",
+      now: "Đã phỏng vấn người dùng, nhưng chưa cho họ thử bản phác để xem có làm được việc không",
+      target: "Ít nhất 1 tính năng lớn được 5 người dùng thử trên bản phác trước khi ship, ghi lại chỗ vướng và sửa",
+      a70: "Cho 5 người dùng thử bản phác của một tính năng lớn, ghi lại chỗ họ vướng",
+      a20: "Designer cùng soạn kịch bản test và xem lại kết quả",
+      a10: "Sách Rocket Surgery Made Easy",
+      due: "Tháng 3–4", proof: "1 buổi test 5 người có ghi chép", month: 4 },
     { id: "B1", tri: "biz", kind: "Kỹ năng", title: "Tự tìm ra vấn đề, cơ hội",
       now: "Đọc số và iterate tốt, nhưng vấn đề phần lớn do người khác giao",
       target: "Tự đề xuất ít nhất 3 cơ hội có số liệu hoặc feedback làm bằng chứng, ít nhất 1 được duyệt làm",
@@ -880,6 +926,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
     clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
     box: '<path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M4 7.5l8 4.5 8-4.5M12 12v9"/>',
+    menu: '<path d="M4 7h16M4 12h16M4 17h16"/>',
     user: '<circle cx="12" cy="8" r="3.6"/><path d="M5 20.5c0-3.7 3.1-6.2 7-6.2s7 2.5 7 6.2"/>',
     sparkle: '<path d="M12 4v4M12 16v4M4 12h4M16 12h4M6.5 6.5l2.5 2.5M15 15l2.5 2.5M17.5 6.5L15 9M9 15l-2.5 2.5"/>'
   };
@@ -1224,6 +1271,23 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     $("#lo-trinh").scrollIntoView({ behavior: behavior(), block: "start" });
     setTimeout(function () { restart($("#card"), "flash"); }, reduce ? 0 : 500);
   }
+  // Nav: menu thả xuống trên màn hẹp + làm nổi mục đang xem
+  function setNav(open) {
+    var nav = $("#nav"), b = $("#nav-mb");
+    if (nav.classList.contains("open") === open) return;
+    nav.classList.toggle("open", open);
+    b.setAttribute("aria-expanded", open ? "true" : "false");
+    b.setAttribute("aria-label", open ? "Đóng menu" : "Mở menu");
+    b.innerHTML = svg(open ? "x" : "menu");
+  }
+  var navLinks = [];
+  function frameNav() {
+    var hit = null, line = window.innerHeight * .35;
+    navLinks.forEach(function (l) { if (l.sec.getBoundingClientRect().top <= line) hit = l; });
+    navLinks.forEach(function (l) {
+      if (l === hit) l.a.setAttribute("aria-current", "true"); else l.a.removeAttribute("aria-current");
+    });
+  }
   function goGoal(id) {
     var el = $("#goal-" + id);
     if (!el) return;
@@ -1332,7 +1396,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     var t = e.target, el;
     if ((el = t.closest("[data-ck]"))) { var p = el.getAttribute("data-ck").split("-"); toggle(+p[0], +p[1], el); return; }
     if ((el = t.closest("[data-close]"))) { closeOv(el.closest(".ov")); return; }
-    if ((el = t.closest("[data-open-cur]"))) { openMonth(Math.min(cur(), 6), el); return; }
+    if (t.closest("#nav-mb")) { setNav(!$("#nav").classList.contains("open")); return; }
+    if (t.closest(".nav-links a")) setNav(false);
+    else if (!t.closest("#nav")) setNav(false);
     if ((el = t.closest("[data-open]"))) {
       e.preventDefault();
       var n = +el.getAttribute("data-open"), inCel = el.closest("#ov-cel");
@@ -1375,7 +1441,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
   document.addEventListener("keydown", function (e) {
     var top = topOv();
-    if (e.key === "Escape") { if (top) closeOv(top); return; }
+    if (e.key === "Escape") { if (top) closeOv(top); else if ($("#nav").classList.contains("open")) { setNav(false); $("#nav-mb").focus(); } return; }
     if (!top && (e.key === "Enter" || e.key === " ") && e.target.closest && e.target.closest(".tri-c")) {
       triClick(e.target.closest(".tri-c").getAttribute("data-tk"));
       e.preventDefault();
@@ -1446,6 +1512,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       });
     }
     frameAssemble();
+    frameNav();
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
@@ -1473,6 +1540,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   /* ================= KHỞI ĐỘNG ================= */
   if (!CONFIG.showImageHelper) document.documentElement.classList.add("no-helper");
   renderStatic();
+  $("#nav-mb").innerHTML = svg("menu");
+  navLinks = $$(".nav-links a").map(function (a) { return { a: a, sec: $(a.getAttribute("href")) }; });
   renderCard("");
   hydrateSlots(document);
   layoutAssemble();
