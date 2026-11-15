@@ -16,6 +16,8 @@
   --pink-btn:#D42A87;      /* hồng cho nền nút có chữ trắng */
   --pink-text:#C91F72;     /* hồng cho chữ nhỏ */
   --pink-200:#FEC8DC; --pink-100:#FFE3EE; --pink-50:#FFF3F8;
+  /* Nền sọc kiểu nhãn M16 ("Vinh danh MoMoer 5-10-15"): sọc chéo hồng – hồng đậm, đơn vị em nên tự co theo cỡ chữ */
+  --ms-bg:repeating-linear-gradient(135deg,#F95396 0 .17em,#D42A87 .17em .3em);
   --ink:#1C171A; --ink-2:#4A4046; --ink-3:#796B73;
   --ok:#12B76A; --ok-soft:#DCFCE7;
   /* Product Triad: Tech (Engineering) · UX (Design) · Biz (Product) */
@@ -157,8 +159,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .fl.bl{filter:blur(3px)}
 .hero-in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:36px;align-items:center}
 .hero-l{display:flex;flex-direction:column;gap:20px}
-/* Tiêu đề đúng 2 dòng: cỡ chữ tính theo dòng dài nhất ("Lộ trình 6 tháng hướng tới" ≈ 12.7em) để không bị gãy */
-.h1{font-size:clamp(34px,4.4vw,56px);line-height:1.06;color:var(--ink)}
+/* Tiêu đề đúng 2 dòng: cỡ chữ tính theo dòng dài nhất ("Lộ trình [6 tháng] hướng tới" ≈ 13.1em kể cả nhãn sọc) để không bị gãy */
+.h1{font-size:clamp(34px,4.25vw,54px);line-height:1.06;color:var(--ink)}
 .h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em;white-space:nowrap}
 .h1 .ln>span{display:inline-block;animation:lnup 1.1s var(--out) both;animation-delay:calc(.1s + var(--d) * .12s)}
 .h1-sub{font-size:clamp(26px,2.6vw,38px);line-height:1.15;animation:up .9s .45s var(--out) both}
@@ -219,9 +221,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .as-r{right:max(24px,6%);bottom:20%;text-align:right}
 .as-stage{position:absolute;left:50%;top:52%;width:1px;height:1px}
 .as-c{position:absolute;left:0;top:0;width:var(--S,80px);margin-left:calc(var(--S,80px) / -2);margin-top:calc(var(--S,80px) * -.577);will-change:transform}
-.as-c.is-todo .cube .cf-t{background:#fff}
-.as-c.is-todo .cube .cf-l{background:linear-gradient(180deg,#F7EEF3,#EADAE3)}
-.as-c.is-todo .cube .cf-r{background:linear-gradient(180deg,#E3D2DB,#D3BECA)}
 .as-goal{position:absolute;left:0;z-index:40;display:block;width:calc(var(--S,80px) * .9);opacity:0;transform:translate(-50%,10px);pointer-events:none}
 
 /* ================= Section chung ================= */
@@ -248,10 +247,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .tri-n{font-family:"Momo Trust Sans",system-ui,sans-serif;font-size:19px;font-weight:800;fill:var(--ink)}
 .tri-p{font-family:"Momo Trust Display","Momo Trust Sans",sans-serif;font-size:40px;fill:var(--ink)}
 .tri-pe{font-family:"Momo Signature","Momo Trust Display",cursive;font-size:26px;fill:var(--ink)}
-.js .rv .tri-c circle{opacity:0}
-.js .rv.in .tri-c circle{opacity:1;animation:popc .9s var(--spring) backwards}
-.js .rv.in .c-ux circle{animation-delay:.12s}
-.js .rv.in .c-biz circle{animation-delay:.24s}
+.tri-o{fill:#FFF7FA;stroke:#F95396;stroke-width:2.5;transform-box:fill-box;transform-origin:center}
+.tri-p.sm{font-size:34px}
+.js .rv .tri-o,.js .rv .tri-c circle{opacity:0}
+.js .rv.in .tri-o{opacity:1;animation:popc .9s var(--spring) backwards}
+.js .rv.in .tri-c circle{opacity:1;animation:popc .9s var(--spring) .12s backwards}
+.js .rv.in .c-ux circle{animation-delay:.24s}
+.js .rv.in .c-biz circle{animation-delay:.36s}
 .js .rv .tri-late{opacity:0}
 .js .rv.in .tri-late{opacity:1;transition:opacity .6s ease .9s}
 .js .tri.in[data-hl] .tri-c circle{opacity:.3}
@@ -313,6 +315,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .lm-k>div{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;border-radius:14px;background:var(--pink-50)}
 .lm-k b{display:block;font-size:15.5px;line-height:1.35}
 .lm-k small{display:block;font-size:13.5px;line-height:1.4;color:var(--ink-2)}
+.sw{width:14px;height:14px;flex:0 0 auto;margin-top:4px;border-radius:4px}
 .lv{display:inline-grid;place-items:center;width:32px;height:24px;flex:0 0 auto;border-radius:7px;font-size:12.5px;font-weight:800;line-height:1;color:#fff}
 .l50{background:#A70D5B;color:#fff}
 .l30{background:#E2338A;color:#fff}
@@ -358,7 +361,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .tl-i{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;text-align:center}
 .yr{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 18px;border:0;border-radius:8px;background:#fff;color:var(--ink);font-size:16px;font-weight:700;white-space:nowrap;box-shadow:var(--sh-s);cursor:pointer;transition:background-color .3s ease,color .3s ease,transform .3s var(--out)}
 .yr:hover{transform:translateY(-2px)}
-.yr[aria-selected=true]{background:var(--pink-btn);color:#fff}
+.yr[aria-selected=true]{background:var(--ms-bg);color:#fff}
 .tl-dot{position:relative;z-index:1;width:14px;height:14px;border:3px solid #F7C6DA;border-radius:50%;background:#fff;transition:background-color .3s ease,border-color .3s ease}
 .is-done .tl-dot{border-color:var(--pink);background:var(--pink)}
 .is-cur .tl-dot{border-color:var(--pink);animation:ping 2s ease-out infinite}
@@ -370,8 +373,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .enter-r{animation:inR .55s var(--out) both}
 .enter-l{animation:inL .55s var(--out) both}
 .card-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:48px}
-.stampl{position:relative;display:inline-flex;align-items:center;padding:4px 34px 4px 14px;overflow:hidden;background:var(--pink-btn);color:#fff;font-size:24px;line-height:1.25;transform-origin:left center;animation:stampin .7s var(--spring) both}
-.stampl::after{content:"";position:absolute;right:0;top:0;bottom:0;width:24px;background:repeating-linear-gradient(-45deg,#fff 0 2px,transparent 2px 5.5px);opacity:.9}
+.stampl{position:relative;display:inline-flex;align-items:center;padding:.12em .3em .06em;background:var(--ms-bg);color:#fff;font-size:24px;line-height:1.25;transform-origin:left center;animation:stampin .7s var(--spring) both}
+/* Nhãn sọc dùng trong chữ (6 tháng, n mục tiêu) */
+.ms{display:inline-block;padding:.06em .2em .02em;background:var(--ms-bg);color:#fff;line-height:1.1}
 .card-t{margin-top:16px;font-size:clamp(30px,3vw,42px);line-height:1.1}
 .card-d{margin-top:8px;margin-bottom:26px;font-size:18px;line-height:1.5;color:var(--ink-2)}
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:24px;margin-bottom:24px}
@@ -565,7 +569,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv,.js .rv-t,.js .rv .stg{opacity:1;filter:none;transform:none}
   .bn-c{opacity:1;transform:none}
-  .js .rv .tri-c circle,.js .rv .tri-late{opacity:1}
+  .js .rv .tri-o,.js .rv .tri-c circle,.js .rv .tri-late{opacity:1}
   .js .rv .lm-bar i{flex-grow:var(--w)}
 }
 
@@ -661,7 +665,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   <div class="floaters" id="floaters"></div>
   <div class="wrap hero-in">
     <div class="hero-l">
-      <h1 class="dsp h1"><span class="ln"><span style="--d:0">Lộ trình <span class="pkh">6 tháng</span> hướng tới</span></span><span class="ln"><span style="--d:1" class="pkh">Product Engineer</span></span></h1>
+      <h1 class="dsp h1"><span class="ln"><span style="--d:0">Lộ trình <span class="ms">6 tháng</span> hướng tới</span></span><span class="ln"><span style="--d:1" class="pkh">Product Engineer</span></span></h1>
       <p class="dsp h1-sub">Sự cam kết và Máu lửa</p>
       <div class="story">
         <p>Khang (Ken) trước đây sống và làm việc theo phong cách “Go with the flow: sông đưa thuyền ta đến cảng nào ta cập cảng đấy”, chưa từng đề cao việc thiết lập một mục tiêu cụ thể. Tuy nhiên, sau một khoảnh khắc chiêm nghiệm, a canon event, Ken nhận ra rằng việc có một lộ trình và mục tiêu cụ thể sẽ giúp cho chính bản thân bạn trẻ này có một nguồn năng lượng để làm những điều mà bạn từng mơ ước.</p>
@@ -690,16 +694,18 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     <header class="sh rv-t"><h2 class="dsp h2-one">Kế Hoạch Phát Triển Bản Thân theo <span class="pkh">Product Triad</span></h2></header>
     <div class="tri rv" id="tri">
       <div class="tri-vw">
-      <!-- Diện tích vòng tròn theo tỉ trọng 70 : 20 : 10 (bán kính 140 : 75 : 53); đọc trái sang phải: Tech → UX → Biz -->
-      <svg class="venn" viewBox="0 0 500 375" aria-label="Product Triad: Tech 70%, UX 20%, Biz 10%">
-        <g class="tri-c c-tech" data-tk="tech" tabindex="0" role="button" aria-label="Tech 70%, xem đối chiếu JD"><circle cx="200" cy="200" r="140"/></g>
-        <g class="tri-c c-ux" data-tk="ux" tabindex="0" role="button" aria-label="UX 20%, xem đối chiếu JD"><circle cx="330" cy="245" r="75"/></g>
-        <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD"><circle cx="345" cy="310" r="53"/></g>
-        <g aria-hidden="true" pointer-events="none">
-          <text class="tri-n" x="140" y="195" text-anchor="middle">Tech</text><text class="tri-p" x="140" y="238" text-anchor="middle">70%</text>
-          <text class="tri-n" x="415" y="222">UX</text><text class="tri-p" x="415" y="260">20%</text>
-          <text class="tri-n" x="408" y="325">Biz</text><text class="tri-p" x="408" y="362">10%</text>
-          <text class="tri-pe tri-late" x="0" y="32">Product Engineer</text>
+      <!-- Vòng lớn = Product Engineer; bên trong 3 vòng có diện tích theo tỉ trọng 70 : 20 : 10 (bán kính 140 : 75 : 53),
+           Tech bên trái, UX trên phải, Biz dưới phải; mỗi cặp chồng mép nhẹ, cả ba nằm gọn trong vòng lớn (r 222) -->
+      <svg class="venn" viewBox="0 0 500 480" aria-label="Product Engineer gồm Tech 70%, UX 20%, Biz 10%">
+        <circle class="tri-o" cx="250" cy="240" r="222"/>
+        <g class="tri-c c-tech" data-tk="tech" tabindex="0" role="button" aria-label="Tech 70%, xem đối chiếu JD"><circle cx="180" cy="248" r="140"/></g>
+        <g class="tri-c c-ux" data-tk="ux" tabindex="0" role="button" aria-label="UX 20%, xem đối chiếu JD"><circle cx="370.8" cy="178.6" r="75"/></g>
+        <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD"><circle cx="354.2" cy="297.3" r="53"/></g>
+        <g aria-hidden="true" pointer-events="none" text-anchor="middle">
+          <text class="tri-pe tri-late" x="250" y="74">Product Engineer</text>
+          <text class="tri-n" x="168" y="236">Tech</text><text class="tri-p" x="168" y="280">70%</text>
+          <text class="tri-n" x="378" y="168">UX</text><text class="tri-p" x="378" y="206">20%</text>
+          <text class="tri-n" x="360" y="290">Biz</text><text class="tri-p sm" x="360" y="324">10%</text>
         </g>
       </svg>
       </div>
@@ -730,9 +736,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       <h3 class="dsp">Mỗi mục tiêu học theo <span class="pkh">50-30-20</span></h3>
       <div class="lm-bar" aria-hidden="true"><i class="l50" style="--w:50">50%</i><i class="l30" style="--w:30">30%</i><i class="l20" style="--w:20">20%</i></div>
       <div class="lm-k">
-        <div><span class="lv l50">50</span><span><b>Việc thật</b><small>Học ngay trên product đang làm</small></span></div>
-        <div><span class="lv l30">30</span><span><b>Tự học từ course trả phí</b><small>Course trên LMS</small></span></div>
-        <div><span class="lv l20">20</span><span><b>Mentor và coach</b><small>Quản lý, designer, PM/PO</small></span></div>
+        <div><span class="sw l50"></span><span><b>Việc thật</b><small>Học ngay trên product đang làm</small></span></div>
+        <div><span class="sw l30"></span><span><b>Tự học từ course trả phí</b><small>Course trên LMS</small></span></div>
+        <div><span class="sw l20"></span><span><b>Mentor và coach</b><small>Quản lý, designer, PM/PO</small></span></div>
       </div>
     </div>
 
@@ -1105,10 +1111,21 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     [77, 92, 30, "blush", .6, 0, 9], [30, 96, 26, "white", .4, 0, 10]
   ];
   var floaters = [];
-  // Vị trí rải rác ban đầu của 6 khối ở đoạn "ghép khối": [x, y theo tỉ lệ màn, xoay, cỡ]
-  var SCATTER = [[-.38, -.26, -28, .7], [.36, -.32, 32, .8], [-.30, .24, 18, .9], [.40, .22, -22, .65], [-.06, -.40, 40, .75], [.10, .36, -36, .85]];
-  // Kim tự tháp 6 khối: [x, y, z] theo lưới isometric, mỗi tháng là một khối
-  var GRID = [[0, 1, 0], [1, 0, 0], [0, 0, 0], [1, 0, 1], [0, 0, 1], [0, 0, 2]];
+  // Đoạn "ghép khối": các khối rơi về xếp thành chữ PRO — lưới 11 cột × 5 hàng, mỗi chữ 3 cột, cách nhau 1 cột
+  var PRO = [
+    "PPP.RRR.OOO",
+    "P.P.R.R.O.O",
+    "PP..RR..O.O",
+    "P...R.R.O.O",
+    "P...R.R.OOO"
+  ];
+  var CELLS = []; // [cột, hàng]
+  PRO.forEach(function (row, r) { row.split("").forEach(function (ch, c) { if (ch !== ".") CELLS.push([c, r]); }); });
+  // Vị trí rải rác ban đầu: [x, y theo tỉ lệ màn, xoay, cỡ], rải quanh màn theo góc vàng để không dồn cục
+  var SCATTER = CELLS.map(function (_, i) {
+    var a = i * 2.39996, rr = .3 + .7 * Math.sqrt((i * .7548 + .37) % 1);
+    return [Math.cos(a) * .44 * rr, Math.sin(a) * .42 * rr, ((i * 47) % 80) - 40, .5 + ((i * 29) % 40) / 100];
+  });
   var asCubes = [];
 
   function renderStatic() {
@@ -1126,8 +1143,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         '<span class="step-tip"><span class="gdot" data-tri="' + g.tri + '"></span>' + esc(g.title) + "</span></button>";
     }).join("") + '<button type="button" class="trophy" id="trophy" aria-label="Đích của mùa: hiểu cả hệ thống">' + trophyHTML() + "</button>";
 
-    $("#as-stage").innerHTML = GRID.map(function (g, i) {
-      return '<span class="as-c" data-tier="' + (i + 1) + '">' + cube("") + "</span>";
+    $("#as-stage").innerHTML = CELLS.map(function () {
+      return '<span class="as-c">' + cube("pink") + "</span>";
     }).join("") + '<span class="as-goal" id="as-goal" aria-hidden="true">' + trophyHTML() + "</span>";
     asCubes = $$(".as-c", $("#as-stage"));
 
@@ -1162,7 +1179,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     $("#cats").innerHTML = TRI.map(function (t) {
       var gs = GOALS.filter(function (g) { return g.tri === t.k; });
       return '<div class="cat rv" id="cat-' + t.k + '" data-tri="' + t.k + '">' +
-        '<div class="cat-h"><span class="cat-dot"></span><h3 class="dsp">Có ' + gs.length + ' mục tiêu trong <span class="cat-name">' + t.name + "</span></h3>" +
+        '<div class="cat-h"><span class="cat-dot"></span><h3 class="dsp">Có <span class="ms">' + gs.length + ' mục tiêu</span> trong <span class="cat-name">' + t.name + "</span></h3>" +
         '<div class="cat-nav"><button type="button" class="nb" data-cr="-1" aria-label="Thẻ trước">' + svg("left") + '</button><button type="button" class="nb" data-cr="1" aria-label="Thẻ sau">' + svg("right") + "</button></div></div>" +
         '<div class="cr" tabindex="0" aria-label="Các mục tiêu ' + t.name + '">' + gs.map(goalHTML).join("") + "</div></div>";
     }).join("");
@@ -1557,27 +1574,30 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   var sbar = $("#sbar"), ticking = false, mx = 0, my = 0, S = 80;
 
   function layoutAssemble() {
-    S = Math.round(clamp(Math.min(window.innerWidth * .12, window.innerHeight * .13), 56, 124));
+    // chữ PRO rộng 11 khối: giữ trong ~77% bề ngang và không quá cao so với màn
+    S = Math.round(clamp(Math.min(window.innerWidth * .07, window.innerHeight * .085), 18, 76));
     $("#as-stage").style.setProperty("--S", S + "px");
   }
-  // Toạ độ màn hình của một ô trong lưới isometric
-  function isoXY(g) { return [(g[0] - g[1]) * S / 2, (g[0] + g[1]) * S * .2887 - g[2] * S * .577]; }
+  // Toạ độ màn hình của ô [cột, hàng] trong chữ PRO: cột cách nhau 1 khối, hàng chồng lên nhau theo cạnh đứng (.577S)
+  function proXY(cell) { return [(cell[0] - 5) * S, (cell[1] - 2) * S * .577]; }
 
   function frameAssemble() {
     var sec = $("#assemble"), r = sec.getBoundingClientRect(), vh = window.innerHeight;
     if (r.bottom < -50 || r.top > vh + 50) return;
     var p = reduce ? 1 : clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
-    var e = ease(clamp((p - .12) / .55, 0, 1));
     var vw = window.innerWidth;
     asCubes.forEach(function (c, i) {
-      var s = SCATTER[i], tg = isoXY(GRID[i]);
+      var cell = CELLS[i], s = SCATTER[i], tg = proXY(cell);
+      // khối về chỗ lần lượt từ trái sang phải (P → R → O)
+      var e = ease(clamp((p - .1 - cell[0] * .02) / .45, 0, 1));
       var x = lerp(s[0] * vw, tg[0], e), y = lerp(s[1] * vh, tg[1], e), rot = lerp(s[2], 0, e), sc = lerp(s[3], 1, e);
       c.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg) scale(" + sc.toFixed(3) + ")";
-      c.style.zIndex = (GRID[i][0] + GRID[i][1]) * 10 + GRID[i][2];
+      c.style.zIndex = 10 - cell[1]; // hàng trên đè lên mặt trên của hàng dưới
     });
     setTxt($("#as-l"), clamp(p / .18, 0, 1));
     setTxt($("#as-r"), clamp((p - .55) / .2, 0, 1));
-    var g = $("#as-goal"), gp = clamp((p - .72) / .14, 0, 1), top = isoXY([0, 0, 2])[1] - S * 1.72;
+    // cúp hiện ra trên đỉnh chữ R sau khi ghép xong
+    var g = $("#as-goal"), gp = clamp((p - .76) / .12, 0, 1), top = -S * 2.4;
     g.style.top = top + "px";
     g.style.opacity = gp;
     g.style.transform = "translate(-50%," + ((1 - gp) * 14) + "px)";
