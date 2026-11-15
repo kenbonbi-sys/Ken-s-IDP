@@ -1,0 +1,13 @@
+Bỏ ảnh vào thư mục này, đặt đúng tên bên dưới (đuôi .jpg, .png, .webp đều được), rồi tải lại index.html.
+Ô nào chưa có ảnh vẫn hiện hình minh hoạ mặc định. Trong trang có nút "Chỗ chèn ảnh" (góc trái dưới) để xem từng chỗ.
+
+TÊN FILE                 CHỖ HIỆN                                                   TỈ LỆ / GỢI Ý
+so-do-thang-1 … 6        Sơ đồ bạn tự vẽ cho tháng đó (khung nghiêng thứ nhất + đầu popup)  4:3   · 1200×900
+tu-dung-thang-1 … 6      Ảnh chụp bản tự dựng lại của tháng đó (khung nghiêng thứ hai)       4:3   · 1200×900
+so-do-he-thong           Sơ đồ cả hệ thống, trong banner hồng ở mục "Mục tiêu phát triển"   16:10 · 1600×1000
+mua-2                    Thẻ "Để dành cho mùa sau" (hiện mờ tới khi mở khoá)                 16:7  · 1600×700
+
+Muốn gửi cho người khác xem mà không hiện nút/nhãn chèn ảnh: mở index.html, tìm
+showImageHelper: true  và đổi thành  false.
+
+Bản cũ (phong cách Season Pass vàng) vẫn còn ở: ban-cu-v1-season-pass.html
