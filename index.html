@@ -86,16 +86,15 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cf-t{clip-path:polygon(50% 0,100% 25%,50% 50%,0 25%);background:rgba(255,255,255,.88)}
 .cf-l{clip-path:polygon(0 25%,50% 50%,50% 100%,0 75%);background:rgba(255,255,255,.6)}
 .cf-r{clip-path:polygon(50% 50%,100% 25%,100% 75%,50% 100%);background:rgba(255,255,255,.38)}
-.cube.pink .cf-t,.is-done .cube .cf-t{background:linear-gradient(160deg,#FFE3EE,#FFA6CA)}
-.cube.pink .cf-l,.is-done .cube .cf-l{background:linear-gradient(180deg,#FF7BB2,#F2468E)}
-.cube.pink .cf-r,.is-done .cube .cf-r{background:linear-gradient(180deg,#E23F86,#C2216A)}
+.cube.pink .cf-t{background:linear-gradient(160deg,#FFE3EE,#FFA6CA)}
+.cube.pink .cf-l{background:linear-gradient(180deg,#FF7BB2,#F2468E)}
+.cube.pink .cf-r{background:linear-gradient(180deg,#E23F86,#C2216A)}
 .cube.white .cf-t{background:#fff}
 .cube.white .cf-l{background:linear-gradient(180deg,#FCF5F8,#F0E2E9)}
 .cube.white .cf-r{background:linear-gradient(180deg,#E9DAE2,#D9C6D0)}
-.cube.blush .cf-t,.is-cur .cube .cf-t{background:linear-gradient(160deg,#FFF6FA,#FFD3E5)}
-.cube.blush .cf-l,.is-cur .cube .cf-l{background:linear-gradient(180deg,#FFC4DC,#FFA2C8)}
-.cube.blush .cf-r,.is-cur .cube .cf-r{background:linear-gradient(180deg,#F891BC,#EC6CA2)}
-.is-cur .cube{animation:glow 2.2s ease-in-out infinite}
+.cube.blush .cf-t{background:linear-gradient(160deg,#FFF6FA,#FFD3E5)}
+.cube.blush .cf-l{background:linear-gradient(180deg,#FFC4DC,#FFA2C8)}
+.cube.blush .cf-r{background:linear-gradient(180deg,#F891BC,#EC6CA2)}
 /* Khối màu UX (xanh) và Biz (vàng) cho bậc thang mục tiêu */
 .cube.ux .cf-t{background:linear-gradient(160deg,#EEF6FF,#B9DBFF)}
 .cube.ux .cf-l{background:linear-gradient(180deg,#8CC2FF,#4A98FA)}
@@ -203,15 +202,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .tr-sp.c{left:4%;top:62%;width:10%;animation-delay:-1.2s}
 
 /* Trạng thái */
-.t-st{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
-.t-st[data-s=cur]{background:var(--pink-btn);color:#fff}
-.t-st[data-s=done]{background:var(--ok-soft);color:#067647}
-.t-st[data-s=todo]{background:#F2EAEE;color:var(--ink-3)}
-.sti{display:grid;place-items:center;width:18px;height:18px;flex:0 0 auto;border-radius:50%}
-.sti .ic{width:11px;height:11px;stroke-width:3}
-.sti[data-s=done]{background:var(--ok);color:#fff}
-.sti[data-s=cur]{display:none}
-.sti[data-s=todo]{display:none}
 
 /* ================= Đoạn ghép khối khi cuộn ================= */
 .assemble{position:relative;height:230vh;background:linear-gradient(180deg,#F5EEF6 0%,#FBE7F0 55%,#FDE4EE 100%)}
@@ -298,10 +288,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .bn-ph{position:relative;z-index:2;padding:10px;border-radius:18px;background:#fff;box-shadow:0 30px 60px -20px rgba(80,0,40,.55);transform:rotate(3deg);transition:transform .5s var(--out)}
 .bn-ph:hover{transform:rotate(0) scale(1.02)}
 .bn-ph .slot{aspect-ratio:16/10;border-radius:12px}
-.bn-cubes{position:absolute;inset:0;z-index:3;pointer-events:none}
-.bn-c{position:absolute;width:var(--s);opacity:0;transform:translate(var(--fx),var(--fy)) rotate(var(--fr)) scale(.4);transition:opacity .8s var(--out),transform 1.3s var(--out)}
-.bn-w.in .bn-c{opacity:1;transform:none;transition-delay:calc(.3s + var(--k) * .12s)}
-.bn-c .cube{animation:spinbob 8s ease-in-out infinite;animation-delay:calc(var(--k) * -1.3s)}
 
 /* Mô hình học 50-30-20 */
 .lm{position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;margin-bottom:36px}
@@ -355,14 +341,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .sec-tl{background:linear-gradient(180deg,#fff 0%,#FDE4EE 22%,#FFF3F8 70%,#fff 100%)}
 .tl{position:relative;z-index:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:40px}
 .tl-line{position:absolute;left:calc(100% / 12);right:calc(100% / 12);top:57.5px;height:3px;border-radius:2px;background:#F7C6DA}
-.tl-line i{display:block;width:0;height:100%;border-radius:inherit;background:var(--pink);box-shadow:0 0 10px rgba(249,83,150,.6);transition:width 1.1s var(--out)}
 .tl-i{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;text-align:center}
 .yr{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 18px;border:0;border-radius:8px;background:#fff;color:var(--ink);font-size:16px;font-weight:700;white-space:nowrap;box-shadow:var(--sh-s);cursor:pointer;transition:background-color .3s ease,color .3s ease,transform .3s var(--out)}
 .yr:hover{transform:translateY(-2px)}
 .yr[aria-selected=true]{background:var(--ms-bg);color:#fff}
 .tl-dot{position:relative;z-index:1;width:14px;height:14px;border:3px solid #F7C6DA;border-radius:50%;background:#fff;transition:background-color .3s ease,border-color .3s ease}
-.is-done .tl-dot{border-color:var(--pink);background:var(--pink)}
-.is-cur .tl-dot{border-color:var(--pink);animation:ping 2s ease-out infinite}
 .tl-t{font-size:15px;font-weight:700;line-height:1.3;color:var(--ink);transition:color .3s ease}
 .tl-i.sel .tl-t{color:var(--pink-text)}
 
@@ -370,7 +353,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .card.flash{animation:ringflash 1.2s ease 2}
 .enter-r{animation:inR .55s var(--out) both}
 .enter-l{animation:inL .55s var(--out) both}
-.card-grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:48px}
 .stampl{position:relative;display:inline-flex;align-items:center;padding:.12em .3em .06em;background:var(--ms-bg);color:#fff;font-size:24px;line-height:1.25;transform-origin:left center;animation:stampin .7s var(--spring) both}
 /* Nhãn sọc dùng trong chữ (6 tháng, n mục tiêu) */
 .ms{display:inline-block;padding:.06em .2em .02em;background:var(--ms-bg);color:#fff;line-height:1.1}
@@ -387,39 +369,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .side-b{display:flex;align-items:flex-start;gap:10px;width:100%;padding:10px 12px;border:0;border-radius:12px;background:#FAF6F8;font-size:15px;line-height:1.45;color:var(--ink-2);text-align:left;cursor:pointer;transition:background-color .2s ease,transform .3s var(--out)}
 .side-b:hover{background:var(--pink-50);transform:translateX(4px)}
 .side-b .gdot{margin-top:6px;border-color:#FAF6F8}
-.check-card{display:flex;flex-direction:column;gap:12px;padding:18px 20px 20px;border:1.5px dashed #F5B3CE;border-radius:18px;background:var(--pink-50)}
-.check-h{display:flex;align-items:center;gap:12px}
-.check-h .lbl{flex:0 0 auto}
-.check-c{flex:0 0 auto;font-size:13px;font-weight:800;color:var(--pink-text)}
-.pbar{position:relative;flex:1 1 auto;height:8px;overflow:hidden;border-radius:4px;background:#fff;box-shadow:inset 0 0 0 1px #F7C6DA}
-.pbar>i{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,#FF8DBE,var(--pink));transition:width .8s var(--out)}
-.cks{display:flex;flex-direction:column;gap:8px}
-.ck{display:flex;align-items:flex-start;gap:12px;width:100%;padding:11px 14px;border:1.5px solid transparent;border-radius:12px;background:#fff;color:var(--ink);font-size:15.5px;line-height:1.45;text-align:left;box-shadow:0 2px 6px -3px rgba(249,83,150,.4);cursor:pointer;transition:border-color .2s ease,transform .15s var(--out)}
-.ck:hover{border-color:var(--pink)}
-.ck:active{transform:scale(.99)}
-.ck-box{display:grid;place-items:center;width:22px;height:22px;flex:0 0 auto;margin-top:1px;border:2px solid #EDB8CF;border-radius:7px;background:#fff;transition:background-color .25s ease,border-color .25s ease}
-.ck-box .ic{width:14px;height:14px;color:#fff;stroke-width:3.2;stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .35s var(--out) .05s}
-.ck[aria-checked=true] .ck-box{border-color:var(--pink-btn);background:var(--pink-btn);animation:pop .45s var(--spring)}
-.ck[aria-checked=true] .ck-box .ic{stroke-dashoffset:0}
-.ck[aria-checked=true] .ck-t{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:2px}
-.plus{position:fixed;z-index:95;pointer-events:none;font-size:15px;font-weight:800;color:var(--pink-text);animation:plus .9s var(--out) forwards}
 
-.card-side{display:flex;flex-direction:column;gap:22px;min-width:0}
-.collage{position:relative;aspect-ratio:1/.82}
-.ph1,.ph2{position:absolute;width:74%;padding:8px;border-radius:16px;background:#fff;box-shadow:var(--sh-m);transition:transform .5s var(--out),z-index 0s}
-.ph1{left:0;top:0;z-index:1;transform:rotate(-5deg);animation:ph1in .9s var(--out) both}
-.ph2{right:0;bottom:0;z-index:2;transform:rotate(4deg);animation:ph2in .9s .12s var(--out) both}
-.ph1:hover,.ph2:hover{z-index:3;transform:rotate(0) scale(1.03)}
-.ph1 .slot,.ph2 .slot{aspect-ratio:4/3;border-radius:10px}
-.ph-cap{position:absolute;bottom:-12px;left:18px;z-index:3;padding:3px 10px;border-radius:6px;background:var(--pink-btn);color:#fff;font-size:12px;font-weight:800;letter-spacing:.06em;transform:rotate(-3deg)}
-.ph2 .ph-cap{left:auto;right:18px;transform:rotate(3deg)}
-.ticket{position:relative;display:flex;flex-direction:column;gap:4px;padding:18px 30px 20px;background:linear-gradient(135deg,#FFEAF3,#FFD1E4);-webkit-mask:radial-gradient(circle 12px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 12px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat;mask:radial-gradient(circle 12px at 0 50%,#0000 98%,#000) left/51% 100% no-repeat,radial-gradient(circle 12px at 100% 50%,#0000 98%,#000) right/51% 100% no-repeat}
-.tk-k{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--pink-text)}
-.tk-k .ic{width:16px;height:16px}
-.tk-v{font-size:clamp(24px,2.3vw,30px);line-height:1.3;color:var(--pink-btn)}
-.ticket .btn{align-self:flex-start;margin-top:8px}
-.ticket .btn[data-s=cur],.ticket .btn[data-s=todo]{background:#fff;color:var(--ink-2);box-shadow:var(--sh-s)}
-.ticket[data-s=done] .tk-k .ic{animation:wiggle 2.8s ease-in-out infinite}
 .card-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:32px;padding-top:22px;border-top:1.5px dashed #F7C6DA}
 .dots{display:flex;gap:6px}
 .dot{width:8px;height:8px;padding:0;border:0;border-radius:4px;background:#F7C6DA;cursor:pointer;transition:width .4s var(--out),background-color .3s ease}
@@ -441,16 +391,15 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .st-card:hover .mnum{transform:rotate(-6deg) scale(1.06)}
 .st-card p{font-size:16px;line-height:1.5;color:var(--ink-2)}
 .st-card p b{color:var(--ink)}
-.s2{position:relative;display:block;width:100%;padding:0;overflow:hidden;border:0;border-radius:22px;background:#fff;box-shadow:var(--sh-m);cursor:pointer;text-align:left}
-.s2 .slot{aspect-ratio:16/7}
+/* Khung Mùa 2 giãn hết phần còn lại của cột → đỉnh và đáy thẳng hàng với 3 thẻ Check-in bên trái */
+.s2{position:relative;display:block;flex:1 1 auto;width:100%;min-height:240px;padding:0;overflow:hidden;border:0;border-radius:22px;background:#fff;box-shadow:var(--sh-m);cursor:pointer;text-align:left}
+.s2 .slot{position:absolute;inset:0}
 .s2 .slot>img{filter:blur(8px) saturate(.85);transform:scale(1.1)}
-.s2.open .slot>img{filter:none;transform:none}
 .ph-s2{background:linear-gradient(120deg,#CFE7FB,#FDE4EE 60%,#FFC9DE)!important}
 .ph-s2 .dsp{font-size:170px;line-height:1;color:rgba(255,255,255,.85);transform:translateY(6%)}
 .s2-cube{position:absolute;width:74px;right:8%;top:14%;z-index:2;animation:spinbob 7s ease-in-out infinite}
 .s2-lock{position:absolute;left:50%;top:50%;z-index:3;display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;border-radius:16px;background:rgba(255,255,255,.94);box-shadow:var(--sh-m);white-space:nowrap;transform:translate(-50%,-50%)}
 .s2-li{display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--ink);color:#fff}
-.s2.open .s2-li{background:var(--ok)}
 .s2-t{display:flex;flex-direction:column;line-height:1.3}
 .s2-t b{font-size:15px;letter-spacing:.08em}
 .s2-t small{font-size:13px;color:var(--ink-3)}
@@ -460,40 +409,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 /* ================= Popup ================= */
 .ov{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(60,20,45,.36);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
 .ov.open{opacity:1;visibility:visible;transition:opacity .25s ease}
-.ov-cel{z-index:60}
 .ov-top{z-index:65}
 .dlg{position:relative;width:min(880px,100%);max-height:calc(100vh - 48px);overflow:auto;overscroll-behavior:contain;border-radius:28px;background:#fff;box-shadow:var(--sh-l);transform:translateY(24px) scale(.96);transition:transform .5s var(--out)}
 .ov.open .dlg{transform:none}
 .dlg-x{position:absolute;top:14px;right:14px;z-index:5;display:grid;place-items:center;width:42px;height:42px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.95);color:var(--ink);box-shadow:var(--sh-s);cursor:pointer;transition:transform .35s var(--spring)}
 .dlg-x:hover{transform:rotate(90deg)}
-.dlg-cover{position:relative;height:210px}
-.dlg-cover .slot{position:absolute;inset:0}
-.dlg-cover .slot-tag{top:14px;left:14px}
-.dlg-shade{position:absolute;left:0;right:0;bottom:0;z-index:2;height:90px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff);pointer-events:none}
-.dlg-in{position:relative;z-index:3;margin-top:-34px;padding:0 36px 28px}
 .dlg-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
-.dlg-in .card-t{font-size:clamp(28px,3vw,36px)}
-.dlg-in .card-d{margin-bottom:22px}
-.dlg-in .ticket{margin-top:18px}
-.dlg-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-top:24px;padding-top:18px;border-top:1.5px dashed #F7C6DA}
-.dlg-more{margin-top:10px;text-align:center}
 
-.cel{width:min(460px,100%);padding:40px 32px 28px;overflow:hidden;text-align:center}
-.cel::before{content:"";position:absolute;left:0;right:0;top:0;height:230px;background:radial-gradient(circle at 50% 0,#FFD1E4,transparent 70%)}
-.cel>*{position:relative}
-.cel-badge{position:relative;display:grid;place-items:center;width:150px;height:150px;margin:0 auto 14px}
-.cel-rays{position:absolute;inset:-34px;border-radius:50%;background:repeating-conic-gradient(from 0deg,rgba(249,83,150,.35) 0 10deg,transparent 10deg 30deg);-webkit-mask-image:radial-gradient(circle,#000 28%,transparent 70%);mask-image:radial-gradient(circle,#000 28%,transparent 70%);animation:spin 14s linear infinite}
-.cel-cube{position:relative;width:104px;animation:popbig .8s var(--spring) both}
-.cel-cube .cel-ic{position:absolute;left:50%;top:25%;z-index:2;display:grid;place-items:center;color:var(--pink-btn);transform:translate(-50%,-55%)}
-.cel-cube .cel-ic .ic{width:30px;height:30px;stroke-width:2.4}
-.cel h3{margin-top:4px;font-size:36px;line-height:1.1}
-.cel-r{margin-top:6px;font-size:28px;line-height:1.3;color:var(--pink-btn)}
-.cel-next{display:flex;align-items:center;gap:12px;margin-top:20px;padding:12px 14px;border-radius:16px;background:var(--pink-50);text-align:left;animation:up .7s .35s var(--out) both}
-.cel-ni{display:grid;place-items:center;width:40px;height:40px;flex:0 0 auto;border-radius:12px;background:var(--pink-btn);color:#fff}
-.cel-next>span:last-child{display:flex;flex-direction:column;line-height:1.35}
-.cel-next b{font-size:15px}
-.cel-act{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
-.cel-act .btn{flex:1 1 150px}
 
 
 .il-h{display:flex;flex-direction:column;gap:6px;padding:32px 32px 18px}
@@ -518,8 +440,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .imgbtn{position:fixed;left:16px;bottom:16px;z-index:30;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px 0 12px;border:1.5px dashed var(--pink-btn);border-radius:999px;background:#fff;color:var(--pink-text);font-size:13.5px;font-weight:800;box-shadow:var(--sh-m);cursor:pointer;transition:transform .3s var(--spring)}
 .imgbtn:hover{transform:translateY(-2px)}
 .imgbtn[hidden]{display:none}
-.confetti{position:fixed;inset:0;z-index:90;overflow:hidden;pointer-events:none}
-.confetti i{position:absolute;top:-24px;border-radius:2px;animation:fall var(--d) cubic-bezier(.25,.6,.45,1) var(--dl) forwards}
 
 /* ================= Hiện dần khi cuộn ================= */
 .js .rv{opacity:0;transform:translateY(40px);transition:opacity .9s var(--out),transform .9s var(--out)}
@@ -536,22 +456,15 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
 @keyframes spinbob{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-18px) rotate(8deg)}}
 @keyframes cloud{from{transform:translateX(-40px)}to{transform:translateX(60px)}}
-@keyframes glow{0%,100%{filter:drop-shadow(0 14px 16px rgba(190,30,100,.22))}50%{filter:drop-shadow(0 0 20px rgba(249,83,150,.85)) drop-shadow(0 14px 16px rgba(190,30,100,.22))}}
 @keyframes confloat{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-10px) rotate(calc(var(--r) + 40deg))}}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(249,83,150,.5)}100%{box-shadow:0 0 0 12px rgba(249,83,150,0)}}
 @keyframes stampin{0%{opacity:0;transform:scale(1.4) rotate(-6deg)}100%{opacity:1;transform:none}}
-@keyframes ph1in{from{opacity:0;transform:translate(-40px,30px) rotate(-16deg)}to{opacity:1;transform:rotate(-5deg)}}
-@keyframes ph2in{from{opacity:0;transform:translate(40px,40px) rotate(14deg)}to{opacity:1;transform:rotate(4deg)}}
 @keyframes inR{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
 @keyframes inL{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
-@keyframes pop{0%{transform:scale(.55)}100%{transform:scale(1)}}
-@keyframes popbig{0%{transform:scale(.2) rotate(-25deg);opacity:0}100%{transform:none;opacity:1}}
 @keyframes toastin{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:none}}
 @keyframes toastout{to{opacity:0;transform:translateY(10px)}}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
 @keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(249,83,150,0)}50%{box-shadow:0 0 0 6px rgba(249,83,150,.75)}}
 @keyframes ringflash{0%,100%{box-shadow:0 34px 70px -34px rgba(190,30,100,.45)}50%{box-shadow:0 0 0 6px var(--pink-200),0 34px 70px -34px rgba(190,30,100,.45)}}
-@keyframes wiggle{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-12deg)}90%{transform:rotate(10deg)}95%{transform:rotate(-5deg)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes trophyin{from{opacity:0;transform:translate(-50%,-60px) scale(.3)}to{opacity:1;transform:translateX(-50%)}}
 @keyframes trglow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,140,190,.8)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}50%{filter:drop-shadow(0 0 22px rgba(255,170,210,1)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}}
@@ -559,14 +472,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 @keyframes jig{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg) scale(1.08)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
 @keyframes navin{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
 @keyframes popc{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
-@keyframes plus{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-34px)}}
-@keyframes fall{to{transform:translate(var(--x),110vh) rotate(var(--r))}}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv,.js .rv-t,.js .rv .stg{opacity:1;filter:none;transform:none}
-  .bn-c{opacity:1;transform:none}
   .js .rv .tri-c .sl,.js .rv .tri-late{opacity:1}
   .js .rv .lm-bar i{flex-grow:var(--w)}
 }
@@ -585,10 +495,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .h1{font-size:clamp(34px,6.4vw,64px)}
   .stair{width:min(100%,460px)}
   .banner{grid-template-columns:minmax(0,1fr);padding:40px 32px}
-  .tri,.trk,.card-grid{grid-template-columns:minmax(0,1fr)}
+  .tri,.trk{grid-template-columns:minmax(0,1fr)}
   .venn{position:static;max-width:460px}
   .cr{grid-auto-columns:calc((100% - 18px) / 2)}
-  .collage{max-width:520px}
   .tl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px 32px;padding:4px 24px 12px}
   .tl-i{flex:0 0 150px;scroll-snap-align:start}
   .tl-line{left:99px;right:auto;width:calc(150px * 5 + 8px * 5)}
@@ -619,15 +528,12 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .goal{padding:20px 18px 16px}
   .goal-t{font-size:21px}
   .card{padding:26px 18px;border-radius:22px}
-  .card-nav .nb span,.dlg-foot .nb span{display:none}
-  .card-nav .nb,.dlg-foot .nb{padding:0 14px}
+  .card-nav .nb span{display:none}
+  .card-nav .nb{padding:0 14px}
   .tl{margin:0 -16px 28px;padding:4px 16px 12px}
   .tl-line{left:91px}
   .ov{align-items:flex-end;padding:0}
   .dlg{width:100%;max-height:92vh;border-radius:26px 26px 0 0;transform:translateY(100%)}
-  .cel{border-radius:26px 26px 0 0}
-  .dlg-cover{height:150px}
-  .dlg-in{padding:0 18px 22px}
   .il-h{padding:28px 18px 14px}
   .il{padding:0 8px 20px}
   .il li{grid-template-columns:28px minmax(0,1fr) auto}
@@ -695,15 +601,14 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       <!-- Cả vòng = Product Engineer 100%; vành chia theo tỉ trọng: Tech 70% (252°), UX 20% (72°), Biz 10% (36°).
            Tâm (250,250), bán kính ngoài 225, trong 120; bắt đầu từ đỉnh, đi theo chiều kim đồng hồ.
            --dx/--dy: hướng bật ra khi rê chuột = hướng giữa cung (Tech 36°, UX 198°, Biz 252°). -->
-      <svg class="venn" viewBox="0 0 500 500" aria-label="Product Engineer 100%: Tech 70%, UX 20%, Biz 10%">
+      <svg class="venn" viewBox="0 0 500 500" aria-label="Product Engineer: Tech 70%, UX 20%, Biz 10%">
         <circle class="tri-hole" cx="250" cy="250" r="118"/>
         <g class="tri-c c-tech" data-tk="tech" tabindex="0" role="button" aria-label="Tech 70%, xem đối chiếu JD" style="--dx:8px;--dy:6px"><path class="sl" d="M250 25A225 225 0 1 1 36.01 319.53L135.87 287.08A120 120 0 1 0 250 130Z"/></g>
         <g class="tri-c c-ux" data-tk="ux" tabindex="0" role="button" aria-label="UX 20%, xem đối chiếu JD" style="--dx:-9.5px;--dy:-3px"><path class="sl" d="M36.01 319.53A225 225 0 0 1 117.75 67.97L179.47 152.92A120 120 0 0 0 135.87 287.08Z"/></g>
         <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD" style="--dx:-3px;--dy:-9.5px"><path class="sl" d="M117.75 67.97A225 225 0 0 1 250 25L250 130A120 120 0 0 0 179.47 152.92Z"/></g>
         <g aria-hidden="true" pointer-events="none" text-anchor="middle">
-          <text class="tri-pe tri-late" x="250" y="232">Product</text>
-          <text class="tri-pe tri-late" x="250" y="266">Engineer</text>
-          <text class="tri-p tri-late" x="250" y="312">100%</text>
+          <text class="tri-pe tri-late" x="250" y="243">Product</text>
+          <text class="tri-pe tri-late" x="250" y="277">Engineer</text>
           <text class="tri-n" x="390" y="336">Tech</text><text class="tri-p" x="390" y="378">70%</text>
           <text class="tri-n" x="86" y="183">UX</text><text class="tri-p" x="86" y="222">20%</text>
           <text class="tri-n" x="197" y="76">Biz</text><text class="tri-p sm" x="197" y="108">10%</text>
@@ -730,7 +635,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         </div>
         <figure class="bn-ph"><span class="slot" data-img="so-do-he-thong" id="feat-slot"></span></figure>
       </div>
-      <div class="bn-cubes" id="bn-cubes"></div>
     </div>
 
     <div class="lm rv">
@@ -769,8 +673,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       </ol>
     </div>
     <div class="trk-col rv">
-      <h2 class="dsp h2s">Để dành cho mùa sau</h2>
-      <button type="button" class="s2" id="s2">
+      <h2 class="dsp h2s">Kế Hoạch 1 năm?</h2>
+      <button type="button" class="s2" id="s2" aria-label="Mùa 2, bắt đầu khi xong Mùa 1">
         <span class="slot" data-img="mua-2"><img alt="Mùa 2"><span class="slot-ph ph-s2"><span class="dsp">2</span></span><span class="slot-tag" data-tag="mua-2"></span></span>
         <span class="s2-cube" id="s2-cube"></span>
         <span class="s2-lock"><span class="s2-li" id="s2-icon"></span><span class="s2-t"><b>MÙA 2</b><small data-s2txt>Bắt đầu khi xong Mùa 1</small></span></span>
@@ -780,10 +684,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 </main>
 
 
-<!-- Popup: chi tiết tháng -->
-<div class="ov" id="ov-month" aria-hidden="true"><div class="dlg" role="dialog" aria-modal="true" aria-labelledby="dlg-t" id="dlg-month"></div></div>
-<!-- Popup: ăn mừng -->
-<div class="ov ov-cel" id="ov-cel" aria-hidden="true"><div class="dlg cel" role="dialog" aria-modal="true" aria-labelledby="cel-t" id="dlg-cel"></div></div>
 <!-- Popup: danh sách chỗ chèn ảnh -->
 <div class="ov ov-top" id="ov-img" aria-hidden="true"><div class="dlg" role="dialog" aria-modal="true" aria-labelledby="img-t" id="dlg-img"></div></div>
 
@@ -798,8 +698,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   var CONFIG = {
     // false = ẩn nút "Chỗ chèn ảnh" và nhãn tên file trên các ô ảnh trống (dùng khi gửi cho người khác xem)
     showImageHelper: true,
-    imageDir: "images/",
-    storageKey: "ken-season-1-nen-tang"
+    imageDir: "images/"
   };
 
   /* ================= DỮ LIỆU ================= */
@@ -963,14 +862,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   var SLOTS = [];
-  MONTHS.forEach(function (m) {
-    SLOTS.push({ base: "so-do-thang-" + m.n, label: "Sơ đồ Tháng " + m.n, where: "Khung ảnh nghiêng thứ nhất ở thẻ “" + m.title + "” + đầu popup", ratio: "4:3 · 1200×900" });
-  });
-  MONTHS.forEach(function (m) {
-    SLOTS.push({ base: "tu-dung-thang-" + m.n, label: "Bản tự dựng Tháng " + m.n, where: "Khung ảnh nghiêng thứ hai, chụp “" + m.result + "”", ratio: "4:3 · 1200×900" });
-  });
   SLOTS.push({ base: "so-do-he-thong", label: "Sơ đồ cả hệ thống", where: "Khung ảnh trong banner hồng ở mục Mục tiêu phát triển", ratio: "16:10 · 1600×1000" });
-  SLOTS.push({ base: "mua-2", label: "Ảnh teaser Mùa 2", where: "Thẻ “Để dành cho mùa sau” (hiện mờ đến khi xong Mùa 1)", ratio: "16:7 · 1600×700" });
+  SLOTS.push({ base: "mua-2", label: "Ảnh teaser Mùa 2", where: "Thẻ “Kế Hoạch 1 năm?” (hiện mờ đến khi xong Mùa 1)", ratio: "4:3 · 1200×900" });
 
   var ICON = {
     web: '<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01M9 13l-2 2 2 2M15 13l2 2-2 2"/>',
@@ -1054,25 +947,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   function behavior() { return reduce ? "auto" : "smooth"; }
   function restart(el, cls) { if (!el) return; el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
   function shake(el) { if (!el) return; el.style.animation = "none"; void el.offsetWidth; el.style.animation = "shake .5s ease"; }
-
-  /* ================= TIẾN ĐỘ (lưu trong trình duyệt) ================= */
-  var st = load();
-  function load() {
-    try {
-      var v = JSON.parse(localStorage.getItem(CONFIG.storageKey) || "null");
-      if (v && typeof v === "object" && v.done && typeof v.done === "object") return { done: v.done };
-    } catch (e) {}
-    return { done: {} };
-  }
-  function save() { try { localStorage.setItem(CONFIG.storageKey, JSON.stringify(st)); } catch (e) {} }
-  var TOTAL = MONTHS.reduce(function (a, m) { return a + m.done.length; }, 0);
-  function mDone(m) { return m.done.filter(function (_, i) { return !!st.done[m.n + "-" + i]; }).length; }
-  function complete(m) { return mDone(m) === m.done.length; }
-  function cur() { for (var i = 0; i < MONTHS.length; i++) if (!complete(MONTHS[i])) return MONTHS[i].n; return 7; }
-  // Không khoá tháng: tháng nào cũng tick được; trạng thái chỉ theo số mục đã xong
-  function status(n) { var m = M(n), d = mDone(m); return d === m.done.length ? "done" : d > 0 ? "cur" : "todo"; }
-  function doneCount() { return MONTHS.reduce(function (a, m) { return a + mDone(m); }, 0); }
-  var STXT = { done: "Xong", cur: "Đang làm", todo: "Chưa bắt đầu" };
 
   /* ================= Ô ẢNH ================= */
   var EXTS = ["jpg", "png", "webp"];
@@ -1175,10 +1049,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       ch += '<i style="left:' + ((c * 37) % 100) + "%;top:" + ((c * 53) % 100) + "%;background:" + conf[c % conf.length] + ";--r:" + ((c * 47) % 180) + "deg;animation-delay:" + (-c * .4) + 's"></i>';
     }
     $("#bn-conf").innerHTML = ch;
-    var BC = [[-2, -6, 70, "pink", "-120px", "-80px", "-40deg"], [92, -8, 54, "white", "120px", "-90px", "35deg"], [96, 72, 78, "blush", "140px", "60px", "-30deg"], [-3, 80, 46, "white", "-130px", "70px", "25deg"]];
-    $("#bn-cubes").innerHTML = BC.map(function (b, k) {
-      return '<span class="bn-c" style="left:' + b[0] + "%;top:" + b[1] + "%;--s:" + b[2] + "px;--fx:" + b[4] + ";--fy:" + b[5] + ";--fr:" + b[6] + ";--k:" + k + '">' + cube(b[3]) + "</span>";
-    }).join("");
     // Banner: 3 nhóm mục tiêu, bấm để tới nhóm đó
     $("#miles").innerHTML = TRI.map(function (t) {
       var n = GOALS.filter(function (g) { return g.tri === t.k; }).length;
@@ -1205,8 +1075,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         '<div class="cr" tabindex="0" aria-label="Các mục tiêu ' + t.name + '">' + gs.map(goalHTML).join("") + "</div></div>";
     }).join("");
 
-    $("#tl").innerHTML = '<div class="tl-line"><i id="tl-fill"></i></div>' + MONTHS.map(function (m) {
-      return '<div class="tl-i" data-tier="' + m.n + '"><button type="button" role="tab" class="yr" id="tab-' + m.n + '" data-tab="' + m.n + '" aria-controls="card"><span>Tháng ' + m.n + '</span><span class="sti" data-sti="' + m.n + '"></span></button><span class="tl-dot"></span><span class="tl-t">' + esc(m.title) + "</span></div>";
+    $("#tl").innerHTML = '<div class="tl-line"></div>' + MONTHS.map(function (m) {
+      return '<div class="tl-i"><button type="button" role="tab" class="yr" id="tab-' + m.n + '" data-tab="' + m.n + '" aria-controls="card"><span>Tháng ' + m.n + '</span></button><span class="tl-dot"></span><span class="tl-t">' + esc(m.title) + "</span></div>";
     }).join("");
 
     document.body.insertAdjacentHTML("afterbegin", MNUM_DEFS);
@@ -1224,14 +1094,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       '<div class="side"><span class="lbl lbl-p">Mục tiêu tháng này</span><ul class="side-l">' + m.goals.map(function (id) {
         var g = goalOf(id);
         return '<li><button type="button" class="side-b" data-goal="' + g.id + '" aria-label="Xem mục tiêu ' + TRI_NAME[g.tri] + ": " + esc(g.title) + '"><span class="gdot" data-tri="' + g.tri + '"></span><span>' + esc(g.title) + "</span></button></li>";
-      }).join("") + "</ul></div>" +
-      '<div class="check-card" data-cm="' + m.n + '"><div class="check-h"><span class="lbl lbl-p">Coi là hiểu khi</span><span class="pbar"><i data-mprog="' + m.n + '"></i></span><span class="check-c" data-mcount="' + m.n + '"></span></div>' +
-      '<div class="cks">' + m.done.map(function (x, i) {
-        return '<button type="button" class="ck" role="checkbox" aria-checked="false" data-ck="' + m.n + "-" + i + '"><span class="ck-box">' + svg("check") + '</span><span class="ck-t">' + esc(x) + "</span></button>";
-      }).join("") + "</div></div>";
-  }
-  function ticketHTML(m) {
-    return '<div class="ticket" data-rwd="' + m.n + '"><span class="tk-k">' + svg(m.final ? "trophy" : "gift") + (m.final ? "Đích của mùa" : "Bằng chứng tháng " + m.n) + '</span><span class="tk-v sig">' + esc(m.result) + '</span><button type="button" class="btn btn-p btn-sm" data-claim="' + m.n + '"></button></div>';
+      }).join("") + "</ul></div>";
   }
   function dotsHTML(n, attr) {
     return '<div class="dots">' + MONTHS.map(function (m) { return '<button type="button" class="dot' + (m.n === n ? " on" : "") + '" ' + attr + '="' + m.n + '" aria-label="Tháng ' + m.n + '"></button>'; }).join("") + "</div>";
@@ -1242,7 +1105,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   /* ================= THẺ "TỪNG THÁNG LÀM GÌ" ================= */
-  var sel = Math.min(cur(), 6);
+  var sel = 1;
   function select(n) {
     if (n < 1 || n > 6) return;
     var dir = n > sel ? "r" : n < sel ? "l" : "";
@@ -1252,11 +1115,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   function renderCard(dir) {
     var m = M(sel), c = $("#card");
     c.setAttribute("aria-labelledby", "tab-" + sel);
-    c.innerHTML = '<div class="' + (dir ? "enter-" + dir : "") + '"><div class="card-grid"><div class="card-main">' + headHTML(m) + bodyHTML(m) + "</div>" +
-      '<div class="card-side"><div class="collage">' +
-        '<figure class="ph1">' + slot("so-do-thang-" + m.n, phHTML("Sơ đồ tự vẽ", "Vẽ lại “" + m.title + "” rồi chụp"), "", "Sơ đồ tháng " + m.n) + '<span class="ph-cap">Sơ đồ</span></figure>' +
-        '<figure class="ph2">' + slot("tu-dung-thang-" + m.n, phHTML("Bản tự dựng", "Chụp “" + m.result + "”"), "", "Bản tự dựng tháng " + m.n) + '<span class="ph-cap">Bản tự dựng</span></figure>' +
-      "</div>" + ticketHTML(m) + "</div></div>" +
+    c.innerHTML = '<div class="' + (dir ? "enter-" + dir : "") + '">' + headHTML(m) + bodyHTML(m) +
       '<div class="card-nav"><button type="button" class="nb" data-pnav="-1"' + (sel === 1 ? " disabled" : "") + ">" + svg("left") + "<span>Tháng trước</span></button>" + dotsHTML(sel, "data-tab") +
       '<button type="button" class="nb" data-pnav="1"' + (sel === 6 ? " disabled" : "") + "><span>Tháng sau</span>" + svg("right") + "</button></div></div>";
     $$(".yr", $("#tl")).forEach(function (t) {
@@ -1267,8 +1126,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     });
     var tl = $("#tl"), pill = $("#tab-" + sel);
     if (pill && tl.scrollWidth > tl.clientWidth + 2) tl.scrollTo({ left: pill.parentNode.offsetLeft - 24, behavior: behavior() });
-    hydrateSlots(c);
-    sync();
   }
 
   /* ================= POPUP ================= */
@@ -1298,65 +1155,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   function closeAll() { while (stack.length) closeOv(stack[stack.length - 1].ov, true); }
   function topOv() { return stack.length ? stack[stack.length - 1].ov : null; }
 
-  var mSel = 1;
-  function openMonth(n, opener) { renderModal(n, ""); openOv($("#ov-month"), opener); }
-  function renderModal(n, dir) {
-    if (n < 1 || n > 6) return;
-    mSel = n;
-    var m = M(n), d = $("#dlg-month");
-    d.innerHTML = '<button type="button" class="dlg-x" data-close aria-label="Đóng">' + svg("x") + "</button>" +
-      '<div class="dlg-cover">' + slot("so-do-thang-" + n, phHTML("Sơ đồ tháng " + n, m.title), "", "Sơ đồ tháng " + n) + '<span class="dlg-shade"></span></div>' +
-      '<div class="dlg-in' + (dir ? " enter-" + dir : "") + '">' + headHTML(m, "dlg-t") + bodyHTML(m) + ticketHTML(m) +
-        '<div class="dlg-foot"><button type="button" class="nb" data-mnav="-1"' + (n === 1 ? " disabled" : "") + ">" + svg("left") + "<span>Tháng trước</span></button>" +
-        dotsHTML(n, "data-mdot") +
-        '<button type="button" class="nb" data-mnav="1"' + (n === 6 ? " disabled" : "") + "><span>Tháng sau</span>" + svg("right") + "</button></div>" +
-        '<div class="dlg-more"><button type="button" class="link" data-goto="' + n + '">Mở trong mục “Từng tháng làm gì”</button></div>' +
-      "</div>";
-    d.scrollTop = 0;
-    hydrateSlots(d);
-    sync();
-  }
-
-  function celebrate(n) {
-    // Tháng có thể xong theo thứ tự bất kỳ: "tiếp theo" là tháng đầu tiên chưa xong; xong cả 6 thì là đích của mùa
-    var all = cur() > 6, m = all ? M(6) : M(n), next = all ? null : M(cur()), d = $("#dlg-cel");
-    d.innerHTML = '<button type="button" class="dlg-x" data-close aria-label="Đóng">' + svg("x") + "</button>" +
-      '<div class="cel-badge"><span class="cel-rays"></span><span class="cel-cube">' + cube("pink", '<span class="cel-ic">' + svg(all ? "trophy" : m.icon) + "</span>") + "</span></div>" +
-      '<span class="lbl lbl-p">' + (all ? "Đích của mùa" : "Bằng chứng tháng " + n) + "</span>" +
-      '<h3 id="cel-t" class="dsp">' + (all ? "Hoàn thành Mùa 1!" : "Xong Tháng " + n + "!") + "</h3>" +
-      '<p class="cel-r sig">' + esc(m.result) + "</p>" +
-      (next
-        ? '<div class="cel-next"><span class="cel-ni">' + svg(next.icon) + '</span><span><span class="lbl">Tiếp theo</span><b>Tháng ' + next.n + " · " + esc(next.title) + "</b></span></div>"
-        : '<div class="cel-next"><span class="cel-ni">' + svg("sparkle") + '</span><span><span class="lbl">Tiếp theo</span><b>Mùa 2 · lên kế hoạch tiếp theo</b></span></div>') +
-      '<div class="cel-act">' +
-        (next ? '<button type="button" class="btn btn-p" data-open="' + next.n + '" data-autofocus>Xem Tháng ' + next.n + "</button>"
-              : '<button type="button" class="btn btn-p" data-goto-sec="muc-tieu" data-autofocus>Xem mục tiêu</button>') +
-        '<button type="button" class="btn btn-w" data-close>Để sau</button></div>';
-    openOv($("#ov-cel"));
-    confetti();
-  }
-
-  function confetti() {
-    if (reduce) return;
-    var box = document.createElement("div"), colors = ["#F95396", "#FF9CC6", "#3D7BFF", "#FFD84D", "#12B76A", "#7C5CFA", "#fff"];
-    box.className = "confetti";
-    for (var i = 0; i < 120; i++) {
-      var p = document.createElement("i");
-      p.style.left = Math.random() * 100 + "%";
-      p.style.background = colors[i % colors.length];
-      p.style.width = 6 + Math.random() * 6 + "px";
-      p.style.height = 8 + Math.random() * 10 + "px";
-      if (i % 4 === 0) p.style.borderRadius = "50%";
-      p.style.setProperty("--d", 2 + Math.random() * 1.8 + "s");
-      p.style.setProperty("--dl", Math.random() * .6 + "s");
-      p.style.setProperty("--x", Math.random() * 240 - 120 + "px");
-      p.style.setProperty("--r", Math.random() * 900 - 450 + "deg");
-      box.appendChild(p);
-    }
-    document.body.appendChild(box);
-    setTimeout(function () { box.remove(); }, 4800);
-  }
-
   function toast(msg, icon) {
     var el = document.createElement("div");
     el.className = "toast";
@@ -1364,25 +1162,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     $("#toasts").appendChild(el);
     setTimeout(function () { el.classList.add("out"); setTimeout(function () { el.remove(); }, 320); }, 2800);
   }
-  function plusOne(el) {
-    if (reduce || !el) return;
-    var r = el.getBoundingClientRect(), p = document.createElement("span");
-    p.className = "plus";
-    p.textContent = "+1";
-    p.style.left = r.left + "px";
-    p.style.top = r.top - 6 + "px";
-    document.body.appendChild(p);
-    setTimeout(function () { p.remove(); }, 950);
-  }
-
   /* ================= HÀNH ĐỘNG ================= */
-  function toggle(n, i, el) {
-    var m = M(n), k = n + "-" + i, was = complete(m);
-    if (st.done[k]) delete st.done[k]; else { st.done[k] = true; plusOne(el.querySelector(".ck-box")); }
-    save();
-    sync();
-    if (!was && complete(m)) setTimeout(function () { celebrate(n); }, 420);
-  }
   function goTo(n) {
     closeAll();
     select(n);
@@ -1439,54 +1219,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
   function locate(base) {
     closeAll();
-    var mm = /^(?:so-do|tu-dung)-thang-(\d)$/.exec(base);
-    if (mm) select(+mm[1]);
     var el = $$('.slot[data-img="' + base + '"]').filter(function (e) { return !e.closest(".ov"); })[0];
     if (!el) return;
     var rv = el.closest(".rv"); if (rv) rv.classList.add("in");
     el.scrollIntoView({ behavior: behavior(), block: "center" });
     setTimeout(function () { restart(el, "flash"); }, reduce ? 0 : 450);
-  }
-
-  /* ================= ĐỒNG BỘ TRẠNG THÁI ================= */
-  function railPct() { return doneCount() / TOTAL * 100; }
-  function sync() {
-    var c = cur();
-    MONTHS.forEach(function (m) {
-      var n = m.n, s = status(n), d = mDone(m), t = m.done.length, pct = (d / t) * 100;
-      $$('[data-tier="' + n + '"]').forEach(function (el) {
-        el.classList.toggle("is-done", s === "done");
-        el.classList.toggle("is-cur", s === "cur");
-        el.classList.toggle("is-todo", s === "todo");
-      });
-      $$('[data-tst="' + n + '"]').forEach(function (el) { el.setAttribute("data-s", s); el.textContent = STXT[s]; });
-      $$('[data-mprog="' + n + '"]').forEach(function (el) { el.style.width = pct + "%"; });
-      $$('[data-mcount="' + n + '"]').forEach(function (el) { el.textContent = d + "/" + t; });
-      $$('[data-sti="' + n + '"]').forEach(function (el) {
-        el.setAttribute("data-s", s);
-        el.innerHTML = s === "done" ? svg("check") : "";
-        el.title = STXT[s];
-      });
-      m.done.forEach(function (_, i) {
-        $$('[data-ck="' + n + "-" + i + '"]').forEach(function (el) {
-          el.setAttribute("aria-checked", st.done[n + "-" + i] ? "true" : "false");
-        });
-      });
-      $$('[data-rwd="' + n + '"]').forEach(function (el) { el.setAttribute("data-s", s); });
-      $$('[data-claim="' + n + '"]').forEach(function (el) {
-        el.setAttribute("data-s", s);
-        el.textContent = s === "done" ? "Xem lại" : "Còn " + (t - d) + " mục nữa";
-      });
-    });
-
-    var fill = $("#tl-fill"); if (fill) fill.style.width = railPct() + "%";
-    var k = doneCount();
-
-    var s2 = $("#s2"), open = c > 6;
-    s2.classList.toggle("open", open);
-    $("#s2-icon").innerHTML = svg(open ? "check" : "sparkle");
-    $("[data-s2txt]").textContent = open ? "Sẵn sàng · bấm để bắt đầu" : "Bắt đầu khi xong Mùa 1 · còn " + (TOTAL - k) + " mục";
-    s2.setAttribute("aria-label", open ? "Mùa 2 đã sẵn sàng" : "Mùa 2, bắt đầu khi xong Mùa 1");
   }
 
   /* ================= NÚT "CHỖ CHÈN ẢNH" ================= */
@@ -1517,47 +1254,27 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   /* ================= SỰ KIỆN ================= */
   document.addEventListener("click", function (e) {
     var t = e.target, el;
-    if ((el = t.closest("[data-ck]"))) { var p = el.getAttribute("data-ck").split("-"); toggle(+p[0], +p[1], el); return; }
     if ((el = t.closest("[data-close]"))) { closeOv(el.closest(".ov")); return; }
     if (t.closest("#nav-mb")) { setNav(!$("#nav").classList.contains("open")); return; }
     if (t.closest(".nav-links a")) setNav(false);
     else if (!t.closest("#nav")) setNav(false);
-    if ((el = t.closest("[data-open]"))) {
-      e.preventDefault();
-      var n = +el.getAttribute("data-open"), inCel = el.closest("#ov-cel");
-      if (inCel) closeOv($("#ov-cel"), true);
-      if ($("#ov-month").classList.contains("open")) renderModal(n, n > mSel ? "r" : "l");
-      else openMonth(n, inCel ? null : el);
-      return;
-    }
     if ((el = t.closest("[data-goto]"))) { goTo(+el.getAttribute("data-goto")); return; }
     if ((el = t.closest("[data-goto-sec]"))) { closeAll(); $("#" + el.getAttribute("data-goto-sec")).scrollIntoView({ behavior: behavior() }); return; }
     if ((el = t.closest("[data-tab]"))) { select(+el.getAttribute("data-tab")); return; }
     if ((el = t.closest("[data-pnav]"))) { select(sel + +el.getAttribute("data-pnav")); return; }
-    if ((el = t.closest("[data-mnav]"))) { var dn = +el.getAttribute("data-mnav"); renderModal(mSel + dn, dn > 0 ? "r" : "l"); return; }
-    if ((el = t.closest("[data-mdot]"))) { var md = +el.getAttribute("data-mdot"); if (md !== mSel) renderModal(md, md > mSel ? "r" : "l"); return; }
-    if ((el = t.closest("[data-claim]"))) {
-      var cn = +el.getAttribute("data-claim"), cs = status(cn);
-      if (cs === "done") celebrate(cn);
-      else {
-        toast("Đánh dấu đủ các mục “Coi là hiểu khi” là xong Tháng " + cn, "gift");
-        var box = el.closest(".dlg, .card"); shake(box && $(".check-card", box));
-      }
-      return;
-    }
     if ((el = t.closest("[data-goal]"))) { goGoal(el.getAttribute("data-goal")); return; }
     if ((el = t.closest("[data-cr]"))) { var cr = $(".cr", el.closest(".cat")); cr.scrollBy({ left: +el.getAttribute("data-cr") * crStep(cr), behavior: behavior() }); return; }
     if ((el = t.closest(".tri-c"))) { triClick(el.getAttribute("data-tk")); return; }
     if ((el = t.closest("[data-locate]"))) { locate(el.getAttribute("data-locate")); return; }
     if (t.closest("#imgbtn")) { openImgList(); return; }
     if (t.closest("#trophy")) {
-      if (cur() > 6) celebrate(6);
-      else { restart($("#trophy"), "jig"); toast("Còn " + (TOTAL - doneCount()) + " mục nữa là tới đích của mùa", "trophy"); }
+      restart($("#trophy"), "jig");
+      toast("Đích của mùa: Product Engineer", "trophy");
       return;
     }
     if ((el = t.closest("#s2"))) {
-      if (cur() > 6) toast("Mùa 2 sẵn sàng — lên kế hoạch tiếp thôi!", "sparkle");
-      else { restart(el, "shake"); toast("Mùa 2 bắt đầu khi xong Mùa 1 · còn " + (TOTAL - doneCount()) + " mục", "sparkle"); }
+      restart(el, "shake");
+      toast("Mùa 2 bắt đầu khi xong Mùa 1", "sparkle");
       return;
     }
     if (t.classList && t.classList.contains("ov")) { closeOv(t); return; }
@@ -1576,12 +1293,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       if (!f.length) return;
       if (e.shiftKey && document.activeElement === f[0]) { f[f.length - 1].focus(); e.preventDefault(); }
       else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { f[0].focus(); e.preventDefault(); }
-      return;
-    }
-    if (top && top.id === "ov-month" && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
-      var d = e.key === "ArrowRight" ? 1 : -1;
-      if (mSel + d >= 1 && mSel + d <= 6) renderModal(mSel + d, d > 0 ? "r" : "l");
-      e.preventDefault();
       return;
     }
     if (!top && e.target.matches && e.target.matches("[role=tab]") && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
