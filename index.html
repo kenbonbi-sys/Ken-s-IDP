@@ -226,6 +226,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .sec{position:relative;padding:110px 24px;scroll-margin-top:30px;overflow-x:clip}
 .sh{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:48px;text-align:center}
 .sh h2{font-size:clamp(32px,4vw,54px);line-height:1.1;color:var(--ink)}
+/* Tiêu đề dài giữ 1 dòng: chữ rộng ≈ 24.2em, cỡ chữ co theo bề rộng màn (trừ lề + thanh cuộn) */
+.sh h2.h2-one{white-space:nowrap;font-size:min(48px,calc((100vw - 72px) / 24.6))}
 .sh p{max-width:680px;font-size:18px;line-height:1.55;color:var(--ink-2)}
 
 /* ================= Đối chiếu JD theo Product Triad ================= */
@@ -584,6 +586,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 @media (max-width:640px){
   .hero{padding:92px 16px 64px}
   .nav{padding:0 8px}
+  .sh h2.h2-one{white-space:normal;font-size:clamp(28px,8vw,34px)}
   .nav-in{min-height:56px;gap:10px;padding:0 8px 0 18px;border-radius:0 0 16px 16px}
   .nb-name{font-size:17px}
   .nb-div,.nb-t{display:none}
@@ -679,7 +682,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- ============ ĐỐI CHIẾU JD THEO PRODUCT TRIAD ============ -->
 <section id="doi-chieu" class="sec sec-pink">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Kế Hoạch Phát Triển Bản Thân theo <span class="pkh">Product Triad</span></h2></header>
+    <header class="sh rv-t"><h2 class="dsp h2-one">Kế Hoạch Phát Triển Bản Thân theo <span class="pkh">Product Triad</span></h2></header>
     <div class="tri rv" id="tri">
       <svg class="venn" viewBox="0 0 560 350" aria-label="Product Triad: Tech 70%, UX 20%, Biz 10%">
         <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD"><circle cx="190" cy="118" r="108"/></g>
