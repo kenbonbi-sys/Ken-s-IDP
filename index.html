@@ -116,19 +116,25 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* ================= Hero (bầu trời) ================= */
 /* ================= Nav (kiểu M16) ================= */
-.nav{position:fixed;left:0;right:0;top:0;z-index:40;padding:12px 16px 0;pointer-events:none}
-.nav-in{position:relative;display:flex;align-items:center;gap:20px;max-width:1232px;min-height:72px;margin:0 auto;padding:0 14px 0 28px;border-radius:20px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 12px 30px -16px rgba(120,20,70,.35);pointer-events:auto;animation:navin .9s var(--out) both}
-.nav-brand{font-size:22px;line-height:1.1;color:var(--pink-btn);text-decoration:none;white-space:nowrap}
-.nav-links{display:flex;align-items:center;gap:4px;margin-left:auto}
-.nav-links a{position:relative;padding:10px 14px;border-radius:10px;font-size:17px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap;transition:color .2s ease}
-.nav-links a::after{content:"";position:absolute;left:14px;right:14px;bottom:4px;height:2px;border-radius:1px;background:var(--pink);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--out)}
+/* Theo nav M16 (dính mép trên, bo 2 góc dưới), mọi kích thước thu còn 80% */
+.nav{position:fixed;left:0;right:0;top:0;z-index:40;padding:0 16px;pointer-events:none}
+.nav-in{position:relative;display:flex;align-items:center;gap:16px;min-height:64px;margin:0 auto;padding:0 18px 0 30px;border-radius:0 0 19px 19px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 8px 24px -14px rgba(60,20,45,.28);pointer-events:auto;animation:navin .9s var(--out) both}
+.nav-brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;white-space:nowrap}
+.nb-name{font-size:18px;line-height:1;color:var(--pink-btn)}
+.nb-div{width:1px;height:26px;background:var(--ink)}
+.nb-t{display:flex;flex-direction:column;gap:1px;line-height:1.15}
+.nb-t b{font-size:12.5px;font-weight:800;color:var(--ink)}
+.nb-t small{font-size:10.5px;font-weight:700;color:var(--pink-text)}
+.nav-links{display:flex;align-items:center;gap:12px;margin-left:auto}
+.nav-links a{position:relative;padding:8px 8px;border-radius:8px;font-size:15px;font-weight:400;color:var(--ink);text-decoration:none;white-space:nowrap;transition:color .2s ease}
+.nav-links a::after{content:"";position:absolute;left:8px;right:8px;bottom:2px;height:2px;border-radius:1px;background:var(--pink);transform:scaleX(0);transform-origin:0 50%;transition:transform .35s var(--out)}
 .nav-links a:hover,.nav-links a[aria-current=true]{color:var(--pink-text)}
 .nav-links a:hover::after,.nav-links a[aria-current=true]::after{transform:scaleX(1)}
-.nav-av{display:grid;place-items:center;width:48px;height:48px;flex:0 0 auto;margin-left:8px;border-radius:50%;background:var(--pink);color:#fff;font-size:16px;font-weight:800;letter-spacing:.02em}
-.nav-mb{display:none;place-items:center;width:44px;height:44px;flex:0 0 auto;padding:0;border:0;border-radius:12px;background:var(--pink-50);color:var(--ink);cursor:pointer}
+.nav-av{display:grid;place-items:center;width:40px;height:40px;flex:0 0 auto;margin-left:28px;border-radius:50%;background:var(--pink);color:#fff;font-size:13px;font-weight:800;letter-spacing:.02em}
+.nav-mb{display:none;place-items:center;width:40px;height:40px;flex:0 0 auto;padding:0;border:0;border-radius:10px;background:var(--pink-50);color:var(--ink);cursor:pointer}
 .nav-mb .ic{width:22px;height:22px}
 
-.hero{position:relative;padding:140px 24px 90px;overflow:hidden;background:linear-gradient(180deg,#9FD0F7 0%,#C4E3FA 45%,#E6F2FC 78%,#F5EEF6 100%)}
+.hero{position:relative;padding:124px 24px 90px;overflow:hidden;background:linear-gradient(180deg,#9FD0F7 0%,#C4E3FA 45%,#E6F2FC 78%,#F5EEF6 100%)}
 .cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,rgba(255,255,255,0));pointer-events:none;animation:cloud 38s ease-in-out infinite alternate}
 .cl-a{width:760px;height:280px;left:-180px;top:110px}
 .cl-b{width:620px;height:240px;right:-160px;top:-40px;animation-duration:46s;animation-direction:alternate-reverse}
@@ -559,7 +565,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* ================= Responsive ================= */
 @media (max-width:1020px){
-  .hero{padding-top:124px}
+  .hero{padding-top:112px}
   .nav-links{position:absolute;left:0;right:0;top:calc(100% + 8px);flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:8px;border-radius:18px;background:#fff;box-shadow:var(--sh-m);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s ease,transform .35s var(--out),visibility 0s linear .35s}
   .nav.open .nav-links{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .35s var(--out)}
   .nav-links a{padding:13px 14px}
@@ -584,11 +590,12 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .tl-line{left:99px;right:auto;width:calc(150px * 5 + 8px * 5)}
 }
 @media (max-width:640px){
-  .hero{padding:104px 16px 64px}
-  .nav{padding:8px 8px 0}
-  .nav-in{min-height:60px;gap:10px;padding:0 8px 0 18px;border-radius:16px}
-  .nav-brand{font-size:19px}
-  .nav-av{width:40px;height:40px;font-size:14px}
+  .hero{padding:92px 16px 64px}
+  .nav{padding:0 8px}
+  .nav-in{min-height:56px;gap:10px;padding:0 8px 0 18px;border-radius:0 0 16px 16px}
+  .nb-name{font-size:17px}
+  .nb-div,.nb-t{display:none}
+  .nav-av{width:36px;height:36px;font-size:12px}
   .story{font-size:16px}
   /* Màn điện thoại quá hẹp cho 2 dòng ở cỡ đọc được: cho dòng đầu tự xuống dòng */
   .h1{font-size:clamp(32px,10vw,42px)}
@@ -636,7 +643,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- ============ NAV ============ -->
 <header class="nav" id="nav">
   <div class="nav-in">
-    <a class="nav-brand dsp" href="#top">Phạm Minh Khang</a>
+    <a class="nav-brand" href="#top" aria-label="Phạm Minh Khang, IDP 6 tháng, về đầu trang"><span class="nb-name dsp">Phạm Minh Khang</span><span class="nb-div" aria-hidden="true"></span><span class="nb-t" aria-hidden="true"><b>IDP 6 tháng</b><small>Sự cam kết và Máu lửa</small></span></a>
     <nav class="nav-links" id="nav-links" aria-label="Các mục trên trang">
       <a href="#doi-chieu">Kế hoạch phát triển</a>
       <a href="#muc-tieu">Mục tiêu</a>
