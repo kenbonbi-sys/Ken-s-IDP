@@ -117,7 +117,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 /* ================= Hero (bầu trời) ================= */
 /* ================= Nav (kiểu M16) ================= */
 /* Theo nav M16 (dính mép trên, bo 2 góc dưới), mọi kích thước thu còn 80% */
-.nav{position:fixed;left:0;right:0;top:0;z-index:40;padding:0 16px;pointer-events:none}
+.nav{position:fixed;left:0;right:0;top:0;z-index:40;padding:0 16px;pointer-events:none;transition:transform .5s var(--out),visibility 0s}
+/* Chỉ hiện trong phần đầu (hero); cuộn tới phần thứ hai thì trượt lên ẩn đi */
+.nav.hid{visibility:hidden;transform:translateY(-120%);transition:transform .5s var(--out),visibility 0s linear .5s}
 .nav-in{position:relative;display:flex;align-items:center;gap:16px;min-height:64px;margin:0 auto;padding:0 18px 0 30px;border-radius:0 0 19px 19px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 8px 24px -14px rgba(60,20,45,.28);pointer-events:auto;animation:navin .9s var(--out) both}
 .nav-brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;white-space:nowrap}
 .nb-name{font-size:18px;line-height:1;color:var(--pink-btn)}
@@ -1289,6 +1291,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
   var navLinks = [];
   function frameNav() {
+    var nav = $("#nav"), hid = $("#top").getBoundingClientRect().bottom <= nav.offsetHeight;
+    if (hid !== nav.classList.contains("hid")) { if (hid) setNav(false); nav.classList.toggle("hid", hid); }
     var hit = null, line = window.innerHeight * .35;
     navLinks.forEach(function (l) { if (l.sec.getBoundingClientRect().top <= line) hit = l; });
     navLinks.forEach(function (l) {
