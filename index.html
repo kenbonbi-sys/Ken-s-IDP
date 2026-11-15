@@ -92,6 +92,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cube.blush .cf-l,.is-cur .cube .cf-l{background:linear-gradient(180deg,#FFC4DC,#FFA2C8)}
 .cube.blush .cf-r,.is-cur .cube .cf-r{background:linear-gradient(180deg,#F891BC,#EC6CA2)}
 .is-cur .cube{animation:glow 2.2s ease-in-out infinite}
+/* Khối màu UX (xanh) và Biz (vàng) cho bậc thang mục tiêu */
+.cube.ux .cf-t{background:linear-gradient(160deg,#EEF6FF,#B9DBFF)}
+.cube.ux .cf-l{background:linear-gradient(180deg,#8CC2FF,#4A98FA)}
+.cube.ux .cf-r{background:linear-gradient(180deg,#3E8AEE,#1E69D2)}
+.cube.biz .cf-t{background:linear-gradient(160deg,#FFF8DA,#FFE27C)}
+.cube.biz .cf-l{background:linear-gradient(180deg,#FFD54F,#F5B800)}
+.cube.biz .cf-r{background:linear-gradient(180deg,#E8A700,#C78900)}
 
 /* ================= Ô ảnh ================= */
 .slot{position:relative;display:block;overflow:hidden;background:var(--pink-100);color:var(--pink-text)}
@@ -153,38 +160,28 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em;white-space:nowrap}
 .h1 .ln>span{display:inline-block;animation:lnup 1.1s var(--out) both;animation-delay:calc(.1s + var(--d) * .12s)}
 .h1-sub{font-size:clamp(26px,2.6vw,38px);line-height:1.15;animation:up .9s .45s var(--out) both}
-.facts{display:flex;flex-wrap:wrap;gap:10px;animation:up .9s .65s var(--out) both}
-.fact{display:flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:14px;background:rgba(255,255,255,.85);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:var(--sh-s)}
-.fact-i{display:grid;place-items:center;width:36px;height:36px;flex:0 0 auto;border-radius:10px;background:var(--pink-100);color:var(--pink-text)}
-.fact-t{display:flex;flex-direction:column;line-height:1.25}
-.fact-v{font-size:18px}
-.fact-k{font-size:13px;color:var(--ink-2)}
 .story{display:flex;flex-direction:column;gap:10px;max-width:640px;font-size:17px;line-height:1.6;color:var(--ink-2);animation:up .9s .55s var(--out) both}
 .story-end{font-weight:700;color:var(--ink)}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:6px;animation:up .9s .75s var(--out) both}
 
 /* Bậc thang 6 khối = 6 tháng */
 .stair{position:relative;justify-self:center;width:min(100%,540px);aspect-ratio:1/.95}
-.step{position:absolute;left:calc(1% + var(--i) * 14.8%);bottom:calc(2% + var(--i) * 11.4%);z-index:calc(10 - var(--i));width:21%;padding:0;border:0;background:none;cursor:pointer;animation:drop 1.1s var(--spring) both;animation-delay:calc(.5s + var(--i) * .1s)}
+.step{position:absolute;left:calc(1% + var(--i) * 18.5%);bottom:calc(2% + var(--i) * 14.25%);z-index:calc(10 - var(--i));width:21%;padding:0;border:0;background:none;cursor:pointer;animation:drop 1.1s var(--spring) both;animation-delay:calc(.5s + var(--i) * .1s)}
 .step:focus-visible{outline:none}
 .step:focus-visible .cube{outline:2.5px solid var(--pink-btn);outline-offset:4px}
 .step-b{display:block;animation:bob 5s ease-in-out infinite;animation-delay:calc(var(--i) * -.8s)}
 .step .cube{transition:transform .4s var(--spring)}
 .step:hover .cube,.step:focus-visible .cube{transform:translateY(-12px)}
-.step-n{position:absolute;left:50%;top:25%;z-index:2;display:grid;place-items:center;font-size:clamp(15px,1.8vw,24px);line-height:1;color:var(--pink-text);transform:translate(-50%,-55%)}
-.step-n .ic{width:1.1em;height:1.1em;stroke-width:3}
-.is-lock .step-n{color:var(--ink-3)}
+.step-n{position:absolute;left:50%;top:25%;z-index:2;display:grid;place-items:center;font-size:clamp(15px,1.8vw,24px);line-height:1;color:var(--ct);transform:translate(-50%,-55%)}
 .step-tip{position:absolute;left:50%;bottom:calc(100% - 4px);z-index:20;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:#fff;box-shadow:var(--sh-m);font-size:13px;font-weight:500;line-height:1.3;white-space:nowrap;pointer-events:none;opacity:0;transform:translate(-50%,8px);transition:opacity .25s ease,transform .45s var(--out)}
 .step-tip b{font-weight:800}
-.step:nth-child(n+5) .step-tip{left:auto;right:-10%;transform:translate(0,8px)}
-.step:hover .step-tip,.step:focus-visible .step-tip,.is-cur .step-tip{opacity:1;transform:translate(-50%,0)}
-.step:nth-child(n+5):hover .step-tip,.step:nth-child(n+5).is-cur .step-tip,.step:nth-child(n+5):focus-visible .step-tip{transform:translate(0,0)}
+.step:nth-child(n+4) .step-tip{left:auto;right:-10%;transform:translate(0,8px)}
+.step:hover .step-tip,.step:focus-visible .step-tip{opacity:1;transform:translate(-50%,0)}
+.step:nth-child(n+4):hover .step-tip,.step:nth-child(n+4):focus-visible .step-tip{transform:translate(0,0)}
 .step:nth-child(-n+2) .step-tip{left:0;transform:translate(0,8px)}
-.step:nth-child(-n+2):hover .step-tip,.step:nth-child(-n+2).is-cur .step-tip,.step:nth-child(-n+2):focus-visible .step-tip{transform:translate(0,0)}
-.step.is-cur{z-index:25}
+.step:nth-child(-n+2):hover .step-tip,.step:nth-child(-n+2):focus-visible .step-tip{transform:translate(0,0)}
 .step:hover{z-index:30}
-.stair:hover .step.is-cur:not(:hover) .step-tip{opacity:0}
-.step:nth-child(6) .step-tip{bottom:auto;top:calc(100% - 8px)}
+.step:nth-child(5) .step-tip{bottom:auto;top:calc(100% - 8px)}
 
 /* Cúp sáng: đích của mùa */
 .trophy{position:absolute;left:85.5%;top:-7%;z-index:16;width:17%;padding:0;border:0;background:none;cursor:pointer;transform:translateX(-50%);animation:trophyin 1s 1.3s var(--spring) both}
@@ -205,12 +202,12 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .t-st{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
 .t-st[data-s=cur]{background:var(--pink-btn);color:#fff}
 .t-st[data-s=done]{background:var(--ok-soft);color:#067647}
-.t-st[data-s=lock]{background:#F2EAEE;color:var(--ink-3)}
+.t-st[data-s=todo]{background:#F2EAEE;color:var(--ink-3)}
 .sti{display:grid;place-items:center;width:18px;height:18px;flex:0 0 auto;border-radius:50%}
 .sti .ic{width:11px;height:11px;stroke-width:3}
 .sti[data-s=done]{background:var(--ok);color:#fff}
 .sti[data-s=cur]{display:none}
-.sti[data-s=lock]{color:currentColor;opacity:.55}
+.sti[data-s=todo]{display:none}
 
 /* ================= Đoạn ghép khối khi cuộn ================= */
 .assemble{position:relative;height:230vh;background:linear-gradient(180deg,#F5EEF6 0%,#FBE7F0 55%,#FDE4EE 100%)}
@@ -220,9 +217,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .as-r{right:max(24px,6%);bottom:20%;text-align:right}
 .as-stage{position:absolute;left:50%;top:52%;width:1px;height:1px}
 .as-c{position:absolute;left:0;top:0;width:var(--S,80px);margin-left:calc(var(--S,80px) / -2);margin-top:calc(var(--S,80px) * -.577);will-change:transform}
-.as-c.is-lock .cube .cf-t{background:#fff}
-.as-c.is-lock .cube .cf-l{background:linear-gradient(180deg,#F7EEF3,#EADAE3)}
-.as-c.is-lock .cube .cf-r{background:linear-gradient(180deg,#E3D2DB,#D3BECA)}
+.as-c.is-todo .cube .cf-t{background:#fff}
+.as-c.is-todo .cube .cf-l{background:linear-gradient(180deg,#F7EEF3,#EADAE3)}
+.as-c.is-todo .cube .cf-r{background:linear-gradient(180deg,#E3D2DB,#D3BECA)}
 .as-goal{position:absolute;left:0;z-index:40;display:block;width:calc(var(--S,80px) * .9);opacity:0;transform:translate(-50%,10px);pointer-events:none}
 
 /* ================= Section chung ================= */
@@ -349,7 +346,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .yr{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 18px;border:0;border-radius:8px;background:#fff;color:var(--ink);font-size:16px;font-weight:700;white-space:nowrap;box-shadow:var(--sh-s);cursor:pointer;transition:background-color .3s ease,color .3s ease,transform .3s var(--out)}
 .yr:hover{transform:translateY(-2px)}
 .yr[aria-selected=true]{background:var(--pink-btn);color:#fff}
-.yr[aria-selected=true] .sti[data-s=lock]{opacity:.8}
 .tl-dot{position:relative;z-index:1;width:14px;height:14px;border:3px solid #F7C6DA;border-radius:50%;background:#fff;transition:background-color .3s ease,border-color .3s ease}
 .is-done .tl-dot{border-color:var(--pink);background:var(--pink)}
 .is-cur .tl-dot{border-color:var(--pink);animation:ping 2s ease-out infinite}
@@ -391,12 +387,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .ck[aria-checked=true] .ck-box{border-color:var(--pink-btn);background:var(--pink-btn);animation:pop .45s var(--spring)}
 .ck[aria-checked=true] .ck-box .ic{stroke-dashoffset:0}
 .ck[aria-checked=true] .ck-t{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:2px}
-.ck.locked{background:rgba(255,255,255,.65);box-shadow:none;cursor:not-allowed}
-.ck.locked .ck-box{border-style:dashed}
-.ck.locked:hover{border-color:transparent}
-.lock-note{display:none;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--ink-3)}
-.lock-note .ic{width:14px;height:14px}
-[data-cstate=lock] .lock-note{display:flex}
 .plus{position:fixed;z-index:95;pointer-events:none;font-size:15px;font-weight:800;color:var(--pink-text);animation:plus .9s var(--out) forwards}
 
 .card-side{display:flex;flex-direction:column;gap:22px;min-width:0}
@@ -413,7 +403,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .tk-k .ic{width:16px;height:16px}
 .tk-v{font-size:clamp(24px,2.3vw,30px);line-height:1.3;color:var(--pink-btn)}
 .ticket .btn{align-self:flex-start;margin-top:8px}
-.ticket .btn[data-s=cur],.ticket .btn[data-s=lock]{background:#fff;color:var(--ink-2);box-shadow:var(--sh-s)}
+.ticket .btn[data-s=cur],.ticket .btn[data-s=todo]{background:#fff;color:var(--ink-2);box-shadow:var(--sh-s)}
 .ticket[data-s=done] .tk-k .ic{animation:wiggle 2.8s ease-in-out infinite}
 .card-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:32px;padding-top:22px;border-top:1.5px dashed #F7C6DA}
 .dots{display:flex;gap:6px}
@@ -604,7 +594,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .h1 .ln{white-space:normal}
   .sec{padding:72px 16px}
   .stamp{font-size:20px}
-  .fact{flex:1 1 100%}
   .as-l{top:12%}
   .as-r{bottom:10%}
   .banner{padding:32px 20px}
@@ -670,12 +659,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         <p>Khang (Ken) trước đây sống và làm việc theo phong cách “Go with the flow: sông đưa thuyền ta đến cảng nào ta cập cảng đấy”, chưa từng đề cao việc thiết lập một mục tiêu cụ thể. Tuy nhiên, sau một khoảnh khắc chiêm nghiệm, a canon event, Ken nhận ra rằng việc có một lộ trình và mục tiêu cụ thể sẽ giúp cho chính bản thân bạn trẻ này có một nguồn năng lượng để làm những điều mà bạn từng mơ ước.</p>
         <p class="story-end">Hãy cùng theo dõi bạn nhỏ này tiến bộ hằng ngày nhé!</p>
       </div>
-      <div class="facts" id="facts"></div>
       <div class="cta-row">
         <a class="stamp" href="#lo-trinh"><span class="stamp-o"><span class="stamp-w"><span class="stamp-i dsp">XEM LỘ TRÌNH 6 THÁNG</span></span></span><span class="stamp-base"></span></a>
       </div>
     </div>
-    <div class="stair" id="stair" aria-label="6 tháng, bấm vào một khối để xem chi tiết"></div>
+    <div class="stair" id="stair" aria-label="5 mục tiêu theo Product Triad, bấm vào một khối để xem mục tiêu"></div>
   </div>
 </section>
 
@@ -769,7 +757,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       <button type="button" class="s2" id="s2">
         <span class="slot" data-img="mua-2"><img alt="Mùa 2"><span class="slot-ph ph-s2"><span class="dsp">2</span></span><span class="slot-tag" data-tag="mua-2"></span></span>
         <span class="s2-cube" id="s2-cube"></span>
-        <span class="s2-lock"><span class="s2-li" id="s2-icon"></span><span class="s2-t"><b>MÙA 2</b><small data-s2txt>Mở khoá khi xong Mùa 1</small></span></span>
+        <span class="s2-lock"><span class="s2-li" id="s2-icon"></span><span class="s2-t"><b>MÙA 2</b><small data-s2txt>Bắt đầu khi xong Mùa 1</small></span></span>
       </button>    </div>
   </div>
 </section>
@@ -897,12 +885,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   ];
   function goalOf(id) { return GOALS.filter(function (g) { return g.id === id; })[0]; }
 
-  var FACTS = [
-    { icon: "calendar", v: "6 tháng", k: "11/2026 – 05/2027" },
-    { icon: "clock", v: "5–8 giờ", k: "mỗi tuần, song song công việc" },
-    { icon: "user", v: "Mỗi tháng", k: "check-in với quản lý trực tiếp" }
-  ];
-
   var SLOTS = [];
   MONTHS.forEach(function (m) {
     SLOTS.push({ base: "so-do-thang-" + m.n, label: "Sơ đồ Tháng " + m.n, where: "Khung ảnh nghiêng thứ nhất ở thẻ “" + m.title + "” + đầu popup", ratio: "4:3 · 1200×900" });
@@ -911,7 +893,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     SLOTS.push({ base: "tu-dung-thang-" + m.n, label: "Bản tự dựng Tháng " + m.n, where: "Khung ảnh nghiêng thứ hai, chụp “" + m.result + "”", ratio: "4:3 · 1200×900" });
   });
   SLOTS.push({ base: "so-do-he-thong", label: "Sơ đồ cả hệ thống", where: "Khung ảnh trong banner hồng ở mục Mục tiêu phát triển", ratio: "16:10 · 1600×1000" });
-  SLOTS.push({ base: "mua-2", label: "Ảnh teaser Mùa 2", where: "Thẻ “Để dành cho mùa sau” (hiện mờ đến khi mở khoá)", ratio: "16:7 · 1600×700" });
+  SLOTS.push({ base: "mua-2", label: "Ảnh teaser Mùa 2", where: "Thẻ “Để dành cho mùa sau” (hiện mờ đến khi xong Mùa 1)", ratio: "16:7 · 1600×700" });
 
   var ICON = {
     web: '<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01M9 13l-2 2 2 2M15 13l2 2-2 2"/>',
@@ -922,8 +904,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     trophy: '<path d="M8 4h8v5a4 4 0 0 1-8 0V4zM8 6H5a3 3 0 0 0 3 4M16 6h3a3 3 0 0 1-3 4M12 13v4M8 20h8"/>',
     shield: '<path d="M12 3l7 3v5c0 4.5-3 8.4-7 10-4-1.6-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/>',
     gift: '<rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8h14v-8M12 8v12M12 8c-1.5-3-5-3.5-5-1.5S10 8 12 8zM12 8c1.5-3 5-3.5 5-1.5S14 8 12 8z"/>',
-    lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
-    unlock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 7.5-2"/>',
     check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
     x: '<path d="M6 6l12 12M18 6L6 18"/>',
     left: '<path d="M15 5l-7 7 7 7"/>',
@@ -987,9 +967,10 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   function mDone(m) { return m.done.filter(function (_, i) { return !!st.done[m.n + "-" + i]; }).length; }
   function complete(m) { return mDone(m) === m.done.length; }
   function cur() { for (var i = 0; i < MONTHS.length; i++) if (!complete(MONTHS[i])) return MONTHS[i].n; return 7; }
-  function status(n) { var c = cur(); return n < c ? "done" : n === c ? "cur" : "lock"; }
+  // Không khoá tháng: tháng nào cũng tick được; trạng thái chỉ theo số mục đã xong
+  function status(n) { var m = M(n), d = mDone(m); return d === m.done.length ? "done" : d > 0 ? "cur" : "todo"; }
   function doneCount() { return MONTHS.reduce(function (a, m) { return a + mDone(m); }, 0); }
-  var STXT = { done: "Xong", cur: "Đang làm", lock: "Chưa mở" };
+  var STXT = { done: "Xong", cur: "Đang làm", todo: "Chưa bắt đầu" };
 
   /* ================= Ô ẢNH ================= */
   var EXTS = ["jpg", "png", "webp"];
@@ -1037,9 +1018,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   var asCubes = [];
 
   function renderStatic() {
-    $("#facts").innerHTML = FACTS.map(function (f) {
-      return '<div class="fact"><span class="fact-i">' + svg(f.icon) + '</span><span class="fact-t"><span class="fact-v dsp">' + f.v + '</span><span class="fact-k">' + f.k + "</span></span></div>";
-    }).join("");
 
     var fl = $("#floaters");
     fl.innerHTML = FLOAT.map(function (f, i) {
@@ -1047,10 +1025,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     }).join("");
     floaters = $$(".fl", fl).map(function (el, i) { return { el: el, depth: FLOAT[i][4] }; });
 
-    $("#stair").innerHTML = MONTHS.map(function (m, i) {
-      return '<button type="button" class="step" data-open="' + m.n + '" data-tier="' + m.n + '" style="--i:' + i + '" aria-label="Mở chi tiết tháng ' + m.n + ": " + esc(m.title) + '">' +
-        '<span class="step-b">' + cube("", '<span class="step-n dsp" data-hex="' + m.n + '">' + m.n + "</span>") + "</span>" +
-        '<span class="step-tip"><b>Tháng ' + m.n + "</b> · " + esc(m.title) + '<span class="t-st" data-tst="' + m.n + '"></span></span></button>';
+    // Bậc thang = 5 mục tiêu, tô màu theo góc Product Triad (Tech hồng · UX xanh · Biz vàng)
+    $("#stair").innerHTML = GOALS.map(function (g, i) {
+      return '<button type="button" class="step" data-goal="' + g.id + '" style="--i:' + i + '" aria-label="Mục tiêu ' + g.id + ": " + esc(g.title) + '">' +
+        '<span class="step-b">' + cube(g.tri === "tech" ? "pink" : g.tri, '<span class="step-n dsp" data-tri="' + g.tri + '">' + g.id + "</span>") + "</span>" +
+        '<span class="step-tip"><span class="gcode" data-tri="' + g.tri + '">' + g.id + "</span>" + esc(g.title) + "</span></button>";
     }).join("") + '<button type="button" class="trophy" id="trophy" aria-label="Đích của mùa: hiểu cả hệ thống">' + trophyHTML("hero") + "</button>";
 
     $("#as-stage").innerHTML = GRID.map(function (g, i) {
@@ -1100,7 +1079,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     }).join("");
 
     $("#s2-cube").innerHTML = cube("white");
-    $("#s2-icon").innerHTML = svg("lock");
+    $("#s2-icon").innerHTML = svg("sparkle");
     $$("[data-tag]").forEach(function (el) { el.innerHTML = tagHTML(el.getAttribute("data-tag")); });
   }
 
@@ -1113,7 +1092,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         return '<li><button type="button" class="side-b" data-goal="' + g.id + '" aria-label="' + esc(s[1]) + ", mục tiêu " + g.id + ": " + esc(g.title) + '"><span class="gcode" data-tri="' + g.tri + '">' + g.id + "</span><span>" + esc(s[1]) + "</span></button></li>";
       }).join("") + "</ul></div>" +
       '<div class="check-card" data-cm="' + m.n + '"><div class="check-h"><span class="lbl lbl-p">Coi là hiểu khi</span><span class="pbar"><i data-mprog="' + m.n + '"></i></span><span class="check-c" data-mcount="' + m.n + '"></span></div>' +
-      '<span class="lock-note">' + svg("lock") + '<span data-locknote="' + m.n + '"></span></span>' +
       '<div class="cks">' + m.done.map(function (x, i) {
         return '<button type="button" class="ck" role="checkbox" aria-checked="false" data-ck="' + m.n + "-" + i + '"><span class="ck-box">' + svg("check") + '</span><span class="ck-t">' + esc(x) + "</span></button>";
       }).join("") + "</div></div>";
@@ -1206,15 +1184,16 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   function celebrate(n) {
-    var m = M(n), next = MONTHS[n], d = $("#dlg-cel");
+    // Tháng có thể xong theo thứ tự bất kỳ: "tiếp theo" là tháng đầu tiên chưa xong; xong cả 6 thì là đích của mùa
+    var all = cur() > 6, m = all ? M(6) : M(n), next = all ? null : M(cur()), d = $("#dlg-cel");
     d.innerHTML = '<button type="button" class="dlg-x" data-close aria-label="Đóng">' + svg("x") + "</button>" +
-      '<div class="cel-badge"><span class="cel-rays"></span><span class="cel-cube">' + cube("pink", '<span class="cel-ic">' + svg(m.final ? "trophy" : m.icon) + "</span>") + "</span></div>" +
-      '<span class="lbl lbl-p">' + (m.final ? "Đích của mùa" : "Bằng chứng tháng " + n) + "</span>" +
-      '<h3 id="cel-t" class="dsp">' + (m.final ? "Hoàn thành Mùa 1!" : "Xong Tháng " + n + "!") + "</h3>" +
+      '<div class="cel-badge"><span class="cel-rays"></span><span class="cel-cube">' + cube("pink", '<span class="cel-ic">' + svg(all ? "trophy" : m.icon) + "</span>") + "</span></div>" +
+      '<span class="lbl lbl-p">' + (all ? "Đích của mùa" : "Bằng chứng tháng " + n) + "</span>" +
+      '<h3 id="cel-t" class="dsp">' + (all ? "Hoàn thành Mùa 1!" : "Xong Tháng " + n + "!") + "</h3>" +
       '<p class="cel-r sig">' + esc(m.result) + "</p>" +
       (next
-        ? '<div class="cel-next"><span class="cel-ni">' + svg(next.icon) + '</span><span><span class="lbl">Đã mở khoá</span><b>Tháng ' + next.n + " · " + esc(next.title) + "</b></span></div>"
-        : '<div class="cel-next"><span class="cel-ni">' + svg("unlock") + '</span><span><span class="lbl">Đã mở khoá</span><b>Mùa 2 · lên kế hoạch tiếp theo</b></span></div>') +
+        ? '<div class="cel-next"><span class="cel-ni">' + svg(next.icon) + '</span><span><span class="lbl">Tiếp theo</span><b>Tháng ' + next.n + " · " + esc(next.title) + "</b></span></div>"
+        : '<div class="cel-next"><span class="cel-ni">' + svg("sparkle") + '</span><span><span class="lbl">Tiếp theo</span><b>Mùa 2 · lên kế hoạch tiếp theo</b></span></div>') +
       '<div class="cel-act">' +
         (next ? '<button type="button" class="btn btn-p" data-open="' + next.n + '" data-autofocus>Xem Tháng ' + next.n + "</button>"
               : '<button type="button" class="btn btn-p" data-goto-sec="muc-tieu" data-autofocus>Xem mục tiêu</button>') +
@@ -1263,15 +1242,12 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   /* ================= HÀNH ĐỘNG ================= */
-  function lockMsg(n) { return "Hoàn thành Tháng " + cur() + " trước để mở khoá Tháng " + n; }
   function toggle(n, i, el) {
-    if (status(n) === "lock") { toast(lockMsg(n), "lock"); shake(el.closest(".check-card")); return; }
     var m = M(n), k = n + "-" + i, was = complete(m);
     if (st.done[k]) delete st.done[k]; else { st.done[k] = true; plusOne(el.querySelector(".ck-box")); }
     save();
     sync();
     if (!was && complete(m)) setTimeout(function () { celebrate(n); }, 420);
-    else if (was && !complete(m)) toast("Tháng " + n + " được mở lại", "unlock");
   }
   function goTo(n) {
     closeAll();
@@ -1327,12 +1303,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   /* ================= ĐỒNG BỘ TRẠNG THÁI ================= */
-  function railPct() {
-    var c = cur();
-    if (c > 6) return 100;
-    var cm = M(c);
-    return Math.min(100, ((c - 1) + mDone(cm) / cm.done.length) / 5 * 100);
-  }
+  function railPct() { return doneCount() / TOTAL * 100; }
   function sync() {
     var c = cur();
     MONTHS.forEach(function (m) {
@@ -1340,30 +1311,25 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       $$('[data-tier="' + n + '"]').forEach(function (el) {
         el.classList.toggle("is-done", s === "done");
         el.classList.toggle("is-cur", s === "cur");
-        el.classList.toggle("is-lock", s === "lock");
+        el.classList.toggle("is-todo", s === "todo");
       });
       $$('[data-tst="' + n + '"]').forEach(function (el) { el.setAttribute("data-s", s); el.textContent = STXT[s]; });
-      $$('[data-hex="' + n + '"]').forEach(function (el) { el.innerHTML = s === "done" ? svg("check") : s === "lock" ? svg("lock") : n; });
       $$('[data-mprog="' + n + '"]').forEach(function (el) { el.style.width = pct + "%"; });
       $$('[data-mcount="' + n + '"]').forEach(function (el) { el.textContent = d + "/" + t; });
       $$('[data-sti="' + n + '"]').forEach(function (el) {
         el.setAttribute("data-s", s);
-        el.innerHTML = s === "done" ? svg("check") : s === "lock" ? svg("lock") : "";
+        el.innerHTML = s === "done" ? svg("check") : "";
         el.title = STXT[s];
       });
-      $$('[data-cm="' + n + '"]').forEach(function (el) { el.setAttribute("data-cstate", s); });
-      $$('[data-locknote="' + n + '"]').forEach(function (el) { el.textContent = c <= 6 ? "Mở khoá khi xong Tháng " + c : ""; });
       m.done.forEach(function (_, i) {
         $$('[data-ck="' + n + "-" + i + '"]').forEach(function (el) {
           el.setAttribute("aria-checked", st.done[n + "-" + i] ? "true" : "false");
-          el.classList.toggle("locked", s === "lock");
-          el.setAttribute("aria-disabled", s === "lock" ? "true" : "false");
         });
       });
       $$('[data-rwd="' + n + '"]').forEach(function (el) { el.setAttribute("data-s", s); });
       $$('[data-claim="' + n + '"]').forEach(function (el) {
         el.setAttribute("data-s", s);
-        el.textContent = s === "done" ? "Xem lại" : s === "cur" ? "Còn " + (t - d) + " mục nữa" : "Chưa mở khoá";
+        el.textContent = s === "done" ? "Xem lại" : "Còn " + (t - d) + " mục nữa";
       });
     });
 
@@ -1372,9 +1338,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
     var s2 = $("#s2"), open = c > 6;
     s2.classList.toggle("open", open);
-    $("#s2-icon").innerHTML = svg(open ? "unlock" : "lock");
-    $("[data-s2txt]").textContent = open ? "Đã mở khoá · bấm để bắt đầu" : "Mở khoá khi xong Mùa 1 · còn " + (TOTAL - k) + " mục";
-    s2.setAttribute("aria-label", open ? "Mùa 2 đã mở khoá" : "Mùa 2, chưa mở khoá");
+    $("#s2-icon").innerHTML = svg(open ? "check" : "sparkle");
+    $("[data-s2txt]").textContent = open ? "Sẵn sàng · bấm để bắt đầu" : "Bắt đầu khi xong Mùa 1 · còn " + (TOTAL - k) + " mục";
+    s2.setAttribute("aria-label", open ? "Mùa 2 đã sẵn sàng" : "Mùa 2, bắt đầu khi xong Mùa 1");
   }
 
   /* ================= NÚT "CHỖ CHÈN ẢNH" ================= */
@@ -1427,10 +1393,10 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     if ((el = t.closest("[data-claim]"))) {
       var cn = +el.getAttribute("data-claim"), cs = status(cn);
       if (cs === "done") celebrate(cn);
-      else if (cs === "cur") {
-        toast("Đánh dấu đủ các mục “Coi là hiểu khi” để mở khoá tháng sau", "gift");
+      else {
+        toast("Đánh dấu đủ các mục “Coi là hiểu khi” là xong Tháng " + cn, "gift");
         var box = el.closest(".dlg, .card"); shake(box && $(".check-card", box));
-      } else toast(lockMsg(cn), "lock");
+      }
       return;
     }
     if ((el = t.closest("[data-goal]"))) { goGoal(el.getAttribute("data-goal")); return; }
@@ -1443,8 +1409,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       return;
     }
     if ((el = t.closest("#s2"))) {
-      if (cur() > 6) toast("Mùa 2 đã mở khoá — lên kế hoạch tiếp thôi!", "sparkle");
-      else { restart(el, "shake"); toast("Mùa 2 mở khoá khi xong Mùa 1 · còn " + (TOTAL - doneCount()) + " mục", "lock"); }
+      if (cur() > 6) toast("Mùa 2 sẵn sàng — lên kế hoạch tiếp thôi!", "sparkle");
+      else { restart(el, "shake"); toast("Mùa 2 bắt đầu khi xong Mùa 1 · còn " + (TOTAL - doneCount()) + " mục", "sparkle"); }
       return;
     }
     if (t.classList && t.classList.contains("ov")) { closeOv(t); return; }
