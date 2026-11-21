@@ -496,11 +496,36 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       },
       extra: "Học thêm tâm lý học (tính cách, động cơ, thiên kiến) để làm Persona AI.",
       outcomes: [
-        { learn: "Xác định tầm nhìn sản phẩm và lập roadmap theo mục tiêu.", project: "p3", apply: "Dùng dữ liệu học tập để chọn một vấn đề, đặt chỉ số thành công và chốt các mốc thử nghiệm." },
-        { learn: "Sắp xếp product backlog theo giá trị và phản hồi.", project: "p3", apply: "Xếp hạng các hạng mục của feature theo tác động, công sức và rủi ro trước khi chọn việc cho sprint." },
-        { learn: "Lập user story map và viết tiêu chí nghiệm thu.", project: "p3", apply: "Vẽ hành trình của người học, chọn luồng chính cho MVP và viết tiêu chí nghiệm thu cho từng story." },
-        { learn: "Thu thập phản hồi và thống nhất kỳ vọng với stakeholder.", project: "p3", apply: "Trao đổi với người học và team Learning Hub để kiểm tra giả định và thống nhất phạm vi." },
-        { learn: "Lập kế hoạch phát hành theo đợt và kiểm chứng giả thuyết theo Lean Startup.", project: "p3", apply: "Mở feature cho một nhóm nhỏ, theo dõi tỷ lệ sử dụng và dùng kết quả để quyết định mở rộng hay sửa tiếp." }
+        {
+          topics: "Vai trò Product Owner trong Scrum, tầm nhìn sản phẩm, mục tiêu và roadmap.",
+          learn: "Viết được tầm nhìn sản phẩm và lập roadmap với các mốc bám sát mục tiêu của tổ chức.",
+          project: "p3",
+          apply: "Dùng dữ liệu học tập để chọn một vấn đề của người học, đặt chỉ số thành công và chốt các mốc thử nghiệm."
+        },
+        {
+          topics: "Quản lý product backlog, sắp xếp ưu tiên theo giá trị và phản hồi, chọn việc cho sprint.",
+          learn: "Sắp xếp được backlog theo giá trị và điều chỉnh thứ tự khi nhu cầu người dùng hoặc điều kiện thị trường thay đổi.",
+          project: "p3",
+          apply: "Xếp hạng các hạng mục của feature theo tác động, công sức và rủi ro, rồi chọn việc cho sprint đầu tiên."
+        },
+        {
+          topics: "User story mapping, viết user story và tiêu chí nghiệm thu, xác định phạm vi MVP.",
+          learn: "Chuyển được hành trình người dùng thành các story có tiêu chí kiểm tra rõ ràng và chọn được luồng tối thiểu để thử nghiệm.",
+          project: "p3",
+          apply: "Vẽ hành trình của người học, chọn luồng chính cho MVP và viết tiêu chí nghiệm thu cho từng story."
+        },
+        {
+          topics: "Xác định các bên liên quan, thu thập phản hồi, trao đổi kỳ vọng và thống nhất phạm vi.",
+          learn: "Lập được kế hoạch trao đổi với các bên liên quan và chuyển phản hồi thành quyết định cụ thể về phạm vi hoặc ưu tiên.",
+          project: "p3",
+          apply: "Trao đổi với người học và team Learning Hub để kiểm tra giả định, chốt phạm vi và ghi lại việc cần sửa sau demo."
+        },
+        {
+          topics: "Phát triển theo vòng lặp Agile, lập kế hoạch phát hành theo giá trị và thử nghiệm giả thuyết theo Lean Startup.",
+          learn: "Lập được kế hoạch thử MVP theo từng đợt, xác định cách đo kết quả và dùng dữ liệu để chọn bước tiếp theo.",
+          project: "p3",
+          apply: "Mở feature cho một nhóm nhỏ, theo dõi tỷ lệ sử dụng và dùng kết quả để quyết định mở rộng hay sửa tiếp."
+        }
       ],
       done: ["Feature LH có backlog ưu tiên và tiêu chí nghiệm thu được thống nhất.", "Có kết quả thử nghiệm với nhóm đầu tiên và quyết định cho lần phát hành tiếp theo."] },
     { k: "ai", n: 3, name: "AI", checkpoint: "AI", period: "Tháng 5–6",
@@ -510,11 +535,36 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         url: "https://www.deeplearning.ai/courses/retrieval-augmented-generation"
       },
       outcomes: [
-        { learn: "Dựng pipeline RAG nối kho tri thức, bộ truy xuất và LLM.", project: "p2", apply: "Cho My Buddy truy xuất ghi chú từ các khóa đã học và dẫn lại nguồn khi trả lời." },
-        { learn: "So sánh tìm kiếm từ khóa, ngữ nghĩa và kết hợp hai cách.", project: "p1", apply: "Thử BM25, vector search và hybrid search trên cùng bộ câu hỏi về bài học để chọn cách truy xuất tốt nhất." },
-        { learn: "Chia tài liệu và lập chỉ mục trong cơ sở dữ liệu vector như Weaviate.", project: "p2", apply: "Chia ghi chú theo mục, gắn nhãn khóa học và lọc kết quả theo chủ đề." },
-        { learn: "Thiết kế prompt dùng ngữ cảnh truy xuất để sinh câu trả lời có căn cứ.", project: "p5", apply: "Đưa hồ sơ persona được truy xuất vào prompt để câu trả lời bám sát tính cách và động cơ đã định." },
-        { learn: "Đánh giá chất lượng RAG và theo dõi độ trễ, chi phí khi triển khai.", project: "p1", apply: "Chạy bộ câu hỏi mẫu, chấm độ liên quan của tài liệu và độ bám nguồn của câu trả lời, rồi theo dõi độ trễ và chi phí." }
+        {
+          topics: "Kiến trúc RAG với kho tri thức, hàm truy xuất và hàm bổ sung ngữ cảnh vào prompt trước khi gửi cho LLM.",
+          learn: "Dựng được pipeline RAG đầu tiên, từ câu hỏi đến bước truy xuất tài liệu và tạo câu trả lời dựa trên tài liệu đó.",
+          project: "p2",
+          apply: "Cho My Buddy truy xuất ghi chú từ các khóa đã học và dẫn lại nguồn khi trả lời."
+        },
+        {
+          topics: "Tìm kiếm từ khóa với BM25, tìm kiếm ngữ nghĩa bằng embedding và kết hợp kết quả bằng Reciprocal Rank Fusion (RRF).",
+          learn: "Triển khai và so sánh được các cách truy xuất trên cùng bộ câu hỏi để xem chúng ảnh hưởng thế nào đến tài liệu tìm được và câu trả lời.",
+          project: "p1",
+          apply: "Thử BM25, vector search và tìm kiếm kết hợp bằng RRF trên các câu hỏi về bài học của Learning Hub."
+        },
+        {
+          topics: "Chia tài liệu thành đoạn, tạo embedding, lập chỉ mục và tìm kiếm trong cơ sở dữ liệu vector Weaviate.",
+          learn: "Xây được chỉ mục vector từ một tập tài liệu và truy xuất được các đoạn liên quan khi kho dữ liệu lớn lên.",
+          project: "p2",
+          apply: "Chia ghi chú theo mục, gắn nhãn khóa học và lọc kết quả theo chủ đề trước khi đưa vào câu trả lời."
+        },
+        {
+          topics: "Dựng chatbot theo một lĩnh vực cụ thể, thiết kế prompt từ dữ liệu riêng và thử LLM nguồn mở do Together AI cung cấp.",
+          learn: "Dựng được chatbot dùng kho dữ liệu riêng để trả lời câu hỏi thường gặp và đưa ra gợi ý có căn cứ.",
+          project: "p5",
+          apply: "Truy xuất đúng hồ sơ persona cho tình huống, rồi dùng hồ sơ đó để chatbot phản hồi nhất quán với tính cách và động cơ đã định."
+        },
+        {
+          topics: "Xử lý dữ liệu thay đổi, ghi log tương tác để theo dõi và gỡ lỗi, đánh giá chất lượng RAG khi triển khai.",
+          learn: "Phát hiện được câu trả lời dựa trên nguồn cũ, xác định lỗi ở bước truy xuất hay bước trả lời và theo dõi độ trễ, chi phí.",
+          project: "p1",
+          apply: "Chạy bộ câu hỏi mẫu trước và sau khi cập nhật bài học, kiểm tra nguồn Buddy dùng và ghi log để tìm nguyên nhân khi trả lời sai."
+        }
       ],
       done: ["LH Buddy có kết quả so sánh các cách truy xuất và một bộ eval dùng lại được.", "My Buddy trả lời có nguồn và Persona AI trả lời dựa trên hồ sơ đã chọn."] }
   ];
@@ -705,7 +755,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     return '<a href="' + esc(cert.url) + '" target="_blank" rel="noopener">' + esc(cert.name) + '</a>';
   }
   function learningHTML(item) {
-    if (!item.topics) return esc(item.learn);
     return '<span class="learn-topics"><b>Học gì:</b> ' + esc(item.topics) + '</span>' +
       '<span class="learn-result"><b>Kết quả học tập:</b> ' + esc(item.learn) + '</span>';
   }
