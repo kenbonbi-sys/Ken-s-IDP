@@ -37,7 +37,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:64px;overflow-x:clip}
 body{margin:0;background:#fff;color:var(--ink);font-family:"Momo Trust Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 body.lock{overflow:hidden}
-h1,h2,h3,p,ul,ol,figure{margin:0}
+h1,h2,h3,h4,p,ul,ol,figure{margin:0}
 ul,ol{padding:0;list-style:none}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2.5px solid var(--pink-btn);outline-offset:3px}
@@ -135,9 +135,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cert-i{display:grid;place-items:center;width:40px;height:40px;flex:0 0 auto;border-radius:12px;background:var(--c);color:#fff}
 [data-tri=prod] .cert-i,[data-tri=prod] .pnum{color:var(--ink)}
 .cert-t{display:flex;flex-direction:column;gap:2px;min-width:0;line-height:1.35}
-.cert-t b{font-size:16px;color:var(--ink)}
+.cert-t a{font-size:16px;font-weight:700;color:var(--ink);text-decoration-color:var(--pink);text-underline-offset:3px}
+.cert-t a:hover{color:var(--pink-text)}
 .cert-t small{font-size:13px;color:var(--ink-3)}
 .cert-x{font-size:14px;line-height:1.45;color:var(--ink-2)}
+.pl-list{list-style:decimal;padding-left:1.45em;font-size:15px;line-height:1.45;color:var(--ink-2)}
+.pl-list li+li{margin-top:8px}
+.pl-list li::marker{font-weight:700;color:var(--ct)}
 
 /* ================= Hành: 5 dự án ================= */
 .bn-w{position:relative;z-index:2;margin-bottom:64px}
@@ -195,8 +199,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* ================= Lộ trình (timeline kiểu M16) ================= */
 .sec-tl{background:linear-gradient(180deg,#fff 0%,#FDE4EE 22%,#FFF3F8 70%,#fff 100%)}
-.tl{position:relative;z-index:2;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:40px}
-.tl-line{position:absolute;left:calc(100% / 12);right:calc(100% / 12);top:57.5px;height:3px;border-radius:2px;background:#F7C6DA}
+.tl{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:40px}
+.tl-line{position:absolute;left:calc((100% - 16px) / 6);right:calc((100% - 16px) / 6);top:57.5px;height:3px;border-radius:2px;background:#F7C6DA}
 .tl-i{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:0;text-align:center}
 .yr{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 18px;border:0;border-radius:8px;background:#fff;color:var(--ink);font-size:16px;font-weight:700;white-space:nowrap;box-shadow:var(--sh-s);cursor:pointer;transition:background-color .3s ease,color .3s ease,transform .3s var(--out)}
 .yr:hover{transform:translateY(-2px)}
@@ -214,7 +218,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .ms{display:inline-block;padding:.06em .2em .02em;background:var(--ms-bg);color:#fff;line-height:1.1}
 .card-t{margin-top:16px;font-size:clamp(30px,3vw,42px);line-height:1.1}
 .card-d{margin-top:8px;margin-bottom:26px;font-size:18px;line-height:1.5;color:var(--ink-2)}
-/* Mỗi tháng: các cặp Học → Hành, học phần nào thì dùng ngay vào dự án nào */
+/* Các cặp Học → Hành của checkpoint */
 .pairs{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
 .pr-h,.pr{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:10px}
 .pr-h{margin-bottom:-2px}
@@ -223,7 +227,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .pr-l{gap:10px;background:#FAF6F8}
 .pr-l .gdot{margin-top:5px;border-color:#FAF6F8}
 .pr-x{display:flex;flex-direction:column;gap:2px;min-width:0}
-.pr-x b{font-size:13.5px;font-weight:800;color:var(--ct)}
 .pr-d{font-size:15.5px;color:var(--ink)}
 .pr-k{display:none}
 .pr-a{display:grid;place-items:center;color:var(--pink)}
@@ -231,18 +234,15 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .pr-r{flex-direction:column;gap:2px;border:1.5px dashed #F7C6DA;background:#fff;text-align:left;cursor:pointer;transition:transform .3s var(--out),background-color .2s ease}
 .pr-r:hover{transform:translateX(4px);background:var(--pink-50)}
 .pr-r b{font-size:13.5px;font-weight:800;color:var(--pink-text)}
-.cert-won{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:12px 16px;border-radius:14px;background:#FFF6D6;font-size:15.5px;font-weight:700;line-height:1.4;color:var(--ink)}
-.cert-won .ic{color:#C78900}
+.card-d a{color:var(--pink-text);text-underline-offset:3px}
 .col{display:flex;flex-direction:column;gap:12px}
 .col ul{display:flex;flex-direction:column;gap:10px}
 .col li{position:relative;padding-left:20px;font-size:16px;line-height:1.5;color:var(--ink-2)}
 .col li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:2px;background:var(--pink);transform:rotate(45deg)}
 .col-p li::before{background:transparent;border:2px solid var(--pink)}
 .side{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.side-l{display:flex;flex-direction:column;gap:8px}
 .side-b{display:flex;align-items:flex-start;gap:10px;width:100%;padding:10px 12px;border:0;border-radius:12px;background:#FAF6F8;font-size:15px;line-height:1.45;color:var(--ink-2);text-align:left;cursor:pointer;transition:background-color .2s ease,transform .3s var(--out)}
 .side-b:hover{background:var(--pink-50);transform:translateX(4px)}
-.side-b .gdot{margin-top:6px;border-color:#FAF6F8}
 
 .card-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:32px;padding-top:22px;border-top:1.5px dashed #F7C6DA}
 .dots{display:flex;gap:6px}
@@ -333,9 +333,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .banner{grid-template-columns:minmax(0,1fr);padding:40px 32px}
   .pl-grid{grid-template-columns:minmax(0,1fr)}
   .cr{grid-auto-columns:calc((100% - 18px) / 2)}
-  .tl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px 32px;padding:4px 24px 12px}
-  .tl-i{flex:0 0 150px;scroll-snap-align:start}
-  .tl-line{left:99px;right:auto;width:calc(150px * 5 + 8px * 5)}
+  .tl{margin-bottom:32px}
 }
 @media (max-width:640px){
   html{scroll-padding-top:56px}
@@ -359,8 +357,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .card{padding:26px 18px;border-radius:22px}
   .card-nav .nb span{display:none}
   .card-nav .nb{padding:0 14px}
-  .tl{margin:0 -16px 28px;padding:4px 16px 12px}
-  .tl-line{left:91px}
+  .tl{margin-bottom:28px}
+  .yr{padding:0 7px;font-size:14px}
+  .tl-t{font-size:13px}
   .ov{align-items:flex-end;padding:0}
   .dlg{width:100%;max-height:92vh;border-radius:26px 26px 0 0;transform:translateY(100%)}
   .il-h{padding:28px 18px 14px}
@@ -409,8 +408,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- ============ TỪNG THÁNG ============ -->
 <section id="lo-trinh" class="sec sec-tl">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Từng tháng <span class="pkh">hiểu gì</span></h2></header>
-    <div class="tl" role="tablist" aria-label="Chọn tháng" id="tl"></div>
+    <header class="sh rv-t"><h2 class="dsp">Lộ trình <span class="pkh">6 tháng</span></h2></header>
+    <div class="tl" role="tablist" aria-label="Chọn checkpoint" id="tl"></div>
     <div class="card rv" id="card" role="tabpanel"></div>
   </div>
 </section>
@@ -446,103 +445,78 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   };
 
   /* ================= DỮ LIỆU ================= */
-  // Product Engineer = 3 phần, xếp theo độ nặng: Engineer → Product → AI (không chia tỉ trọng).
-  // Mỗi phần: Học = 1 chứng chỉ, Hành = các dự án dùng nó.
+  // Mỗi kỹ năng có một ứng dụng cụ thể, dùng chung cho card và checkpoint.
   var PILLARS = [
-    { k: "eng", n: 1, name: "Engineer",
-      cert: { name: "IBM Full-Stack JavaScript Developer", meta: "IBM · Coursera · 12 khóa", when: "Tháng 1–6" },
-      projects: ["p4", "p1", "p3"] },
-    { k: "prod", n: 2, name: "Product",
-      cert: { name: "IBM Product Manager", meta: "IBM · Coursera · 7 khóa", when: "Tháng 4–6" },
+    { k: "eng", n: 1, name: "Engineer", checkpoint: "Engineering", period: "Tháng 1–2",
+      cert: {
+        name: "Meta Full Stack Developer Specialization",
+        meta: "Meta · Coursera · 10 khóa",
+        url: "https://www.coursera.org/specializations/meta-full-stack-developer"
+      },
+      outcomes: [
+        { learn: "Dựng giao diện responsive bằng HTML và CSS.", project: "p4", apply: "Làm lại trang Home để bố cục và điều hướng dùng tốt trên điện thoại lẫn desktop." },
+        { learn: "Xây component có thể tái sử dụng và tương tác bằng JavaScript và React.", project: "p4", apply: "Tách các khối nội dung của trang Home thành component dùng lại và kiểm thử điều hướng." },
+        { learn: "Quản lý phiên bản và cộng tác bằng Git và GitHub.", project: "p4", apply: "Chia bản revamp thành các nhánh nhỏ, mở pull request để review từng phần trước khi gộp." },
+        { learn: "Dựng backend bằng Python và Django, có xác thực và REST API.", project: "p2", apply: "Dựng API đọc và lưu ghi chú với xác thực người dùng cho bản thử nghiệm." },
+        { learn: "Thiết kế cơ sở dữ liệu quan hệ và truy vấn bằng SQL.", project: "p2", apply: "Thiết kế bảng ghi chú, chủ đề và lịch ôn để lọc bài theo chủ đề và ngày." }
+      ],
+      done: ["Trang Home mới chạy trên môi trường thử nghiệm và có số đo tốc độ trước và sau.", "My Buddy lưu và truy xuất được ghi chú qua API có xác thực."] },
+    { k: "prod", n: 2, name: "Product", checkpoint: "Product", period: "Tháng 3–4",
+      cert: {
+        name: "IBM Product Owner Professional Certificate",
+        meta: "IBM · Coursera · 9 khóa",
+        url: "https://www.coursera.org/professional-certificates/ibm-product-owner"
+      },
       extra: "Học thêm tâm lý học (tính cách, động cơ, thiên kiến) để làm Persona AI.",
-      projects: ["p3", "p5"] },
-    { k: "ai", n: 3, name: "AI",
-      cert: { name: "IBM RAG and Agentic AI", meta: "IBM · Coursera · 10 khóa", when: "Tháng 1–4" },
-      projects: ["p1", "p2", "p5"] }
+      outcomes: [
+        { learn: "Xác định tầm nhìn sản phẩm và lập roadmap theo mục tiêu.", project: "p3", apply: "Dùng dữ liệu học tập để chọn một vấn đề, đặt chỉ số thành công và chốt các mốc thử nghiệm." },
+        { learn: "Sắp xếp product backlog theo giá trị và phản hồi.", project: "p3", apply: "Xếp hạng các hạng mục của feature theo tác động, công sức và rủi ro trước khi chọn việc cho sprint." },
+        { learn: "Lập user story map và viết tiêu chí nghiệm thu.", project: "p3", apply: "Vẽ hành trình của người học, chọn luồng chính cho MVP và viết tiêu chí nghiệm thu cho từng story." },
+        { learn: "Thu thập phản hồi và thống nhất kỳ vọng với stakeholder.", project: "p3", apply: "Trao đổi với người học và team Learning Hub để kiểm tra giả định và thống nhất phạm vi." },
+        { learn: "Lập kế hoạch phát hành theo đợt và kiểm chứng giả thuyết theo Lean Startup.", project: "p3", apply: "Mở feature cho một nhóm nhỏ, theo dõi tỷ lệ sử dụng và dùng kết quả để quyết định mở rộng hay sửa tiếp." }
+      ],
+      done: ["Feature LH có backlog ưu tiên và tiêu chí nghiệm thu được thống nhất.", "Có kết quả thử nghiệm với nhóm đầu tiên và quyết định cho lần phát hành tiếp theo."] },
+    { k: "ai", n: 3, name: "AI", checkpoint: "AI", period: "Tháng 5–6",
+      cert: {
+        name: "Retrieval Augmented Generation (RAG)",
+        meta: "DeepLearning.AI · 5 mô-đun",
+        url: "https://www.deeplearning.ai/courses/retrieval-augmented-generation"
+      },
+      outcomes: [
+        { learn: "Dựng pipeline RAG nối kho tri thức, bộ truy xuất và LLM.", project: "p2", apply: "Cho My Buddy truy xuất ghi chú từ các khóa đã học và dẫn lại nguồn khi trả lời." },
+        { learn: "So sánh tìm kiếm từ khóa, ngữ nghĩa và kết hợp hai cách.", project: "p1", apply: "Thử BM25, vector search và hybrid search trên cùng bộ câu hỏi về bài học để chọn cách truy xuất tốt nhất." },
+        { learn: "Chia tài liệu và lập chỉ mục trong cơ sở dữ liệu vector như Weaviate.", project: "p2", apply: "Chia ghi chú theo mục, gắn nhãn khóa học và lọc kết quả theo chủ đề." },
+        { learn: "Thiết kế prompt dùng ngữ cảnh truy xuất để sinh câu trả lời có căn cứ.", project: "p5", apply: "Đưa hồ sơ persona được truy xuất vào prompt để câu trả lời bám sát tính cách và động cơ đã định." },
+        { learn: "Đánh giá chất lượng RAG và theo dõi độ trễ, chi phí khi triển khai.", project: "p1", apply: "Chạy bộ câu hỏi mẫu, chấm độ liên quan của tài liệu và độ bám nguồn của câu trả lời, rồi theo dõi độ trễ và chi phí." }
+      ],
+      done: ["LH Buddy có kết quả so sánh các cách truy xuất và một bộ eval dùng lại được.", "My Buddy trả lời có nguồn và Persona AI trả lời dựa trên hồ sơ đã chọn."] }
   ];
   var PILLAR_NAME = { eng: "Engineer", prod: "Product", ai: "AI" };
-  function pillarOf(k) { return PILLARS.filter(function (p) { return p.k === k; })[0]; }
 
   // 5 dự án (Hành). tri = phần chính (màu thẻ), tags = các phần dự án dùng tới
   var PROJECTS = [
-    { id: "p1", n: 1, tri: "ai", tags: ["ai", "eng"], name: "LH Buddy", sub: "Chatbot trên Learning Hub", when: "Tháng 1–4",
+    { id: "p1", n: 1, tri: "ai", tags: ["ai", "eng"], name: "LH Buddy", sub: "Chatbot trên Learning Hub", when: "Tháng 5–6",
       what: "Hoàn thiện chatbot Buddy trên Learning Hub cho đủ các thành phần cốt lõi của Harness AI.",
       target: "Buddy có đủ gateway, memory, knowledge base, vòng lặp tool, MCP, tracing, eval và feedback người dùng; điểm eval tăng qua từng vòng sửa.",
-      uses: ["IBM RAG and Agentic AI", "Harness AI", "Engineer: back-end"] },
+      uses: [PILLARS[2].cert.name, "Harness AI", "Engineer: back-end"] },
     { id: "p2", n: 2, tri: "ai", tags: ["ai", "eng", "prod"], name: "My Buddy", sub: "AI agent riêng, đóng vai second brain", when: "Tháng 1–6",
       what: "Agent của riêng em, nắm kiến thức về Code, Product và tự học (self-learning). Dùng chung bộ khung Harness với LH Buddy.",
       target: "Hỏi được My Buddy về code đang làm và kiến thức product; note của cả 3 chứng chỉ nằm trong đó và nó tự nhắc em ôn lại.",
-      uses: ["IBM RAG and Agentic AI", "Note của 3 chứng chỉ"] },
-    { id: "p3", n: 3, tri: "prod", tags: ["prod", "eng"], name: "Feature LH", sub: "Feature mới trên Learning Hub", when: "Tháng 4–6",
+      uses: [PILLARS[0].cert.name, PILLARS[2].cert.name, "Ghi chú từ các khóa học"] },
+    { id: "p3", n: 3, tri: "prod", tags: ["prod", "eng"], name: "Feature LH", sub: "Feature mới trên Learning Hub", when: "Tháng 3–4",
       what: "Tự define và roll out được feature mới trên Learning Hub.",
       target: "Ít nhất 1 feature đi đủ vòng: tìm vấn đề → đề xuất → làm → roll out → đo số liệu → báo cáo.",
-      uses: ["IBM Product Manager", "Engineer: full-stack"] },
-    { id: "p4", n: 4, tri: "eng", tags: ["eng", "prod"], name: "Revamp CIO web", sub: "Làm mới website CIO", when: "Tháng 1–3",
+      uses: [PILLARS[1].cert.name, "Engineer: full-stack"] },
+    { id: "p4", n: 4, tri: "eng", tags: ["eng", "prod"], name: "Revamp CIO web", sub: "Làm mới website CIO", when: "Tháng 1–2",
       what: "Làm mới website CIO: cấu trúc trang (IA), trang Home và tốc độ tải.",
       target: "Website CIO mới lên production, có số đo tốc độ trước và sau.",
-      uses: ["IBM Full-Stack JavaScript Developer"] },
+      uses: [PILLARS[0].cert.name] },
     { id: "p5", n: 5, tri: "ai", tags: ["ai", "prod"], name: "Persona AI", sub: "AI đóng vai persona", when: "Tháng 5–6",
       what: "AI đóng vai persona khách hàng, xây trên kiến thức tâm lý học: tính cách, động cơ, thiên kiến.",
       target: "Persona phản ứng nhất quán với tính cách đã định (đo bằng eval), team dùng thử được trong công việc.",
-      uses: ["Tâm lý học", "Harness: soul.md, memory, eval"] }
+      uses: ["Tâm lý học", PILLARS[2].cert.name, "Harness: soul.md, memory, eval"] }
   ];
   function projOf(id) { return PROJECTS.filter(function (p) { return p.id === id; })[0]; }
-
-  // 6 tháng: mỗi tháng là các cặp Học → Hành (học phần nào thì dùng ngay vào dự án nào) + "Xong tháng khi".
-  // k = phần (eng / prod / ai), src = học từ đâu, t = học gì, p = dự án, d = làm gì trong dự án
-  var MONTHS = [
-    { n: 1, title: "Nền móng & soi lại Buddy",
-      desc: "Bắt đầu 2 chứng chỉ Engineer và AI, dùng ngay vào My Buddy, LH Buddy và website CIO.",
-      pairs: [
-        { k: "ai", src: "IBM RAG and Agentic AI · khóa 1–3", t: "App GenAI với LangChain, RAG, vector database", p: "p2", d: "Dựng khung My Buddy: note từng bài học nạp vào vector database, hỏi lại được" },
-        { k: "ai", src: "Harness AI", t: "Gateway, guardrail, tracing; cân chi phí, độ trễ, bảo mật", p: "p1", d: "Ghi token, độ trễ, chi phí cho từng câu trả lời của Buddy; thêm kiểm câu trả lời đầu ra và trần chi phí" },
-        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 1–4", t: "Software engineering, HTML/CSS/JS, Git, JavaScript", p: "p4", d: "Soi website CIO hiện tại: cấu trúc trang, HTML, tốc độ tải; chốt phạm vi làm mới" }
-      ],
-      done: ["Có số liệu token, độ trễ, chi phí của Buddy", "My Buddy trả lời được câu hỏi từ note tháng 1"] },
-    { n: 2, title: "Memory & knowledge base",
-      desc: "Cho Buddy nhớ người học, và dựng lại website CIO bằng React và Node.js.",
-      pairs: [
-        { k: "ai", src: "IBM RAG and Agentic AI · khóa 4–5", t: "Memory: semantic, episodic; knowledge base với vector search", p: "p1", d: "Buddy nhớ người học qua nhiều phiên và tự lưu điều học được; thử vector search, so với BM25 hiện tại bằng eval" },
-        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 5–6", t: "React front-end, Node.js & Express back-end", p: "p4", d: "Dựng lại cấu trúc trang và trang Home mới của website CIO" },
-        { k: "ai", src: "Memory dùng chung với LH Buddy", t: "Episodic memory: dòng thời gian", p: "p2", d: "My Buddy nhớ dòng thời gian những gì em đã học" }
-      ],
-      done: ["Buddy nhớ được người học khi mở phiên chat mới", "Website CIO mới chạy được trên UAT"] },
-    { n: 3, title: "Agent loop, tool & MCP",
-      desc: "Biến Buddy từ một lần gọi model thành agent có tool, và đưa website CIO mới lên production.",
-      pairs: [
-        { k: "ai", src: "IBM RAG and Agentic AI · các khóa Agentic AI", t: "Vòng lặp LLM ⇄ Tool với LangGraph, CrewAI, AG2; skills; soul.md / agent.md", p: "p1", d: "Buddy tự gọi tool (tra bài học, xem tiến độ) trong vòng lặp; tách tính cách và luật ra soul.md / agent.md" },
-        { k: "ai", src: "Harness AI", t: "MCP / connector", p: "p2", d: "My Buddy nối MCP tới repo code và note: hỏi được “đoạn code này làm gì”, “mình đã học gì về X”" },
-        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 7–8", t: "Cloud native, DevOps, Agile, NoSQL; container với Docker, Kubernetes", p: "p4", d: "Đưa website CIO mới lên production, đo tốc độ trước và sau" }
-      ],
-      done: ["Buddy gọi được ít nhất 2 tool trong vòng lặp", "Website CIO mới lên production", "Review giữa kỳ với quản lý"] },
-    { n: 4, title: "Eval, feedback & bắt đầu Product",
-      desc: "Khép vòng Tracing → Evals → cải tiến cho Buddy, nhận chứng chỉ AI và bắt đầu chứng chỉ Product.",
-      cert: "ai",
-      pairs: [
-        { k: "ai", src: "IBM RAG and Agentic AI · các khóa cuối", t: "Đánh giá agent, project cuối khóa", p: "p1", d: "Bộ eval tự chạy sau mỗi lần sửa; thêm 👍 / 👎 trên từng câu trả lời; mỗi tuần sửa theo số liệu" },
-        { k: "prod", src: "IBM Product Manager · khóa 1–2", t: "Nhập môn quản lý sản phẩm, vòng đời sản phẩm", p: "p3", d: "Tìm vấn đề của người học Learning Hub từ số liệu và feedback, viết đề xuất feature" },
-        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 9–10", t: "Microservices & serverless, Node.js & MongoDB", p: "p2", d: "Tách phần khung dùng chung (memory, tool, tracing) thành service để LH Buddy và My Buddy cùng dùng" }
-      ],
-      done: ["Nhận chứng chỉ IBM RAG and Agentic AI", "LH Buddy đủ các thành phần Harness, điểm eval tăng sau ít nhất 2 vòng sửa", "Quản lý duyệt đề xuất feature"] },
-    { n: 5, title: "Feature LH & Persona AI",
-      desc: "Roll out feature mới trên Learning Hub, và đem tâm lý học vào Persona AI.",
-      pairs: [
-        { k: "prod", src: "IBM Product Manager · khóa 3–5", t: "Lập kế hoạch sản phẩm, Agile, roadmap", p: "p3", d: "Làm feature và roll out từng bước (nhóm nhỏ trước), gắn tracking để đo" },
-        { k: "prod", src: "Tâm lý học", t: "Tính cách (Big Five), động cơ, thiên kiến nhận thức", p: "p5", d: "Mỗi persona một soul.md: tính cách, động cơ, thiên kiến; kèm memory riêng" },
-        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 11", t: "Capstone: dựng app full-stack hoàn chỉnh", p: "p5", d: "Dựng Persona AI đủ giao diện, API và database theo cách làm của capstone" },
-        { k: "prod", src: "Note các khóa Product", t: "Kiến thức product vừa học", p: "p2", d: "My Buddy thêm mảng Product và chế độ tự ôn: tự đặt câu hỏi cho em trả lời" }
-      ],
-      done: ["Feature mới chạy với nhóm người dùng đầu tiên", "Persona AI chạy thử được với 3 persona"] },
-    { n: 6, title: "Tổng kết: 3 chứng chỉ, 5 sản phẩm",
-      desc: "Nhận đủ chứng chỉ Engineer và Product, đo kết quả từng dự án và trình bày lại cả mùa.",
-      cert: "eng prod",
-      pairs: [
-        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 12", t: "Hoàn tất chứng chỉ Engineer", p: "p2", d: "My Buddy bản hoàn chỉnh: Code, Product, Self-learning" },
-        { k: "prod", src: "IBM Product Manager · khóa 6–7", t: "Hoàn tất chứng chỉ Product", p: "p3", d: "Đo kết quả feature sau roll out, viết báo cáo, quyết định làm tiếp hay sửa" },
-        { k: "ai", src: "Harness AI", t: "Evals cho persona", p: "p5", d: "Chấm độ nhất quán của từng persona; team dùng thử và góp ý" }
-      ],
-      done: ["Đủ 3 chứng chỉ: Engineer, AI, Product", "Demo 5 dự án, trình bày lại toàn bộ IDP trong 30 phút"] }
-  ];
 
   // Thẻ dự án: 5 tầng là 5 hàng của subgrid → mọi thẻ trong carousel thẳng hàng từng tầng
   function projHTML(p) {
@@ -587,7 +561,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   function $(s, r) { return (r || document).querySelector(s); }
   function $$(s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); }
-  function M(n) { return MONTHS[n - 1]; }
   function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
   function svg(name, cls) {
     return '<svg class="ic' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[name] + "</svg>";
@@ -666,16 +639,20 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
   /* ================= RENDER TĨNH ================= */
   function renderStatic() {
-    // 3 phần của Product Engineer: mỗi phần Học (chứng chỉ) + Hành (dự án dùng nó)
     $("#pillars").innerHTML = PILLARS.map(function (p) {
       return '<article class="pl" id="pl-' + p.k + '" data-tri="' + p.k + '">' +
-        '<div class="pl-h"><span class="mnum" data-mnum="' + p.n + '"></span><div class="pl-n"><h3 class="dsp">' + p.name + "</h3>" + "</div></div>" +
-        '<div class="pl-b"><span class="lbl lbl-p">Học</span><div class="cert"><span class="cert-i">' + svg("trophy") + '</span><span class="cert-t"><b>' + esc(p.cert.name) + "</b><small>" + esc(p.cert.meta + " · " + p.cert.when) + "</small></span></div>" +
-          (p.extra ? '<p class="cert-x">' + esc(p.extra) + "</p>" : "") + "</div>" +
-        '<div class="pl-b"><span class="lbl lbl-p">Hành</span><ul class="side-l">' + p.projects.map(function (id) {
-          var j = projOf(id);
-          return '<li><button type="button" class="side-b" data-proj="' + j.id + '"><span class="gdot" data-tri="' + j.tri + '"></span><span><b>' + esc(j.name) + "</b> · " + esc(j.sub) + "</span></button></li>";
-        }).join("") + "</ul></div></article>";
+        '<div class="pl-h"><span class="mnum" data-mnum="' + p.n + '"></span><div class="pl-n"><h3 class="dsp">' + esc(p.name) + '</h3></div></div>' +
+        '<div class="pl-b"><h4 class="lbl lbl-p">Học</h4>' +
+          '<div class="cert"><span class="cert-i">' + svg("trophy") + '</span><span class="cert-t">' +
+          courseLink(p.cert) + '<small>' + esc(p.cert.meta + " · " + p.period) + '</small></span></div>' +
+          '<ol class="pl-list">' + p.outcomes.map(function (item) { return '<li>' + esc(item.learn) + '</li>'; }).join("") + '</ol>' +
+          (p.extra ? '<p class="cert-x">' + esc(p.extra) + '</p>' : "") + '</div>' +
+        '<div class="pl-b"><h4 class="lbl lbl-p">Hành</h4><ol class="pl-list">' +
+          p.outcomes.map(function (item) {
+            var project = projOf(item.project);
+            return '<li><button type="button" class="side-b" data-proj="' + project.id + '">' +
+              '<span><b>' + esc(project.name) + '</b> · ' + esc(item.apply) + '</span></button></li>';
+          }).join("") + '</ol></div></article>';
     }).join("");
 
     // 5 dự án trong một carousel
@@ -684,8 +661,10 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       '<div class="cat-nav"><button type="button" class="nb" data-cr="-1" aria-label="Thẻ trước">' + svg("left") + '</button><button type="button" class="nb" data-cr="1" aria-label="Thẻ sau">' + svg("right") + "</button></div></div>" +
       '<div class="cr" tabindex="0" aria-label="5 dự án">' + PROJECTS.map(projHTML).join("") + "</div></div>";
 
-    $("#tl").innerHTML = '<div class="tl-line"></div>' + MONTHS.map(function (m) {
-      return '<div class="tl-i"><button type="button" role="tab" class="yr" id="tab-' + m.n + '" data-tab="' + m.n + '" aria-controls="card"><span>Tháng ' + m.n + '</span></button><span class="tl-dot"></span><span class="tl-t">' + esc(m.title) + "</span></div>";
+    $("#tl").innerHTML = '<div class="tl-line" aria-hidden="true"></div>' + PILLARS.map(function (p) {
+      return '<div class="tl-i" role="presentation"><button type="button" role="tab" class="yr" id="tab-' + p.n + '" data-tab="' + p.n +
+        '" aria-controls="card" aria-label="' + esc(p.period + " · " + p.checkpoint) + '">' + esc(p.period) + '</button>' +
+        '<span class="tl-dot" aria-hidden="true"></span><span class="tl-t" aria-hidden="true">' + esc(p.checkpoint) + '</span></div>';
     }).join("");
 
     document.body.insertAdjacentHTML("afterbegin", MNUM_DEFS);
@@ -694,50 +673,53 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     $$("[data-tag]").forEach(function (el) { el.innerHTML = tagHTML(el.getAttribute("data-tag")); });
   }
 
-  /* ================= NỘI DUNG THÁNG (dùng chung cho thẻ + popup) ================= */
-  // Thẻ tháng: chứng chỉ nhận trong tháng (nếu có) → các cặp Học → Hành → "Xong tháng khi"
-  function bodyHTML(m) {
-    var won = m.cert ? m.cert.split(" ").map(function (k) { var p = pillarOf(k); return p.name + " (" + p.cert.name + ")"; }).join(" và ") : "";
-    return (won ? '<p class="cert-won">' + svg("trophy") + "<span>Cuối tháng nhận chứng chỉ " + esc(won) + "</span></p>" : "") +
-      '<div class="pairs"><div class="pr-h" aria-hidden="true"><span class="lbl lbl-p">Học</span><span class="lbl lbl-p">Hành</span></div>' +
-      m.pairs.map(function (x) {
-        var p = projOf(x.p);
-        return '<div class="pr"><div class="pr-l" data-tri="' + x.k + '"><span class="gdot" data-tri="' + x.k + '"></span><span class="pr-x"><span class="pr-k">Học</span><b>' + esc(x.src) + "</b><span class=\"pr-d\">" + esc(x.t) + "</span></span></div>" +
-          '<span class="pr-a" aria-hidden="true">' + svg("right") + "</span>" +
-          '<button type="button" class="pr-r" data-proj="' + p.id + '"><span class="pr-k">Hành</span><b>' + esc(p.name) + "</b><span class=\"pr-d\">" + esc(x.d) + "</span></button></div>";
-      }).join("") + "</div>" +
-      '<div class="col"><span class="lbl lbl-p">Xong tháng khi</span><ul>' + m.done.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
+  /* ================= CHECKPOINT ================= */
+  function courseLink(cert) {
+    return '<a href="' + esc(cert.url) + '" target="_blank" rel="noopener">' + esc(cert.name) + '</a>';
   }
-  function dotsHTML(n, attr) {
-    return '<div class="dots">' + MONTHS.map(function (m) { return '<button type="button" class="dot' + (m.n === n ? " on" : "") + '" ' + attr + '="' + m.n + '" aria-label="Tháng ' + m.n + '"></button>'; }).join("") + "</div>";
+  function bodyHTML(p) {
+    return '<div class="pairs"><div class="pr-h" aria-hidden="true"><span class="lbl lbl-p">Học</span><span class="lbl lbl-p">Hành</span></div>' +
+      p.outcomes.map(function (item) {
+        var project = projOf(item.project);
+        return '<div class="pr"><div class="pr-l" data-tri="' + p.k + '"><span class="gdot" data-tri="' + p.k + '"></span>' +
+          '<span class="pr-x"><span class="pr-k">Học</span><span class="pr-d">' + esc(item.learn) + '</span></span></div>' +
+          '<span class="pr-a" aria-hidden="true">' + svg("right") + '</span>' +
+          '<button type="button" class="pr-r" data-proj="' + project.id + '"><span class="pr-k">Hành</span><b>' + esc(project.name) + '</b><span class="pr-d">' + esc(item.apply) + '</span></button></div>';
+      }).join("") + '</div>' +
+      '<div class="col"><span class="lbl lbl-p">Kết quả cần đạt</span><ul>' +
+        p.done.map(function (item) { return '<li>' + esc(item) + '</li>'; }).join("") + '</ul></div>';
   }
-  function headHTML(m, id) {
-    return '<div class="dlg-meta"><span class="stampl dsp">Tháng ' + m.n + "</span></div>" +
-      '<h3 class="dsp card-t"' + (id ? ' id="' + id + '"' : "") + ">" + esc(m.title) + '</h3><p class="card-d">' + esc(m.desc) + "</p>";
+  function dotsHTML(n) {
+    return '<div class="dots">' + PILLARS.map(function (p) {
+      var current = p.n === n;
+      return '<button type="button" class="dot' + (current ? " on" : "") + '" data-tab="' + p.n +
+        '" aria-label="' + esc(p.period + " · " + p.checkpoint) + '"' + (current ? ' aria-current="step"' : "") + '></button>';
+    }).join("") + '</div>';
+  }
+  function headHTML(p) {
+    return '<div class="dlg-meta"><span class="stampl dsp">' + esc(p.period) + '</span></div>' +
+      '<h3 class="dsp card-t">' + esc(p.checkpoint) + '</h3><p class="card-d">Mục tiêu chứng chỉ · ' + courseLink(p.cert) + '</p>';
   }
 
-  /* ================= THẺ "TỪNG THÁNG LÀM GÌ" ================= */
   var sel = 1;
   function select(n) {
-    if (n < 1 || n > 6) return;
+    if (n < 1 || n > PILLARS.length || n === sel) return;
     var dir = n > sel ? "r" : n < sel ? "l" : "";
     sel = n;
     renderCard(dir);
   }
   function renderCard(dir) {
-    var m = M(sel), c = $("#card");
+    var checkpoint = PILLARS[sel - 1], c = $("#card");
     c.setAttribute("aria-labelledby", "tab-" + sel);
-    c.innerHTML = '<div class="' + (dir ? "enter-" + dir : "") + '">' + headHTML(m) + bodyHTML(m) +
-      '<div class="card-nav"><button type="button" class="nb" data-pnav="-1"' + (sel === 1 ? " disabled" : "") + ">" + svg("left") + "<span>Tháng trước</span></button>" + dotsHTML(sel, "data-tab") +
-      '<button type="button" class="nb" data-pnav="1"' + (sel === 6 ? " disabled" : "") + "><span>Tháng sau</span>" + svg("right") + "</button></div></div>";
+    c.innerHTML = '<div class="' + (dir ? "enter-" + dir : "") + '">' + headHTML(checkpoint) + bodyHTML(checkpoint) +
+      '<div class="card-nav"><button type="button" class="nb" data-pnav="-1" aria-label="Checkpoint trước"' + (sel === 1 ? " disabled" : "") + ">" + svg("left") + "<span>Checkpoint trước</span></button>" + dotsHTML(sel) +
+      '<button type="button" class="nb" data-pnav="1" aria-label="Checkpoint sau"' + (sel === PILLARS.length ? " disabled" : "") + "><span>Checkpoint sau</span>" + svg("right") + "</button></div></div>";
     $$(".yr", $("#tl")).forEach(function (t) {
       var on = +t.getAttribute("data-tab") === sel;
       t.setAttribute("aria-selected", on ? "true" : "false");
       t.tabIndex = on ? 0 : -1;
       t.parentNode.classList.toggle("sel", on);
     });
-    var tl = $("#tl"), pill = $("#tab-" + sel);
-    if (pill && tl.scrollWidth > tl.clientWidth + 2) tl.scrollTo({ left: pill.parentNode.offsetLeft - 24, behavior: behavior() });
   }
 
   /* ================= POPUP ================= */
@@ -876,7 +858,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     }
     if (!top && e.target.matches && e.target.matches("[role=tab]") && (e.key === "ArrowRight" || e.key === "ArrowLeft")) {
       var nn = sel + (e.key === "ArrowRight" ? 1 : -1);
-      if (nn >= 1 && nn <= 6) { select(nn); $("#tab-" + nn).focus(); }
+      if (nn >= 1 && nn <= PILLARS.length) { select(nn); $("#tab-" + nn).focus(); }
       e.preventDefault();
     }
   });
