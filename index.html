@@ -23,7 +23,7 @@
   --ms-bg:repeating-linear-gradient(135deg,#F95396 0 .17em,#D42A87 .17em .3em);
   --ink:#1C171A; --ink-2:#4A4046; --ink-3:#796B73;
   --ok:#12B76A; --ok-soft:#DCFCE7;
-  /* Product Engineer = Engineer (nặng nhất) · Product · AI */
+  /* Màu cho AI, Engineering và Product */
   --eng:#F95396; --prod:#FFC21A; --ai:#429CFF;
   --eng-d:#D42A87; --prod-d:#F2B200; --ai-d:#1B6FE0;
   --eng-t:#C91F72; --prod-t:#8A5200; --ai-t:#1657B8;
@@ -225,15 +225,15 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .pr-h,.pr{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:10px}
 .pr-h{margin-bottom:-2px}
 .pr-h .lbl:last-child{grid-column:3}
+.pr-lessons{display:grid;gap:8px}
 .pr-l,.pr-r{display:flex;min-width:0;padding:14px 16px;border-radius:16px;line-height:1.45}
 .pr-l{gap:10px;background:#FAF6F8}
 .pr-l .gdot{margin-top:5px;border-color:#FAF6F8}
-.pr-x{display:flex;flex-direction:column;gap:2px;min-width:0}
 .pr-d{font-size:15.5px;color:var(--ink)}
 .pr-k{display:none}
-.pr-a{display:grid;place-items:center;color:var(--pink)}
+.pr-a{display:grid;align-self:start;place-items:center;height:48px;color:var(--pink)}
 .pr-a .ic{width:22px;height:22px}
-.pr-r{flex-direction:column;gap:2px;border:1.5px dashed #F7C6DA;background:#fff;text-align:left;cursor:pointer;transition:transform .3s var(--out),background-color .2s ease}
+.pr-r{align-self:start;flex-direction:column;gap:6px;border:1.5px dashed #F7C6DA;background:#fff;text-align:left;cursor:pointer;transition:transform .3s var(--out),background-color .2s ease}
 .pr-r:hover{transform:translateX(4px);background:var(--pink-50)}
 .pr-r b{font-size:13.5px;font-weight:800;color:var(--pink-text)}
 .card-d a{color:var(--pink-text);text-underline-offset:3px}
@@ -243,8 +243,12 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .col li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:2px;background:var(--pink);transform:rotate(45deg)}
 .col-p li::before{background:transparent;border:2px solid var(--pink)}
 .side{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.side-b{display:flex;align-items:flex-start;gap:10px;width:100%;padding:10px 12px;border:0;border-radius:12px;background:#FAF6F8;font-size:15px;line-height:1.45;color:var(--ink-2);text-align:left;cursor:pointer;transition:background-color .2s ease,transform .3s var(--out)}
+.pl-apps{display:grid;gap:8px}
+.side-b{display:flex;flex-direction:column;gap:6px;width:100%;padding:10px 12px;border:0;border-radius:12px;background:#FAF6F8;font-size:15px;line-height:1.45;color:var(--ink-2);text-align:left;cursor:pointer;transition:background-color .2s ease,transform .3s var(--out)}
 .side-b:hover{background:var(--pink-50);transform:translateX(4px)}
+.app-items{display:grid;gap:6px;width:100%}
+.app-item{display:list-item;list-style:disc;margin-left:1em}
+.app-item:only-child{display:block;margin-left:0}
 
 .card-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:32px;padding-top:22px;border-top:1.5px dashed #F7C6DA}
 .dots{display:flex;gap:6px}
@@ -449,7 +453,40 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   /* ================= DỮ LIỆU ================= */
   // Mỗi kỹ năng có một ứng dụng cụ thể, dùng chung cho card và checkpoint.
   var PILLARS = [
-    { k: "eng", n: 1, name: "Engineer", checkpoint: "Engineering", period: "Tháng 1–2",
+    { k: "ai", n: 1, name: "AI", checkpoint: "AI", period: "Tháng 1–2",
+      cert: {
+        name: "Retrieval Augmented Generation (RAG)",
+        meta: "DeepLearning.AI · 5 mô-đun",
+        url: "https://www.deeplearning.ai/courses/retrieval-augmented-generation"
+      },
+      outcomes: [
+        {
+          topics: "Kiến trúc RAG với kho tri thức, hàm truy xuất và hàm bổ sung ngữ cảnh vào prompt trước khi gửi cho LLM.",
+          learn: "Dựng được pipeline RAG đầu tiên, từ câu hỏi đến bước truy xuất tài liệu và tạo câu trả lời dựa trên tài liệu đó.",
+          project: "p2",
+          apply: "Thử pipeline cho My Buddy truy xuất một tập ghi chú mẫu và dẫn lại nguồn khi trả lời."
+        },
+        {
+          topics: "Chia tài liệu thành đoạn, tạo embedding, lập chỉ mục và tìm kiếm trong cơ sở dữ liệu vector Weaviate.",
+          learn: "Xây được chỉ mục vector từ một tập tài liệu và truy xuất được các đoạn liên quan khi kho dữ liệu lớn lên.",
+          project: "p2",
+          apply: "Lập chỉ mục ghi chú mẫu theo mục, gắn nhãn khóa học và lọc theo chủ đề để dùng lại khi xây My Buddy."
+        },
+        {
+          topics: "Dựng chatbot theo một lĩnh vực cụ thể, thiết kế prompt từ dữ liệu riêng và thử LLM nguồn mở do Together AI cung cấp.",
+          learn: "Dựng được chatbot dùng kho dữ liệu riêng để trả lời câu hỏi thường gặp và đưa ra gợi ý có căn cứ.",
+          project: "p5",
+          apply: "Thử truy xuất hồ sơ persona để chatbot phản hồi nhất quán với tính cách và động cơ đã định. Dùng bản mẫu này khi hoàn thiện Persona AI ở Tháng 5–6."
+        },
+        {
+          topics: "Xử lý dữ liệu thay đổi, ghi log tương tác để theo dõi và gỡ lỗi, đánh giá chất lượng RAG khi triển khai.",
+          learn: "Phát hiện được câu trả lời dựa trên nguồn cũ, xác định lỗi ở bước truy xuất hay bước trả lời và theo dõi độ trễ, chi phí.",
+          project: "p1",
+          apply: "Chạy bộ câu hỏi mẫu trước và sau khi cập nhật bài học, kiểm tra nguồn Buddy dùng và ghi log để tìm nguyên nhân khi trả lời sai."
+        }
+      ],
+      done: ["LH Buddy có bộ câu hỏi đánh giá dùng lại được và log để kiểm tra nguồn trả lời.", "Có bản mẫu My Buddy trả lời có nguồn và Persona AI phản hồi theo hồ sơ đã chọn."] },
+    { k: "eng", n: 2, name: "Engineer", checkpoint: "Engineering", period: "Tháng 3–4",
       cert: {
         name: "Meta Full Stack Developer Specialization",
         meta: "Meta · Coursera · 10 khóa",
@@ -460,19 +497,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
           topics: "Vai trò của lập trình viên full-stack, cách trình duyệt, máy chủ và cơ sở dữ liệu phối hợp, cùng HTML, CSS và Bootstrap.",
           learn: "Giải thích được luồng của một yêu cầu web và dựng được trang tự điều chỉnh bố cục theo kích thước màn hình.",
           project: "p4",
-          apply: "Làm lại trang Home và kiểm tra bố cục, điều hướng trên điện thoại lẫn desktop."
+          apply: "Dựng bản mẫu trang Home và kiểm tra bố cục, điều hướng trên điện thoại lẫn desktop để chuẩn bị đợt revamp Tháng 5–6."
         },
         {
           topics: "JavaScript, thao tác với DOM, component React, props, state, biểu mẫu và kiểm thử bằng Jest.",
           learn: "Tạo được component React dùng lại, cập nhật giao diện theo thao tác người dùng và viết unit test cho logic JavaScript.",
           project: "p4",
-          apply: "Tách các khối nội dung trang Home thành component dùng lại và kiểm thử logic điều hướng."
-        },
-        {
-          topics: "Dòng lệnh, lịch sử phiên bản, nhánh Git và làm việc chung trên GitHub.",
-          learn: "Quản lý được các phiên bản mã nguồn, phát triển trên nhánh riêng và gửi thay đổi để đồng đội review.",
-          project: "p4",
-          apply: "Chia bản revamp thành các nhánh nhỏ và mở pull request để review từng phần trước khi gộp."
+          apply: "Tách các khối nội dung của bản mẫu trang Home thành component dùng lại và kiểm thử logic điều hướng."
         },
         {
           topics: "Cú pháp Python, biến, kiểu dữ liệu, điều kiện, vòng lặp, hàm và lập trình hướng đối tượng. Trong Django, học model, view, định tuyến, xác thực và REST API.",
@@ -487,8 +518,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
           apply: "Thiết kế bảng ghi chú, chủ đề và lịch ôn, rồi nối giao diện My Buddy với API để lọc ghi chú theo chủ đề và ngày."
         }
       ],
-      done: ["Trang Home mới chạy trên môi trường thử nghiệm và có số đo tốc độ trước và sau.", "My Buddy lưu và truy xuất được ghi chú qua API có xác thực."] },
-    { k: "prod", n: 2, name: "Product", checkpoint: "Product", period: "Tháng 3–4",
+      done: ["My Buddy lưu và truy xuất được ghi chú qua API có xác thực.", "Bản mẫu trang Home chạy trên môi trường thử nghiệm và sẵn sàng cho đợt revamp Tháng 5–6."] },
+    { k: "prod", n: 3, name: "Product", checkpoint: "Product", period: "Tháng 5–6",
       cert: {
         name: "IBM Product Owner Professional Certificate",
         meta: "IBM · Coursera · 9 khóa",
@@ -527,79 +558,45 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
           apply: "Mở feature cho một nhóm nhỏ, theo dõi tỷ lệ sử dụng và dùng kết quả để quyết định mở rộng hay sửa tiếp."
         }
       ],
-      done: ["Feature LH có backlog ưu tiên và tiêu chí nghiệm thu được thống nhất.", "Có kết quả thử nghiệm với nhóm đầu tiên và quyết định cho lần phát hành tiếp theo."] },
-    { k: "ai", n: 3, name: "AI", checkpoint: "AI", period: "Tháng 5–6",
-      cert: {
-        name: "Retrieval Augmented Generation (RAG)",
-        meta: "DeepLearning.AI · 5 mô-đun",
-        url: "https://www.deeplearning.ai/courses/retrieval-augmented-generation"
-      },
-      outcomes: [
-        {
-          topics: "Kiến trúc RAG với kho tri thức, hàm truy xuất và hàm bổ sung ngữ cảnh vào prompt trước khi gửi cho LLM.",
-          learn: "Dựng được pipeline RAG đầu tiên, từ câu hỏi đến bước truy xuất tài liệu và tạo câu trả lời dựa trên tài liệu đó.",
-          project: "p2",
-          apply: "Cho My Buddy truy xuất ghi chú từ các khóa đã học và dẫn lại nguồn khi trả lời."
-        },
-        {
-          topics: "Tìm kiếm từ khóa với BM25, tìm kiếm ngữ nghĩa bằng embedding và kết hợp kết quả bằng Reciprocal Rank Fusion (RRF).",
-          learn: "Triển khai và so sánh được các cách truy xuất trên cùng bộ câu hỏi để xem chúng ảnh hưởng thế nào đến tài liệu tìm được và câu trả lời.",
-          project: "p1",
-          apply: "Thử BM25, vector search và tìm kiếm kết hợp bằng RRF trên các câu hỏi về bài học của Learning Hub."
-        },
-        {
-          topics: "Chia tài liệu thành đoạn, tạo embedding, lập chỉ mục và tìm kiếm trong cơ sở dữ liệu vector Weaviate.",
-          learn: "Xây được chỉ mục vector từ một tập tài liệu và truy xuất được các đoạn liên quan khi kho dữ liệu lớn lên.",
-          project: "p2",
-          apply: "Chia ghi chú theo mục, gắn nhãn khóa học và lọc kết quả theo chủ đề trước khi đưa vào câu trả lời."
-        },
-        {
-          topics: "Dựng chatbot theo một lĩnh vực cụ thể, thiết kế prompt từ dữ liệu riêng và thử LLM nguồn mở do Together AI cung cấp.",
-          learn: "Dựng được chatbot dùng kho dữ liệu riêng để trả lời câu hỏi thường gặp và đưa ra gợi ý có căn cứ.",
-          project: "p5",
-          apply: "Truy xuất đúng hồ sơ persona cho tình huống, rồi dùng hồ sơ đó để chatbot phản hồi nhất quán với tính cách và động cơ đã định."
-        },
-        {
-          topics: "Xử lý dữ liệu thay đổi, ghi log tương tác để theo dõi và gỡ lỗi, đánh giá chất lượng RAG khi triển khai.",
-          learn: "Phát hiện được câu trả lời dựa trên nguồn cũ, xác định lỗi ở bước truy xuất hay bước trả lời và theo dõi độ trễ, chi phí.",
-          project: "p1",
-          apply: "Chạy bộ câu hỏi mẫu trước và sau khi cập nhật bài học, kiểm tra nguồn Buddy dùng và ghi log để tìm nguyên nhân khi trả lời sai."
-        }
-      ],
-      done: ["LH Buddy có kết quả so sánh các cách truy xuất và một bộ eval dùng lại được.", "My Buddy trả lời có nguồn và Persona AI trả lời dựa trên hồ sơ đã chọn."] }
+      done: ["Feature LH có backlog ưu tiên và tiêu chí nghiệm thu được thống nhất.", "Có kết quả thử nghiệm với nhóm đầu tiên và quyết định cho lần phát hành tiếp theo."] }
   ];
-  var PILLAR_NAME = { eng: "Engineer", prod: "Product", ai: "AI" };
+  var PILLAR_BY_KEY = Object.fromEntries(PILLARS.map(function (p) { return [p.k, p]; }));
 
   // 5 dự án (Hành). tri = phần chính (màu thẻ), tags = các phần dự án dùng tới
   var PROJECTS = [
-    { id: "p1", n: 1, tri: "ai", tags: ["ai", "eng"], name: "LH Buddy", sub: "Chatbot trên Learning Hub", when: "Tháng 5–6",
+    { id: "p1", n: 1, tri: "ai", tags: ["ai", "eng"], name: "LH Buddy", sub: "Chatbot trên Learning Hub", when: PILLAR_BY_KEY.ai.period,
       what: "Hoàn thiện chatbot Buddy trên Learning Hub cho đủ các thành phần cốt lõi của Harness AI.",
       target: "Buddy có đủ gateway, memory, knowledge base, vòng lặp tool, MCP, tracing, eval và feedback người dùng; điểm eval tăng qua từng vòng sửa.",
-      uses: [PILLARS[2].cert.name, "Harness AI", "Engineer: back-end"] },
-    { id: "p2", n: 2, tri: "ai", tags: ["ai", "eng", "prod"], name: "My Buddy", sub: "AI agent riêng, đóng vai second brain", when: "Tháng 1–6",
-      what: "Agent của riêng em, nắm kiến thức về Code, Product và tự học (self-learning). Dùng chung bộ khung Harness với LH Buddy.",
-      target: "Hỏi được My Buddy về code đang làm và kiến thức product; note của cả 3 chứng chỉ nằm trong đó và nó tự nhắc em ôn lại.",
-      uses: [PILLARS[0].cert.name, PILLARS[2].cert.name, "Ghi chú từ các khóa học"] },
-    { id: "p3", n: 3, tri: "prod", tags: ["prod", "eng"], name: "Feature LH", sub: "Feature mới trên Learning Hub", when: "Tháng 3–4",
+      uses: [PILLAR_BY_KEY.ai.cert.name, "Harness AI", "Engineer: back-end"] },
+    { id: "p2", n: 2, tri: "ai", tags: ["ai", "eng", "prod"], name: "My Buddy", sub: "AI agent riêng, đóng vai second brain", when: PILLAR_BY_KEY.eng.period,
+      what: "Trợ lý cá nhân dùng bộ khung Harness của LH Buddy để học Code và Product. Thử truy xuất ghi chú ở Tháng 1–2, rồi xây API và giao diện ở Tháng 3–4.",
+      target: "Lưu được ghi chú các khóa qua API có xác thực, hỏi đáp có nguồn và nhắc ôn lại kiến thức.",
+      uses: [PILLAR_BY_KEY.eng.cert.name, PILLAR_BY_KEY.ai.cert.name, "Ghi chú từ các khóa học"] },
+    { id: "p3", n: 3, tri: "prod", tags: ["prod", "eng"], name: "Feature LH", sub: "Feature mới trên Learning Hub", when: PILLAR_BY_KEY.prod.period,
       what: "Tự define và roll out được feature mới trên Learning Hub.",
       target: "Ít nhất 1 feature đi đủ vòng: tìm vấn đề → đề xuất → làm → roll out → đo số liệu → báo cáo.",
-      uses: [PILLARS[1].cert.name, "Engineer: full-stack"] },
-    { id: "p4", n: 4, tri: "eng", tags: ["eng", "prod"], name: "Revamp CIO web", sub: "Làm mới website CIO", when: "Tháng 1–2",
-      what: "Làm mới website CIO: cấu trúc trang (IA), trang Home và tốc độ tải.",
+      uses: [PILLAR_BY_KEY.prod.cert.name, "Engineer: full-stack"] },
+    { id: "p4", n: 4, tri: "eng", tags: ["eng", "prod"], name: "Revamp CIO Web", sub: "Làm mới website CIO", when: "Tháng 5–6",
+      what: "Dùng bản mẫu Home từ Tháng 3–4 để làm mới cấu trúc trang, trang Home và cải thiện tốc độ tải trong Tháng 5–6.",
       target: "Website CIO mới lên production, có số đo tốc độ trước và sau.",
-      uses: [PILLARS[0].cert.name] },
+      uses: [PILLAR_BY_KEY.eng.cert.name] },
     { id: "p5", n: 5, tri: "ai", tags: ["ai", "prod"], name: "Persona AI", sub: "AI đóng vai persona", when: "Tháng 5–6",
-      what: "AI đóng vai persona khách hàng, xây trên kiến thức tâm lý học: tính cách, động cơ, thiên kiến.",
+      what: "Thử truy xuất hồ sơ persona ở Tháng 1–2. Hoàn thiện bản dùng thử ở Tháng 5–6 với tính cách, động cơ và thiên kiến của từng persona.",
       target: "Persona phản ứng nhất quán với tính cách đã định (đo bằng eval), team dùng thử được trong công việc.",
-      uses: ["Tâm lý học", PILLARS[2].cert.name, "Harness: soul.md, memory, eval"] }
+      uses: ["Tâm lý học", PILLAR_BY_KEY.ai.cert.name, "Harness: soul.md, memory, eval"] }
   ];
-  function projOf(id) { return PROJECTS.filter(function (p) { return p.id === id; })[0]; }
+
+  function projectGroups(outcomes) {
+    return PROJECTS.map(function (project) {
+      return { project: project, items: outcomes.filter(function (item) { return item.project === project.id; }) };
+    }).filter(function (group) { return group.items.length > 0; });
+  }
 
   // Thẻ dự án: 5 tầng là 5 hàng của subgrid → mọi thẻ trong carousel thẳng hàng từng tầng
   function projHTML(p) {
     return '<article class="goal" id="proj-' + p.id + '" data-tri="' + p.tri + '">' +
       '<div class="goal-h"><span class="pnum dsp">' + p.n + '</span><span class="gkind">' + esc(p.when) + '</span><span class="ptags">' +
-        p.tags.map(function (k) { return '<span class="ptag"><span class="gdot" data-tri="' + k + '"></span>' + PILLAR_NAME[k] + "</span>"; }).join("") + "</span></div>" +
+        p.tags.map(function (k) { return '<span class="ptag"><span class="gdot" data-tri="' + k + '"></span>' + esc(PILLAR_BY_KEY[k].name) + "</span>"; }).join("") + "</span></div>" +
       '<div class="goal-tw"><h3 class="dsp goal-t">' + esc(p.name) + '</h3><p class="goal-sub">' + esc(p.sub) + "</p></div>" +
       '<div class="gft now"><span class="lbl">Là gì</span><p>' + esc(p.what) + "</p></div>" +
       '<div class="gft to"><span class="lbl lbl-p">Đích sau 6 tháng</span><p>' + esc(p.target) + "</p></div>" +
@@ -724,17 +721,16 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
           courseLink(p.cert) + '<small>' + esc(p.cert.meta + " · " + p.period) + '</small></span></div>' +
           '<ol class="pl-list">' + p.outcomes.map(function (item) { return '<li>' + learningHTML(item) + '</li>'; }).join("") + '</ol>' +
           (p.extra ? '<p class="cert-x">' + esc(p.extra) + '</p>' : "") + '</div>' +
-        '<div class="pl-b"><h4 class="lbl lbl-p">Hành</h4><ol class="pl-list">' +
-          p.outcomes.map(function (item) {
-            var project = projOf(item.project);
-            return '<li><button type="button" class="side-b" data-proj="' + project.id + '">' +
-              '<span><b>' + esc(project.name) + '</b> · ' + esc(item.apply) + '</span></button></li>';
-          }).join("") + '</ol></div></article>';
+        '<div class="pl-b"><h4 class="lbl lbl-p">Hành</h4><ul class="pl-apps">' +
+          projectGroups(p.outcomes).map(function (group) {
+            return '<li><button type="button" class="side-b" data-proj="' + group.project.id + '">' +
+              applicationHTML(group) + '</button></li>';
+          }).join("") + '</ul></div></article>';
     }).join("");
 
     // 5 dự án trong một carousel
     $("#cats").innerHTML = '<div class="cat rv" id="cat-proj">' +
-      '<div class="cat-h"><h3 class="dsp">Có <span class="ms">' + PROJECTS.length + ' dự án</span> để hành</h3>' +
+      '<div class="cat-h"><h3 class="dsp"><span class="ms">' + PROJECTS.length + ' dự án</span> để hành</h3>' +
       '<div class="cat-nav"><button type="button" class="nb" data-cr="-1" aria-label="Thẻ trước">' + svg("left") + '</button><button type="button" class="nb" data-cr="1" aria-label="Thẻ sau">' + svg("right") + "</button></div></div>" +
       '<div class="cr" tabindex="0" aria-label="5 dự án">' + PROJECTS.map(projHTML).join("") + "</div></div>";
 
@@ -758,14 +754,21 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     return '<span class="learn-topics"><b>Học gì:</b> ' + esc(item.topics) + '</span>' +
       '<span class="learn-result"><b>Kết quả học tập:</b> ' + esc(item.learn) + '</span>';
   }
+  function applicationHTML(group) {
+    return '<b>' + esc(group.project.name) + '</b><span class="app-items">' +
+      group.items.map(function (item) { return '<span class="app-item">' + esc(item.apply) + '</span>'; }).join("") + '</span>';
+  }
   function bodyHTML(p) {
     return '<div class="pairs"><div class="pr-h" aria-hidden="true"><span class="lbl lbl-p">Học</span><span class="lbl lbl-p">Hành</span></div>' +
-      p.outcomes.map(function (item) {
-        var project = projOf(item.project);
-        return '<div class="pr"><div class="pr-l" data-tri="' + p.k + '"><span class="gdot" data-tri="' + p.k + '"></span>' +
-          '<span class="pr-x"><span class="pr-k">Học</span><span class="pr-d">' + learningHTML(item) + '</span></span></div>' +
+      projectGroups(p.outcomes).map(function (group) {
+        var lessons = group.items.map(function (item) {
+          return '<div class="pr-l" data-tri="' + p.k + '"><span class="gdot" data-tri="' + p.k + '"></span>' +
+            '<span class="pr-d">' + learningHTML(item) + '</span></div>';
+        }).join("");
+        return '<div class="pr"><div class="pr-lessons"><span class="pr-k">Học</span>' + lessons + '</div>' +
           '<span class="pr-a" aria-hidden="true">' + svg("right") + '</span>' +
-          '<button type="button" class="pr-r" data-proj="' + project.id + '"><span class="pr-k">Hành</span><b>' + esc(project.name) + '</b><span class="pr-d">' + esc(item.apply) + '</span></button></div>';
+          '<button type="button" class="pr-r" data-proj="' + group.project.id + '"><span class="pr-k">Hành</span>' +
+          applicationHTML(group) + '</button></div>';
       }).join("") + '</div>' +
       '<div class="col"><span class="lbl lbl-p">Kết quả cần đạt</span><ul>' +
         p.done.map(function (item) { return '<li>' + esc(item) + '</li>'; }).join("") + '</ul></div>';
