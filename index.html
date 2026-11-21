@@ -23,10 +23,10 @@
   --ms-bg:repeating-linear-gradient(135deg,#F95396 0 .17em,#D42A87 .17em .3em);
   --ink:#1C171A; --ink-2:#4A4046; --ink-3:#796B73;
   --ok:#12B76A; --ok-soft:#DCFCE7;
-  /* Product Triad: Tech (Engineering) · UX (Design) · Biz (Product) */
-  --tech:#F95396; --ux:#429CFF; --biz:#FFC21A;
-  --tech-d:#D42A87; --ux-d:#1B6FE0; --biz-d:#F2B200;
-  --tech-t:#C91F72; --ux-t:#1657B8; --biz-t:#8A5200;
+  /* Product Engineer = Engineer (nặng nhất) · Product · AI */
+  --eng:#F95396; --prod:#FFC21A; --ai:#429CFF;
+  --eng-d:#D42A87; --prod-d:#F2B200; --ai-d:#1B6FE0;
+  --eng-t:#C91F72; --prod-t:#8A5200; --ai-t:#1657B8;
   --sh-s:0 4px 10px -4px rgba(249,83,150,.45);
   --sh-m:0 18px 40px -18px rgba(190,30,100,.38);
   --sh-l:0 40px 90px -30px rgba(120,20,70,.5);
@@ -49,10 +49,10 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .lbl-p{color:var(--pink-text)}
 .wrap{position:relative;max-width:1200px;margin:0 auto}
 .ic{width:20px;height:20px;flex:0 0 auto}
-/* Màu theo góc của Product Triad, dùng chung cho chip mã mục tiêu, hàng JD, thẻ mục tiêu */
-[data-tri=tech]{--c:var(--tech);--cd:var(--tech-d);--ct:var(--tech-t)}
-[data-tri=ux]{--c:var(--ux);--cd:var(--ux-d);--ct:var(--ux-t)}
-[data-tri=biz]{--c:var(--biz);--cd:var(--biz-d);--ct:var(--biz-t)}
+/* Màu theo 3 phần của Product Engineer, dùng chung cho chấm, thẻ dự án, hàng Học → Hành */
+[data-tri=eng]{--c:var(--eng);--cd:var(--eng-d);--ct:var(--eng-t)}
+[data-tri=prod]{--c:var(--prod);--cd:var(--prod-d);--ct:var(--prod-t)}
+[data-tri=ai]{--c:var(--ai);--cd:var(--ai-d);--ct:var(--ai-t)}
 
 /* ================= Nút ================= */
 /* Nút "con tem" kiểu M16: hồng – trắng – hồng, đế kẻ sọc, nhấn thì lún xuống */
@@ -98,13 +98,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cube.blush .cf-t{background:linear-gradient(160deg,#FFF6FA,#FFD3E5)}
 .cube.blush .cf-l{background:linear-gradient(180deg,#FFC4DC,#FFA2C8)}
 .cube.blush .cf-r{background:linear-gradient(180deg,#F891BC,#EC6CA2)}
-/* Khối màu UX (xanh) và Biz (vàng) cho bậc thang mục tiêu */
-.cube.ux .cf-t{background:linear-gradient(160deg,#EEF6FF,#B9DBFF)}
-.cube.ux .cf-l{background:linear-gradient(180deg,#8CC2FF,#4A98FA)}
-.cube.ux .cf-r{background:linear-gradient(180deg,#3E8AEE,#1E69D2)}
-.cube.biz .cf-t{background:linear-gradient(160deg,#FFF8DA,#FFE27C)}
-.cube.biz .cf-l{background:linear-gradient(180deg,#FFD54F,#F5B800)}
-.cube.biz .cf-r{background:linear-gradient(180deg,#E8A700,#C78900)}
+/* Khối màu AI (xanh) và Product (vàng) cho bậc thang; Engineer dùng khối hồng */
+.cube.ai .cf-t{background:linear-gradient(160deg,#EEF6FF,#B9DBFF)}
+.cube.ai .cf-l{background:linear-gradient(180deg,#8CC2FF,#4A98FA)}
+.cube.ai .cf-r{background:linear-gradient(180deg,#3E8AEE,#1E69D2)}
+.cube.prod .cf-t{background:linear-gradient(160deg,#FFF8DA,#FFE27C)}
+.cube.prod .cf-l{background:linear-gradient(180deg,#FFD54F,#F5B800)}
+.cube.prod .cf-r{background:linear-gradient(180deg,#E8A700,#C78900)}
 
 /* ================= Ô ảnh ================= */
 .slot{position:relative;display:block;overflow:hidden;background:var(--pink-100);color:var(--pink-text)}
@@ -167,10 +167,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .story-end{font-weight:700;color:var(--ink)}
 .cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:6px;animation:up .9s .75s var(--out) both}
 
-/* Bậc thang 6 khối = 6 tháng */
+/* Bậc thang 8 khối = 3 chứng chỉ (Học) + 5 dự án (Hành), tô màu theo phần Engineer · Product · AI */
 .stair{position:relative;justify-self:center;width:min(100%,540px);aspect-ratio:1/.95}
-/* 11 khối = 11 mục tiêu: 5 Tech → 4 UX → 2 Biz */
-.step{position:absolute;left:calc(1% + var(--i) * 8%);bottom:calc(2% + var(--i) * 6.2%);z-index:calc(20 - var(--i));width:12%;padding:0;border:0;background:none;cursor:pointer;animation:drop 1.1s var(--spring) both;animation-delay:calc(.5s + var(--i) * .07s)}
+.step{position:absolute;left:calc(1% + var(--i) * 10.5%);bottom:calc(2% + var(--i) * 8.2%);z-index:calc(20 - var(--i));width:13%;padding:0;border:0;background:none;cursor:pointer;animation:drop 1.1s var(--spring) both;animation-delay:calc(.5s + var(--i) * .07s)}
 .step:focus-visible{outline:none}
 .step:focus-visible .cube{outline:2.5px solid var(--pink-btn);outline-offset:4px}
 .step-b{display:block;animation:bob 5s ease-in-out infinite;animation-delay:calc(var(--i) * -.8s)}
@@ -178,13 +177,14 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .step:hover .cube,.step:focus-visible .cube{transform:translateY(-10px)}
 .step-tip{position:absolute;left:50%;bottom:calc(100% - 4px);z-index:20;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:#fff;box-shadow:var(--sh-m);font-size:13px;font-weight:500;line-height:1.3;white-space:nowrap;pointer-events:none;opacity:0;transform:translate(-50%,8px);transition:opacity .25s ease,transform .45s var(--out)}
 .step-tip b{font-weight:800}
-.step:nth-child(n+7) .step-tip{left:auto;right:-10%;transform:translate(0,8px)}
+.step:nth-child(n+5) .step-tip{left:auto;right:-10%;transform:translate(0,8px)}
 .step:hover .step-tip,.step:focus-visible .step-tip{opacity:1;transform:translate(-50%,0)}
-.step:nth-child(n+7):hover .step-tip,.step:nth-child(n+7):focus-visible .step-tip{transform:translate(0,0)}
-.step:nth-child(-n+3) .step-tip{left:0;transform:translate(0,8px)}
-.step:nth-child(-n+3):hover .step-tip,.step:nth-child(-n+3):focus-visible .step-tip{transform:translate(0,0)}
+.step:nth-child(n+5):hover .step-tip,.step:nth-child(n+5):focus-visible .step-tip{transform:translate(0,0)}
+.step:nth-child(-n+2) .step-tip{left:0;transform:translate(0,8px)}
+.step:nth-child(-n+2):hover .step-tip,.step:nth-child(-n+2):focus-visible .step-tip{transform:translate(0,0)}
 .step:hover{z-index:30}
-.step:nth-child(n+10) .step-tip{bottom:auto;top:calc(100% - 4px)}
+.step:nth-child(n+7) .step-tip{bottom:auto;top:calc(100% - 4px)}
+.step-tip small{font-weight:500;color:var(--ink-3)}
 
 /* Cúp sáng: đích của mùa */
 .trophy{position:absolute;left:87%;top:1%;z-index:16;width:20%;padding:0;border:0;background:none;cursor:pointer;transform:translateX(-50%);animation:trophyin 1s 1.3s var(--spring) both}
@@ -221,58 +221,69 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .sh h2.h2-one{white-space:nowrap;font-size:min(48px,calc((100vw - 72px) / 24.6))}
 .sh p{max-width:680px;font-size:18px;line-height:1.55;color:var(--ink-2)}
 
-/* ================= Đối chiếu JD theo Product Triad ================= */
+/* ================= Product Engineer: 3 phần, mỗi phần Học (1 chứng chỉ) + Hành (các dự án dùng nó) ================= */
 .sec-pink{background:linear-gradient(180deg,#FDE4EE 0%,#fff 560px)}
-.tri{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:40px}
-.tri-vw{min-width:0}
-/* Venn đứng yên khi cuộn qua các hàng JD (cột phải dài hơn) */
-.venn{position:sticky;top:80px;display:block;width:100%;max-width:520px;height:auto;margin:0 auto;overflow:visible}
-/* Biểu đồ vành khuyên: cả vòng = Product Engineer 100%, chia Tech 70 / UX 20 / Biz 10 */
-.tri-c{cursor:pointer;outline:none}
-.tri-c .sl{stroke:#fff;stroke-width:4;stroke-linejoin:round;transform-box:fill-box;transform-origin:center;transition:opacity .35s ease,transform .45s var(--spring)}
-.c-tech .sl{fill:var(--tech);fill-opacity:.78}
-.c-ux .sl{fill:var(--ux);fill-opacity:.55}
-.c-biz .sl{fill:var(--biz);fill-opacity:.72}
-/* rê chuột / focus: phần đó bật ra ngoài theo hướng giữa cung (--dx, --dy đặt trên từng phần) */
-.tri-c:hover .sl,.tri-c:focus-visible .sl{transform:translate(var(--dx),var(--dy))}
-.tri-c:focus-visible .sl{stroke:var(--ink);stroke-width:3}
-.tri-n{font-family:"Momo Trust Sans",system-ui,sans-serif;font-size:19px;font-weight:800;fill:var(--ink)}
-.tri-p{font-family:"Momo Trust Display","Momo Trust Sans",sans-serif;font-size:40px;fill:var(--ink)}
-.tri-p.sm{font-size:32px}
-.tri-pe{font-family:"Momo Signature","Momo Trust Display",cursive;font-size:30px;fill:var(--ink)}
-.tri-hole{fill:#FFF7FA}
-.js .rv .tri-c .sl{opacity:0}
-.js .rv.in .tri-c .sl{opacity:1;animation:popc .9s var(--spring) backwards}
-.js .rv.in .c-ux .sl{animation-delay:.12s}
-.js .rv.in .c-biz .sl{animation-delay:.24s}
-.js .rv .tri-late{opacity:0}
-.js .rv.in .tri-late{opacity:1;transition:opacity .6s ease .7s}
-.js .tri.in[data-hl] .tri-c .sl{opacity:.35}
-.js .tri.in[data-hl=tech] .c-tech .sl,.js .tri.in[data-hl=ux] .c-ux .sl,.js .tri.in[data-hl=biz] .c-biz .sl{opacity:1}
-.tri-rows{display:flex;flex-direction:column;gap:14px;min-width:0}
-.tri-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px 20px;padding:18px 20px 20px 18px;border-left:6px solid var(--c);border-radius:8px 20px 20px 8px;background:#fff;box-shadow:var(--sh-s);transition:opacity .3s ease,transform .4s var(--out)}
-.tri[data-hl] .tri-row{opacity:.5}
-.tri[data-hl=tech] .tri-row[data-tri=tech],.tri[data-hl=ux] .tri-row[data-tri=ux],.tri[data-hl=biz] .tri-row[data-tri=biz]{opacity:1;transform:translateX(-6px)}
-.tri-row.flash{animation:flash 1.1s ease 2}
-.tri-h{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
-.tri-h b{font-size:20px;line-height:1.2}
-.tri-pct{font-size:32px;line-height:1;color:var(--ct)}
-.tri-sub{font-size:13px;color:var(--ink-3)}
-.jd{display:flex;flex-direction:column;gap:8px;min-width:0}
-.jd-h{font-size:13.5px;font-weight:800;line-height:1.35;color:var(--ink-3)}
-.jd-h.p{color:var(--pink-text)}
-.jd>ul{display:flex;flex-direction:column;gap:8px}
-.jd-ok li{display:flex;align-items:flex-start;gap:8px;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
-.jd-ok .ic{width:16px;height:16px;margin-top:2px;color:var(--ok);stroke-width:3}
-.gapb{display:flex;align-items:flex-start;gap:10px;width:100%;padding:9px 10px;border:1.5px dashed var(--c);border-radius:12px;background:#fff;text-align:left;cursor:pointer;transition:background-color .2s ease,transform .3s var(--out)}
-.gapb:hover{transform:translateX(4px);background:#FFFAFC}
-.gapb-t{display:flex;flex:1 1 auto;flex-direction:column;min-width:0;line-height:1.35}
-.gapb-t b{font-size:14.5px}
-.gapb-t small{font-size:12.5px;color:var(--ink-3)}
-.gapb>.ic{width:16px;height:16px;margin-top:4px;color:var(--ink-3);transition:transform .3s var(--out),color .2s ease}
-.gapb:hover>.ic{transform:translateX(3px);color:var(--ct)}
+/* Engineer nặng nhất nên cột rộng hơn; không chia tỉ trọng */
+.pl-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:stretch}
+.pl{display:flex;flex-direction:column;gap:18px;min-width:0;padding:26px 24px 24px;border-top:6px solid var(--c);border-radius:10px 10px 26px 26px;background:#fff;box-shadow:var(--sh-m);scroll-margin-top:30px}
+.pl.flash{animation:flash 1.1s ease 2}
+.pl-h{display:flex;align-items:center;gap:14px}
+.pl-h .mnum{width:52px}
+.pl-n{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0}
+.pl-n h3{font-size:clamp(30px,2.8vw,40px);line-height:1;color:var(--ct)}
+.pl-n .ms{font-size:18px}
+.pl-d{font-size:16px;line-height:1.5;color:var(--ink-2)}
+.pl-b{display:flex;flex-direction:column;gap:10px}
+.pl-b:last-child{margin-top:auto}
+.cert{display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:16px;background:#FAF6F8}
+.cert-i{display:grid;place-items:center;width:40px;height:40px;flex:0 0 auto;border-radius:12px;background:var(--c);color:#fff}
+[data-tri=prod] .cert-i,[data-tri=prod] .pnum{color:var(--ink)}
+.cert-t{display:flex;flex-direction:column;gap:2px;min-width:0;line-height:1.35}
+.cert-t b{font-size:16px;color:var(--ink)}
+.cert-t small{font-size:13px;color:var(--ink-3)}
+.cert-x{font-size:14px;line-height:1.45;color:var(--ink-2)}
 
-/* ================= Mục tiêu phát triển ================= */
+/* ================= Harness AI: thành phần cần học + LH Buddy hôm nay có gì ================= */
+.sec-hz{background:linear-gradient(180deg,#fff 0%,#EAF4FF 45%,#fff 100%)}
+.hz{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:36px;align-items:start}
+.hz-flow{display:flex;flex-direction:column}
+.hz-st{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding-bottom:18px}
+.hz-st::before{content:"";position:absolute;left:21px;top:50px;bottom:4px;width:2px;border-radius:1px;background:#C9DEF8}
+.hz-st:last-child{padding-bottom:0}
+.hz-st:last-child::before{display:none}
+.hz-k{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--ai);color:#fff;font-size:21px;line-height:1;box-shadow:0 8px 16px -8px rgba(27,111,224,.7)}
+.hz-c{min-width:0;padding:16px 18px 18px;border-radius:18px;background:#fff;box-shadow:0 6px 18px -10px rgba(27,80,160,.35)}
+.hz-c h3{font-size:20px;line-height:1.25}
+.hz-d{margin-top:4px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.hz-parts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.hz-part{display:inline-flex;align-items:center;gap:7px;padding:6px 11px 6px 9px;border-radius:10px;background:#F2F7FE;font-size:14px;font-weight:700;line-height:1.3;color:var(--ink)}
+.hz-part small{font-size:13px;font-weight:500;color:var(--ink-3)}
+/* trạng thái của LH Buddy hôm nay: có · một phần · chưa có */
+.sd{width:10px;height:10px;flex:0 0 auto;border-radius:50%}
+.sd.ok{background:var(--ok)}
+.sd.part{background:#F5A524}
+.sd.no{border:2px solid #B9AEB5;background:#fff}
+.hz-now{margin-top:12px;padding-top:10px;border-top:1.5px dashed #D6E6FA;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+.hz-now b{color:var(--ink)}
+.hz-m{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:10px}
+.hz-tag{padding:3px 10px;border-radius:999px;background:#F5F0F3;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.hz-tag.b{background:var(--pink-50);color:var(--pink-text)}
+.hz-side{position:sticky;top:90px;display:flex;flex-direction:column;gap:18px}
+.hz-box{padding:22px;border-radius:22px;background:#fff;box-shadow:var(--sh-m)}
+.hz-box h3{font-size:22px;line-height:1.2}
+.hz-box>p{margin-top:6px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.hz-legend{display:flex;flex-direction:column;gap:8px;margin-top:12px;font-size:14.5px;color:var(--ink-2)}
+.hz-legend>span{display:flex;align-items:center;gap:9px}
+.venn3{display:block;width:100%;max-width:300px;height:auto;margin:8px auto 0}
+.venn3 circle{stroke-width:2}
+.venn3 text{font-family:"Momo Trust Sans",system-ui,sans-serif;font-size:15px;font-weight:800;fill:var(--ink)}
+.venn3 .vs{font-size:12px;font-weight:500;fill:var(--ink-3)}
+.hz-x{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.hz-x li{display:flex;flex-direction:column;padding:10px 12px;border-radius:12px;background:#FAF6F8;font-size:14px;line-height:1.45;color:var(--ink-2)}
+.hz-x li b{font-size:15px;color:var(--ink)}
+
+/* ================= Hành: 5 dự án ================= */
 .bn-w{position:relative;z-index:2;margin-bottom:64px}
 .banner{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;padding:56px;overflow:hidden;color:#fff;background:radial-gradient(70% 90% at 15% 10%,#FF6FAA 0%,transparent 60%),linear-gradient(160deg,#E2338A 0%,#C21C70 100%);clip-path:polygon(0 18px,18px 18px,18px 0,calc(100% - 18px) 0,calc(100% - 18px) 18px,100% 18px,100% calc(100% - 18px),calc(100% - 18px) calc(100% - 18px),calc(100% - 18px) 100%,18px 100%,18px calc(100% - 18px),0 calc(100% - 18px))}
 .bn-conf{position:absolute;inset:0;pointer-events:none}
@@ -290,7 +301,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .bn-ph .slot{aspect-ratio:16/10;border-radius:12px}
 
 
-/* 3 nhóm Tech · UX · Biz, mỗi nhóm một carousel thẻ mục tiêu */
+/* Carousel thẻ dự án */
 .cats{position:relative;z-index:2;display:flex;flex-direction:column;gap:44px}
 .cat{scroll-margin-top:30px}
 .cat-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:10px}
@@ -302,8 +313,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cr{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px) / 3);gap:18px;margin:0 -6px;padding:10px 6px 26px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding:0 6px;scrollbar-width:none}
 .cr::-webkit-scrollbar{display:none}
 .cr:focus-visible{outline:2.5px solid var(--pink-btn);outline-offset:2px;border-radius:12px}
-.cr{grid-template-rows:repeat(4,auto)}
-.goal{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;min-width:0;padding:22px 22px 22px;border-top:6px solid var(--c);border-radius:10px 10px 24px 24px;background:#fff;box-shadow:var(--sh-m);scroll-snap-align:start}
+/* 5 tầng của thẻ là 5 hàng subgrid → các thẻ trong carousel thẳng hàng từng tầng */
+.cr{grid-template-rows:repeat(5,auto)}
+.goal{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:0;min-width:0;padding:22px 22px 22px;border-top:6px solid var(--c);border-radius:10px 10px 24px 24px;background:#fff;box-shadow:var(--sh-m);scroll-snap-align:start}
 .goal.flash{animation:flash 1.1s ease 2}
 .goal-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .gkind{padding:2px 10px;border-radius:999px;background:#F5F0F3;font-size:12.5px;font-weight:700;color:var(--ink-2)}
@@ -314,6 +326,16 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .gft.to{border-top:1.5px dashed #F7C6DA;border-radius:0 0 16px 16px}
 .gft p{font-size:15px;line-height:1.45;color:var(--ink-2)}
 .gft.to p{font-weight:700;color:var(--ink)}
+.pnum{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--c);color:#fff;font-size:18px;line-height:1}
+.ptags{display:flex;flex-wrap:wrap;gap:4px 10px;margin-left:auto}
+.ptag{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;color:var(--ink-2)}
+.ptag .gdot{width:9px;height:9px;border-width:0}
+.goal-tw{margin-bottom:16px}
+.goal-tw .goal-t{margin-bottom:4px}
+.goal-sub{font-size:15px;line-height:1.4;color:var(--ink-3)}
+.puse{display:flex;flex-wrap:wrap;align-content:flex-start;gap:6px;margin-top:14px}
+.puse .lbl{width:100%;margin-bottom:2px}
+.uchip{padding:3px 10px;border-radius:999px;background:#F5F0F3;font-size:12.5px;font-weight:700;line-height:1.5;color:var(--ink-2)}
 
 /* ================= Lộ trình (timeline kiểu M16) ================= */
 .sec-tl{background:linear-gradient(180deg,#fff 0%,#FDE4EE 22%,#FFF3F8 70%,#fff 100%)}
@@ -336,7 +358,25 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .ms{display:inline-block;padding:.06em .2em .02em;background:var(--ms-bg);color:#fff;line-height:1.1}
 .card-t{margin-top:16px;font-size:clamp(30px,3vw,42px);line-height:1.1}
 .card-d{margin-top:8px;margin-bottom:26px;font-size:18px;line-height:1.5;color:var(--ink-2)}
-.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:24px;margin-bottom:24px}
+/* Mỗi tháng: các cặp Học → Hành, học phần nào thì dùng ngay vào dự án nào */
+.pairs{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.pr-h,.pr{display:grid;grid-template-columns:minmax(0,1fr) 36px minmax(0,1fr);gap:10px}
+.pr-h{margin-bottom:-2px}
+.pr-h .lbl:last-child{grid-column:3}
+.pr-l,.pr-r{display:flex;min-width:0;padding:14px 16px;border-radius:16px;line-height:1.45}
+.pr-l{gap:10px;background:#FAF6F8}
+.pr-l .gdot{margin-top:5px;border-color:#FAF6F8}
+.pr-x{display:flex;flex-direction:column;gap:2px;min-width:0}
+.pr-x b{font-size:13.5px;font-weight:800;color:var(--ct)}
+.pr-d{font-size:15.5px;color:var(--ink)}
+.pr-k{display:none}
+.pr-a{display:grid;place-items:center;color:var(--pink)}
+.pr-a .ic{width:22px;height:22px}
+.pr-r{flex-direction:column;gap:2px;border:1.5px dashed #F7C6DA;background:#fff;text-align:left;cursor:pointer;transition:transform .3s var(--out),background-color .2s ease}
+.pr-r:hover{transform:translateX(4px);background:var(--pink-50)}
+.pr-r b{font-size:13.5px;font-weight:800;color:var(--pink-text)}
+.cert-won{display:flex;align-items:center;gap:10px;margin-bottom:24px;padding:12px 16px;border-radius:14px;background:#FFF6D6;font-size:15.5px;font-weight:700;line-height:1.4;color:var(--ink)}
+.cert-won .ic{color:#C78900}
 .col{display:flex;flex-direction:column;gap:12px}
 .col ul{display:flex;flex-direction:column;gap:10px}
 .col li{position:relative;padding-left:20px;font-size:16px;line-height:1.5;color:var(--ink-2)}
@@ -481,7 +521,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   html{scroll-behavior:auto}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .rv,.js .rv-t,.js .rv .stg{opacity:1;filter:none;transform:none}
-  .js .rv .tri-c .sl,.js .rv .tri-late{opacity:1}
 }
 
 /* ================= Responsive ================= */
@@ -497,8 +536,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .h1{font-size:clamp(34px,6.4vw,64px)}
   .stair{width:min(100%,460px)}
   .banner{grid-template-columns:minmax(0,1fr);padding:40px 32px}
-  .tri,.trk{grid-template-columns:minmax(0,1fr)}
-  .venn{position:static;max-width:460px}
+  .trk,.pl-grid,.hz{grid-template-columns:minmax(0,1fr)}
+  .hz-side{position:static}
   .cr{grid-auto-columns:calc((100% - 18px) / 2)}
   .tl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px 32px;padding:4px 24px 12px}
   .tl-i{flex:0 0 150px;scroll-snap-align:start}
@@ -520,8 +559,21 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .as-l{top:12%}
   .as-r{bottom:10%}
   .banner{padding:32px 20px}
-  .tri-row{grid-template-columns:minmax(0,1fr);gap:14px;padding:18px 16px 18px 14px}
-  .tri-pct{font-size:28px}
+  /* chú thích bậc thang: tên chứng chỉ dài → cho xuống dòng, khối thứ 3 canh trái để không tràn mép */
+  .step-tip{flex-wrap:wrap;width:max-content;max-width:calc(100vw - 40px);white-space:normal}
+  .step:nth-child(3) .step-tip{left:0;transform:translate(0,8px)}
+  .step:nth-child(3):hover .step-tip,.step:nth-child(3):focus-visible .step-tip{transform:translate(0,0)}
+  .pl{padding:22px 18px 20px}
+  .hz-st{grid-template-columns:36px minmax(0,1fr);gap:10px}
+  .hz-st::before{left:17px;top:42px}
+  .hz-k{width:36px;height:36px;border-radius:12px;font-size:18px}
+  .hz-c{padding:14px 14px 16px}
+  /* Học → Hành xếp dọc: mũi tên quay xuống, mỗi ô tự ghi Học / Hành */
+  .pr-h{display:none}
+  .pr{grid-template-columns:minmax(0,1fr);gap:4px}
+  .pr-a{height:22px}
+  .pr-a .ic{transform:rotate(90deg)}
+  .pr-k{display:block;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
   .cr{grid-auto-columns:86%;gap:14px}
   .goal{padding:20px 18px 16px}
   .goal-t{font-size:21px}
@@ -552,8 +604,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   <div class="nav-in">
     <a class="nav-brand" href="#top" aria-label="Phạm Minh Khang, Kế hoạch phát triển cá nhân 6 tháng, về đầu trang"><span class="nb-name dsp">Phạm Minh Khang</span><span class="nb-div" aria-hidden="true"></span><span class="nb-t" aria-hidden="true">Kế hoạch phát triển cá nhân 6 tháng</span></a>
     <nav class="nav-links" id="nav-links" aria-label="Các mục trên trang">
-      <a href="#doi-chieu">Kế hoạch phát triển</a>
-      <a href="#muc-tieu">Mục tiêu</a>
+      <a href="#dinh-nghia">3 phần</a>
+      <a href="#hanh">5 dự án</a>
+      <a href="#harness">Harness AI</a>
       <a href="#lo-trinh">Lộ trình 6 tháng</a>
       <a href="#theo-doi">Check-in</a>
     </nav>
@@ -578,7 +631,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         <a class="stamp" href="#lo-trinh"><span class="stamp-o"><span class="stamp-w"><span class="stamp-i dsp">XEM LỘ TRÌNH 6 THÁNG</span></span></span><span class="stamp-base"></span></a>
       </div>
     </div>
-    <div class="stair" id="stair" aria-label="11 mục tiêu theo Product Triad, bấm vào một khối để xem mục tiêu"></div>
+    <div class="stair" id="stair" aria-label="8 mục tiêu: 3 chứng chỉ và 5 dự án, bấm vào một khối để xem"></div>
   </div>
 </section>
 
@@ -591,45 +644,25 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   </div>
 </section>
 
-<!-- ============ ĐỐI CHIẾU JD THEO PRODUCT TRIAD ============ -->
-<section id="doi-chieu" class="sec sec-pink">
+<!-- ============ PRODUCT ENGINEER: 3 PHẦN (mỗi phần Học + Hành) ============ -->
+<section id="dinh-nghia" class="sec sec-pink">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp h2-one">Kế Hoạch Phát Triển Bản Thân theo <span class="pkh">Product Triad</span></h2></header>
-    <div class="tri rv" id="tri">
-      <div class="tri-vw">
-      <!-- Cả vòng = Product Engineer 100%; vành chia theo tỉ trọng: Tech 70% (252°), UX 20% (72°), Biz 10% (36°).
-           Tâm (250,250), bán kính ngoài 225, trong 120; bắt đầu từ đỉnh, đi theo chiều kim đồng hồ.
-           --dx/--dy: hướng bật ra khi rê chuột = hướng giữa cung (Tech 36°, UX 198°, Biz 252°). -->
-      <svg class="venn" viewBox="0 0 500 500" aria-label="Product Engineer: Tech 70%, UX 20%, Biz 10%">
-        <circle class="tri-hole" cx="250" cy="250" r="118"/>
-        <g class="tri-c c-tech" data-tk="tech" tabindex="0" role="button" aria-label="Tech 70%, xem đối chiếu JD" style="--dx:8px;--dy:6px"><path class="sl" d="M250 25A225 225 0 1 1 36.01 319.53L135.87 287.08A120 120 0 1 0 250 130Z"/></g>
-        <g class="tri-c c-ux" data-tk="ux" tabindex="0" role="button" aria-label="UX 20%, xem đối chiếu JD" style="--dx:-9.5px;--dy:-3px"><path class="sl" d="M36.01 319.53A225 225 0 0 1 117.75 67.97L179.47 152.92A120 120 0 0 0 135.87 287.08Z"/></g>
-        <g class="tri-c c-biz" data-tk="biz" tabindex="0" role="button" aria-label="Biz 10%, xem đối chiếu JD" style="--dx:-3px;--dy:-9.5px"><path class="sl" d="M117.75 67.97A225 225 0 0 1 250 25L250 130A120 120 0 0 0 179.47 152.92Z"/></g>
-        <g aria-hidden="true" pointer-events="none" text-anchor="middle">
-          <text class="tri-pe tri-late" x="250" y="243">Product</text>
-          <text class="tri-pe tri-late" x="250" y="277">Engineer</text>
-          <text class="tri-n" x="390" y="336">Tech</text><text class="tri-p" x="390" y="378">70%</text>
-          <text class="tri-n" x="86" y="183">UX</text><text class="tri-p" x="86" y="222">20%</text>
-          <text class="tri-n" x="197" y="76">Biz</text><text class="tri-p sm" x="197" y="108">10%</text>
-        </g>
-      </svg>
-      </div>
-      <div class="tri-rows" id="tri-rows"></div>
-    </div>
+    <header class="sh rv-t"><h2 class="dsp">Product Engineer gồm <span class="pkh">3 phần</span></h2><p>Mỗi phần học bằng một chứng chỉ và dùng ngay vào dự án thật. Học tới đâu, hành tới đó.</p></header>
+    <div class="pl-grid rv" id="pillars"></div>
   </div>
 </section>
 
-<!-- ============ MỤC TIÊU PHÁT TRIỂN ============ -->
-<section id="muc-tieu" class="sec">
+<!-- ============ HÀNH: 5 DỰ ÁN ============ -->
+<section id="hanh" class="sec">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Mục tiêu <span class="pkh">phát triển</span></h2></header>
+    <header class="sh rv-t"><h2 class="dsp">Hành: <span class="pkh">5 dự án</span></h2></header>
 
     <div class="bn-w rv" id="bn-w">
       <div class="banner">
         <div class="bn-conf" id="bn-conf"></div>
         <div class="bn-l">
-          <h3 class="dsp bn-t"><span class="ink">Sau 6 tháng</span>em sẽ hướng tới một Product Engineer có nền tảng kiến thức vững và rộng</h3>
-          <p class="bn-s">Từ Product management đến Product Growth</p>
+          <h3 class="dsp bn-t"><span class="ink">Sau 6 tháng</span>em có 3 chứng chỉ và 5 sản phẩm tự tay làm</h3>
+          <p class="bn-s">Học tới đâu, dùng ngay tới đó</p>
           <div class="gtags" id="miles"></div>
         </div>
         <figure class="bn-ph"><span class="slot" data-img="so-do-he-thong" id="feat-slot"></span></figure>
@@ -637,6 +670,39 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     </div>
 
     <div class="cats" id="cats"></div>
+  </div>
+</section>
+
+<!-- ============ HARNESS AI ============ -->
+<section id="harness" class="sec sec-hz">
+  <div class="wrap">
+    <header class="sh rv-t"><h2 class="dsp">Harness AI: <span class="pkh">học gì để làm AI</span></h2><p>Các thành phần cốt lõi bao quanh một model. Học trong chứng chỉ AI, dựng ngay vào LH Buddy, rồi dùng lại cho My Buddy và Persona AI.</p></header>
+    <div class="hz">
+      <ol class="hz-flow rv" id="hz-flow"></ol>
+      <aside class="hz-side rv">
+        <div class="hz-box">
+          <h3 class="dsp">LH Buddy hôm nay</h3>
+          <p>Chấm theo code hiện tại của Buddy trên Learning Hub, ngày 16/11/2026.</p>
+          <div class="hz-legend" id="hz-legend"></div>
+        </div>
+        <div class="hz-box">
+          <h3 class="dsp">Luôn phải cân 3 thứ</h3>
+          <p>Câu trả lời tốt nằm ở phần giao: an toàn, đủ thông minh và đủ nhanh.</p>
+          <svg class="venn3" viewBox="0 0 300 250" role="img" aria-label="Ba vòng giao nhau: An toàn (Secure), Thông minh (Smart), Nhanh (Real-time)">
+            <circle cx="112" cy="96" r="80" fill="#F95396" fill-opacity=".16" stroke="#F95396"/>
+            <circle cx="188" cy="96" r="80" fill="#429CFF" fill-opacity=".16" stroke="#429CFF"/>
+            <circle cx="150" cy="160" r="80" fill="#FFC21A" fill-opacity=".22" stroke="#F2B200"/>
+            <circle cx="150" cy="120" r="7" fill="#1C171A"/>
+            <g text-anchor="middle">
+              <text x="76" y="70">An toàn</text><text class="vs" x="76" y="88">Secure</text>
+              <text x="224" y="70">Thông minh</text><text class="vs" x="224" y="88">Smart</text>
+              <text x="150" y="208">Nhanh</text><text class="vs" x="150" y="226">Real-time</text>
+            </g>
+          </svg>
+          <ul class="hz-x" id="hz-x"></ul>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -657,8 +723,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       <h2 class="dsp h2s">Check-in với quản lý</h2>
       <ol class="steps">
         <li class="st-card stg" style="--k:0"><span class="mnum" data-mnum="1"></span><p><b>Cuối mỗi tháng, 30 phút:</b> Trình bày lại phần vừa học. Mục nào chưa đạt thì dời sang tháng sau, không bỏ qua.</p></li>
-        <li class="st-card stg" style="--k:1"><span class="mnum" data-mnum="2"></span><p><b>Tháng 3, review giữa kỳ:</b> xong phần Tech, xem lại tiến độ 11 mục tiêu trước khi sang UX và Biz.</p></li>
-        <li class="st-card stg" style="--k:2"><span class="mnum" data-mnum="3"></span><p><b>Tháng 6, tổng kết:</b> trình bày lại toàn bộ IDP trong 30 phút, chấm từng mục tiêu đạt hay chưa, chọn mục tiêu cho mùa sau.</p></li>
+        <li class="st-card stg" style="--k:1"><span class="mnum" data-mnum="2"></span><p><b>Tháng 3, review giữa kỳ:</b> xem LH Buddy đã đủ bao nhiêu thành phần Harness, tiến độ 2 chứng chỉ Engineer và AI.</p></li>
+        <li class="st-card stg" style="--k:2"><span class="mnum" data-mnum="3"></span><p><b>Tháng 6, tổng kết:</b> trình bày lại toàn bộ IDP trong 30 phút: 3 chứng chỉ, demo 5 dự án, chọn mục tiêu cho mùa sau.</p></li>
       </ol>
     </div>
     <div class="trk-col rv">
@@ -710,167 +776,157 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   };
 
   /* ================= DỮ LIỆU ================= */
-  // Tháng 1–3: Tech · Tháng 4–5: UX · Tháng 6: Biz
-  // learn = "Cần hiểu", practice = "Tự dựng lại", done = "Coi là hiểu khi", result = bằng chứng của tháng
-  // goals = các mục tiêu (GOALS) mà tháng này lo, hiện ở mục "Mục tiêu tháng này"
+  // Product Engineer = 3 phần, xếp theo độ nặng: Engineer → Product → AI (không chia tỉ trọng).
+  // Mỗi phần: Học = 1 chứng chỉ, Hành = các dự án dùng nó.
+  var PILLARS = [
+    { k: "eng", n: 1, name: "Engineer", tag: "Nặng nhất",
+      desc: "Dựng và vận hành sản phẩm chạy thật: front-end, back-end, cloud và DevOps.",
+      cert: { name: "IBM Full-Stack JavaScript Developer", meta: "IBM · Coursera · 12 khóa", when: "Tháng 1–6" },
+      projects: ["p4", "p1", "p3"] },
+    { k: "prod", n: 2, name: "Product",
+      desc: "Chọn đúng vấn đề, tự định nghĩa feature, roll out và đo kết quả.",
+      cert: { name: "IBM Product Manager", meta: "IBM · Coursera · 7 khóa", when: "Tháng 4–6" },
+      extra: "Học thêm tâm lý học (tính cách, động cơ, thiên kiến) để làm Persona AI.",
+      projects: ["p3", "p5"] },
+    { k: "ai", n: 3, name: "AI",
+      desc: "Dựng agent có đủ phần khung Harness: memory, tool, MCP, tracing và eval.",
+      cert: { name: "IBM RAG and Agentic AI", meta: "IBM · Coursera · 10 khóa", when: "Tháng 1–4" },
+      projects: ["p1", "p2", "p5"] }
+  ];
+  var PILLAR_NAME = { eng: "Engineer", prod: "Product", ai: "AI" };
+  function pillarOf(k) { return PILLARS.filter(function (p) { return p.k === k; })[0]; }
+
+  // 5 dự án (Hành). tri = phần chính (màu thẻ), tags = các phần dự án dùng tới
+  var PROJECTS = [
+    { id: "p1", n: 1, tri: "ai", tags: ["ai", "eng"], name: "LH Buddy", sub: "Chatbot trên Learning Hub", when: "Tháng 1–4",
+      what: "Hoàn thiện chatbot Buddy trên Learning Hub cho đủ các thành phần cốt lõi của Harness AI.",
+      target: "Buddy có đủ gateway, memory, knowledge base, vòng lặp tool, MCP, tracing, eval và feedback người dùng; điểm eval tăng qua từng vòng sửa.",
+      uses: ["IBM RAG and Agentic AI", "Harness AI", "Engineer: back-end"] },
+    { id: "p2", n: 2, tri: "ai", tags: ["ai", "eng", "prod"], name: "My Buddy", sub: "AI agent riêng, đóng vai second brain", when: "Tháng 1–6",
+      what: "Agent của riêng em, nắm kiến thức về Code, Product và tự học (self-learning). Dùng chung bộ khung Harness với LH Buddy.",
+      target: "Hỏi được My Buddy về code đang làm và kiến thức product; note của cả 3 chứng chỉ nằm trong đó và nó tự nhắc em ôn lại.",
+      uses: ["IBM RAG and Agentic AI", "Note của 3 chứng chỉ"] },
+    { id: "p3", n: 3, tri: "prod", tags: ["prod", "eng"], name: "Feature LH", sub: "Feature mới trên Learning Hub", when: "Tháng 4–6",
+      what: "Tự define và roll out được feature mới trên Learning Hub.",
+      target: "Ít nhất 1 feature đi đủ vòng: tìm vấn đề → đề xuất → làm → roll out → đo số liệu → báo cáo.",
+      uses: ["IBM Product Manager", "Engineer: full-stack"] },
+    { id: "p4", n: 4, tri: "eng", tags: ["eng", "prod"], name: "Revamp CIO web", sub: "Làm mới website CIO", when: "Tháng 1–3",
+      what: "Làm mới website CIO: cấu trúc trang (IA), trang Home và tốc độ tải.",
+      target: "Website CIO mới lên production, có số đo tốc độ trước và sau.",
+      uses: ["IBM Full-Stack JavaScript Developer"] },
+    { id: "p5", n: 5, tri: "ai", tags: ["ai", "prod"], name: "Persona AI", sub: "AI đóng vai persona", when: "Tháng 5–6",
+      what: "AI đóng vai persona khách hàng, xây trên kiến thức tâm lý học: tính cách, động cơ, thiên kiến.",
+      target: "Persona phản ứng nhất quán với tính cách đã định (đo bằng eval), team dùng thử được trong công việc.",
+      uses: ["Tâm lý học", "Harness: soul.md, memory, eval"] }
+  ];
+  function projOf(id) { return PROJECTS.filter(function (p) { return p.id === id; })[0]; }
+
+  // Harness AI theo sơ đồ của quản lý. Mỗi thành phần: [tên, giải thích, trạng thái của LH Buddy hôm nay]
+  // Trạng thái chấm theo code Buddy ngày 16/11/2026: ok = có, part = một phần, no = chưa có
+  var HARNESS = [
+    { t: "Đầu vào & Gateway", d: "Người dùng gửi prompt. Gateway kiểm tra đăng nhập, giới hạn lượt và guardrail trước khi tới model.",
+      parts: [["Auth", "đăng nhập", "ok"], ["Gateway", "giới hạn lượt, trần chi phí", "part"], ["Guardrail", "kiểm đầu vào và đầu ra", "part"]],
+      now: "Có đăng nhập, giới hạn 40 lượt mỗi ngày và chặn prompt injection ở đầu vào. Chưa kiểm câu trả lời đầu ra, chưa có trần chi phí.",
+      learn: ["Engineer: Node.js & Express"], build: "Tháng 1" },
+    { t: "Memory", d: "Những gì agent nhớ để trả lời đúng người, đúng ngữ cảnh.",
+      parts: [["Procedural", "skills", "no"], ["Semantic", "sự thật về người học", "part"], ["Episodic", "dòng thời gian", "part"], ["Knowledge base", "RAG, vector search", "part"], ["soul.md / agent.md", "tính cách và luật", "part"]],
+      now: "Tìm bài học theo từ khóa (BM25), lưu từng phiên chat, đọc hồ sơ người học. Phiên mới chưa nhớ phiên cũ, chưa tự lưu điều học được, chưa có skills; tính cách và luật còn nằm chung trong code.",
+      learn: ["AI: RAG, vector database"], build: "Tháng 2–3" },
+    { t: "Vòng lặp LLM ⇄ Tool", d: "Model suy luận, gọi tool, đọc kết quả rồi lặp lại tới khi đủ để trả lời.",
+      parts: [["Model", "chọn model, dự phòng", "part"], ["Reasoning", "suy luận nhiều bước", "no"], ["Tool", "gọi tool trong vòng lặp", "no"]],
+      now: "Mỗi lượt gọi model một lần, chưa có tool và vòng lặp; các việc như mở bài học, đặt lịch học là trình duyệt tự làm theo câu trả lời.",
+      learn: ["AI: Agentic AI (LangGraph, CrewAI, AG2)"], build: "Tháng 3" },
+    { t: "MCP / Connector", d: "Cổng chuẩn để agent nối tới dữ liệu và hệ thống khác.",
+      parts: [["MCP", "giao thức nối tool", "no"], ["Connector", "dữ liệu Learning Hub", "no"]],
+      now: "Buddy chưa dùng MCP. Repo đã có MCP server cho việc soạn khóa học, có thể học từ đó.",
+      learn: ["AI: Agentic AI", "Tài liệu MCP"], build: "Tháng 3" },
+    { t: "Tracing & Evals", d: "Ghi lại từng lượt trả lời, rồi chấm điểm bằng bộ eval để biết sửa xong có tốt lên không.",
+      parts: [["Tracing", "token, độ trễ, chi phí", "part"], ["Evals", "chấm điểm tự động", "part"]],
+      now: "Xem lại được hội thoại trong trang quản trị; có bộ eval hỏi đáp và gia sư nhưng phải chạy tay. Chưa ghi token, độ trễ, chi phí.",
+      learn: ["AI: RAG and Agentic AI", "Engineer: DevOps"], build: "Tháng 1 và 4" },
+    { t: "Feedback & cải tiến", d: "👍 / 👎 của người dùng cùng kết quả eval quay lại để sửa prompt, memory và tool.",
+      parts: [["User feedback", "👍 / 👎 từng câu trả lời", "no"], ["Cải tiến", "sửa theo số liệu", "no"]],
+      now: "Chưa có đánh giá trên từng câu trả lời; góp ý đang gom tay qua bảng tính.",
+      learn: ["Product: đo lường, vòng phản hồi"], build: "Tháng 4" }
+  ];
+  var STATUS = { ok: "Có", part: "Một phần", no: "Chưa có" };
+  // 3 thứ phải cân (góc phải sơ đồ): Buddy hôm nay có gì, tháng nào làm tiếp
+  var TRADEOFF = [
+    ["Chi phí", "Có giới hạn lượt và độ dài tin nhắn; chưa đo token và chi phí. Làm ở Tháng 1."],
+    ["Độ trễ", "Có timeout 30 giây; chưa đo độ trễ từng câu trả lời. Làm ở Tháng 1."],
+    ["Bảo mật", "Có đăng nhập, chặn prompt injection ở đầu vào; chưa kiểm câu trả lời đầu ra. Làm ở Tháng 1."]
+  ];
+
+  // 6 tháng: mỗi tháng là các cặp Học → Hành (học phần nào thì dùng ngay vào dự án nào) + "Xong tháng khi".
+  // k = phần (eng / prod / ai), src = học từ đâu, t = học gì, p = dự án, d = làm gì trong dự án
   var MONTHS = [
-    { n: 1, tri: "tech", icon: "web", title: "Nền tảng source code", result: "HTTP server + mini React tự viết",
-      desc: "Hiểu web, React/Next.js, database và đăng nhập chạy thế nào bên dưới source code đang làm.",
-      learn: ["Đường đi của một request: DNS, HTTP, header, cookie, cache", "React render lại khi nào, hook, Server Component và hydration", "SQL, index, query plan và transaction", "Session, JWT, OAuth và CORS"],
-      practice: ["Viết HTTP server bằng node:http và một mini React khoảng 100 dòng", "Viết tay SQL cho 3 query đang dùng, soi bằng EXPLAIN ANALYZE"],
-      done: ["Vẽ lại đường đi của một request và luồng đăng nhập mà không cần tra", "Giải thích được một query chậm và một lỗi hydration cụ thể"],
-      goals: ["t1"] },
-    { n: 2, tri: "tech", icon: "server", title: "System Design & kiến trúc", result: "Bản vẽ hệ thống + đề xuất kiến trúc",
-      desc: "Hiểu hệ thống phải đổi thế nào khi người dùng tăng, và ra quyết định kiến trúc có cơ sở.",
-      learn: ["Các level: một server → tách tầng → cache, queue → scale ngang → phân tán", "Nút thắt ở từng level và cách gỡ", "Viết đề xuất kiến trúc: bối cảnh, phương án, đánh đổi, chọn gì", "Information architecture: tổ chức nội dung, điều hướng, màn hình"],
-      practice: ["Vẽ kiến trúc product đang làm ở level hiện tại và khi người dùng tăng 10 lần", "Viết 1 đề xuất kiến trúc hệ thống + information architecture cho một tính năng lớn"],
-      done: ["Chỉ ra được nút thắt của hệ thống ở từng level", "Đề xuất được quản lý phản biện và chốt phương án"],
-      goals: ["t3", "t2"] },
-    { n: 3, tri: "tech", icon: "ai", title: "AI: LLM Engineering & Harness", result: "RAG + QLoRA + harness tự làm",
-      desc: "Hiểu LLM bên dưới, khi nào nên RAG, khi nào nên fine-tune, và thiết kế phần khung quanh model.",
-      learn: ["Token, context window, embedding và RAG", "Fine-tune, LoRA và QLoRA", "Harness: prompt, tool, quản lý context, vòng lặp agent", "Guardrail và bộ eval cho tính năng AI"],
-      practice: ["Viết RAG tối giản trên dữ liệu thật và fine-tune một model nhỏ bằng QLoRA", "Thiết kế harness và bộ eval cho một tính năng AI của product"],
-      done: ["Giải thích được khi nào dùng RAG, khi nào fine-tune", "Bộ eval chạy được và cho thấy harness tốt hơn bản cũ"],
-      goals: ["t5", "t4"] },
-    { n: 4, tri: "ux", icon: "user", title: "Nghiên cứu khách hàng & growth", result: "JTBD + 2 bản đồ + phân tích growth",
-      desc: "Hiểu người dùng cần gì qua Jobs to Be Done, và đọc dữ liệu sản phẩm để tìm cơ hội tăng trưởng.",
-      learn: ["Jobs to Be Done: người dùng “thuê” sản phẩm để làm việc gì", "Bản đồ hành trình khách hàng (customer journey map)", "Bản đồ nỗi đau – cơ hội (pain–opportunity map)", "Đọc feedback kèm số liệu tracking để tìm cơ hội tăng trưởng"],
-      practice: ["Phỏng vấn lại người dùng theo khung JTBD, vẽ 2 bản đồ", "Gom feedback, ticket và số liệu tracking thành 1 bản phân tích growth"],
-      done: ["Designer và PM/PO góp ý xong bản JTBD và 2 bản đồ", "Chỉ ra được ít nhất 1 cơ hội tăng trưởng có số liệu"],
-      goals: ["u3", "u4"] },
-    { n: 5, tri: "ux", icon: "target", title: "Phác giải pháp & kiểm thử", result: "Bản phác + 1 buổi usability test",
-      desc: "Phác giải pháp trước khi code và cho người dùng thử trước khi ship.",
-      learn: ["Flow và wireframe nháp: phác nhanh, sửa rẻ", "Đem bản phác đi validate với designer", "Usability test với 5 người: kịch bản, quan sát, ghi chép", "Đọc kết quả test và quyết định sửa gì"],
-      practice: ["Phác flow và wireframe cho tính năng từ cơ hội tìm được ở Tháng 4", "Cho 5 người dùng thử bản phác, ghi lại chỗ vướng rồi sửa"],
-      done: ["Designer duyệt bản phác trước khi bắt tay code", "Có ghi chép buổi test và danh sách chỗ đã sửa"],
-      goals: ["u1", "u2"] },
-    { n: 6, tri: "biz", icon: "trophy", final: true, title: "Business: thị trường & PM", result: "PRD + bài trình bày tổng kết",
-      desc: "Học nền tảng quản lý sản phẩm, nghiên cứu thị trường và tổng kết cả mùa.",
-      learn: ["Vòng đời sản phẩm, cách ưu tiên, roadmap và chỉ số", "Market research: quy mô thị trường, đối thủ, xu hướng", "Viết PRD: vấn đề, giả thuyết, chỉ số thành công", "Kể lại câu chuyện cả mùa cho quản lý"],
-      practice: ["Viết bản nghiên cứu thị trường ngắn cho mảng product đang làm", "Viết 1 PRD cho tính năng sắp làm, rồi soạn bài trình bày tổng kết IDP"],
-      done: ["PM/PO đọc và góp ý xong PRD", "Trình bày lại toàn bộ IDP cho quản lý trong 30 phút"],
-      goals: ["b1", "b2"] }
+    { n: 1, title: "Nền móng & soi lại Buddy",
+      desc: "Bắt đầu 2 chứng chỉ Engineer và AI, dùng ngay vào My Buddy, LH Buddy và website CIO.",
+      pairs: [
+        { k: "ai", src: "IBM RAG and Agentic AI · khóa 1–3", t: "App GenAI với LangChain, RAG, vector database", p: "p2", d: "Dựng khung My Buddy: note từng bài học nạp vào vector database, hỏi lại được" },
+        { k: "ai", src: "Harness AI", t: "Gateway, guardrail, tracing; cân chi phí, độ trễ, bảo mật", p: "p1", d: "Ghi token, độ trễ, chi phí cho từng câu trả lời của Buddy; thêm kiểm câu trả lời đầu ra và trần chi phí" },
+        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 1–4", t: "Software engineering, HTML/CSS/JS, Git, JavaScript", p: "p4", d: "Soi website CIO hiện tại: cấu trúc trang, HTML, tốc độ tải; chốt phạm vi làm mới" }
+      ],
+      done: ["Có số liệu token, độ trễ, chi phí của Buddy", "My Buddy trả lời được câu hỏi từ note tháng 1"] },
+    { n: 2, title: "Memory & knowledge base",
+      desc: "Cho Buddy nhớ người học, và dựng lại website CIO bằng React và Node.js.",
+      pairs: [
+        { k: "ai", src: "IBM RAG and Agentic AI · khóa 4–5", t: "Memory: semantic, episodic; knowledge base với vector search", p: "p1", d: "Buddy nhớ người học qua nhiều phiên và tự lưu điều học được; thử vector search, so với BM25 hiện tại bằng eval" },
+        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 5–6", t: "React front-end, Node.js & Express back-end", p: "p4", d: "Dựng lại cấu trúc trang và trang Home mới của website CIO" },
+        { k: "ai", src: "Memory dùng chung với LH Buddy", t: "Episodic memory: dòng thời gian", p: "p2", d: "My Buddy nhớ dòng thời gian những gì em đã học" }
+      ],
+      done: ["Buddy nhớ được người học khi mở phiên chat mới", "Website CIO mới chạy được trên UAT"] },
+    { n: 3, title: "Agent loop, tool & MCP",
+      desc: "Biến Buddy từ một lần gọi model thành agent có tool, và đưa website CIO mới lên production.",
+      pairs: [
+        { k: "ai", src: "IBM RAG and Agentic AI · các khóa Agentic AI", t: "Vòng lặp LLM ⇄ Tool với LangGraph, CrewAI, AG2; skills; soul.md / agent.md", p: "p1", d: "Buddy tự gọi tool (tra bài học, xem tiến độ) trong vòng lặp; tách tính cách và luật ra soul.md / agent.md" },
+        { k: "ai", src: "Harness AI", t: "MCP / connector", p: "p2", d: "My Buddy nối MCP tới repo code và note: hỏi được “đoạn code này làm gì”, “mình đã học gì về X”" },
+        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 7–8", t: "Cloud native, DevOps, Agile, NoSQL; container với Docker, Kubernetes", p: "p4", d: "Đưa website CIO mới lên production, đo tốc độ trước và sau" }
+      ],
+      done: ["Buddy gọi được ít nhất 2 tool trong vòng lặp", "Website CIO mới lên production", "Review giữa kỳ với quản lý"] },
+    { n: 4, title: "Eval, feedback & bắt đầu Product",
+      desc: "Khép vòng Tracing → Evals → cải tiến cho Buddy, nhận chứng chỉ AI và bắt đầu chứng chỉ Product.",
+      cert: "ai",
+      pairs: [
+        { k: "ai", src: "IBM RAG and Agentic AI · các khóa cuối", t: "Đánh giá agent, project cuối khóa", p: "p1", d: "Bộ eval tự chạy sau mỗi lần sửa; thêm 👍 / 👎 trên từng câu trả lời; mỗi tuần sửa theo số liệu" },
+        { k: "prod", src: "IBM Product Manager · khóa 1–2", t: "Nhập môn quản lý sản phẩm, vòng đời sản phẩm", p: "p3", d: "Tìm vấn đề của người học Learning Hub từ số liệu và feedback, viết đề xuất feature" },
+        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 9–10", t: "Microservices & serverless, Node.js & MongoDB", p: "p2", d: "Tách phần khung dùng chung (memory, tool, tracing) thành service để LH Buddy và My Buddy cùng dùng" }
+      ],
+      done: ["Nhận chứng chỉ IBM RAG and Agentic AI", "LH Buddy đủ các thành phần Harness, điểm eval tăng sau ít nhất 2 vòng sửa", "Quản lý duyệt đề xuất feature"] },
+    { n: 5, title: "Feature LH & Persona AI",
+      desc: "Roll out feature mới trên Learning Hub, và đem tâm lý học vào Persona AI.",
+      pairs: [
+        { k: "prod", src: "IBM Product Manager · khóa 3–5", t: "Lập kế hoạch sản phẩm, Agile, roadmap", p: "p3", d: "Làm feature và roll out từng bước (nhóm nhỏ trước), gắn tracking để đo" },
+        { k: "prod", src: "Tâm lý học", t: "Tính cách (Big Five), động cơ, thiên kiến nhận thức", p: "p5", d: "Mỗi persona một soul.md: tính cách, động cơ, thiên kiến; kèm memory riêng" },
+        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 11", t: "Capstone: dựng app full-stack hoàn chỉnh", p: "p5", d: "Dựng Persona AI đủ giao diện, API và database theo cách làm của capstone" },
+        { k: "prod", src: "Note các khóa Product", t: "Kiến thức product vừa học", p: "p2", d: "My Buddy thêm mảng Product và chế độ tự ôn: tự đặt câu hỏi cho em trả lời" }
+      ],
+      done: ["Feature mới chạy với nhóm người dùng đầu tiên", "Persona AI chạy thử được với 3 persona"] },
+    { n: 6, title: "Tổng kết: 3 chứng chỉ, 5 sản phẩm",
+      desc: "Nhận đủ chứng chỉ Engineer và Product, đo kết quả từng dự án và trình bày lại cả mùa.",
+      cert: "eng prod",
+      pairs: [
+        { k: "eng", src: "IBM Full-Stack JavaScript · khóa 12", t: "Hoàn tất chứng chỉ Engineer", p: "p2", d: "My Buddy bản hoàn chỉnh: Code, Product, Self-learning" },
+        { k: "prod", src: "IBM Product Manager · khóa 6–7", t: "Hoàn tất chứng chỉ Product", p: "p3", d: "Đo kết quả feature sau roll out, viết báo cáo, quyết định làm tiếp hay sửa" },
+        { k: "ai", src: "Harness AI", t: "Evals cho persona", p: "p5", d: "Chấm độ nhất quán của từng persona; team dùng thử và góp ý" }
+      ],
+      done: ["Đủ 3 chứng chỉ: Engineer, AI, Product", "Demo 5 dự án, trình bày lại toàn bộ IDP trong 30 phút"] }
   ];
 
-  // Product Triad: tỉ trọng 6 tháng này
-  var TRI = [
-    { k: "tech", name: "Tech", sub: "Engineering", pct: 70 },
-    { k: "ux", name: "UX", sub: "Design", pct: 20 },
-    { k: "biz", name: "Biz", sub: "Product", pct: 10 }
-  ];
-
-  // Đối chiếu JD: ok = đã làm được trong thời gian thực tập; gap = [id mục tiêu, cần phát triển, kiến thức hay kỹ năng]
-  var JD = {
-    tech: { ok: ["Dùng AI để dựng các khung có tính reusable, tự define được các logic quan trọng trong hệ thống", "Gắn tracking để đo các metric cơ bản cho Growth, truy vấn data ad-hoc sử dụng SQL", "Deploy lên staging, UAT và Production với tỉ lệ fail là 0%"],
-            gap: [["t1", "Hiểu và nắm rõ được nền tảng bên dưới toàn bộ source code", "Kiến thức"],
-                  ["t2", "Ra quyết định kiến trúc hệ thống và information architecture có cơ sở", "Kỹ năng"],
-                  ["t3", "Hiểu và ứng dụng được các level của System Design", "Kiến thức"],
-                  ["t4", "Hiểu và vận dụng được Harness Design cho các sản phẩm có ứng dụng AI", "Kiến thức"],
-                  ["t5", "Hiểu và vận dụng được LLM Engineering, QLoRA, RAG", "Kiến thức + kỹ năng"]] },
-    ux: { ok: ["Validate với designer, stakeholder", "Phỏng vấn người dùng", "Trực support"],
-          gap: [["u1", "Phác giải pháp trước khi code", "Kỹ năng"],
-                ["u2", "Kiểm thử khả dụng trước khi ship", "Kiến thức + kỹ năng"],
-                ["u3", "Nghiên cứu khách hàng bằng Jobs to Be Done, bản đồ hành trình khách hàng (customer journey map) và bản đồ nỗi đau – cơ hội (pain–opportunity map)", "Kiến thức + kỹ năng"],
-                ["u4", "Phân tích dữ liệu sản phẩm từ feedback của người dùng (Product growth)", "Kỹ năng"]] },
-    biz: { ok: ["Đọc feedback, ticket và dashboard", "Viết product note", "Theo dõi metric sau khi ship, iterate"],
-           gap: [["b1", "Market research", "Kiến thức"],
-                 ["b2", "Introduction to Product Management", "Kiến thức"]] }
-  };
-
-  // 11 mục tiêu phát triển. a50 / a30 / a20 = việc thật / course trả phí trên LMS / mentor và coach (mô hình 50-30-20)
-  var GOALS = [
-    { id: "t1", tri: "tech", kind: "Kiến thức", title: "Nền tảng bên dưới toàn bộ source code",
-      now: "Dựng được sản phẩm nhưng chưa giải thích được tầng bên dưới",
-      target: "Giải thích được web, React/Next.js, database và đăng nhập trong source code đang làm; tự dựng lại bản tối giản của từng tầng",
-      a50: "Soi từng tầng trên chính source code đang làm, ví dụ đọc EXPLAIN các query của product",
-      a30: "Course trên LMS về web, React/Next.js và database",
-      a20: "Cuối tháng giảng lại tầng vừa học cho quản lý",
-      due: "Tháng 1–3", proof: "3 bản tự dựng", month: 1 },
-    { id: "t2", tri: "tech", kind: "Kỹ năng", title: "Quyết định kiến trúc hệ thống và information architecture",
-      now: "Tự quyết hết nhưng chưa so phương án, chưa ghi lại lý do",
-      target: "Mỗi tính năng lớn có 1 đề xuất gồm kiến trúc hệ thống (database, API, module) và information architecture (nội dung, điều hướng, màn hình), kèm 2–3 phương án và đánh đổi",
-      a50: "Viết đề xuất trước khi làm tính năng mới",
-      a30: "Course về software architecture và information architecture trên LMS",
-      a20: "Quản lý đọc và phản biện trong buổi check-in",
-      due: "Mỗi tháng", proof: "Ít nhất 6 đề xuất" },
-    { id: "t3", tri: "tech", kind: "Kiến thức", title: "Các level của System Design",
-      now: "Mới dựng hệ thống ở quy mô một app, chưa thiết kế cho tải lớn",
-      target: "Vẽ và giải thích được hệ thống ở từng level: một server, tách tầng, cache và queue, scale ngang, phân tán",
-      a50: "Vẽ kiến trúc product đang làm ở level hiện tại và khi người dùng tăng 10 lần",
-      a30: "Course System Design trên LMS",
-      a20: "Quản lý phản biện bản vẽ",
-      due: "Tháng 4", proof: "Bản vẽ hệ thống 2 level", month: 4 },
-    { id: "t4", tri: "tech", kind: "Kiến thức", title: "Harness Design cho sản phẩm có AI",
-      now: "Đã gọi LLM trong sản phẩm, chưa thiết kế phần khung bao quanh model",
-      target: "Thiết kế được harness cho một tính năng AI: prompt, tool, quản lý context, guardrail và bộ eval",
-      a50: "Áp dụng cho một tính năng AI của product đang làm",
-      a30: "Course thiết kế ứng dụng LLM trên LMS",
-      a20: "Quản lý xem bản thiết kế và kết quả eval",
-      due: "Tháng 6", proof: "Bản thiết kế harness + kết quả eval", month: 6 },
-    { id: "t5", tri: "tech", kind: "Kiến thức + kỹ năng", title: "LLM Engineering, QLoRA, RAG",
-      now: "Đã dùng LLM qua API, chưa tự dựng RAG hay fine-tune model",
-      target: "Tự dựng RAG tối giản và fine-tune một model nhỏ bằng QLoRA, so được kết quả với bản gốc",
-      a50: "Dựng RAG trên dữ liệu thật của product, thử QLoRA trên một model mở nhỏ",
-      a30: "Course LLM Engineering trên LMS",
-      a20: "Quản lý xem kết quả so sánh",
-      due: "Tháng 5", proof: "RAG tự viết + 1 bản fine-tune QLoRA", month: 5 },
-    { id: "u1", tri: "ux", kind: "Kỹ năng", title: "Phác giải pháp trước khi code",
-      now: "Chưa có thói quen phác trước khi code",
-      target: "Mọi tính năng mới có flow và wireframe nháp, designer xem trước khi bắt tay làm",
-      a50: "Áp dụng cho từng tính năng trong 6 tháng",
-      a30: "Course về wireframe và flow trên LMS",
-      a20: "Designer góp ý bản phác 2 tuần một lần",
-      due: "Cả mùa", proof: "Bản phác của từng tính năng" },
-    { id: "u2", tri: "ux", kind: "Kiến thức + kỹ năng", title: "Kiểm thử khả dụng trước khi ship",
-      now: "Đã phỏng vấn người dùng, nhưng chưa cho họ thử bản phác để xem có làm được việc không",
-      target: "Ít nhất 1 tính năng lớn được 5 người dùng thử trên bản phác trước khi ship, ghi lại chỗ vướng và sửa",
-      a50: "Cho 5 người dùng thử bản phác của một tính năng lớn, ghi lại chỗ họ vướng",
-      a30: "Course usability testing trên LMS",
-      a20: "Designer cùng soạn kịch bản test và xem lại kết quả",
-      due: "Tháng 3–4", proof: "1 buổi test 5 người có ghi chép", month: 4 },
-    { id: "u3", tri: "ux", kind: "Kiến thức + kỹ năng", title: "Nghiên cứu khách hàng: JTBD, hành trình, nỗi đau – cơ hội",
-      now: "Đã phỏng vấn người dùng nhưng chưa có khung để rút ra job, hành trình và cơ hội",
-      target: "Có 1 bản Jobs to Be Done, 1 bản đồ hành trình khách hàng và 1 bản đồ nỗi đau – cơ hội cho người dùng product đang làm",
-      a50: "Phỏng vấn lại theo khung JTBD, dùng thêm ticket support để vẽ hai bản đồ",
-      a30: "Course Jobs to Be Done và customer research trên LMS",
-      a20: "Designer và PM/PO góp ý các bản đồ",
-      due: "Tháng 1–2", proof: "1 bản JTBD + 2 bản đồ", month: 2 },
-    { id: "u4", tri: "ux", kind: "Kỹ năng", title: "Phân tích dữ liệu sản phẩm từ feedback (Product growth)",
-      now: "Đọc feedback và dashboard mỗi sáng, chưa gom lại thành phân tích có kết luận",
-      target: "Có bản phân tích feedback kèm số liệu tracking, chỉ ra được ít nhất 1 cơ hội tăng trưởng",
-      a50: "Gom feedback, ticket và số liệu tracking của product đang làm",
-      a30: "Course Product Growth trên LMS",
-      a20: "PM/PO cùng đọc bản phân tích",
-      due: "Tháng 5–6", proof: "2 bản phân tích growth", month: 5 },
-    { id: "b1", tri: "biz", kind: "Kiến thức", title: "Market research",
-      now: "Chưa làm nghiên cứu thị trường cho product",
-      target: "Có 1 bản nghiên cứu thị trường ngắn cho mảng product đang làm: quy mô, đối thủ, xu hướng",
-      a50: "Nghiên cứu thị trường cho chính mảng product đang làm",
-      a30: "Course Market research trên LMS",
-      a20: "PM/PO góp ý bản nghiên cứu",
-      due: "Tháng 2", proof: "Bản nghiên cứu thị trường", month: 2 },
-    { id: "b2", tri: "biz", kind: "Kiến thức", title: "Introduction to Product Management",
-      now: "Làm product theo việc được giao, chưa học bài bản về quản lý sản phẩm",
-      target: "Nắm được vòng đời sản phẩm, cách ưu tiên, roadmap và chỉ số; viết được 1 PRD ngắn",
-      a50: "Viết PRD cho một tính năng sắp làm",
-      a30: "Course Introduction to Product Management trên LMS",
-      a20: "PM/PO đọc và góp ý PRD",
-      due: "Tháng 1", proof: "1 PRD", month: 1 }
-  ];
-  function goalOf(id) { return GOALS.filter(function (g) { return g.id === id; })[0]; }
-  var TRI_NAME = { tech: "Tech", ux: "UX", biz: "Biz" };
-  // 5 tầng của thẻ là 5 hàng của subgrid → mọi thẻ trong cùng carousel thẳng hàng từng tầng
-  function goalHTML(g) {
-    return '<article class="goal" id="goal-' + g.id + '" data-tri="' + g.tri + '">' +
-      '<div class="goal-h"><span class="gkind">' + g.kind + "</span></div>" +
-      '<h3 class="dsp goal-t">' + esc(g.title) + "</h3>" +
-      '<div class="gft now"><span class="lbl">Hiện tại</span><p>' + esc(g.now) + "</p></div>" +
-      '<div class="gft to"><span class="lbl lbl-p">Đích</span><p>' + esc(g.target) + "</p></div>" +
+  // Thẻ dự án: 5 tầng là 5 hàng của subgrid → mọi thẻ trong carousel thẳng hàng từng tầng
+  function projHTML(p) {
+    return '<article class="goal" id="proj-' + p.id + '" data-tri="' + p.tri + '">' +
+      '<div class="goal-h"><span class="pnum dsp">' + p.n + '</span><span class="gkind">' + esc(p.when) + '</span><span class="ptags">' +
+        p.tags.map(function (k) { return '<span class="ptag"><span class="gdot" data-tri="' + k + '"></span>' + PILLAR_NAME[k] + "</span>"; }).join("") + "</span></div>" +
+      '<div class="goal-tw"><h3 class="dsp goal-t">' + esc(p.name) + '</h3><p class="goal-sub">' + esc(p.sub) + "</p></div>" +
+      '<div class="gft now"><span class="lbl">Là gì</span><p>' + esc(p.what) + "</p></div>" +
+      '<div class="gft to"><span class="lbl lbl-p">Đích sau 6 tháng</span><p>' + esc(p.target) + "</p></div>" +
+      '<div class="puse"><span class="lbl">Dùng kiến thức</span>' + p.uses.map(function (u) { return '<span class="uchip">' + esc(u) + "</span>"; }).join("") + "</div>" +
       "</article>";
   }
 
   var SLOTS = [];
-  SLOTS.push({ base: "so-do-he-thong", label: "Sơ đồ cả hệ thống", where: "Khung ảnh trong banner hồng ở mục Mục tiêu phát triển", ratio: "16:10 · 1600×1000" });
+  SLOTS.push({ base: "so-do-he-thong", label: "Sơ đồ cả hệ thống", where: "Khung ảnh trong banner hồng ở mục Hành: 5 dự án", ratio: "16:10 · 1600×1000" });
   SLOTS.push({ base: "mua-2", label: "Ảnh teaser Mùa 2", where: "Thẻ “Kế Hoạch 1 năm?” (hiện mờ đến khi xong Mùa 1)", ratio: "4:3 · 1200×900" });
 
   var ICON = {
@@ -1039,12 +1095,27 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     }).join("");
     floaters = $$(".fl", fl).map(function (el, i) { return { el: el, depth: FLOAT[i][4] }; });
 
-    // Bậc thang = 11 mục tiêu, tô màu theo góc Product Triad (Tech hồng → UX xanh → Biz vàng), không ghi chữ trên khối
-    $("#stair").innerHTML = GOALS.map(function (g, i) {
-      return '<button type="button" class="step" data-goal="' + g.id + '" style="--i:' + i + '" aria-label="Mục tiêu ' + esc(TRI_NAME[g.tri]) + ": " + esc(g.title) + '">' +
-        '<span class="step-b">' + cube(g.tri === "tech" ? "pink" : g.tri) + "</span>" +
-        '<span class="step-tip"><span class="gdot" data-tri="' + g.tri + '"></span>' + esc(g.title) + "</span></button>";
+    // Bậc thang = 3 chứng chỉ (Học) rồi 5 dự án (Hành), tô màu theo phần Engineer hồng · Product vàng · AI xanh
+    var STEPS = PILLARS.map(function (p) { return { attr: "data-pillar", id: p.k, tri: p.k, label: "Chứng chỉ " + p.name, sub: p.cert.name }; })
+      .concat(PROJECTS.map(function (p) { return { attr: "data-proj", id: p.id, tri: p.tri, label: p.name, sub: p.when }; }));
+    $("#stair").innerHTML = STEPS.map(function (st, i) {
+      return '<button type="button" class="step" ' + st.attr + '="' + st.id + '" style="--i:' + i + '" aria-label="' + esc(st.label + ": " + st.sub) + '">' +
+        '<span class="step-b">' + cube(st.tri === "eng" ? "pink" : st.tri) + "</span>" +
+        '<span class="step-tip"><span class="gdot" data-tri="' + st.tri + '"></span><b>' + esc(st.label) + "</b><small>" + esc(st.sub) + "</small></span></button>";
     }).join("") + '<button type="button" class="trophy" id="trophy" aria-label="Đích của mùa: Product Engineer">' + trophyHTML() + "</button>";
+
+    // 3 phần của Product Engineer: mỗi phần Học (chứng chỉ) + Hành (dự án dùng nó)
+    $("#pillars").innerHTML = PILLARS.map(function (p) {
+      return '<article class="pl" id="pl-' + p.k + '" data-tri="' + p.k + '">' +
+        '<div class="pl-h"><span class="mnum" data-mnum="' + p.n + '"></span><div class="pl-n"><h3 class="dsp">' + p.name + "</h3>" + (p.tag ? '<span class="ms dsp">' + p.tag + "</span>" : "") + "</div></div>" +
+        '<p class="pl-d">' + esc(p.desc) + "</p>" +
+        '<div class="pl-b"><span class="lbl lbl-p">Học</span><div class="cert"><span class="cert-i">' + svg("trophy") + '</span><span class="cert-t"><b>' + esc(p.cert.name) + "</b><small>" + esc(p.cert.meta + " · " + p.cert.when) + "</small></span></div>" +
+          (p.extra ? '<p class="cert-x">' + esc(p.extra) + "</p>" : "") + "</div>" +
+        '<div class="pl-b"><span class="lbl lbl-p">Hành</span><ul class="side-l">' + p.projects.map(function (id) {
+          var j = projOf(id);
+          return '<li><button type="button" class="side-b" data-proj="' + j.id + '"><span class="gdot" data-tri="' + j.tri + '"></span><span><b>' + esc(j.name) + "</b> · " + esc(j.sub) + "</span></button></li>";
+        }).join("") + "</ul></div></article>";
+    }).join("");
 
     $("#as-stage").innerHTML = CELLS.map(function () {
       return '<span class="as-c">' + cube("pink") + "</span>";
@@ -1057,31 +1128,33 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       ch += '<i style="left:' + ((c * 37) % 100) + "%;top:" + ((c * 53) % 100) + "%;background:" + conf[c % conf.length] + ";--r:" + ((c * 47) % 180) + "deg;animation-delay:" + (-c * .4) + 's"></i>';
     }
     $("#bn-conf").innerHTML = ch;
-    // Banner: 3 nhóm mục tiêu, bấm để tới nhóm đó
-    $("#miles").innerHTML = TRI.map(function (t) {
-      var n = GOALS.filter(function (g) { return g.tri === t.k; }).length;
-      return '<button type="button" class="gtag" data-goto-sec="cat-' + t.k + '"><span class="gdot" data-tri="' + t.k + '"></span><span>' + t.name + " · " + n + " mục tiêu</span></button>";
+    // Banner: 3 chứng chỉ, bấm để tới phần đó
+    $("#miles").innerHTML = PILLARS.map(function (p) {
+      return '<button type="button" class="gtag" data-pillar="' + p.k + '"><span class="gdot" data-tri="' + p.k + '"></span><span>Chứng chỉ ' + p.name + "</span></button>";
     }).join("");
 
-    // Đối chiếu JD: mỗi góc của Product Triad một hàng
-    $("#tri-rows").innerHTML = TRI.map(function (t) {
-      var jd = JD[t.k];
-      return '<div class="tri-row" data-tri="' + t.k + '" data-tk="' + t.k + '">' +
-        '<div class="tri-h"><b>' + t.name + '</b><span class="tri-pct dsp">' + t.pct + '%</span><span class="tri-sub">' + t.sub + "</span></div>" +
-        '<div class="jd"><span class="jd-h">Những gì đã làm được trong khoảng thời gian thực tập</span><ul class="jd-ok">' + jd.ok.map(function (x) { return "<li>" + svg("check") + "<span>" + esc(x) + "</span></li>"; }).join("") + "</ul></div>" +
-        '<div class="jd"><span class="jd-h p">Cần phát triển</span><ul>' + jd.gap.map(function (g) {
-          return '<li><button type="button" class="gapb" data-goal="' + g[0] + '"><span class="gapb-t"><b>' + esc(g[1]) + "</b><small>" + esc(g[2]) + "</small></span>" + svg("right") + "</button></li>";
-        }).join("") + "</ul></div></div>";
-    }).join("");
+    // 5 dự án trong một carousel
+    $("#cats").innerHTML = '<div class="cat rv" id="cat-proj">' +
+      '<div class="cat-h"><h3 class="dsp">Có <span class="ms">' + PROJECTS.length + ' dự án</span> để hành</h3>' +
+      '<div class="cat-nav"><button type="button" class="nb" data-cr="-1" aria-label="Thẻ trước">' + svg("left") + '</button><button type="button" class="nb" data-cr="1" aria-label="Thẻ sau">' + svg("right") + "</button></div></div>" +
+      '<div class="cr" tabindex="0" aria-label="5 dự án">' + PROJECTS.map(projHTML).join("") + "</div></div>";
 
-    // 3 nhóm Tech · UX · Biz, mỗi nhóm một carousel thẻ mục tiêu
-    $("#cats").innerHTML = TRI.map(function (t) {
-      var gs = GOALS.filter(function (g) { return g.tri === t.k; });
-      return '<div class="cat rv" id="cat-' + t.k + '" data-tri="' + t.k + '">' +
-        '<div class="cat-h"><h3 class="dsp">Có <span class="ms">' + gs.length + ' mục tiêu</span> trong <span class="cat-name">' + t.name + "</span></h3>" +
-        '<div class="cat-nav"><button type="button" class="nb" data-cr="-1" aria-label="Thẻ trước">' + svg("left") + '</button><button type="button" class="nb" data-cr="1" aria-label="Thẻ sau">' + svg("right") + "</button></div></div>" +
-        '<div class="cr" tabindex="0" aria-label="Các mục tiêu ' + t.name + '">' + gs.map(goalHTML).join("") + "</div></div>";
+    // Harness AI: từng chặng, chấm trạng thái của LH Buddy hôm nay
+    $("#hz-flow").innerHTML = HARNESS.map(function (h, i) {
+      return '<li class="hz-st"><span class="hz-k dsp" aria-hidden="true">' + (i + 1) + '</span><div class="hz-c"><h3 class="dsp">' + esc(h.t) + '</h3><p class="hz-d">' + esc(h.d) + "</p>" +
+        '<div class="hz-parts">' + h.parts.map(function (x) {
+          return '<span class="hz-part" title="LH Buddy hôm nay: ' + STATUS[x[2]] + '"><span class="sd ' + x[2] + '" aria-hidden="true"></span>' + esc(x[0]) + " <small>" + esc(x[1]) + '</small><span class="sr"> (LH Buddy: ' + STATUS[x[2]] + ")</span></span>";
+        }).join("") + "</div>" +
+        '<p class="hz-now"><b>LH Buddy hôm nay:</b> ' + esc(h.now) + "</p>" +
+        '<div class="hz-m">' + h.learn.map(function (l) { return '<span class="hz-tag">Học: ' + esc(l) + "</span>"; }).join("") +
+          '<span class="hz-tag b">Dựng vào LH Buddy: ' + esc(h.build) + "</span></div></div></li>";
     }).join("");
+    var cnt = { ok: 0, part: 0, no: 0 };
+    HARNESS.forEach(function (h) { h.parts.forEach(function (x) { cnt[x[2]]++; }); });
+    $("#hz-legend").innerHTML = ["ok", "part", "no"].map(function (k) {
+      return '<span><span class="sd ' + k + '" aria-hidden="true"></span><span><b>' + STATUS[k] + "</b>: " + cnt[k] + " thành phần</span></span>";
+    }).join("");
+    $("#hz-x").innerHTML = TRADEOFF.map(function (x) { return "<li><b>" + esc(x[0]) + "</b>" + esc(x[1]) + "</li>"; }).join("");
 
     $("#tl").innerHTML = '<div class="tl-line"></div>' + MONTHS.map(function (m) {
       return '<div class="tl-i"><button type="button" role="tab" class="yr" id="tab-' + m.n + '" data-tab="' + m.n + '" aria-controls="card"><span>Tháng ' + m.n + '</span></button><span class="tl-dot"></span><span class="tl-t">' + esc(m.title) + "</span></div>";
@@ -1094,13 +1167,18 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   /* ================= NỘI DUNG THÁNG (dùng chung cho thẻ + popup) ================= */
+  // Thẻ tháng: chứng chỉ nhận trong tháng (nếu có) → các cặp Học → Hành → "Xong tháng khi"
   function bodyHTML(m) {
-    return '<div class="cols"><div class="col"><span class="lbl lbl-p">Cần hiểu</span><ul>' + m.learn.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>" +
-      '<div class="col col-p"><span class="lbl lbl-p">Tự dựng lại</span><ul>' + m.practice.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div></div>" +
-      '<div class="side"><span class="lbl lbl-p">Mục tiêu tháng này</span><ul class="side-l">' + m.goals.map(function (id) {
-        var g = goalOf(id);
-        return '<li><button type="button" class="side-b" data-goal="' + g.id + '" aria-label="Xem mục tiêu ' + TRI_NAME[g.tri] + ": " + esc(g.title) + '"><span class="gdot" data-tri="' + g.tri + '"></span><span>' + esc(g.title) + "</span></button></li>";
-      }).join("") + "</ul></div>";
+    var won = m.cert ? m.cert.split(" ").map(function (k) { var p = pillarOf(k); return p.name + " (" + p.cert.name + ")"; }).join(" và ") : "";
+    return (won ? '<p class="cert-won">' + svg("trophy") + "<span>Cuối tháng nhận chứng chỉ " + esc(won) + "</span></p>" : "") +
+      '<div class="pairs"><div class="pr-h" aria-hidden="true"><span class="lbl lbl-p">Học</span><span class="lbl lbl-p">Hành</span></div>' +
+      m.pairs.map(function (x) {
+        var p = projOf(x.p);
+        return '<div class="pr"><div class="pr-l" data-tri="' + x.k + '"><span class="gdot" data-tri="' + x.k + '"></span><span class="pr-x"><span class="pr-k">Học</span><b>' + esc(x.src) + "</b><span class=\"pr-d\">" + esc(x.t) + "</span></span></div>" +
+          '<span class="pr-a" aria-hidden="true">' + svg("right") + "</span>" +
+          '<button type="button" class="pr-r" data-proj="' + p.id + '"><span class="pr-k">Hành</span><b>' + esc(p.name) + "</b><span class=\"pr-d\">" + esc(x.d) + "</span></button></div>";
+      }).join("") + "</div>" +
+      '<div class="col"><span class="lbl lbl-p">Xong tháng khi</span><ul>' + m.done.map(function (x) { return "<li>" + esc(x) + "</li>"; }).join("") + "</ul></div>";
   }
   function dotsHTML(n, attr) {
     return '<div class="dots">' + MONTHS.map(function (m) { return '<button type="button" class="dot' + (m.n === n ? " on" : "") + '" ' + attr + '="' + m.n + '" aria-label="Tháng ' + m.n + '"></button>'; }).join("") + "</div>";
@@ -1195,8 +1273,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       if (l === hit) l.a.setAttribute("aria-current", "true"); else l.a.removeAttribute("aria-current");
     });
   }
-  function goGoal(id) {
-    var el = $("#goal-" + id);
+  // Tới thẻ dự án (#proj-…) hoặc thẻ một phần của Product Engineer (#pl-…) rồi nháy viền
+  function goEl(el) {
     if (!el) return;
     closeAll();
     var rv = el.closest(".rv"); if (rv) rv.classList.add("in");
@@ -1204,7 +1282,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     el.scrollIntoView({ behavior: behavior(), block: "center", inline: "nearest" });
     setTimeout(function () { restart(el, "flash"); }, reduce ? 0 : 500);
   }
-  // Carousel thẻ mục tiêu: nút ‹ › cuộn đúng 1 thẻ; ẩn nút khi nhóm đủ chỗ hiện hết thẻ
+  // Carousel thẻ dự án: nút ‹ › cuộn đúng 1 thẻ; ẩn nút khi đủ chỗ hiện hết thẻ
   function crStep(cr) {
     var c = $(".goal", cr);
     return c ? c.getBoundingClientRect().width + (parseFloat(getComputedStyle(cr).columnGap) || 18) : cr.clientWidth;
@@ -1214,14 +1292,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     cat.classList.toggle("fits", max <= 2);
     b[0].disabled = cr.scrollLeft <= 2;
     b[1].disabled = cr.scrollLeft >= max - 2;
-  }
-  // Product Triad: rê chuột vào vòng tròn hay hàng JD thì làm nổi góc đó
-  function hl(k) { var t = $("#tri"); if (k) t.setAttribute("data-hl", k); else t.removeAttribute("data-hl"); }
-  function triClick(k) {
-    var row = $('.tri-row[data-tk="' + k + '"]');
-    hl(k);
-    row.scrollIntoView({ behavior: behavior(), block: "nearest" });
-    restart(row, "flash");
   }
   function locate(base) {
     closeAll();
@@ -1345,9 +1415,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     if ((el = t.closest("[data-goto-sec]"))) { closeAll(); $("#" + el.getAttribute("data-goto-sec")).scrollIntoView({ behavior: behavior() }); return; }
     if ((el = t.closest("[data-tab]"))) { select(+el.getAttribute("data-tab")); return; }
     if ((el = t.closest("[data-pnav]"))) { select(sel + +el.getAttribute("data-pnav")); return; }
-    if ((el = t.closest("[data-goal]"))) { goGoal(el.getAttribute("data-goal")); return; }
+    if ((el = t.closest("[data-proj]"))) { goEl($("#proj-" + el.getAttribute("data-proj"))); return; }
+    if ((el = t.closest("[data-pillar]"))) { goEl($("#pl-" + el.getAttribute("data-pillar"))); return; }
     if ((el = t.closest("[data-cr]"))) { var cr = $(".cr", el.closest(".cat")); cr.scrollBy({ left: +el.getAttribute("data-cr") * crStep(cr), behavior: behavior() }); return; }
-    if ((el = t.closest(".tri-c"))) { triClick(el.getAttribute("data-tk")); return; }
     if ((el = t.closest("[data-locate]"))) { locate(el.getAttribute("data-locate")); return; }
     if (t.closest("#imgbtn")) { openImgList(); return; }
     if (t.closest("#trophy")) {
@@ -1366,11 +1436,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   document.addEventListener("keydown", function (e) {
     var top = topOv();
     if (e.key === "Escape") { if (top) closeOv(top); else if ($("#nav").classList.contains("open")) { setNav(false); $("#nav-mb").focus(); } return; }
-    if (!top && (e.key === "Enter" || e.key === " ") && e.target.closest && e.target.closest(".tri-c")) {
-      triClick(e.target.closest(".tri-c").getAttribute("data-tk"));
-      e.preventDefault();
-      return;
-    }
     if (top && e.key === "Tab") {
       var f = $$('button:not([disabled]),a[href],[tabindex]:not([tabindex="-1"])', top).filter(function (x) { return x.offsetParent !== null; });
       if (!f.length) return;
@@ -1457,11 +1522,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", function () { layoutAssemble(); onScroll(); $$(".cr").forEach(crSync); });
     $$(".cr").forEach(function (cr) { cr.addEventListener("scroll", function () { crSync(cr); }, { passive: true }); crSync(cr); });
-    var tri = $("#tri");
-    tri.addEventListener("mouseover", function (e) { var el = e.target.closest("[data-tk]"); hl(el ? el.getAttribute("data-tk") : null); });
-    tri.addEventListener("mouseleave", function () { hl(null); });
-    tri.addEventListener("focusin", function (e) { var el = e.target.closest("[data-tk]"); hl(el ? el.getAttribute("data-tk") : null); });
-    tri.addEventListener("focusout", function () { hl(null); });
     if (!reduce && window.matchMedia("(hover: hover)").matches) {
       $("#top").addEventListener("pointermove", function (e) {
         mx = e.clientX / window.innerWidth - .5; my = e.clientY / window.innerHeight - .5; onScroll();
