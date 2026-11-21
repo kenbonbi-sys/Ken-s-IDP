@@ -129,6 +129,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .pl-h .mnum{width:52px}
 .pl-n{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0}
 .pl-n h3{font-size:clamp(30px,2.8vw,40px);line-height:1;color:var(--pink-text)}
+#pl-psych h3{font-size:clamp(26px,2.15vw,32px);line-height:1.1}
 .pl-n .ms{font-size:18px}
 .pl-b{display:flex;flex-direction:column;gap:10px}
 .cert{display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:16px;background:#FAF6F8}
@@ -552,7 +553,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       done: ["Feature LH có backlog ưu tiên và tiêu chí nghiệm thu được thống nhất.", "Có kết quả thử nghiệm với nhóm đầu tiên và quyết định cho lần phát hành tiếp theo."] }
   ];
   var STUDY_CARDS = PILLARS.concat({
-    k: "psych", n: 4, name: "Tâm Lí Học và AI",
+    k: "psych", n: 4, name: "Psychology and application in AI & Product",
     plan: "Tìm lại tài liệu các khóa ở RMIT về Human Nature, Neurology và EQ (trí tuệ cảm xúc). Xem lại những gì đã học về tính cách, động cơ và cảm xúc để tìm cách áp dụng khi xây dựng AI, ví dụ như thiết kế cách Persona AI phản hồi."
   });
   var PILLAR_BY_KEY = Object.fromEntries(PILLARS.map(function (p) { return [p.k, p]; }));
@@ -563,11 +564,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       what: "Hoàn thiện chatbot Buddy trên Learning Hub cho đủ các thành phần cốt lõi của Harness AI.",
       target: "Buddy có đủ gateway, memory, knowledge base, vòng lặp tool, MCP, tracing, eval và feedback người dùng; điểm eval tăng qua từng vòng sửa.",
       uses: [PILLAR_BY_KEY.ai.cert.name, "Harness AI", "Engineer: back-end"] },
-    { id: "p2", n: 2, name: "My Buddy", when: PILLAR_BY_KEY.eng.period,
+    { id: "p2", n: 2, name: "My Buddy", when: "Tháng 1–6",
       what: "Trợ lý cá nhân dùng bộ khung Harness của LH Buddy để học Code và Product. Thử truy xuất ghi chú ở Tháng 1–2, rồi xây API và giao diện ở Tháng 3–4.",
       target: "Lưu được ghi chú các khóa qua API có xác thực, hỏi đáp có nguồn và nhắc ôn lại kiến thức.",
       uses: [PILLAR_BY_KEY.eng.cert.name, PILLAR_BY_KEY.ai.cert.name, "Ghi chú từ các khóa học"] },
-    { id: "p3", n: 3, name: "Feature LH", when: PILLAR_BY_KEY.prod.period,
+    { id: "p3", n: 3, name: "Feature LH", when: "Tháng 3–4",
       what: "Tự define và roll out được feature mới trên Learning Hub.",
       target: "Ít nhất 1 feature đi đủ vòng: tìm vấn đề → đề xuất → làm → roll out → đo số liệu → báo cáo.",
       uses: [PILLAR_BY_KEY.prod.cert.name, "Engineer: full-stack"] },
