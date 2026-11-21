@@ -34,7 +34,7 @@
   --spring:cubic-bezier(.34,1.56,.64,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:clip}
+html{scroll-behavior:smooth;scroll-padding-top:64px;overflow-x:clip}
 body{margin:0;background:#fff;color:var(--ink);font-family:"Momo Trust Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 body.lock{overflow:hidden}
 h1,h2,h3,p,ul,ol,figure{margin:0}
@@ -55,18 +55,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 [data-tri=ai]{--c:var(--ai);--cd:var(--ai-d);--ct:var(--ai-t)}
 
 /* ================= Nút ================= */
-/* Nút "con tem" kiểu M16: hồng – trắng – hồng, đế kẻ sọc, nhấn thì lún xuống */
-/* Dựng lại theo số đo nút CTA của M16 (mặt hồng #F95396 – viền trắng – lõi hồng, khối sọc #FF9DBE đổ xuống phải).
-   Khối sọc là một hình lục giác (clip-path) bao mặt nút: mặt lún vào t, khối dày e → các đỉnh tính theo t và e. */
-.stamp{position:relative;display:inline-flex;padding:0 .24em .24em 0;border:0;background:none;font-size:26px;text-decoration:none;cursor:pointer}
-.stamp-o{position:relative;z-index:2;display:block;padding:.125em;border-radius:.25em .167em .167em .25em;background:var(--pink);transition:translate .2s cubic-bezier(0,0,.2,1)}
-.stamp-w{display:block;padding:.104em;border-radius:.167em;background:#fff}
-.stamp-i{display:block;padding:.208em .32em .125em;border-radius:.083em;background:var(--pink);color:#fff;line-height:1.25;white-space:nowrap}
-.stamp-base{position:absolute;inset:0;z-index:1;border-radius:.25em;background:repeating-linear-gradient(45deg,#FF9DBE 0 .077em,var(--pink) .077em .272em);clip-path:polygon(0 0,calc(100% - .24em) 0,100% .24em,100% 100%,.24em 100%,0 calc(100% - .24em));transition:clip-path .2s cubic-bezier(0,0,.2,1)}
-.stamp:hover .stamp-o{translate:.04em .04em}
-.stamp:hover .stamp-base{clip-path:polygon(.04em .04em,calc(100% - .2em) .04em,calc(100% - .04em) .2em,calc(100% - .04em) calc(100% - .04em),.2em calc(100% - .04em),.04em calc(100% - .2em))}
-.stamp:active .stamp-o{translate:.12em .12em}
-.stamp:active .stamp-base{clip-path:polygon(.12em .12em,calc(100% - .12em) .12em,calc(100% - .04em) .2em,calc(100% - .04em) calc(100% - .04em),.2em calc(100% - .04em),.12em calc(100% - .12em))}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:10px;font-size:15px;font-weight:700;line-height:1.2;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .3s var(--out),background-color .25s ease,color .25s ease,box-shadow .25s ease}
 .btn:hover{transform:translateY(-2px)}
 .btn:active{transform:translateY(0) scale(.98)}
@@ -82,29 +70,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .nb:disabled{opacity:.4;cursor:default;box-shadow:none}
 .nb .ic{width:16px;height:16px}
 .nb-sm{min-height:34px;padding:0 12px;font-size:13px}
-
-/* ================= Khối lập phương (cube) ================= */
-.cube{position:relative;display:block;width:100%;aspect-ratio:1/1.155;filter:drop-shadow(0 14px 16px rgba(190,30,100,.22))}
-.cube>i{position:absolute;inset:0}
-.cf-t{clip-path:polygon(50% 0,100% 25%,50% 50%,0 25%);background:rgba(255,255,255,.88)}
-.cf-l{clip-path:polygon(0 25%,50% 50%,50% 100%,0 75%);background:rgba(255,255,255,.6)}
-.cf-r{clip-path:polygon(50% 50%,100% 25%,100% 75%,50% 100%);background:rgba(255,255,255,.38)}
-.cube.pink .cf-t{background:linear-gradient(160deg,#FFE3EE,#FFA6CA)}
-.cube.pink .cf-l{background:linear-gradient(180deg,#FF7BB2,#F2468E)}
-.cube.pink .cf-r{background:linear-gradient(180deg,#E23F86,#C2216A)}
-.cube.white .cf-t{background:#fff}
-.cube.white .cf-l{background:linear-gradient(180deg,#FCF5F8,#F0E2E9)}
-.cube.white .cf-r{background:linear-gradient(180deg,#E9DAE2,#D9C6D0)}
-.cube.blush .cf-t{background:linear-gradient(160deg,#FFF6FA,#FFD3E5)}
-.cube.blush .cf-l{background:linear-gradient(180deg,#FFC4DC,#FFA2C8)}
-.cube.blush .cf-r{background:linear-gradient(180deg,#F891BC,#EC6CA2)}
-/* Khối màu AI (xanh) và Product (vàng) cho bậc thang; Engineer dùng khối hồng */
-.cube.ai .cf-t{background:linear-gradient(160deg,#EEF6FF,#B9DBFF)}
-.cube.ai .cf-l{background:linear-gradient(180deg,#8CC2FF,#4A98FA)}
-.cube.ai .cf-r{background:linear-gradient(180deg,#3E8AEE,#1E69D2)}
-.cube.prod .cf-t{background:linear-gradient(160deg,#FFF8DA,#FFE27C)}
-.cube.prod .cf-l{background:linear-gradient(180deg,#FFD54F,#F5B800)}
-.cube.prod .cf-r{background:linear-gradient(180deg,#E8A700,#C78900)}
 
 /* ================= Ô ảnh ================= */
 .slot{position:relative;display:block;overflow:hidden;background:var(--pink-100);color:var(--pink-text)}
@@ -127,12 +92,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .sbar{position:fixed;left:0;right:0;top:0;z-index:70;height:4px;pointer-events:none}
 .sbar i{display:block;height:100%;background:linear-gradient(90deg,#FF9CC6,var(--pink));transform:scaleX(0);transform-origin:0 50%}
 
-/* ================= Hero (bầu trời) ================= */
 /* ================= Nav (kiểu M16) ================= */
 /* Theo nav M16 (dính mép trên, bo 2 góc dưới), mọi kích thước thu còn 80% */
-.nav{position:fixed;left:0;right:0;top:0;z-index:40;padding:0 16px;pointer-events:none;transition:transform .5s var(--out),visibility 0s}
-/* Chỉ hiện trong phần đầu (hero); cuộn tới phần thứ hai thì trượt lên ẩn đi */
-.nav.hid{visibility:hidden;transform:translateY(-120%);transition:transform .5s var(--out),visibility 0s linear .5s}
+.nav{position:sticky;top:0;z-index:40;padding:0 16px;pointer-events:none}
 .nav-in{position:relative;display:flex;align-items:center;gap:16px;min-height:64px;margin:0 auto;padding:0 18px 0 30px;border-radius:0 0 19px 19px;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 8px 24px -14px rgba(60,20,45,.28);pointer-events:auto;animation:navin .9s var(--out) both}
 .nav-brand{display:flex;align-items:center;gap:10px;color:inherit;text-decoration:none;white-space:nowrap}
 .nb-name{font-size:18px;line-height:1;color:var(--pink-btn)}
@@ -146,77 +108,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .nav-mb{display:none;place-items:center;width:40px;height:40px;flex:0 0 auto;padding:0;border:0;border-radius:10px;background:var(--pink-50);color:var(--ink);cursor:pointer}
 .nav-mb .ic{width:22px;height:22px}
 
-.hero{position:relative;padding:124px 24px 90px;overflow:hidden;background:linear-gradient(180deg,#9FD0F7 0%,#C4E3FA 45%,#E6F2FC 78%,#F5EEF6 100%)}
 .cloud{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,rgba(255,255,255,0));pointer-events:none;animation:cloud 38s ease-in-out infinite alternate}
 .cl-a{width:760px;height:280px;left:-180px;top:110px}
 .cl-b{width:620px;height:240px;right:-160px;top:-40px;animation-duration:46s;animation-direction:alternate-reverse}
-.cl-c{width:900px;height:300px;left:20%;bottom:-120px;animation-duration:52s}
-.cl-d{width:420px;height:170px;left:38%;top:30px;opacity:.7;animation-duration:30s}
-.floaters{position:absolute;inset:0;z-index:1;pointer-events:none}
-.fl{position:absolute;width:var(--s);will-change:translate}
-.fl .cube{animation:spinbob var(--t,9s) ease-in-out infinite;animation-delay:var(--dl,0s)}
-.fl.bl{filter:blur(3px)}
-.hero-in{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:36px;align-items:center}
-.hero-l{display:flex;flex-direction:column;gap:20px}
-/* Tiêu đề đúng 2 dòng: cỡ chữ tính theo dòng dài nhất ("Lộ trình [6 tháng] hướng tới" ≈ 13.1em kể cả nhãn sọc) để không bị gãy */
-.h1{font-size:clamp(34px,4.25vw,54px);line-height:1.06;color:var(--ink)}
-.h1 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em;white-space:nowrap}
-.h1 .ln>span{display:inline-block;animation:lnup 1.1s var(--out) both;animation-delay:calc(.1s + var(--d) * .12s)}
-.h1-sub{font-size:clamp(26px,2.6vw,38px);line-height:1.15;animation:up .9s .45s var(--out) both}
-.story{display:flex;flex-direction:column;gap:10px;max-width:640px;font-size:17px;line-height:1.6;color:var(--ink-2);animation:up .9s .55s var(--out) both}
-.story-end{font-weight:700;color:var(--ink)}
-.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px;margin-top:6px;animation:up .9s .75s var(--out) both}
-
-/* Bậc thang 8 khối = 3 chứng chỉ (Học) + 5 dự án (Hành), tô màu theo phần Engineer · Product · AI */
-.stair{position:relative;justify-self:center;width:min(100%,540px);aspect-ratio:1/.95}
-.step{position:absolute;left:calc(1% + var(--i) * 10.5%);bottom:calc(2% + var(--i) * 8.2%);z-index:calc(20 - var(--i));width:13%;padding:0;border:0;background:none;cursor:pointer;animation:drop 1.1s var(--spring) both;animation-delay:calc(.5s + var(--i) * .07s)}
-.step:focus-visible{outline:none}
-.step:focus-visible .cube{outline:2.5px solid var(--pink-btn);outline-offset:4px}
-.step-b{display:block;animation:bob 5s ease-in-out infinite;animation-delay:calc(var(--i) * -.8s)}
-.step .cube{transition:transform .4s var(--spring)}
-.step:hover .cube,.step:focus-visible .cube{transform:translateY(-10px)}
-.step-tip{position:absolute;left:50%;bottom:calc(100% - 4px);z-index:20;display:flex;align-items:center;gap:6px;padding:6px 10px;border-radius:10px;background:#fff;box-shadow:var(--sh-m);font-size:13px;font-weight:500;line-height:1.3;white-space:nowrap;pointer-events:none;opacity:0;transform:translate(-50%,8px);transition:opacity .25s ease,transform .45s var(--out)}
-.step-tip b{font-weight:800}
-.step:nth-child(n+5) .step-tip{left:auto;right:-10%;transform:translate(0,8px)}
-.step:hover .step-tip,.step:focus-visible .step-tip{opacity:1;transform:translate(-50%,0)}
-.step:nth-child(n+5):hover .step-tip,.step:nth-child(n+5):focus-visible .step-tip{transform:translate(0,0)}
-.step:nth-child(-n+2) .step-tip{left:0;transform:translate(0,8px)}
-.step:nth-child(-n+2):hover .step-tip,.step:nth-child(-n+2):focus-visible .step-tip{transform:translate(0,0)}
-.step:hover{z-index:30}
-.step:nth-child(n+7) .step-tip{bottom:auto;top:calc(100% - 4px)}
-.step-tip small{font-weight:500;color:var(--ink-3)}
-
-/* Cúp sáng: đích của mùa */
-.trophy{position:absolute;left:87%;top:1%;z-index:16;width:20%;padding:0;border:0;background:none;cursor:pointer;transform:translateX(-50%);animation:trophyin 1s 1.3s var(--spring) both}
-.trophy:focus-visible{outline:none}
-.trophy:focus-visible .tr-cup{outline:2.5px solid var(--pink-btn);outline-offset:6px;border-radius:12px}
-.trophy-b{position:relative;display:block;animation:bob 5s ease-in-out infinite;animation-delay:-4s}
-.tr-cup{position:relative;z-index:2;display:block;transition:transform .45s var(--spring)}
-.tr-cup img{display:block;width:100%;height:auto;filter:drop-shadow(0 0 10px rgba(255,140,190,.8)) drop-shadow(0 10px 12px rgba(190,30,100,.3));animation:trglow 2.4s ease-in-out infinite}
-.trophy:hover .tr-cup{transform:scale(1.1) rotate(-6deg)}
-.trophy.jig .tr-cup{animation:jig .7s ease}
-.tr-rays{position:absolute;left:50%;top:40%;z-index:1;width:240%;aspect-ratio:1;margin:-120% 0 0 -120%;border-radius:50%;background:repeating-conic-gradient(rgba(255,150,200,.55) 0 9deg,transparent 9deg 26deg);-webkit-mask-image:radial-gradient(circle,#000 20%,transparent 66%);mask-image:radial-gradient(circle,#000 20%,transparent 66%);animation:spin 16s linear infinite;pointer-events:none}
-.tr-sp{position:absolute;z-index:3;width:16%;aspect-ratio:1;background:#fff;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:twinkle 1.8s ease-in-out infinite;pointer-events:none}
-.tr-sp.a{left:-14%;top:6%}
-.tr-sp.b{right:-12%;top:28%;width:12%;animation-delay:-.6s}
-.tr-sp.c{left:4%;top:62%;width:10%;animation-delay:-1.2s}
-
-/* Trạng thái */
-
-/* ================= Đoạn ghép khối khi cuộn ================= */
-.assemble{position:relative;height:230vh;background:linear-gradient(180deg,#F5EEF6 0%,#FBE7F0 55%,#FDE4EE 100%)}
-.as-sticky{position:sticky;top:0;height:100vh;overflow:hidden}
-.as-txt{position:absolute;z-index:3;font-size:clamp(28px,3.6vw,52px);line-height:1.12;will-change:opacity,filter,transform}
-.as-l{left:max(24px,6%);top:22%}
-.as-r{right:max(24px,6%);bottom:20%;text-align:right}
-.as-stage{position:absolute;left:50%;top:52%;width:1px;height:1px}
-.as-c{position:absolute;left:0;top:0;width:var(--S,80px);margin-left:calc(var(--S,80px) / -2);margin-top:calc(var(--S,80px) * -.577);will-change:transform}
-.as-c .cube{filter:none} /* 160 khối nhỏ: bỏ bóng từng khối cho cuộn mượt */
-
 /* ================= Section chung ================= */
 .sec{position:relative;padding:110px 24px;scroll-margin-top:30px;overflow-x:clip}
 .sh{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:12px;margin-bottom:48px;text-align:center}
-.sh h2{font-size:clamp(32px,4vw,54px);line-height:1.1;color:var(--ink)}
+.sh h1,.sh h2{font-size:clamp(32px,4vw,54px);line-height:1.1;color:var(--ink)}
 /* Tiêu đề dài giữ 1 dòng: chữ rộng ≈ 24.2em, cỡ chữ co theo bề rộng màn (trừ lề + thanh cuộn) */
 .sh h2.h2-one{white-space:nowrap;font-size:min(48px,calc((100vw - 72px) / 24.6))}
 .sh p{max-width:680px;font-size:18px;line-height:1.55;color:var(--ink-2)}
@@ -231,7 +129,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .pl-n{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-width:0}
 .pl-n h3{font-size:clamp(30px,2.8vw,40px);line-height:1;color:var(--ct)}
 .pl-n .ms{font-size:18px}
-.pl-d{font-size:16px;line-height:1.5;color:var(--ink-2)}
 .pl-b{display:flex;flex-direction:column;gap:10px}
 .pl-b:last-child{margin-top:auto}
 .cert{display:flex;align-items:flex-start;gap:12px;padding:14px;border-radius:16px;background:#FAF6F8}
@@ -241,46 +138,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cert-t b{font-size:16px;color:var(--ink)}
 .cert-t small{font-size:13px;color:var(--ink-3)}
 .cert-x{font-size:14px;line-height:1.45;color:var(--ink-2)}
-
-/* ================= Harness AI: thành phần cần học + LH Buddy hôm nay có gì ================= */
-.sec-hz{background:linear-gradient(180deg,#fff 0%,#EAF4FF 45%,#fff 100%)}
-.hz{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:36px;align-items:start}
-.hz-flow{display:flex;flex-direction:column}
-.hz-st{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding-bottom:18px}
-.hz-st::before{content:"";position:absolute;left:21px;top:50px;bottom:4px;width:2px;border-radius:1px;background:#C9DEF8}
-.hz-st:last-child{padding-bottom:0}
-.hz-st:last-child::before{display:none}
-.hz-k{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:var(--ai);color:#fff;font-size:21px;line-height:1;box-shadow:0 8px 16px -8px rgba(27,111,224,.7)}
-.hz-c{min-width:0;padding:16px 18px 18px;border-radius:18px;background:#fff;box-shadow:0 6px 18px -10px rgba(27,80,160,.35)}
-.hz-c h3{font-size:20px;line-height:1.25}
-.hz-d{margin-top:4px;font-size:15px;line-height:1.5;color:var(--ink-2)}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
-.hz-parts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.hz-part{display:inline-flex;align-items:center;gap:7px;padding:6px 11px 6px 9px;border-radius:10px;background:#F2F7FE;font-size:14px;font-weight:700;line-height:1.3;color:var(--ink)}
-.hz-part small{font-size:13px;font-weight:500;color:var(--ink-3)}
-/* trạng thái của LH Buddy hôm nay: có · một phần · chưa có */
-.sd{width:10px;height:10px;flex:0 0 auto;border-radius:50%}
-.sd.ok{background:var(--ok)}
-.sd.part{background:#F5A524}
-.sd.no{border:2px solid #B9AEB5;background:#fff}
-.hz-now{margin-top:12px;padding-top:10px;border-top:1.5px dashed #D6E6FA;font-size:14.5px;line-height:1.5;color:var(--ink-2)}
-.hz-now b{color:var(--ink)}
-.hz-m{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:10px}
-.hz-tag{padding:3px 10px;border-radius:999px;background:#F5F0F3;font-size:12.5px;font-weight:700;color:var(--ink-2)}
-.hz-tag.b{background:var(--pink-50);color:var(--pink-text)}
-.hz-side{position:sticky;top:90px;display:flex;flex-direction:column;gap:18px}
-.hz-box{padding:22px;border-radius:22px;background:#fff;box-shadow:var(--sh-m)}
-.hz-box h3{font-size:22px;line-height:1.2}
-.hz-box>p{margin-top:6px;font-size:15px;line-height:1.5;color:var(--ink-2)}
-.hz-legend{display:flex;flex-direction:column;gap:8px;margin-top:12px;font-size:14.5px;color:var(--ink-2)}
-.hz-legend>span{display:flex;align-items:center;gap:9px}
-.venn3{display:block;width:100%;max-width:300px;height:auto;margin:8px auto 0}
-.venn3 circle{stroke-width:2}
-.venn3 text{font-family:"Momo Trust Sans",system-ui,sans-serif;font-size:15px;font-weight:800;fill:var(--ink)}
-.venn3 .vs{font-size:12px;font-weight:500;fill:var(--ink-3)}
-.hz-x{display:flex;flex-direction:column;gap:8px;margin-top:12px}
-.hz-x li{display:flex;flex-direction:column;padding:10px 12px;border-radius:12px;background:#FAF6F8;font-size:14px;line-height:1.45;color:var(--ink-2)}
-.hz-x li b{font-size:15px;color:var(--ink)}
 
 /* ================= Hành: 5 dự án ================= */
 .bn-w{position:relative;z-index:2;margin-bottom:64px}
@@ -435,10 +292,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .il-t code{align-self:flex-start;margin-top:4px}
 .il-r{font-size:12.5px;font-weight:700;color:var(--ink-3);white-space:nowrap}
 
-.toasts{position:fixed;left:50%;bottom:24px;z-index:99;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;transform:translateX(-50%)}
-.toast{display:flex;align-items:center;gap:10px;max-width:calc(100vw - 32px);padding:11px 18px 11px 14px;border-radius:14px;background:#2A1C24;color:#fff;font-size:14.5px;font-weight:500;line-height:1.4;box-shadow:var(--sh-m);animation:toastin .45s var(--spring) both}
-.toast .ic{width:18px;height:18px;color:#FF9CC6}
-.toast.out{animation:toastout .3s ease forwards}
 .imgbtn{position:fixed;left:16px;bottom:16px;z-index:30;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 16px 0 12px;border:1.5px dashed var(--pink-btn);border-radius:999px;background:#fff;color:var(--pink-text);font-size:13.5px;font-weight:800;box-shadow:var(--sh-m);cursor:pointer;transition:transform .3s var(--spring)}
 .imgbtn:hover{transform:translateY(-2px)}
 .imgbtn[hidden]{display:none}
@@ -452,26 +305,14 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .js .rv.in .stg{opacity:1;transform:none}
 
 /* ================= Keyframes ================= */
-@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
-@keyframes lnup{from{opacity:0;transform:translateY(70%);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
-@keyframes drop{0%{opacity:0;transform:translateY(-160px) rotate(-14deg)}60%{opacity:1}100%{opacity:1;transform:none}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes spinbob{0%,100%{transform:translateY(0) rotate(-7deg)}50%{transform:translateY(-18px) rotate(8deg)}}
 @keyframes cloud{from{transform:translateX(-40px)}to{transform:translateX(60px)}}
 @keyframes confloat{0%,100%{transform:translateY(0) rotate(var(--r))}50%{transform:translateY(-10px) rotate(calc(var(--r) + 40deg))}}
 @keyframes stampin{0%{opacity:0;transform:scale(1.4) rotate(-6deg)}100%{opacity:1;transform:none}}
 @keyframes inR{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
 @keyframes inL{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:none}}
-@keyframes toastin{from{opacity:0;transform:translateY(16px) scale(.95)}to{opacity:1;transform:none}}
-@keyframes toastout{to{opacity:0;transform:translateY(10px)}}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
 @keyframes flash{0%,100%{box-shadow:0 0 0 0 rgba(249,83,150,0)}50%{box-shadow:0 0 0 6px rgba(249,83,150,.75)}}
 @keyframes ringflash{0%,100%{box-shadow:0 34px 70px -34px rgba(190,30,100,.45)}50%{box-shadow:0 0 0 6px var(--pink-200),0 34px 70px -34px rgba(190,30,100,.45)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes trophyin{from{opacity:0;transform:translate(-50%,-60px) scale(.3)}to{opacity:1;transform:translateX(-50%)}}
-@keyframes trglow{0%,100%{filter:drop-shadow(0 0 10px rgba(255,140,190,.8)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}50%{filter:drop-shadow(0 0 22px rgba(255,170,210,1)) drop-shadow(0 10px 12px rgba(190,30,100,.3))}}
-@keyframes twinkle{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
-@keyframes jig{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg) scale(1.08)}40%{transform:rotate(12deg)}60%{transform:rotate(-8deg)}80%{transform:rotate(4deg)}}
 @keyframes navin{from{opacity:0;transform:translateY(-24px)}to{opacity:1;transform:none}}
 @keyframes popc{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
 
@@ -483,49 +324,29 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* ================= Responsive ================= */
 @media (max-width:1020px){
-  .hero{padding-top:112px}
   .nav-links{position:absolute;left:0;right:0;top:calc(100% + 8px);flex-direction:column;align-items:stretch;gap:2px;margin:0;padding:8px;border-radius:18px;background:#fff;box-shadow:var(--sh-m);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .25s ease,transform .35s var(--out),visibility 0s linear .35s}
   .nav.open .nav-links{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .35s var(--out)}
   .nav-links a{padding:13px 14px}
   .nav-links a::after{display:none}
   .nav-links a[aria-current=true]{background:var(--pink-50)}
   .nav-mb{display:grid;margin-left:auto}
-  .hero-in{grid-template-columns:minmax(0,1fr);gap:24px}
-  .h1{font-size:clamp(34px,6.4vw,64px)}
-  .stair{width:min(100%,460px)}
   .banner{grid-template-columns:minmax(0,1fr);padding:40px 32px}
-  .trk,.pl-grid,.hz{grid-template-columns:minmax(0,1fr)}
-  .hz-side{position:static}
+  .pl-grid{grid-template-columns:minmax(0,1fr)}
   .cr{grid-auto-columns:calc((100% - 18px) / 2)}
   .tl{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px 32px;padding:4px 24px 12px}
   .tl-i{flex:0 0 150px;scroll-snap-align:start}
   .tl-line{left:99px;right:auto;width:calc(150px * 5 + 8px * 5)}
 }
 @media (max-width:640px){
-  .hero{padding:92px 16px 64px}
+  html{scroll-padding-top:56px}
   .nav{padding:0 8px}
   .sh h2.h2-one{white-space:normal;font-size:clamp(28px,8vw,34px)}
   .nav-in{min-height:56px;gap:10px;padding:0 8px 0 18px;border-radius:0 0 16px 16px}
   .nb-name{font-size:17px}
   .nb-div,.nb-t{display:none}
-  .story{font-size:16px}
-  /* Màn điện thoại quá hẹp cho 2 dòng ở cỡ đọc được: cho dòng đầu tự xuống dòng */
-  .h1{font-size:clamp(32px,10vw,42px)}
-  .h1 .ln{white-space:normal}
   .sec{padding:72px 16px}
-  .stamp{font-size:20px}
-  .as-l{top:12%}
-  .as-r{bottom:10%}
   .banner{padding:32px 20px}
-  /* chú thích bậc thang: tên chứng chỉ dài → cho xuống dòng, khối thứ 3 canh trái để không tràn mép */
-  .step-tip{flex-wrap:wrap;width:max-content;max-width:calc(100vw - 40px);white-space:normal}
-  .step:nth-child(3) .step-tip{left:0;transform:translate(0,8px)}
-  .step:nth-child(3):hover .step-tip,.step:nth-child(3):focus-visible .step-tip{transform:translate(0,0)}
   .pl{padding:22px 18px 20px}
-  .hz-st{grid-template-columns:36px minmax(0,1fr);gap:10px}
-  .hz-st::before{left:17px;top:42px}
-  .hz-k{width:36px;height:36px;border-radius:12px;font-size:18px}
-  .hz-c{padding:14px 14px 16px}
   /* Học → Hành xếp dọc: mũi tên quay xuống, mỗi ô tự ghi Học / Hành */
   .pr-h{display:none}
   .pr{grid-template-columns:minmax(0,1fr);gap:4px}
@@ -562,7 +383,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     <nav class="nav-links" id="nav-links" aria-label="Các mục trên trang">
       <a href="#dinh-nghia">3 phần</a>
       <a href="#hanh">5 dự án</a>
-      <a href="#harness">Harness AI</a>
       <a href="#lo-trinh">Lộ trình 6 tháng</a>
       <a href="#theo-doi">Check-in</a>
     </nav>
@@ -570,40 +390,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   </div>
 </header>
 
-<main>
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="cloud cl-a"></div><div class="cloud cl-b"></div><div class="cloud cl-c"></div><div class="cloud cl-d"></div>
-  <div class="floaters" id="floaters"></div>
-  <div class="wrap hero-in">
-    <div class="hero-l">
-      <h1 class="dsp h1"><span class="ln"><span style="--d:0">Lộ trình <span class="ms">6 tháng</span> hướng tới</span></span><span class="ln"><span style="--d:1" class="pkh">Product Engineer</span></span></h1>
-      <p class="dsp h1-sub">Sự cam kết và Máu lửa</p>
-      <div class="story">
-        <p>Khang (Ken) trước đây sống và làm việc theo phong cách “Go with the flow: sông đưa thuyền ta đến cảng nào ta cập cảng đấy”, chưa từng đề cao việc thiết lập một mục tiêu cụ thể. Tuy nhiên, sau một khoảnh khắc chiêm nghiệm, a canon event, Ken nhận ra rằng việc có một lộ trình và mục tiêu cụ thể sẽ giúp cho chính bản thân bạn trẻ này có một nguồn năng lượng để làm những điều mà bạn từng mơ ước.</p>
-        <p class="story-end">Hãy cùng theo dõi bạn nhỏ này tiến bộ hằng ngày nhé!</p>
-      </div>
-      <div class="cta-row">
-        <a class="stamp" href="#lo-trinh"><span class="stamp-o"><span class="stamp-w"><span class="stamp-i dsp">XEM LỘ TRÌNH 6 THÁNG</span></span></span><span class="stamp-base"></span></a>
-      </div>
-    </div>
-    <div class="stair" id="stair" aria-label="8 mục tiêu: 3 chứng chỉ và 5 dự án, bấm vào một khối để xem"></div>
-  </div>
-</section>
-
-<!-- ============ GHÉP KHỐI KHI CUỘN ============ -->
-<section class="assemble" id="assemble" aria-label="Ta sẽ đi nhanh hơn nếu ta có định hướng rõ ràng">
-  <div class="as-sticky">
-    <p class="dsp as-txt as-l" id="as-l">Ta sẽ đi<br><span class="pkh">nhanh hơn</span></p>
-    <div class="as-stage" id="as-stage"></div>
-    <p class="dsp as-txt as-r" id="as-r">Nếu ta có<br><span class="pkh">định hướng rõ ràng</span></p>
-  </div>
-</section>
-
+<main id="top">
 <!-- ============ PRODUCT ENGINEER: 3 PHẦN (mỗi phần Học + Hành) ============ -->
 <section id="dinh-nghia" class="sec sec-pink">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Product Engineer gồm <span class="pkh">3 phần</span></h2></header>
+    <header class="sh rv-t"><h1 class="dsp">(AI) Product Engineer gồm <span class="pkh">3 phần</span></h1></header>
     <div class="pl-grid rv" id="pillars"></div>
   </div>
 </section>
@@ -612,39 +403,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <section id="hanh" class="sec">
   <div class="wrap">
     <div class="cats" id="cats"></div>
-  </div>
-</section>
-
-<!-- ============ HARNESS AI ============ -->
-<section id="harness" class="sec sec-hz">
-  <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Harness AI: <span class="pkh">học gì để làm AI</span></h2></header>
-    <div class="hz">
-      <ol class="hz-flow rv" id="hz-flow"></ol>
-      <aside class="hz-side rv">
-        <div class="hz-box">
-          <h3 class="dsp">LH Buddy hôm nay</h3>
-          <p>Chấm theo code hiện tại của Buddy trên Learning Hub, ngày 16/11/2026.</p>
-          <div class="hz-legend" id="hz-legend"></div>
-        </div>
-        <div class="hz-box">
-          <h3 class="dsp">Luôn phải cân 3 thứ</h3>
-          <p>Câu trả lời tốt nằm ở phần giao: an toàn, đủ thông minh và đủ nhanh.</p>
-          <svg class="venn3" viewBox="0 0 300 250" role="img" aria-label="Ba vòng giao nhau: An toàn (Secure), Thông minh (Smart), Nhanh (Real-time)">
-            <circle cx="112" cy="96" r="80" fill="#F95396" fill-opacity=".16" stroke="#F95396"/>
-            <circle cx="188" cy="96" r="80" fill="#429CFF" fill-opacity=".16" stroke="#429CFF"/>
-            <circle cx="150" cy="160" r="80" fill="#FFC21A" fill-opacity=".22" stroke="#F2B200"/>
-            <circle cx="150" cy="120" r="7" fill="#1C171A"/>
-            <g text-anchor="middle">
-              <text x="76" y="70">An toàn</text><text class="vs" x="76" y="88">Secure</text>
-              <text x="224" y="70">Thông minh</text><text class="vs" x="224" y="88">Smart</text>
-              <text x="150" y="208">Nhanh</text><text class="vs" x="150" y="226">Real-time</text>
-            </g>
-          </svg>
-          <ul class="hz-x" id="hz-x"></ul>
-        </div>
-      </aside>
-    </div>
   </div>
 </section>
 
@@ -674,7 +432,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- Popup: danh sách chỗ chèn ảnh -->
 <div class="ov ov-top" id="ov-img" aria-hidden="true"><div class="dlg" role="dialog" aria-modal="true" aria-labelledby="img-t" id="dlg-img"></div></div>
 
-<div class="toasts" id="toasts" aria-live="polite"></div>
 <button type="button" class="imgbtn" id="imgbtn" hidden></button>
 
 <script>
@@ -693,16 +450,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   // Mỗi phần: Học = 1 chứng chỉ, Hành = các dự án dùng nó.
   var PILLARS = [
     { k: "eng", n: 1, name: "Engineer",
-      desc: "Dựng và vận hành sản phẩm chạy thật: front-end, back-end, cloud và DevOps.",
       cert: { name: "IBM Full-Stack JavaScript Developer", meta: "IBM · Coursera · 12 khóa", when: "Tháng 1–6" },
       projects: ["p4", "p1", "p3"] },
     { k: "prod", n: 2, name: "Product",
-      desc: "Chọn đúng vấn đề, tự định nghĩa feature, roll out và đo kết quả.",
       cert: { name: "IBM Product Manager", meta: "IBM · Coursera · 7 khóa", when: "Tháng 4–6" },
       extra: "Học thêm tâm lý học (tính cách, động cơ, thiên kiến) để làm Persona AI.",
       projects: ["p3", "p5"] },
     { k: "ai", n: 3, name: "AI",
-      desc: "Dựng agent có đủ phần khung Harness: memory, tool, MCP, tracing và eval.",
       cert: { name: "IBM RAG and Agentic AI", meta: "IBM · Coursera · 10 khóa", when: "Tháng 1–4" },
       projects: ["p1", "p2", "p5"] }
   ];
@@ -733,42 +487,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       uses: ["Tâm lý học", "Harness: soul.md, memory, eval"] }
   ];
   function projOf(id) { return PROJECTS.filter(function (p) { return p.id === id; })[0]; }
-
-  // Harness AI theo sơ đồ của quản lý. Mỗi thành phần: [tên, giải thích, trạng thái của LH Buddy hôm nay]
-  // Trạng thái chấm theo code Buddy ngày 16/11/2026: ok = có, part = một phần, no = chưa có
-  var HARNESS = [
-    { t: "Đầu vào & Gateway", d: "Người dùng gửi prompt. Gateway kiểm tra đăng nhập, giới hạn lượt và guardrail trước khi tới model.",
-      parts: [["Auth", "đăng nhập", "ok"], ["Gateway", "giới hạn lượt, trần chi phí", "part"], ["Guardrail", "kiểm đầu vào và đầu ra", "part"]],
-      now: "Có đăng nhập, giới hạn 40 lượt mỗi ngày và chặn prompt injection ở đầu vào. Chưa kiểm câu trả lời đầu ra, chưa có trần chi phí.",
-      learn: ["Engineer: Node.js & Express"], build: "Tháng 1" },
-    { t: "Memory", d: "Những gì agent nhớ để trả lời đúng người, đúng ngữ cảnh.",
-      parts: [["Procedural", "skills", "no"], ["Semantic", "sự thật về người học", "part"], ["Episodic", "dòng thời gian", "part"], ["Knowledge base", "RAG, vector search", "part"], ["soul.md / agent.md", "tính cách và luật", "part"]],
-      now: "Tìm bài học theo từ khóa (BM25), lưu từng phiên chat, đọc hồ sơ người học. Phiên mới chưa nhớ phiên cũ, chưa tự lưu điều học được, chưa có skills; tính cách và luật còn nằm chung trong code.",
-      learn: ["AI: RAG, vector database"], build: "Tháng 2–3" },
-    { t: "Vòng lặp LLM ⇄ Tool", d: "Model suy luận, gọi tool, đọc kết quả rồi lặp lại tới khi đủ để trả lời.",
-      parts: [["Model", "chọn model, dự phòng", "part"], ["Reasoning", "suy luận nhiều bước", "no"], ["Tool", "gọi tool trong vòng lặp", "no"]],
-      now: "Mỗi lượt gọi model một lần, chưa có tool và vòng lặp; các việc như mở bài học, đặt lịch học là trình duyệt tự làm theo câu trả lời.",
-      learn: ["AI: Agentic AI (LangGraph, CrewAI, AG2)"], build: "Tháng 3" },
-    { t: "MCP / Connector", d: "Cổng chuẩn để agent nối tới dữ liệu và hệ thống khác.",
-      parts: [["MCP", "giao thức nối tool", "no"], ["Connector", "dữ liệu Learning Hub", "no"]],
-      now: "Buddy chưa dùng MCP. Repo đã có MCP server cho việc soạn khóa học, có thể học từ đó.",
-      learn: ["AI: Agentic AI", "Tài liệu MCP"], build: "Tháng 3" },
-    { t: "Tracing & Evals", d: "Ghi lại từng lượt trả lời, rồi chấm điểm bằng bộ eval để biết sửa xong có tốt lên không.",
-      parts: [["Tracing", "token, độ trễ, chi phí", "part"], ["Evals", "chấm điểm tự động", "part"]],
-      now: "Xem lại được hội thoại trong trang quản trị; có bộ eval hỏi đáp và gia sư nhưng phải chạy tay. Chưa ghi token, độ trễ, chi phí.",
-      learn: ["AI: RAG and Agentic AI", "Engineer: DevOps"], build: "Tháng 1 và 4" },
-    { t: "Feedback & cải tiến", d: "👍 / 👎 của người dùng cùng kết quả eval quay lại để sửa prompt, memory và tool.",
-      parts: [["User feedback", "👍 / 👎 từng câu trả lời", "no"], ["Cải tiến", "sửa theo số liệu", "no"]],
-      now: "Chưa có đánh giá trên từng câu trả lời; góp ý đang gom tay qua bảng tính.",
-      learn: ["Product: đo lường, vòng phản hồi"], build: "Tháng 4" }
-  ];
-  var STATUS = { ok: "Có", part: "Một phần", no: "Chưa có" };
-  // 3 thứ phải cân (góc phải sơ đồ): Buddy hôm nay có gì, tháng nào làm tiếp
-  var TRADEOFF = [
-    ["Chi phí", "Có giới hạn lượt và độ dài tin nhắn; chưa đo token và chi phí. Làm ở Tháng 1."],
-    ["Độ trễ", "Có timeout 30 giây; chưa đo độ trễ từng câu trả lời. Làm ở Tháng 1."],
-    ["Bảo mật", "Có đăng nhập, chặn prompt injection ở đầu vào; chưa kiểm câu trả lời đầu ra. Làm ở Tháng 1."]
-  ];
 
   // 6 tháng: mỗi tháng là các cặp Học → Hành (học phần nào thì dùng ngay vào dự án nào) + "Xong tháng khi".
   // k = phần (eng / prod / ai), src = học từ đâu, t = học gì, p = dự án, d = làm gì trong dự án
@@ -874,7 +592,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   function svg(name, cls) {
     return '<svg class="ic' + (cls ? " " + cls : "") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + ICON[name] + "</svg>";
   }
-  function cube(kind, inner) { return '<span class="cube ' + (kind || "") + '"><i class="cf-t"></i><i class="cf-l"></i><i class="cf-r"></i>' + (inner || "") + "</span>"; }
   // Số kiểu MoMo: hoa văn dùng chung (1 sọc chéo · 2 caro · 3 sóng).
   // Nét font Momo có đường viền chồng nhau: Chrome tô chữ bằng pattern/stroke sẽ lộ khe (rõ nhất ở số 3),
   // nên chữ chỉ dùng làm khuôn (mask, tô trắng đặc + nét trắng lấp khe) rồi đổ hoa văn qua khuôn. Các vòng viền dựng bằng filter:
@@ -911,14 +628,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       '<g filter="url(#mn-edge)"><rect x="-12" y="-12" width="120" height="144" fill="url(#mn-ext)" mask="url(#mn-s' + n + ')"/></g>' +
       '<g filter="url(#mn-ring)"><rect x="-12" y="-12" width="120" height="144" fill="url(#' + MNUM_FILL[n] + ')" mask="url(#mn-m' + n + ')"/></g></svg>';
   }
-  // Cúp MoMo (ảnh momo-trophy.png, nền trong suốt) kèm quầng sáng xoay và sao lấp lánh
-  function trophyHTML() {
-    return '<span class="trophy-b"><span class="tr-rays"></span><span class="tr-sp a"></span><span class="tr-sp b"></span><span class="tr-sp c"></span><span class="tr-cup">' +
-      '<img src="momo-trophy.png" alt="" width="320" height="320" decoding="async"></span></span>';
-  }
   function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
-  function lerp(a, b, t) { return a + (b - a) * t; }
-  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function behavior() { return reduce ? "auto" : "smooth"; }
   function restart(el, cls) { if (!el) return; el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls); }
   function shake(el) { if (!el) return; el.style.animation = "none"; void el.offsetWidth; el.style.animation = "shake .5s ease"; }
@@ -955,71 +665,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   /* ================= RENDER TĨNH ================= */
-  // Khối trang trí trên bầu trời: [x%, y%, cỡ px, màu, độ sâu parallax, mờ?, thời gian]
-  var FLOAT = [
-    [52, 13, 34, "white", .5, 0, 9], [88, 9, 46, "pink", .8, 0, 11], [97, 46, 82, "pink", 1.4, 1, 10],
-    [60, 86, 64, "white", 1.2, 1, 12], [6, 92, 40, "blush", .9, 0, 8], [44, 3, 22, "blush", .3, 0, 7],
-    [77, 92, 30, "blush", .6, 0, 9], [30, 96, 26, "white", .4, 0, 10]
-  ];
-  var floaters = [];
-  // Đoạn "ghép khối": các khối bay về xếp thành chữ PRODUCT (khoảng trống bên phải) và ENGINEER (bên trái).
-  // Chữ pixel cao 5 hàng; P và R theo đúng nét đã duyệt, N và G rộng 4 cột cho dễ đọc
-  var FONT = {
-    P: ["###", "#.#", "##.", "#..", "#.."],
-    R: ["###", "#.#", "##.", "#.#", "#.#"],
-    O: ["###", "#.#", "#.#", "#.#", "###"],
-    D: ["##.", "#.#", "#.#", "#.#", "##."],
-    U: ["#.#", "#.#", "#.#", "#.#", "###"],
-    C: ["###", "#..", "#..", "#..", "###"],
-    T: ["###", ".#.", ".#.", ".#.", ".#."],
-    E: ["###", "#..", "###", "#..", "###"],
-    N: ["#..#", "##.#", "#.##", "#..#", "#..#"],
-    G: ["####", "#...", "#.##", "#..#", "####"],
-    I: ["###", ".#.", ".#.", ".#.", "###"]
-  };
-  // Trải một từ thành các ô [cột, hàng]; giữa hai chữ cách 1 cột
-  function wordCells(word) {
-    var cells = [], x = 0;
-    word.split("").forEach(function (ch, k) {
-      var g = FONT[ch];
-      g.forEach(function (row, r) { row.split("").forEach(function (px, c) { if (px === "#") cells.push([x + c, r]); }); });
-      x += g[0].length + (k < word.length - 1 ? 1 : 0);
-    });
-    return { cells: cells, w: x };
-  }
-  var WORDS = [wordCells("PRODUCT"), wordCells("ENGINEER")];
-  var CELLS = []; // [cột, hàng, từ]
-  WORDS.forEach(function (wd, k) { wd.cells.forEach(function (c) { CELLS.push([c[0], c[1], k]); }); });
-  var TARGETS = []; // toạ độ đích của từng khối, tính lại mỗi khi đổi cỡ màn
-  // Vị trí rải rác ban đầu: [x, y theo tỉ lệ màn, xoay, cỡ], rải quanh màn theo góc vàng để không dồn cục
-  var SCATTER = CELLS.map(function (_, i) {
-    var a = i * 2.39996, rr = .3 + .7 * Math.sqrt((i * .7548 + .37) % 1);
-    return [Math.cos(a) * .44 * rr, Math.sin(a) * .42 * rr, ((i * 47) % 80) - 40, .5 + ((i * 29) % 40) / 100];
-  });
-  var asCubes = [];
-
   function renderStatic() {
-
-    var fl = $("#floaters");
-    fl.innerHTML = FLOAT.map(function (f, i) {
-      return '<span class="fl' + (f[5] ? " bl" : "") + '" style="left:' + f[0] + "%;top:" + f[1] + "%;--s:" + f[2] + "px;--t:" + f[6] + "s;--dl:" + (-i * 1.3) + 's">' + cube(f[3]) + "</span>";
-    }).join("");
-    floaters = $$(".fl", fl).map(function (el, i) { return { el: el, depth: FLOAT[i][4] }; });
-
-    // Bậc thang = 3 chứng chỉ (Học) rồi 5 dự án (Hành), tô màu theo phần Engineer hồng · Product vàng · AI xanh
-    var STEPS = PILLARS.map(function (p) { return { attr: "data-pillar", id: p.k, tri: p.k, label: "Chứng chỉ " + p.name, sub: p.cert.name }; })
-      .concat(PROJECTS.map(function (p) { return { attr: "data-proj", id: p.id, tri: p.tri, label: p.name, sub: p.when }; }));
-    $("#stair").innerHTML = STEPS.map(function (st, i) {
-      return '<button type="button" class="step" ' + st.attr + '="' + st.id + '" style="--i:' + i + '" aria-label="' + esc(st.label + ": " + st.sub) + '">' +
-        '<span class="step-b">' + cube(st.tri === "eng" ? "pink" : st.tri) + "</span>" +
-        '<span class="step-tip"><span class="gdot" data-tri="' + st.tri + '"></span><b>' + esc(st.label) + "</b><small>" + esc(st.sub) + "</small></span></button>";
-    }).join("") + '<button type="button" class="trophy" id="trophy" aria-label="Đích của mùa: Product Engineer">' + trophyHTML() + "</button>";
-
     // 3 phần của Product Engineer: mỗi phần Học (chứng chỉ) + Hành (dự án dùng nó)
     $("#pillars").innerHTML = PILLARS.map(function (p) {
       return '<article class="pl" id="pl-' + p.k + '" data-tri="' + p.k + '">' +
         '<div class="pl-h"><span class="mnum" data-mnum="' + p.n + '"></span><div class="pl-n"><h3 class="dsp">' + p.name + "</h3>" + "</div></div>" +
-        '<p class="pl-d">' + esc(p.desc) + "</p>" +
         '<div class="pl-b"><span class="lbl lbl-p">Học</span><div class="cert"><span class="cert-i">' + svg("trophy") + '</span><span class="cert-t"><b>' + esc(p.cert.name) + "</b><small>" + esc(p.cert.meta + " · " + p.cert.when) + "</small></span></div>" +
           (p.extra ? '<p class="cert-x">' + esc(p.extra) + "</p>" : "") + "</div>" +
         '<div class="pl-b"><span class="lbl lbl-p">Hành</span><ul class="side-l">' + p.projects.map(function (id) {
@@ -1028,33 +678,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         }).join("") + "</ul></div></article>";
     }).join("");
 
-    $("#as-stage").innerHTML = CELLS.map(function () {
-      return '<span class="as-c">' + cube("pink") + "</span>";
-    }).join("");
-    asCubes = $$(".as-c", $("#as-stage"));
-
     // 5 dự án trong một carousel
     $("#cats").innerHTML = '<div class="cat rv" id="cat-proj">' +
       '<div class="cat-h"><h3 class="dsp">Có <span class="ms">' + PROJECTS.length + ' dự án</span> để hành</h3>' +
       '<div class="cat-nav"><button type="button" class="nb" data-cr="-1" aria-label="Thẻ trước">' + svg("left") + '</button><button type="button" class="nb" data-cr="1" aria-label="Thẻ sau">' + svg("right") + "</button></div></div>" +
       '<div class="cr" tabindex="0" aria-label="5 dự án">' + PROJECTS.map(projHTML).join("") + "</div></div>";
-
-    // Harness AI: từng chặng, chấm trạng thái của LH Buddy hôm nay
-    $("#hz-flow").innerHTML = HARNESS.map(function (h, i) {
-      return '<li class="hz-st"><span class="hz-k dsp" aria-hidden="true">' + (i + 1) + '</span><div class="hz-c"><h3 class="dsp">' + esc(h.t) + '</h3><p class="hz-d">' + esc(h.d) + "</p>" +
-        '<div class="hz-parts">' + h.parts.map(function (x) {
-          return '<span class="hz-part" title="LH Buddy hôm nay: ' + STATUS[x[2]] + '"><span class="sd ' + x[2] + '" aria-hidden="true"></span>' + esc(x[0]) + " <small>" + esc(x[1]) + '</small><span class="sr"> (LH Buddy: ' + STATUS[x[2]] + ")</span></span>";
-        }).join("") + "</div>" +
-        '<p class="hz-now"><b>LH Buddy hôm nay:</b> ' + esc(h.now) + "</p>" +
-        '<div class="hz-m">' + h.learn.map(function (l) { return '<span class="hz-tag">Học: ' + esc(l) + "</span>"; }).join("") +
-          '<span class="hz-tag b">Dựng vào LH Buddy: ' + esc(h.build) + "</span></div></div></li>";
-    }).join("");
-    var cnt = { ok: 0, part: 0, no: 0 };
-    HARNESS.forEach(function (h) { h.parts.forEach(function (x) { cnt[x[2]]++; }); });
-    $("#hz-legend").innerHTML = ["ok", "part", "no"].map(function (k) {
-      return '<span><span class="sd ' + k + '" aria-hidden="true"></span><span><b>' + STATUS[k] + "</b>: " + cnt[k] + " thành phần</span></span>";
-    }).join("");
-    $("#hz-x").innerHTML = TRADEOFF.map(function (x) { return "<li><b>" + esc(x[0]) + "</b>" + esc(x[1]) + "</li>"; }).join("");
 
     $("#tl").innerHTML = '<div class="tl-line"></div>' + MONTHS.map(function (m) {
       return '<div class="tl-i"><button type="button" role="tab" class="yr" id="tab-' + m.n + '" data-tab="' + m.n + '" aria-controls="card"><span>Tháng ' + m.n + '</span></button><span class="tl-dot"></span><span class="tl-t">' + esc(m.title) + "</span></div>";
@@ -1139,13 +767,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   function closeAll() { while (stack.length) closeOv(stack[stack.length - 1].ov, true); }
   function topOv() { return stack.length ? stack[stack.length - 1].ov : null; }
 
-  function toast(msg, icon) {
-    var el = document.createElement("div");
-    el.className = "toast";
-    el.innerHTML = (icon ? svg(icon) : "") + "<span>" + esc(msg) + "</span>";
-    $("#toasts").appendChild(el);
-    setTimeout(function () { el.classList.add("out"); setTimeout(function () { el.remove(); }, 320); }, 2800);
-  }
   /* ================= HÀNH ĐỘNG ================= */
   function goTo(n) {
     closeAll();
@@ -1165,8 +786,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
   var navLinks = [];
   function frameNav() {
-    var nav = $("#nav"), hid = $("#top").getBoundingClientRect().bottom <= nav.offsetHeight;
-    if (hid !== nav.classList.contains("hid")) { if (hid) setNav(false); nav.classList.toggle("hid", hid); }
     var hit = null, line = window.innerHeight * .35;
     navLinks.forEach(function (l) { if (l.sec.getBoundingClientRect().top <= line) hit = l; });
     navLinks.forEach(function (l) {
@@ -1239,15 +858,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     if ((el = t.closest("[data-tab]"))) { select(+el.getAttribute("data-tab")); return; }
     if ((el = t.closest("[data-pnav]"))) { select(sel + +el.getAttribute("data-pnav")); return; }
     if ((el = t.closest("[data-proj]"))) { goEl($("#proj-" + el.getAttribute("data-proj"))); return; }
-    if ((el = t.closest("[data-pillar]"))) { goEl($("#pl-" + el.getAttribute("data-pillar"))); return; }
     if ((el = t.closest("[data-cr]"))) { var cr = $(".cr", el.closest(".cat")); cr.scrollBy({ left: +el.getAttribute("data-cr") * crStep(cr), behavior: behavior() }); return; }
     if ((el = t.closest("[data-locate]"))) { locate(el.getAttribute("data-locate")); return; }
     if (t.closest("#imgbtn")) { openImgList(); return; }
-    if (t.closest("#trophy")) {
-      restart($("#trophy"), "jig");
-      toast("Đích của mùa: Product Engineer", "trophy");
-      return;
-    }
     if (t.classList && t.classList.contains("ov")) { closeOv(t); return; }
   });
 
@@ -1269,82 +882,20 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   });
 
   /* ================= CHUYỂN ĐỘNG THEO CUỘN ================= */
-  var sbar = $("#sbar"), ticking = false, mx = 0, my = 0, S = 80;
-
-  // Đặt 2 từ vào khoảng trống thật trên màn (đo vị trí 2 câu chữ, chưa tính hiệu ứng mờ/trượt):
-  // màn rộng → PRODUCT canh phải ngang hàng câu trên, ENGINEER canh trái giữa PRODUCT và câu dưới;
-  // màn hẹp → hai từ xếp chồng, căn giữa, nằm giữa hai câu.
-  // Một từ cao 3.46S (5 hàng chồng theo cạnh đứng .577S + chiều cao khối 1.155S).
-  function layoutAssemble() {
-    var vw = window.innerWidth, vh = window.innerHeight, L = $("#as-l"), R = $("#as-r");
-    var m = Math.max(16, vw * .06), WP = WORDS[0].w, WE = WORDS[1].w;
-    var lR = L.offsetLeft + L.offsetWidth, lTop = L.offsetTop, lBot = lTop + L.offsetHeight, rTop = R.offsetTop;
-    var side = (vw - m - lR - 32) / WP, boxes;
-    if (side >= 14) {
-      S = Math.floor(Math.min(side, (vw - 2 * m) / WE, (rTop - (lTop + lBot) / 2 - 48) / 5.2, 44));
-      var py = (lTop + lBot) / 2, ey = (py + 1.73 * S + rTop) / 2;
-      boxes = [[vw - m - WP * S, py], [m, ey]];
-    } else {
-      S = Math.floor(Math.min((vw - 2 * m) / WE, 30));
-      // căn khối 2 từ vào giữa khoảng trống giữa câu trên và câu dưới
-      var top2 = (lBot + rTop) / 2 - (2 * 3.46 * S + 20) / 2;
-      var p2 = top2 + 1.73 * S, e2 = p2 + 3.46 * S + 20;
-      boxes = [[(vw - WP * S) / 2, p2], [(vw - WE * S) / 2, e2]];
-    }
-    S = Math.max(S, 6);
-    // đổi sang toạ độ của sân khấu (đặt ở 50% ngang, 52% dọc)
-    TARGETS = CELLS.map(function (c) {
-      var b = boxes[c[2]];
-      return [b[0] + c[0] * S + S / 2 - vw / 2, b[1] - 1.155 * S + c[1] * S * .577 - vh * .52];
-    });
-    $("#as-stage").style.setProperty("--S", S + "px");
-  }
-
-  function frameAssemble() {
-    var sec = $("#assemble"), r = sec.getBoundingClientRect(), vh = window.innerHeight;
-    if (r.bottom < -50 || r.top > vh + 50) return;
-    var p = reduce ? 1 : clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
-    var vw = window.innerWidth;
-    asCubes.forEach(function (c, i) {
-      var cell = CELLS[i], s = SCATTER[i], tg = TARGETS[i];
-      // PRODUCT về chỗ trước (đi cùng câu trên), ENGINEER sau; trong mỗi từ, khối về lần lượt từ trái sang phải
-      var e = ease(clamp((p - .08 - cell[2] * .2 - cell[0] * .005) / .35, 0, 1));
-      var x = lerp(s[0] * vw, tg[0], e), y = lerp(s[1] * vh, tg[1], e), rot = lerp(s[2], 0, e), sc = lerp(s[3], 1, e);
-      c.style.transform = "translate(" + x.toFixed(1) + "px," + y.toFixed(1) + "px) rotate(" + rot.toFixed(1) + "deg) scale(" + sc.toFixed(3) + ")";
-      c.style.zIndex = 10 - cell[1]; // hàng trên đè lên mặt trên của hàng dưới
-    });
-    setTxt($("#as-l"), clamp(p / .18, 0, 1));
-    setTxt($("#as-r"), clamp((p - .55) / .2, 0, 1));
-  }
-  function setTxt(el, v) {
-    el.style.opacity = .08 + v * .92;
-    el.style.filter = "blur(" + ((1 - v) * 10).toFixed(1) + "px)";
-    el.style.transform = "translateY(" + ((1 - v) * 24).toFixed(1) + "px)";
-  }
+  var sbar = $("#sbar"), ticking = false;
 
   function frame() {
     ticking = false;
     var y = window.scrollY, vh = window.innerHeight, H = document.documentElement.scrollHeight;
     sbar.style.transform = "scaleX(" + clamp(y / Math.max(1, H - vh), 0, 1) + ")";
-    if (!reduce && y < vh * 1.4) {
-      floaters.forEach(function (f) {
-        f.el.style.translate = (mx * f.depth * 26).toFixed(1) + "px " + (-y * f.depth * .28 + my * f.depth * 20).toFixed(1) + "px";
-      });
-    }
-    frameAssemble();
     frameNav();
   }
   function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
 
   function bindMotion() {
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", function () { layoutAssemble(); onScroll(); $$(".cr").forEach(crSync); });
+    window.addEventListener("resize", function () { onScroll(); $$(".cr").forEach(crSync); });
     $$(".cr").forEach(function (cr) { cr.addEventListener("scroll", function () { crSync(cr); }, { passive: true }); crSync(cr); });
-    if (!reduce && window.matchMedia("(hover: hover)").matches) {
-      $("#top").addEventListener("pointermove", function (e) {
-        mx = e.clientX / window.innerWidth - .5; my = e.clientY / window.innerHeight - .5; onScroll();
-      });
-    }
     document.documentElement.classList.add("js");
     if (!("IntersectionObserver" in window)) { $$(".rv,.rv-t").forEach(function (el) { el.classList.add("in"); }); return; }
     var rv = new IntersectionObserver(function (es) {
@@ -1360,7 +911,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   navLinks = $$(".nav-links a").map(function (a) { return { a: a, sec: $(a.getAttribute("href")) }; });
   renderCard("");
   hydrateSlots(document);
-  layoutAssemble();
   bindMotion();
   frame();
   updateImgBtn();
