@@ -223,9 +223,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 
 /* ================= Product Engineer: 3 phần, mỗi phần Học (1 chứng chỉ) + Hành (các dự án dùng nó) ================= */
 .sec-pink{background:linear-gradient(180deg,#FDE4EE 0%,#fff 560px)}
-/* Engineer nặng nhất nên cột rộng hơn; không chia tỉ trọng */
-.pl-grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:stretch}
-.pl{display:flex;flex-direction:column;gap:18px;min-width:0;padding:26px 24px 24px;border-top:6px solid var(--c);border-radius:10px 10px 26px 26px;background:#fff;box-shadow:var(--sh-m);scroll-margin-top:30px}
+.pl-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.pl{display:flex;flex-direction:column;gap:18px;min-width:0;padding:26px 24px 24px;border-radius:26px;background:#fff;box-shadow:var(--sh-m);scroll-margin-top:30px}
 .pl.flash{animation:flash 1.1s ease 2}
 .pl-h{display:flex;align-items:center;gap:14px}
 .pl-h .mnum{width:52px}
@@ -396,7 +395,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 /* ================= Giữ nhịp ================= */
 .sec-sky{overflow:hidden;background:linear-gradient(180deg,#fff 0%,#E3F1FD 30%,#BFDFF9 100%)}
 .sec-sky .cloud{opacity:.8}
-.trk{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px}
+.trk{position:relative;z-index:2;max-width:760px}
 .trk-col{display:flex;flex-direction:column;gap:16px;min-width:0}
 .h2s{font-size:clamp(28px,3vw,38px);line-height:1.15}
 .steps{display:flex;flex-direction:column;gap:12px}
@@ -409,47 +408,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .st-card:hover .mnum{transform:rotate(-6deg) scale(1.06)}
 .st-card p{font-size:16px;line-height:1.5;color:var(--ink-2)}
 .st-card p b{color:var(--ink)}
-/* Khung Mùa 2 giãn hết phần còn lại của cột → đỉnh và đáy thẳng hàng với 3 thẻ Check-in bên trái */
-.s2{position:relative;display:block;flex:1 1 auto;width:100%;min-height:240px;padding:0;overflow:hidden;border:0;border-radius:22px;background:#fff;box-shadow:var(--sh-m);cursor:pointer;text-align:left}
-.s2 .slot{position:absolute;inset:0}
-.s2 .slot>img{object-fit:contain}
-/* lớp tối 35% + nhãn sọc kiểu M16 đè giữa ảnh */
-.s2-dim{position:absolute;inset:0;z-index:2;background:rgba(28,23,26,.35);transition:background-color .3s ease}
-.s2:hover .s2-dim{background:rgba(28,23,26,.25)}
-.s2-tbc{position:absolute;left:50%;top:50%;z-index:3;padding:.08em .3em .04em;background:var(--ms-bg);color:#fff;font-size:clamp(26px,3.2vw,44px);line-height:1.1;white-space:nowrap;box-shadow:0 14px 30px -12px rgba(80,0,40,.6);transform:translate(-50%,-50%) rotate(-4deg);transition:transform .45s var(--spring)}
-.s2:hover .s2-tbc{transform:translate(-50%,-50%) rotate(-2deg) scale(1.04)}
-.ph-s2{background:linear-gradient(120deg,#CFE7FB,#FDE4EE 60%,#FFC9DE)!important}
-.ph-s2 .dsp{font-size:170px;line-height:1;color:rgba(255,255,255,.85);transform:translateY(6%)}
-.s2.shake{animation:shake .5s ease}
-
-/* ================= Bình luận ================= */
-.sec-cmt{background:linear-gradient(180deg,#BFDFF9 0%,#FFF3F8 45%,#fff 100%)}
-.cmt{max-width:760px}
-.cmt-f{display:flex;flex-direction:column;gap:18px;padding:28px;border-radius:22px;background:#fff;box-shadow:var(--sh-m)}
-.fld{display:flex;flex-direction:column;gap:8px}
-.fld input,.fld textarea{width:100%;padding:12px 14px;border:1.5px solid #E7D6DF;border-radius:12px;background:#fff;color:var(--ink);font:inherit;font-size:16px;line-height:1.5;transition:border-color .2s ease,box-shadow .2s ease}
-.fld textarea{min-height:120px;resize:vertical}
-.fld input::placeholder,.fld textarea::placeholder{color:#A69BA2}
-.fld input:focus,.fld textarea:focus{outline:0;border-color:var(--pink-btn);box-shadow:0 0 0 4px var(--pink-100)}
-.fld [aria-invalid=true]{border-color:#E41E29}
-.fld-err{font-size:13.5px;font-weight:600;line-height:1.4;color:#B42318}
-.fld-err:empty{display:none}
-.cmt-act{display:flex;justify-content:flex-end}
-.cmt-send{font-size:20px}
-.stamp:disabled{opacity:.55;pointer-events:none}
-.cmt-lh{margin:44px 0 14px}
-.cmt-lh:empty{display:none}
-.cmt-list{display:flex;flex-direction:column;gap:12px}
-.cmt-i{display:flex;gap:14px;padding:18px 20px;border-radius:18px;background:#fff;box-shadow:var(--sh-s)}
-.cmt-av{display:grid;place-items:center;width:42px;height:42px;flex:0 0 auto;border-radius:50%;background:var(--pink-100);color:var(--pink-text);font-size:19px;line-height:1}
-.cmt-c{min-width:0}
-.cmt-m{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 10px}
-.cmt-m b{font-size:16px;color:var(--ink)}
-.cmt-m time{font-size:13px;color:var(--ink-3)}
-.cmt-c p{margin-top:4px;font-size:16px;line-height:1.55;color:var(--ink-2);white-space:pre-wrap;overflow-wrap:anywhere}
-.cmt-note{padding:20px 4px;font-size:15px;color:var(--ink-3)}
-
-
 /* ================= Popup ================= */
 .ov{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(60,20,45,.36);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
 .ov.open{opacity:1;visibility:visible;transition:opacity .25s ease}
@@ -590,8 +548,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   .il-r{display:none}
   .imgbtn span{display:none}
   .imgbtn{padding:0 12px}
-  .cmt-f{padding:22px 16px}
-  .cmt-i{gap:12px;padding:16px}
 }
 </style>
 </head>
@@ -655,20 +611,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- ============ HÀNH: 5 DỰ ÁN ============ -->
 <section id="hanh" class="sec">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Hành: <span class="pkh">5 dự án</span></h2></header>
-
-    <div class="bn-w rv" id="bn-w">
-      <div class="banner">
-        <div class="bn-conf" id="bn-conf"></div>
-        <div class="bn-l">
-          <h3 class="dsp bn-t"><span class="ink">Sau 6 tháng</span>em có 3 chứng chỉ và 5 sản phẩm tự tay làm</h3>
-          <p class="bn-s">Học tới đâu, dùng ngay tới đó</p>
-          <div class="gtags" id="miles"></div>
-        </div>
-        <figure class="bn-ph"><span class="slot" data-img="so-do-he-thong" id="feat-slot"></span></figure>
-      </div>
-    </div>
-
     <div class="cats" id="cats"></div>
   </div>
 </section>
@@ -676,7 +618,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- ============ HARNESS AI ============ -->
 <section id="harness" class="sec sec-hz">
   <div class="wrap">
-    <header class="sh rv-t"><h2 class="dsp">Harness AI: <span class="pkh">học gì để làm AI</span></h2><p>Các thành phần cốt lõi bao quanh một model. Học trong chứng chỉ AI, dựng ngay vào LH Buddy, rồi dùng lại cho My Buddy và Persona AI.</p></header>
+    <header class="sh rv-t"><h2 class="dsp">Harness AI: <span class="pkh">học gì để làm AI</span></h2></header>
     <div class="hz">
       <ol class="hz-flow rv" id="hz-flow"></ol>
       <aside class="hz-side rv">
@@ -721,36 +663,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   <div class="wrap trk">
     <div class="trk-col rv">
       <h2 class="dsp h2s">Check-in với quản lý</h2>
-      <ol class="steps">
-        <li class="st-card stg" style="--k:0"><span class="mnum" data-mnum="1"></span><p><b>Cuối mỗi tháng, 30 phút:</b> Trình bày lại phần vừa học. Mục nào chưa đạt thì dời sang tháng sau, không bỏ qua.</p></li>
-        <li class="st-card stg" style="--k:1"><span class="mnum" data-mnum="2"></span><p><b>Tháng 3, review giữa kỳ:</b> xem LH Buddy đã đủ bao nhiêu thành phần Harness, tiến độ 2 chứng chỉ Engineer và AI.</p></li>
-        <li class="st-card stg" style="--k:2"><span class="mnum" data-mnum="3"></span><p><b>Tháng 6, tổng kết:</b> trình bày lại toàn bộ IDP trong 30 phút: 3 chứng chỉ, demo 5 dự án, chọn mục tiêu cho mùa sau.</p></li>
-      </ol>
-    </div>
-    <div class="trk-col rv">
-      <h2 class="dsp h2s">Kế Hoạch 1 năm?</h2>
-      <button type="button" class="s2" id="s2" aria-label="Kế hoạch 1 năm, to be continued">
-        <span class="slot" data-img="mua-2"><img alt="Mùa 2: kế hoạch 1 năm" decoding="async"><span class="slot-ph ph-s2"><span class="dsp">2</span></span><span class="slot-tag" data-tag="mua-2"></span></span>
-        <span class="s2-dim"></span>
-        <span class="s2-tbc dsp">TO BE CONTINUED</span>
-      </button>
+      <p class="st-card">Mỗi tháng drop-in 1-1 với Line Manager để báo cáo tiến độ học tập.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ BÌNH LUẬN ============ -->
-<section id="binh-luan" class="sec sec-cmt">
-  <div class="wrap cmt">
-    <header class="sh rv-t"><h2 class="dsp">Hãy để lại <span class="pkh">bình luận!</span></h2></header>
-    <form class="cmt-f rv" id="cmt-form" novalidate>
-      <div class="fld"><label class="lbl" for="cmt-name">Tên</label><input id="cmt-name" name="name" maxlength="60" autocomplete="name" placeholder="Tên của bạn" aria-describedby="cmt-name-err"><small class="fld-err" id="cmt-name-err"></small></div>
-      <div class="fld"><label class="lbl" for="cmt-body">Bình luận</label><textarea id="cmt-body" name="body" rows="4" maxlength="1000" placeholder="Góp ý cho lộ trình 6 tháng…" aria-describedby="cmt-body-err"></textarea><small class="fld-err" id="cmt-body-err"></small></div>
-      <div class="cmt-act"><button type="submit" class="stamp cmt-send" id="cmt-send"><span class="stamp-o"><span class="stamp-w"><span class="stamp-i dsp">GỬI BÌNH LUẬN</span></span></span><span class="stamp-base"></span></button></div>
-    </form>
-    <div class="cmt-lh lbl" id="cmt-count"></div>
-    <ul class="cmt-list" id="cmt-list" aria-live="polite"></ul>
-  </div>
-</section>
 </main>
 
 
@@ -768,18 +685,14 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   var CONFIG = {
     // false = ẩn nút "Chỗ chèn ảnh" và nhãn tên file trên các ô ảnh trống (dùng khi gửi cho người khác xem)
     showImageHelper: false,
-    imageDir: "images/",
-    // Bình luận lưu ở Supabase (bảng idp_comments, tạo bằng db/idp_comments.sql).
-    // supabaseKey: Publishable key (sb_publishable_…) hoặc anon key. KHÔNG dán secret / service_role key vào đây.
-    supabaseUrl: "https://mhedxtfzlsxxnsjsurea.supabase.co",
-    supabaseKey: "sb_publishable_DCA6PR4N3cv58PkKFZ51dw_0z74b-FU"
+    imageDir: "images/"
   };
 
   /* ================= DỮ LIỆU ================= */
   // Product Engineer = 3 phần, xếp theo độ nặng: Engineer → Product → AI (không chia tỉ trọng).
   // Mỗi phần: Học = 1 chứng chỉ, Hành = các dự án dùng nó.
   var PILLARS = [
-    { k: "eng", n: 1, name: "Engineer", tag: "Nặng nhất",
+    { k: "eng", n: 1, name: "Engineer",
       desc: "Dựng và vận hành sản phẩm chạy thật: front-end, back-end, cloud và DevOps.",
       cert: { name: "IBM Full-Stack JavaScript Developer", meta: "IBM · Coursera · 12 khóa", when: "Tháng 1–6" },
       projects: ["p4", "p1", "p3"] },
@@ -926,8 +839,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   }
 
   var SLOTS = [];
-  SLOTS.push({ base: "so-do-he-thong", label: "Sơ đồ cả hệ thống", where: "Khung ảnh trong banner hồng ở mục Hành: 5 dự án", ratio: "16:10 · 1600×1000" });
-  SLOTS.push({ base: "mua-2", label: "Ảnh teaser Mùa 2", where: "Thẻ “Kế Hoạch 1 năm?” (hiện mờ đến khi xong Mùa 1)", ratio: "4:3 · 1200×900" });
 
   var ICON = {
     web: '<rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01M9 13l-2 2 2 2M15 13l2 2-2 2"/>',
@@ -1107,7 +1018,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     // 3 phần của Product Engineer: mỗi phần Học (chứng chỉ) + Hành (dự án dùng nó)
     $("#pillars").innerHTML = PILLARS.map(function (p) {
       return '<article class="pl" id="pl-' + p.k + '" data-tri="' + p.k + '">' +
-        '<div class="pl-h"><span class="mnum" data-mnum="' + p.n + '"></span><div class="pl-n"><h3 class="dsp">' + p.name + "</h3>" + (p.tag ? '<span class="ms dsp">' + p.tag + "</span>" : "") + "</div></div>" +
+        '<div class="pl-h"><span class="mnum" data-mnum="' + p.n + '"></span><div class="pl-n"><h3 class="dsp">' + p.name + "</h3>" + "</div></div>" +
         '<p class="pl-d">' + esc(p.desc) + "</p>" +
         '<div class="pl-b"><span class="lbl lbl-p">Học</span><div class="cert"><span class="cert-i">' + svg("trophy") + '</span><span class="cert-t"><b>' + esc(p.cert.name) + "</b><small>" + esc(p.cert.meta + " · " + p.cert.when) + "</small></span></div>" +
           (p.extra ? '<p class="cert-x">' + esc(p.extra) + "</p>" : "") + "</div>" +
@@ -1121,17 +1032,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
       return '<span class="as-c">' + cube("pink") + "</span>";
     }).join("");
     asCubes = $$(".as-c", $("#as-stage"));
-
-    $("#feat-slot").innerHTML = '<img alt="Sơ đồ cả hệ thống" decoding="async">' + phHTML("Sơ đồ cả hệ thống", "Tự vẽ: trình duyệt → server → database → AI") + '<span class="slot-tag">' + tagHTML("so-do-he-thong") + "</span>";
-    var conf = ["#FFD84D", "#3D7BFF", "#12B76A", "#fff", "#FFB3D2", "#7C5CFA"], ch = "";
-    for (var c = 0; c < 22; c++) {
-      ch += '<i style="left:' + ((c * 37) % 100) + "%;top:" + ((c * 53) % 100) + "%;background:" + conf[c % conf.length] + ";--r:" + ((c * 47) % 180) + "deg;animation-delay:" + (-c * .4) + 's"></i>';
-    }
-    $("#bn-conf").innerHTML = ch;
-    // Banner: 3 chứng chỉ, bấm để tới phần đó
-    $("#miles").innerHTML = PILLARS.map(function (p) {
-      return '<button type="button" class="gtag" data-pillar="' + p.k + '"><span class="gdot" data-tri="' + p.k + '"></span><span>Chứng chỉ ' + p.name + "</span></button>";
-    }).join("");
 
     // 5 dự án trong một carousel
     $("#cats").innerHTML = '<div class="cat rv" id="cat-proj">' +
@@ -1327,86 +1227,9 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     });
   }
 
-  /* ================= BÌNH LUẬN (Supabase REST) ================= */
-  var comments = [];
-  function sbFetch(path, opt) {
-    var k = CONFIG.supabaseKey, h = { apikey: k };
-    // anon key kiểu cũ là JWT nên gửi kèm Authorization; publishable key mới thì chỉ cần apikey
-    if (/^eyJ/.test(k)) h.Authorization = "Bearer " + k;
-    if (opt && opt.json) { h["Content-Type"] = "application/json"; h.Prefer = "return=representation"; }
-    return fetch(CONFIG.supabaseUrl + "/rest/v1/" + path, {
-      method: opt && opt.json ? "POST" : "GET", headers: h, body: opt && opt.json ? JSON.stringify(opt.json) : undefined
-    }).then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); });
-  }
-  function pad2(n) { return (n < 10 ? "0" : "") + n; }
-  function ago(iso) {
-    var d = new Date(iso), s = (Date.now() - d.getTime()) / 1000;
-    if (s < 60) return "vừa xong";
-    if (s < 3600) return Math.floor(s / 60) + " phút trước";
-    if (s < 86400) return Math.floor(s / 3600) + " giờ trước";
-    if (s < 172800) return "hôm qua";
-    if (s < 604800) return Math.floor(s / 86400) + " ngày trước";
-    return pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + d.getFullYear();
-  }
-  function cmtHTML(c) {
-    var d = new Date(c.created_at), last = c.author_name.trim().split(/\s+/).pop();
-    return '<li class="cmt-i"><span class="cmt-av dsp" aria-hidden="true">' + esc((Array.from(last)[0] || "?").toUpperCase()) + "</span>" +
-      '<div class="cmt-c"><div class="cmt-m"><b>' + esc(c.author_name) + '</b><time datetime="' + esc(c.created_at) + '" title="' +
-      esc(pad2(d.getHours()) + ":" + pad2(d.getMinutes()) + " " + pad2(d.getDate()) + "/" + pad2(d.getMonth() + 1) + "/" + d.getFullYear()) + '">' + ago(c.created_at) + "</time></div>" +
-      "<p>" + esc(c.body) + "</p></div></li>";
-  }
-  function cmtNote(html) { $("#cmt-count").textContent = ""; $("#cmt-list").innerHTML = '<li class="cmt-note">' + html + "</li>"; }
-  function renderComments() {
-    if (!comments.length) { cmtNote("Chưa có bình luận nào. Bạn là người đầu tiên nhé!"); return; }
-    $("#cmt-count").textContent = comments.length + " bình luận";
-    $("#cmt-list").innerHTML = comments.map(cmtHTML).join("");
-  }
-  function loadComments() {
-    cmtNote("Đang tải bình luận…");
-    sbFetch("idp_comments?select=id,author_name,body,created_at&order=created_at.desc&limit=200")
-      .then(function (rows) { comments = rows; renderComments(); })
-      .catch(function () { cmtNote('Chưa tải được bình luận. <button type="button" class="link" data-cmt-retry>Thử lại</button>'); });
-  }
-  function fieldErr(id, msg) {
-    $("#" + id).setAttribute("aria-invalid", msg ? "true" : "false");
-    $("#" + id + "-err").textContent = msg;
-  }
-  function sendComment(e) {
-    e.preventDefault();
-    var name = $("#cmt-name").value.trim(), body = $("#cmt-body").value.trim(), btn = $("#cmt-send");
-    fieldErr("cmt-name", name ? "" : "Bạn chưa nhập tên");
-    fieldErr("cmt-body", body ? "" : "Bạn chưa viết bình luận");
-    if (!name || !body) { $(name ? "#cmt-body" : "#cmt-name").focus(); return; }
-    btn.disabled = true;
-    sbFetch("idp_comments", { json: { author_name: name, body: body } })
-      .then(function (rows) {
-        comments.unshift(rows[0]);
-        renderComments();
-        $("#cmt-body").value = "";
-        try { localStorage.setItem("idp-cmt-name", name); } catch (x) {}
-        toast("Đã gửi bình luận. Cảm ơn bạn!", "check");
-      })
-      .catch(function () { toast("Chưa gửi được bình luận, bạn thử lại nhé", "x"); })
-      .then(function () { btn.disabled = false; });
-  }
-  function initComments() {
-    if (!CONFIG.supabaseKey) {
-      $("#cmt-send").disabled = true;
-      cmtNote("Phần bình luận chưa được kết nối.");
-      return;
-    }
-    try { $("#cmt-name").value = localStorage.getItem("idp-cmt-name") || ""; } catch (x) {}
-    $("#cmt-form").addEventListener("submit", sendComment);
-    ["cmt-name", "cmt-body"].forEach(function (id) {
-      $("#" + id).addEventListener("input", function () { if ($("#" + id).value.trim()) fieldErr(id, ""); });
-    });
-    loadComments();
-  }
-
   /* ================= SỰ KIỆN ================= */
   document.addEventListener("click", function (e) {
     var t = e.target, el;
-    if (t.closest("[data-cmt-retry]")) { loadComments(); return; }
     if ((el = t.closest("[data-close]"))) { closeOv(el.closest(".ov")); return; }
     if (t.closest("#nav-mb")) { setNav(!$("#nav").classList.contains("open")); return; }
     if (t.closest(".nav-links a")) setNav(false);
@@ -1423,11 +1246,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     if (t.closest("#trophy")) {
       restart($("#trophy"), "jig");
       toast("Đích của mùa: Product Engineer", "trophy");
-      return;
-    }
-    if ((el = t.closest("#s2"))) {
-      restart(el, "shake");
-      toast("Kế hoạch 1 năm: to be continued…", "sparkle");
       return;
     }
     if (t.classList && t.classList.contains("ov")) { closeOv(t); return; }
@@ -1546,7 +1364,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   bindMotion();
   frame();
   updateImgBtn();
-  initComments();
 })();
 </script>
 </body>
