@@ -131,6 +131,8 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cert-t a:hover{color:var(--pink-text)}
 .cert-t small{font-size:13px;color:var(--ink-3)}
 .pl-plan{font-size:15px;line-height:1.5;color:var(--ink-2)}
+.pl-course-list{list-style:disc;padding-left:1.45em}
+.pl-course-list li+li{margin-top:4px}
 .pl-list{list-style:decimal;padding-left:1.45em;font-size:15px;line-height:1.45;color:var(--ink-2)}
 .pl-list li+li{margin-top:8px}
 .pl-list li::marker{font-weight:700;color:var(--pink-text)}
@@ -370,7 +372,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   <div class="nav-in">
     <a class="nav-brand" href="#top" aria-label="Phạm Minh Khang, Kế hoạch phát triển cá nhân 6 tháng, về đầu trang"><span class="nb-name dsp">Phạm Minh Khang</span><span class="nb-div" aria-hidden="true"></span><span class="nb-t" aria-hidden="true">Kế hoạch phát triển cá nhân 6 tháng</span></a>
     <nav class="nav-links" id="nav-links" aria-label="Các mục trên trang">
-      <a href="#dinh-nghia">4 phần</a>
+      <a href="#dinh-nghia">4 phần học</a>
       <a href="#hanh">5 dự án</a>
       <a href="#lo-trinh">Lộ trình 6 tháng</a>
       <a href="#theo-doi">Check-in</a>
@@ -383,7 +385,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 <!-- ============ PRODUCT ENGINEER: 4 PHẦN ============ -->
 <section id="dinh-nghia" class="sec sec-pink">
   <div class="wrap">
-    <header class="sh rv-t"><h1 class="dsp">(AI) Product Engineer gồm <span class="pkh">4 phần</span></h1></header>
+    <header class="sh rv-t"><h1 class="dsp">(AI) Product Engineer gồm <span class="pkh">4 phần học</span></h1></header>
     <div class="pl-grid rv" id="pillars"></div>
   </div>
 </section>
@@ -545,7 +547,13 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
   ];
   var STUDY_CARDS = PILLARS.concat({
     k: "psych", n: 4, name: "Applied Psychology in AI & Product",
-    plan: "Tìm lại tài liệu các khóa ở RMIT về Human Nature, Neurology và EQ (trí tuệ cảm xúc). Xem lại những gì đã học về tính cách, động cơ và cảm xúc để tìm cách áp dụng khi xây dựng AI, ví dụ như thiết kế cách Persona AI phản hồi."
+    courses: [
+      "Psychology of Everyday Thinking",
+      "The science of Human Nature",
+      "Cognitive Psychology",
+      "Biological Psychology"
+    ],
+    plan: "Xem lại tài liệu đã học ở RMIT để tìm cách áp dụng kiến thức tâm lý học vào AI và Product, ví dụ như thiết kế cách Persona AI phản hồi."
   });
   var PILLAR_BY_KEY = Object.fromEntries(PILLARS.map(function (p) { return [p.k, p]; }));
 
@@ -704,7 +712,11 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
         ? '<div class="cert"><span class="cert-i">' + svg("trophy") + '</span><span class="cert-t">' +
           courseLink(p.cert) + '<small>' + esc(p.cert.meta + " · " + p.period) + '</small></span></div>' +
           '<ol class="pl-list">' + p.outcomes.map(function (item) { return '<li>' + learningHTML(item) + '</li>'; }).join("") + '</ol>'
-        : '<p class="pl-plan"><b>Chưa bắt đầu.</b></p><p class="pl-plan">' + esc(p.plan) + '</p>';
+        : '<p class="pl-plan"><b>Chưa bắt đầu.</b></p>' +
+          '<p class="pl-plan"><b>Reassess các khóa đã học:</b></p>' +
+          '<ul class="pl-plan pl-course-list">' + p.courses.map(function (course) {
+            return '<li>' + esc(course) + '</li>';
+          }).join("") + '</ul><p class="pl-plan">' + esc(p.plan) + '</p>';
       return '<article class="pl" id="pl-' + p.k + '">' +
         '<div class="pl-h"><span class="mnum" data-mnum="' + p.n + '"></span><div class="pl-n"><h3 class="dsp">' + esc(p.name) + '</h3></div></div>' +
         '<div class="pl-b"><h4 class="lbl lbl-p">Học</h4>' + study + '</div></article>';
