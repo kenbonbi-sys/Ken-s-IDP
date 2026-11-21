@@ -23,10 +23,6 @@
   --ms-bg:repeating-linear-gradient(135deg,#F95396 0 .17em,#D42A87 .17em .3em);
   --ink:#1C171A; --ink-2:#4A4046; --ink-3:#796B73;
   --ok:#12B76A; --ok-soft:#DCFCE7;
-  /* Màu cho AI, Engineering và Product */
-  --eng:#F95396; --prod:#FFC21A; --ai:#429CFF;
-  --eng-d:#D42A87; --prod-d:#F2B200; --ai-d:#1B6FE0;
-  --eng-t:#C91F72; --prod-t:#8A5200; --ai-t:#1657B8;
   --sh-s:0 4px 10px -4px rgba(249,83,150,.45);
   --sh-m:0 18px 40px -18px rgba(190,30,100,.38);
   --sh-l:0 40px 90px -30px rgba(120,20,70,.5);
@@ -49,10 +45,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .lbl-p{color:var(--pink-text)}
 .wrap{position:relative;max-width:1200px;margin:0 auto}
 .ic{width:20px;height:20px;flex:0 0 auto}
-/* Màu nhận diện ba checkpoint */
-[data-tri=eng]{--c:var(--eng);--cd:var(--eng-d);--ct:var(--eng-t)}
-[data-tri=prod]{--c:var(--prod);--cd:var(--prod-d);--ct:var(--prod-t)}
-[data-tri=ai]{--c:var(--ai);--cd:var(--ai-d);--ct:var(--ai-t)}
 
 /* ================= Nút ================= */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:10px;font-size:15px;font-weight:700;line-height:1.2;text-decoration:none;white-space:nowrap;cursor:pointer;transition:transform .3s var(--out),background-color .25s ease,color .25s ease,box-shadow .25s ease}
@@ -157,7 +149,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .gtags{display:flex;flex-wrap:wrap;gap:10px}
 .gtag{position:relative;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:0;border-top:1px solid rgba(255,255,255,.55);border-bottom:1px solid rgba(255,255,255,.25);background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.22) 18%,rgba(255,255,255,.22) 82%,rgba(255,255,255,0));color:#fff;font-size:14px;font-weight:700;text-align:left;cursor:pointer;transition:transform .35s var(--out),background-color .25s ease}
 .gtag:hover{transform:translateY(-3px)}
-.gdot{width:11px;height:11px;flex:0 0 auto;border:2px solid #fff;border-radius:50%;background:var(--c)}
+.gdot{width:11px;height:11px;flex:0 0 auto;border:2px solid #fff;border-radius:50%;background:var(--pink)}
 .bn-ph{position:relative;z-index:2;padding:10px;border-radius:18px;background:#fff;box-shadow:0 30px 60px -20px rgba(80,0,40,.55);transform:rotate(3deg);transition:transform .5s var(--out)}
 .bn-ph:hover{transform:rotate(0) scale(1.02)}
 .bn-ph .slot{aspect-ratio:16/10;border-radius:12px}
@@ -168,7 +160,6 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
 .cat{scroll-margin-top:30px}
 .cat-h{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:10px}
 .cat-h h3{font-size:clamp(26px,2.6vw,34px);line-height:1.1}
-.cat-name{color:var(--ct)}
 .cat-nav{display:flex;gap:8px;margin-left:auto}
 .cat-nav .nb{width:44px;padding:0;justify-content:center}
 .cat.fits .cat-nav{display:none}
@@ -753,7 +744,7 @@ code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em
     return '<div class="pairs"><div class="pr-h" aria-hidden="true"><span class="lbl lbl-p">Học</span><span class="lbl lbl-p">Hành</span></div>' +
       projectGroups(p.outcomes).map(function (group) {
         var lessons = group.items.map(function (item) {
-          return '<div class="pr-l" data-tri="' + p.k + '"><span class="gdot" data-tri="' + p.k + '"></span>' +
+          return '<div class="pr-l"><span class="gdot"></span>' +
             '<span class="pr-d">' + learningHTML(item) + '</span></div>';
         }).join("");
         return '<div class="pr"><div class="pr-lessons"><span class="pr-k">Học</span>' + lessons + '</div>' +
